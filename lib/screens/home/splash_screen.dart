@@ -27,13 +27,27 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: Color(0xFF1C252E),
       body: Center(
-        child: Container(
-          child: Image.asset(
-            "assets/logo/valorant_logo.png",
-            fit: BoxFit.cover,
-            height: 150,
-            width: 150,
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              child: Image.asset(
+                "assets/logo/valorant_logo.png",
+                fit: BoxFit.cover,
+                height: 150,
+                width: 150,
+              ),
+            ),
+            SizedBox(height: 15),
+            Text(
+              "VALORANT",
+              style: TextStyle(
+                fontFamily: 'Valorant',
+                fontSize: 40,
+                color: Color(0xFFFF4654),
+              ),
+            ),
+          ],
         ),
       ),
     );
