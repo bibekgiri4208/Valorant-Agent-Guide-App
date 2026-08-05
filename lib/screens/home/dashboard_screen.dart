@@ -24,10 +24,10 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
       body: _pages[_currentIndex],
 
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color(0xFFFF4654),
+        backgroundColor: Color(0xFF1C252E),
         // showSelectedLabels: false,
         showUnselectedLabels: false,
-        selectedItemColor: Color(0xFF1C252E),
+        selectedItemColor: Color(0xFFFF4654),
         unselectedItemColor: Colors.white,
         type: BottomNavigationBarType.fixed,
         currentIndex: _currentIndex,
