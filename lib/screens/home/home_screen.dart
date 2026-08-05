@@ -14,11 +14,12 @@ class HomeScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
+              // crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 CircleAvatar(
-                  radius: 20,
-                  backgroundColor: Colors.white,
+                  radius: 22,
+                  backgroundColor: Color(0xFFFF4654),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 2,
@@ -27,19 +28,45 @@ class HomeScreen extends StatelessWidget {
                     child: Image.asset(
                       "assets/logo/valorant_logo.png",
                       fit: BoxFit.contain,
+                      color: Colors.white,
                     ),
                   ),
                 ),
-
-                CircleAvatar(radius: 20),
+                Text(
+                  "VALORANT",
+                  style: TextStyle(
+                    fontFamily: 'Valorant',
+                    fontSize: 30,
+                    color: Color(0xFFFF4654),
+                  ),
+                ),
+                CircleAvatar(
+                  radius: 22,
+                  backgroundColor: Color(0xFFFF4654),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 2,
+                      vertical: 8,
+                    ),
+                    child: Image.asset(
+                      "assets/logo/user.png",
+                      fit: BoxFit.contain,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
               ],
             ),
 
-            SizedBox(height: 20),
+            SizedBox(height: 50),
 
             Text(
-              "Learn Your\nFavorite Agents",
-              style: GoogleFonts.orbitron(fontSize: 30, color: Colors.white),
+              "Learn Your\nFaVorite agents",
+              style: TextStyle(
+                fontFamily: 'Valorant',
+                fontSize: 30,
+                color: Colors.white,
+              ),
             ),
           ],
         ),
