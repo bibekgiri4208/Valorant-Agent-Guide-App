@@ -37,39 +37,49 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
           });
         },
 
+        selectedLabelStyle: const TextStyle(
+          fontFamily: 'Valorant',
+          fontSize: 11,
+          letterSpacing: 1.0,
+        ),
+        unselectedLabelStyle: const TextStyle(
+          fontFamily: 'Valorant',
+          fontSize: 11,
+        ),
+
         items: [
           BottomNavigationBarItem(
             icon: ImageIcon(
               AssetImage("assets/logo/controller_logo.png"),
-              size: 28,
+              size: 25,
             ),
             label: "Controller",
           ),
           BottomNavigationBarItem(
             icon: ImageIcon(
               AssetImage("assets/logo/duelist_logo.png"),
-              size: 28,
+              size: 25,
             ),
             label: "Duelist",
           ),
           BottomNavigationBarItem(
             icon: ImageIcon(
               AssetImage("assets/logo/valorant_logo.png"),
-              size: 28,
+              size: 25,
             ),
             label: "Home",
           ),
           BottomNavigationBarItem(
             icon: ImageIcon(
               AssetImage("assets/logo/initiator_logo.png"),
-              size: 28,
+              size: 25,
             ),
             label: "Initiator",
           ),
           BottomNavigationBarItem(
             icon: ImageIcon(
               AssetImage("assets/logo/sentinel_logo.png"),
-              size: 28,
+              size: 25,
             ),
             label: "Sentinel",
           ),
