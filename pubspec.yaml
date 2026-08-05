@@ -66,6 +66,12 @@ flutter:
   - assets/controllers/
   - assets/sentinels/
   - assets/logo/
+
+  fonts:
+    - family: Valorant
+      fonts:
+        - asset: assets/fonts/Valorant.ttf
+  
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
