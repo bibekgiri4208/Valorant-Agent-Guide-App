@@ -11,9 +11,9 @@ class DashBoardScreen extends StatefulWidget {
 class _DashBoardScreenState extends State<DashBoardScreen> {
   int _currentIndex = 0;
   final List<Widget> _pages = [
+    HomeScreen(),
     Center(child: Text("Controller")),
     Center(child: Text("Duelist")),
-    HomeScreen(),
     Center(child: Text("Initiator")),
     Center(child: Text("Sentinel")),
   ];
@@ -50,6 +50,13 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
         items: [
           BottomNavigationBarItem(
             icon: ImageIcon(
+              AssetImage("assets/logo/valorant_logo.png"),
+              size: 25,
+            ),
+            label: "Home",
+          ),
+          BottomNavigationBarItem(
+            icon: ImageIcon(
               AssetImage("assets/logo/controller_logo.png"),
               size: 25,
             ),
@@ -62,13 +69,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
             ),
             label: "Duelist",
           ),
-          BottomNavigationBarItem(
-            icon: ImageIcon(
-              AssetImage("assets/logo/valorant_logo.png"),
-              size: 25,
-            ),
-            label: "Home",
-          ),
+
           BottomNavigationBarItem(
             icon: ImageIcon(
               AssetImage("assets/logo/initiator_logo.png"),
