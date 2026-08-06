@@ -25,8 +25,6 @@ class AgentsDetailScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       SizedBox(height: 20),
-
-                      // Top Icons
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
                         child: Row(
@@ -60,9 +58,7 @@ class AgentsDetailScreen extends StatelessWidget {
                           fit: BoxFit.contain,
                         ),
                       ),
-
                       SizedBox(height: 15),
-
                       Text(
                         "Omen",
                         style: TextStyle(
@@ -72,9 +68,7 @@ class AgentsDetailScreen extends StatelessWidget {
                           fontFamily: "Valorant",
                         ),
                       ),
-
                       SizedBox(height: 5),
-
                       Text(
                         "Controller",
                         style: TextStyle(
@@ -134,17 +128,38 @@ class AgentsDetailScreen extends StatelessWidget {
                     SizedBox(height: 30),
 
                     Text(
-                      "PARANOIA",
+                      "Paranoia",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
+                        fontFamily: "Valorant",
                       ),
                     ),
 
                     SizedBox(height: 15),
 
-                    ClipRRect(borderRadius: BorderRadius.circular(15)),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(15),
+                      child: Image.asset(
+                        "assets/abilities/omen/paranoia_cast.webp",
+                        width: double.infinity,
+                        height: 180,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+
+                    SizedBox(height: 20),
+
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(15),
+                      child: Image.asset(
+                        "assets/abilities/omen/paranoia_nearsight.webp",
+                        width: double.infinity,
+                        height: 180,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
 
                     SizedBox(height: 20),
 
