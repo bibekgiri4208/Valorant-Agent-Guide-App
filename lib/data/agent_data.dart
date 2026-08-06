@@ -1,6 +1,6 @@
 final List<String> abilityIcons = [
-  'assets/abilities/paranoia.webp',
-  'assets/abilities/dark_cover.webp',
-  'assets/abilities/shrouded_step.webp',
-  'assets/abilities/from_the_shadows.webp',
+  'assets/abilities/omen/paranoia.webp',
+  'assets/abilities/omen/dark_cover.webp',
+  'assets/abilities/omen/shrouded_step.webp',
+  'assets/abilities/omen/from_the_shadows.webp',
 ];
