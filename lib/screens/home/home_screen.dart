@@ -8,58 +8,42 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFF1C252E),
+      appBar: AppBar(
+        backgroundColor: Color(0xFF1C252E),
+        elevation: 0,
+        centerTitle: true,
+        automaticallyImplyLeading: false,
+
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: CircleAvatar(
+            radius: 22,
+            backgroundColor: Color(0xFFFF4654),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 12),
+              child: Image.asset(
+                "assets/logo/valorant_logo.png",
+                fit: BoxFit.contain,
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ),
+
+        title: Text(
+          "Valorant",
+          style: TextStyle(
+            color: Color(0xFFFF4654),
+            fontSize: 30,
+            fontFamily: 'Valorant',
+          ),
+        ),
+      ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 50),
+        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              // crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                CircleAvatar(
-                  radius: 22,
-                  backgroundColor: Color(0xFFFF4654),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 2,
-                      vertical: 12,
-                    ),
-                    child: Image.asset(
-                      "assets/logo/valorant_logo.png",
-                      fit: BoxFit.contain,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-                Text(
-                  "VALORANT",
-                  style: TextStyle(
-                    fontFamily: 'Valorant',
-                    fontSize: 30,
-                    color: Color(0xFFFF4654),
-                  ),
-                ),
-                CircleAvatar(
-                  radius: 22,
-                  backgroundColor: Color(0xFFFF4654),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 2,
-                      vertical: 8,
-                    ),
-                    child: Image.asset(
-                      "assets/logo/user.png",
-                      fit: BoxFit.contain,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-
-            SizedBox(height: 50),
-
             Text(
               "Learn Your\nFaVorite agents",
               style: TextStyle(
