@@ -9,10 +9,18 @@ class DuelistsScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xFF1C252E),
       appBar: AppBar(
+        leading: IconButton(
+          icon: Image.asset(
+            'assets/icon/back_arrow.png',
+            color: Colors.white,
+            width: 24,
+            height: 24,
+          ),
+          onPressed: () => Navigator.pop(context),
+        ),
         backgroundColor: Color(0xFF1C252E),
         elevation: 0,
         centerTitle: true,
-        automaticallyImplyLeading: false,
         title: Text(
           "Duelists",
           style: TextStyle(
@@ -56,23 +64,57 @@ class DuelistsScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(16),
                         border: Border.all(color: Colors.white, width: 0.5),
                         image: DecorationImage(
-                          image: AssetImage(agent["image"]),
+                          image: const AssetImage(
+                            'assets/duelists/duelists_bg.png',
+                          ),
                           fit: BoxFit.cover,
-                          alignment: const Alignment(0.0, -0.7),
                           colorFilter: ColorFilter.mode(
-                            Colors.black.withValues(alpha: 0.5),
+                            Colors.black.withValues(alpha: 0.4),
                             BlendMode.darken,
                           ),
                         ),
                       ),
-                      child: Center(
-                        child: Text(
-                          agent["name"],
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 30,
-                            fontFamily: "Valorant",
-                          ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(16),
+                        child: Stack(
+                          children: [
+                            // Agent Image
+                            Positioned.fill(
+                              child: Image.asset(
+                                agent["image"],
+                                fit: BoxFit.cover,
+                                alignment: const Alignment(0.0, -0.7),
+                              ),
+                            ),
+
+                            // Dark Overlay
+                            Container(
+                              color: Colors.black.withValues(alpha: 0.3),
+                            ),
+
+                            // Agent Name
+                            Center(
+                              child: Text(
+                                agent["name"],
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 30,
+                                  fontFamily: "Valorant",
+                                ),
+                              ),
+                            ),
+
+                            Positioned(
+                              top: 12,
+                              left: 12,
+                              child: Image.asset(
+                                agent["roleIcon"],
+                                width: 30,
+                                height: 30,
+                                fit: BoxFit.contain,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),

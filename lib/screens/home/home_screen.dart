@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:valorant_guide_app/screens/agents/duelists_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -38,58 +39,52 @@ class HomeScreen extends StatelessWidget {
               ),
 
               SizedBox(height: 30),
-              Container(
-                height: 150,
-                width: double.maxFinite,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16.0),
-                  border: Border.all(color: Colors.white, width: 0.5),
-                  image: DecorationImage(
-                    image: const AssetImage('assets/roles/jett_dark.jpg'),
-                    fit: BoxFit.cover,
-                    alignment: Alignment.topCenter,
-                    colorFilter: ColorFilter.mode(
-                      Colors.black.withValues(alpha: 0.5),
-                      BlendMode.darken,
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => DuelistsScreen()),
+                  );
+                },
+                child: Container(
+                  height: 150,
+                  width: double.maxFinite,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16.0),
+                    border: Border.all(color: Colors.white, width: 0.5),
+                    image: DecorationImage(
+                      image: AssetImage('assets/roles/jett_dark.jpg'),
+                      fit: BoxFit.cover,
+                      alignment: Alignment.topCenter,
+                      colorFilter: ColorFilter.mode(
+                        Colors.black.withValues(alpha: 0.5),
+                        BlendMode.darken,
+                      ),
                     ),
                   ),
-                ),
-                child: const Center(
-                  child: Text(
-                    'Duelists',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30,
-                      fontFamily: "Valorant",
-                    ),
-                  ),
-                ),
-              ),
-
-              SizedBox(height: 30),
-              Container(
-                height: 150,
-                width: double.maxFinite,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16.0),
-                  border: Border.all(color: Colors.white, width: 0.5),
-                  image: DecorationImage(
-                    image: const AssetImage('assets/roles/omen_dark.jpg'),
-                    fit: BoxFit.cover,
-                    alignment: Alignment.topCenter,
-                    colorFilter: ColorFilter.mode(
-                      Colors.black.withValues(alpha: 0.5),
-                      BlendMode.darken,
-                    ),
-                  ),
-                ),
-                child: const Center(
-                  child: Text(
-                    'Controllers',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30,
-                      fontFamily: "Valorant",
+                  child: Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          'assets/logo/duelist_logo.png',
+                          width: 30,
+                          height: 30,
+                          color: Colors.white,
+                        ),
+                        SizedBox(width: 8),
+                        Transform.translate(
+                          offset: const Offset(0, 3),
+                          child: Text(
+                            'Duelists',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 30,
+                              fontFamily: "Valorant",
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -103,7 +98,7 @@ class HomeScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(16.0),
                   border: Border.all(color: Colors.white, width: 0.5),
                   image: DecorationImage(
-                    image: const AssetImage('assets/roles/gekko_dark.png'),
+                    image: AssetImage('assets/roles/omen_dark.jpg'),
                     fit: BoxFit.cover,
                     alignment: Alignment.topCenter,
                     colorFilter: ColorFilter.mode(
@@ -112,14 +107,29 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                child: const Center(
-                  child: Text(
-                    'Initiators',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30,
-                      fontFamily: "Valorant",
-                    ),
+                child: Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'assets/logo/controller_logo.png',
+                        width: 30,
+                        height: 30,
+                        color: Colors.white,
+                      ),
+                      SizedBox(width: 8),
+                      Transform.translate(
+                        offset: const Offset(0, 3),
+                        child: Text(
+                          'Controller',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                            fontFamily: "Valorant",
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -132,7 +142,7 @@ class HomeScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(16.0),
                   border: Border.all(color: Colors.white, width: 0.5),
                   image: DecorationImage(
-                    image: const AssetImage('assets/roles/killjoy_dark.jpg'),
+                    image: AssetImage('assets/roles/gekko_dark.png'),
                     fit: BoxFit.cover,
                     alignment: Alignment.topCenter,
                     colorFilter: ColorFilter.mode(
@@ -141,14 +151,73 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                child: const Center(
-                  child: Text(
-                    'Sentinels',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30,
-                      fontFamily: "Valorant",
+                child: Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'assets/logo/initiator_logo.png',
+                        width: 30,
+                        height: 30,
+                        color: Colors.white,
+                      ),
+                      SizedBox(width: 8),
+                      Transform.translate(
+                        offset: const Offset(0, 3),
+                        child: Text(
+                          'Initiator',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                            fontFamily: "Valorant",
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              SizedBox(height: 30),
+              Container(
+                height: 150,
+                width: double.maxFinite,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16.0),
+                  border: Border.all(color: Colors.white, width: 0.5),
+                  image: DecorationImage(
+                    image: AssetImage('assets/roles/killjoy_dark.jpg'),
+                    fit: BoxFit.cover,
+                    alignment: Alignment.topCenter,
+                    colorFilter: ColorFilter.mode(
+                      Colors.black.withValues(alpha: 0.5),
+                      BlendMode.darken,
                     ),
+                  ),
+                ),
+                child: Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'assets/logo/sentinel_logo.png',
+                        width: 30,
+                        height: 30,
+                        color: Colors.white,
+                      ),
+                      SizedBox(width: 8),
+                      Transform.translate(
+                        offset: const Offset(0, 3),
+                        child: Text(
+                          'Sentinel',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                            fontFamily: "Valorant",
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),

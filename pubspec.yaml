@@ -74,6 +74,7 @@ flutter:
   - assets/logo/
   - assets/abilities/
   - assets/roles/
+  - assets/icon/
   - assets/icon/icon.jpg
 
   fonts:
