@@ -72,6 +72,7 @@ flutter:
   - assets/controllers/
   - assets/sentinels/
   - assets/logo/
+  - assets/abilities/
   - assets/icon/icon.jpg
 
   fonts:
