@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:valorant_guide_app/screens/agents/controllers_screen.dart';
 import 'package:valorant_guide_app/screens/agents/duelists_screen.dart';
 import 'package:valorant_guide_app/screens/agents/initiators_screen.dart';
+import 'package:valorant_guide_app/screens/agents/sentinels_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -45,7 +46,30 @@ class HomeScreen extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (_) => DuelistsScreen()),
+                    PageRouteBuilder(
+                      transitionDuration: const Duration(milliseconds: 300),
+                      reverseTransitionDuration: const Duration(
+                        milliseconds: 300,
+                      ),
+                      pageBuilder: (context, animation, secondaryAnimation) {
+                        return const DuelistsScreen();
+                      },
+                      transitionsBuilder:
+                          (context, animation, secondaryAnimation, child) {
+                            const begin = Offset(1.0, 0.0);
+                            const end = Offset.zero;
+
+                            final tween = Tween(
+                              begin: begin,
+                              end: end,
+                            ).chain(CurveTween(curve: Curves.easeInOut));
+
+                            return SlideTransition(
+                              position: animation.drive(tween),
+                              child: child,
+                            );
+                          },
+                    ),
                   );
                 },
                 child: Container(
@@ -74,10 +98,10 @@ class HomeScreen extends StatelessWidget {
                           height: 30,
                           color: Colors.white,
                         ),
-                        SizedBox(width: 8),
+                        const SizedBox(width: 8),
                         Transform.translate(
                           offset: const Offset(0, 3),
-                          child: Text(
+                          child: const Text(
                             'Duelists',
                             style: TextStyle(
                               color: Colors.white,
@@ -91,7 +115,6 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
               ),
-
               SizedBox(height: 30),
               InkWell(
                 onTap: () {
@@ -197,45 +220,53 @@ class HomeScreen extends StatelessWidget {
               ),
 
               SizedBox(height: 30),
-              Container(
-                height: 150,
-                width: double.maxFinite,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16.0),
-                  border: Border.all(color: Colors.white, width: 0.5),
-                  image: DecorationImage(
-                    image: AssetImage('assets/roles/killjoy_dark.jpg'),
-                    fit: BoxFit.cover,
-                    alignment: Alignment.topCenter,
-                    colorFilter: ColorFilter.mode(
-                      Colors.black.withValues(alpha: 0.5),
-                      BlendMode.darken,
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => SentinelsScreen()),
+                  );
+                },
+                child: Container(
+                  height: 150,
+                  width: double.maxFinite,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16.0),
+                    border: Border.all(color: Colors.white, width: 0.5),
+                    image: DecorationImage(
+                      image: AssetImage('assets/roles/killjoy_dark.jpg'),
+                      fit: BoxFit.cover,
+                      alignment: Alignment.topCenter,
+                      colorFilter: ColorFilter.mode(
+                        Colors.black.withValues(alpha: 0.5),
+                        BlendMode.darken,
+                      ),
                     ),
                   ),
-                ),
-                child: Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        'assets/logo/sentinel_logo.png',
-                        width: 30,
-                        height: 30,
-                        color: Colors.white,
-                      ),
-                      SizedBox(width: 8),
-                      Transform.translate(
-                        offset: const Offset(0, 3),
-                        child: Text(
-                          'Sentinel',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 30,
-                            fontFamily: "Valorant",
+                  child: Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          'assets/logo/sentinel_logo.png',
+                          width: 30,
+                          height: 30,
+                          color: Colors.white,
+                        ),
+                        SizedBox(width: 8),
+                        Transform.translate(
+                          offset: const Offset(0, 3),
+                          child: Text(
+                            'Sentinel',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 30,
+                              fontFamily: "Valorant",
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),

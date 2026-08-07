@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:valorant_guide_app/screens/agents/agents_detail_screen.dart';
 import 'package:valorant_guide_app/screens/home/home_screen.dart';
+import 'package:valorant_guide_app/screens/home/onboarding_screen.dart';
 
 class DashBoardScreen extends StatefulWidget {
   const DashBoardScreen({super.key});
@@ -14,7 +15,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   final List<Widget> _pages = [
     HomeScreen(),
     AgentsDetailScreen(),
-    Center(child: Text("Duelist")),
+    OnboardingScreen(),
     Center(child: Text("Initiator")),
     Center(child: Text("Sentinel")),
   ];

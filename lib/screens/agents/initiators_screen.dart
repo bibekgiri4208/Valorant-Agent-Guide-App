@@ -38,10 +38,10 @@ class InitiatorsScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Learn Your\nFaVorite Controllers",
+                "Choose Your\nInitiator",
                 style: TextStyle(
                   fontFamily: 'Valorant',
-                  fontSize: 35,
+                  fontSize: 25,
                   color: Colors.white,
                 ),
               ),
