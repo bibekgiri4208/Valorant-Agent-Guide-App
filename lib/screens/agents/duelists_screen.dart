@@ -7,7 +7,7 @@ class DuelistsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF1C252E),
+      backgroundColor: const Color(0xFF1C252E),
       appBar: AppBar(
         leading: IconButton(
           icon: Image.asset(
@@ -18,108 +18,128 @@ class DuelistsScreen extends StatelessWidget {
           ),
           onPressed: () => Navigator.pop(context),
         ),
-        backgroundColor: Color(0xFF1C252E),
+        backgroundColor: const Color(0xFF1C252E),
         elevation: 0,
         centerTitle: true,
-        title: Text(
-          "Duelists",
+        title: const Text(
+          "DUELISTS",
           style: TextStyle(
             color: Color(0xFFFF4654),
-            fontSize: 30,
+            fontSize: 28,
             fontFamily: 'Valorant',
           ),
         ),
       ),
-
       body: SingleChildScrollView(
+        clipBehavior: Clip.none,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "Choose Your\nDuelist",
+              const Text(
+                "CHOOSE YOUR\nDUELIST",
                 style: TextStyle(
                   fontFamily: 'Valorant',
-                  fontSize: 25,
+                  fontSize: 24,
                   color: Colors.white,
                 ),
               ),
-
-              SizedBox(height: 30),
-
-              ListView.builder(
+              const SizedBox(height: 30),
+              GridView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
+                clipBehavior:
+                    Clip.none, // Crucial: prevents grid clipping top pop-out
                 itemCount: duelistsData.length,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 16,
+                  mainAxisSpacing: 50, // Space for character heads popping up
+                  childAspectRatio: 0.9,
+                ),
                 itemBuilder: (context, index) {
                   final agent = duelistsData[index];
 
-                  return Padding(
-                    padding: const EdgeInsets.only(bottom: 20),
-                    child: Container(
-                      height: 150,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        border: Border.all(color: Colors.white, width: 0.5),
-                        image: DecorationImage(
-                          image: const AssetImage(
-                            'assets/duelists/duelists_bg.png',
-                          ),
-                          fit: BoxFit.cover,
-                          colorFilter: ColorFilter.mode(
-                            Colors.black.withValues(alpha: 0.4),
-                            BlendMode.darken,
-                          ),
-                        ),
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(16),
-                        child: Stack(
-                          children: [
-                            // Agent Image
-                            Positioned.fill(
-                              child: Image.asset(
-                                agent["image"],
-                                fit: BoxFit.cover,
-                                alignment: const Alignment(0.0, -0.7),
-                                cacheWidth: 800,
-                                cacheHeight: 800,
+                  return Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      // 1. CARD BACKGROUND (Pushed down 40px to create top pop-out room)
+                      Positioned(
+                        top: 40,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            border: Border.all(color: Colors.white30, width: 1),
+                            image: DecorationImage(
+                              image: const AssetImage(
+                                'assets/duelists/duelists_bg.png',
+                              ),
+                              fit: BoxFit.cover,
+                              colorFilter: ColorFilter.mode(
+                                Colors.black.withValues(alpha: 0.5),
+                                BlendMode.darken,
                               ),
                             ),
-
-                            // Dark Overlay
-                            Container(
-                              color: Colors.black.withValues(alpha: 0.3),
-                            ),
-
-                            // Agent Name
-                            Center(
-                              child: Text(
-                                agent["name"],
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 30,
-                                  fontFamily: "Valorant",
+                          ),
+                          child: Stack(
+                            children: [
+                              // Dark Overlay
+                              Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(16),
+                                  color: Colors.black.withValues(alpha: 0.25),
                                 ),
                               ),
-                            ),
 
-                            Positioned(
-                              top: 12,
-                              left: 12,
-                              child: Image.asset(
-                                agent["roleIcon"],
-                                width: 30,
-                                height: 30,
-                                fit: BoxFit.contain,
+                              // Vertical Name on Left Side inside card frame
+                              Positioned(
+                                left: 10,
+                                top: 0,
+                                bottom: 0,
+                                child: Center(
+                                  child: RotatedBox(
+                                    quarterTurns: 3,
+                                    child: Text(
+                                      agent["name"].toString().toUpperCase(),
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                        fontFamily: "Valorant",
+                                        fontWeight: FontWeight.bold,
+                                        letterSpacing: 2,
+                                      ),
+                                    ),
+                                  ),
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
-                    ),
+
+                      // 2. AGENT IMAGE (Scale 1.5 + Bottom Alignment forces head past top)
+                      Positioned(
+                        top: -15, // Extends bounding box way past card top edge
+                        bottom: 0,
+                        right: -10,
+                        left: 30, // Offset to make room for vertical name
+                        child: Transform.scale(
+                          scale:
+                              1.5, // Magnifies image to cut through transparent margin
+                          alignment: Alignment
+                              .bottomCenter, // Keeps feet grounded at bottom
+                          child: Image.asset(
+                            agent["image"],
+                            fit: BoxFit.contain,
+                            alignment: Alignment.bottomCenter,
+                          ),
+                        ),
+                      ),
+                    ],
                   );
                 },
               ),
