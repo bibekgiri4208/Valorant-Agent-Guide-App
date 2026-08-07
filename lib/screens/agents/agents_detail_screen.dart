@@ -20,7 +20,7 @@ class AgentsDetailScreen extends StatelessWidget {
                 ),
                 child: Container(
                   width: double.infinity,
-                  height: screenHeight * 0.60,
+                  height: screenHeight * 0.61,
                   color: Color(0xFFFF4654),
                   child: Column(
                     children: [
@@ -59,13 +59,90 @@ class AgentsDetailScreen extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 15),
-                      Text(
-                        "Omen",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 34,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: "Valorant",
+                      InkWell(
+                        onTap: () {
+                          showModalBottomSheet(
+                            backgroundColor: Color(0xFF1C252E),
+                            context: context,
+                            builder: (context) {
+                              return SizedBox(
+                                height: 400,
+                                width: double.maxFinite,
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 20,
+                                  ),
+                                  child: SingleChildScrollView(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        SizedBox(height: 20),
+                                        Text(
+                                          "Agent Description",
+                                          style: TextStyle(
+                                            fontSize: 25,
+                                            fontFamily: "Valorant",
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                        Divider(thickness: 2),
+                                        Text(
+                                          "Role: Controller",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontFamily: "Valorant",
+                                          ),
+                                        ),
+                                        Divider(thickness: 2),
+                                        Text(
+                                          "Country: Unknown",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontFamily: "Valorant",
+                                          ),
+                                        ),
+                                        Divider(thickness: 2),
+                                        Text(
+                                          "Agent No. 3",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontFamily: "Valorant",
+                                          ),
+                                        ),
+                                        Divider(thickness: 2),
+                                        Text(
+                                          "A phantom of a memory, Omen hunts in the shadows. He renders enemies blind, teleports across the field, then lets paranoia take hold as his foe scrambles to learn where he might strike next.",
+                                          style: TextStyle(
+                                            fontSize: 15,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                        Divider(),
+                                        Text(
+                                          "Prior to joining the VALORANT Protocol, Omen was a highly skilled and ruthless assassin for the organization known as Scions of Hourglass.In order to stop the discovery of Radianite from becoming public knowledge, he was sent to assassinate the chief scientist in charge of the research on radianite, Dr. Sabine Callas (Viper) at her lab. In the altercation that happens between the two, Omen is severely burned by the contents of a vial Dr.Callas had been examining, and stumbles inside a test chamber. To prevent him from attacking again, Viper activates a mechanism in the test chamber that causes Omen to be hit by multiple beams of pure radianite energy; This incident causes Omen to be ripped apart across space time and lose majority of his memories. The details of how he is brought back to life and kept in a stable state is still unclear but it is highly implied through voicelines that Sage has had a role to play in achieving that.",
+                                          style: TextStyle(
+                                            fontSize: 15,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                        SizedBox(height: 50),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                        },
+                        child: Text(
+                          "Omen",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 34,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: "Valorant",
+                          ),
                         ),
                       ),
                       SizedBox(height: 5),
@@ -93,6 +170,7 @@ class AgentsDetailScreen extends StatelessWidget {
                       "SPECIAL ABILITIES",
                       style: TextStyle(
                         color: Colors.white,
+                        fontFamily: "Valorant",
                         fontWeight: FontWeight.bold,
                         letterSpacing: 1,
                       ),
