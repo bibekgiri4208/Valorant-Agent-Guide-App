@@ -38,10 +38,10 @@ class ControllersScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Learn Your\nFaVorite Controllers",
+                "Choose Your\nController",
                 style: TextStyle(
                   fontFamily: 'Valorant',
-                  fontSize: 35,
+                  fontSize: 25,
                   color: Colors.white,
                 ),
               ),
