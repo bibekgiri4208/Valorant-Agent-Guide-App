@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:valorant_guide_app/screens/agents/controllers_screen.dart';
 import 'package:valorant_guide_app/screens/agents/duelists_screen.dart';
 import 'package:valorant_guide_app/screens/agents/initiators_screen.dart';
@@ -47,26 +46,35 @@ class HomeScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     PageRouteBuilder(
-                      transitionDuration: const Duration(milliseconds: 300),
+                      transitionDuration: const Duration(milliseconds: 500),
                       reverseTransitionDuration: const Duration(
-                        milliseconds: 300,
+                        milliseconds: 500,
                       ),
                       pageBuilder: (context, animation, secondaryAnimation) {
                         return const DuelistsScreen();
                       },
                       transitionsBuilder:
                           (context, animation, secondaryAnimation, child) {
-                            const begin = Offset(1.0, 0.0);
-                            const end = Offset.zero;
+                            final curvedAnimation = CurvedAnimation(
+                              parent: animation,
+                              curve: Curves.easeInOutCubic,
+                            );
 
-                            final tween = Tween(
-                              begin: begin,
-                              end: end,
-                            ).chain(CurveTween(curve: Curves.easeInOut));
-
-                            return SlideTransition(
-                              position: animation.drive(tween),
-                              child: child,
+                            return FadeTransition(
+                              opacity: curvedAnimation,
+                              child: SlideTransition(
+                                position: Tween<Offset>(
+                                  begin: const Offset(0, 0.5),
+                                  end: Offset.zero,
+                                ).animate(curvedAnimation),
+                                child: ScaleTransition(
+                                  scale: Tween<double>(
+                                    begin: 0.4,
+                                    end: 1.0,
+                                  ).animate(curvedAnimation),
+                                  child: child,
+                                ),
+                              ),
                             );
                           },
                     ),
@@ -120,7 +128,27 @@ class HomeScreen extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (_) => ControllersScreen()),
+                    PageRouteBuilder(
+                      transitionDuration: const Duration(milliseconds: 450),
+                      reverseTransitionDuration: const Duration(
+                        milliseconds: 450,
+                      ),
+                      pageBuilder: (context, animation, secondaryAnimation) {
+                        return const ControllersScreen();
+                      },
+                      transitionsBuilder:
+                          (context, animation, secondaryAnimation, child) {
+                            final curvedAnimation = CurvedAnimation(
+                              parent: animation,
+                              curve: Curves.easeInOutCubic,
+                            );
+
+                            return FadeTransition(
+                              opacity: curvedAnimation,
+                              child: child,
+                            );
+                          },
+                    ),
                   );
                 },
                 child: Container(
@@ -172,7 +200,28 @@ class HomeScreen extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (_) => InitiatorsScreen()),
+                    PageRouteBuilder(
+                      transitionDuration: Duration(milliseconds: 450),
+                      reverseTransitionDuration: Duration(milliseconds: 450),
+                      pageBuilder: (context, animation, secondaryAnimation) {
+                        return const InitiatorsScreen();
+                      },
+                      transitionsBuilder:
+                          (context, animation, secondaryAnimation, child) {
+                            final curvedAnimation = CurvedAnimation(
+                              parent: animation,
+                              curve: Curves.easeInOutCubic,
+                            );
+
+                            return SlideTransition(
+                              position: Tween<Offset>(
+                                begin: const Offset(1.0, 0.0),
+                                end: Offset.zero,
+                              ).animate(curvedAnimation),
+                              child: child,
+                            );
+                          },
+                    ),
                   );
                 },
                 child: Container(
@@ -224,7 +273,28 @@ class HomeScreen extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (_) => SentinelsScreen()),
+                    PageRouteBuilder(
+                      transitionDuration: Duration(milliseconds: 500),
+                      reverseTransitionDuration: Duration(milliseconds: 500),
+                      pageBuilder: (context, animation, secondaryAnimation) {
+                        return const SentinelsScreen();
+                      },
+                      transitionsBuilder:
+                          (context, animation, secondaryAnimation, child) {
+                            final curvedAnimation = CurvedAnimation(
+                              parent: animation,
+                              curve: Curves.easeInOutCubic,
+                            );
+
+                            return SlideTransition(
+                              position: Tween<Offset>(
+                                begin: const Offset(0.0, 1.0),
+                                end: Offset.zero,
+                              ).animate(curvedAnimation),
+                              child: child,
+                            );
+                          },
+                    ),
                   );
                 },
                 child: Container(

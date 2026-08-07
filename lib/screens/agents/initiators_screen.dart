@@ -84,6 +84,7 @@ class InitiatorsScreen extends StatelessWidget {
                                 agent["image"],
                                 fit: BoxFit.cover,
                                 alignment: const Alignment(0.0, -0.7),
+                                cacheWidth: 800,
                               ),
                             ),
 

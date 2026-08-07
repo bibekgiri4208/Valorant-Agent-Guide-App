@@ -24,32 +24,6 @@ class AgentsDetailScreen extends StatelessWidget {
                   color: Color(0xFFFF4654),
                   child: Column(
                     children: [
-                      SizedBox(height: 20),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            IconButton(
-                              onPressed: () => Navigator.pop(context),
-                              icon: Icon(
-                                Icons.close,
-                                color: Colors.white,
-                                size: 30,
-                              ),
-                            ),
-                            IconButton(
-                              onPressed: () {},
-                              icon: Icon(
-                                Icons.person_outline,
-                                color: Colors.white,
-                                size: 30,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-
                       Spacer(),
                       SizedBox(
                         height: 280,
@@ -139,7 +113,7 @@ class AgentsDetailScreen extends StatelessWidget {
                           "Omen",
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 34,
+                            fontSize: 40,
                             fontWeight: FontWeight.bold,
                             fontFamily: "Valorant",
                           ),
