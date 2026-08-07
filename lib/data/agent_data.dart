@@ -144,3 +144,18 @@ List initiatorsData = [
     "roleIcon": "assets/logo/initiator_logo.png",
   },
 ];
+
+List sentinelsData = [
+  {
+    "name": "Chamber",
+    "role": "Sentinel",
+    "image": "assets/sentinels/Chamber.webp",
+    "roleIcon": "assets/logo/sentinel_logo.png",
+  },
+  {
+    "name": "Cypher",
+    "role": "Sentinel",
+    "image": "assets/sentinels/Cypher.webp",
+    "roleIcon": "assets/logo/sentinel_logo.png",
+  },
+];

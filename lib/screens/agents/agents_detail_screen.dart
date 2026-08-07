@@ -20,7 +20,7 @@ class AgentsDetailScreen extends StatelessWidget {
                 ),
                 child: Container(
                   width: double.infinity,
-                  height: screenHeight * 0.61,
+                  height: screenHeight * 0.55,
                   color: Color(0xFFFF4654),
                   child: Column(
                     children: [
