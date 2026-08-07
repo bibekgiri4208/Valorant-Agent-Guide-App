@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:valorant_guide_app/data/agent_data.dart';
 
-class DuelistsScreen extends StatelessWidget {
-  const DuelistsScreen({super.key});
+class ControllersScreen extends StatelessWidget {
+  const ControllersScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class DuelistsScreen extends StatelessWidget {
         elevation: 0,
         centerTitle: true,
         title: Text(
-          "Duelists",
+          "Controllers",
           style: TextStyle(
             color: Color(0xFFFF4654),
             fontSize: 30,
@@ -38,7 +38,7 @@ class DuelistsScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Learn Your\nFaVorite Duelists",
+                "Learn Your\nFaVorite Controllers",
                 style: TextStyle(
                   fontFamily: 'Valorant',
                   fontSize: 35,
@@ -51,9 +51,9 @@ class DuelistsScreen extends StatelessWidget {
               ListView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                itemCount: duelistsData.length,
+                itemCount: controllersData.length,
                 itemBuilder: (context, index) {
-                  final agent = duelistsData[index];
+                  final agent = controllersData[index];
 
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 20),
