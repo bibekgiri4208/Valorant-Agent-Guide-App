@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:valorant_guide_app/screens/agents/agents_detail_screen.dart';
 import 'package:valorant_guide_app/screens/home/home_screen.dart';
 import 'package:valorant_guide_app/screens/home/onboarding_screen.dart';
 

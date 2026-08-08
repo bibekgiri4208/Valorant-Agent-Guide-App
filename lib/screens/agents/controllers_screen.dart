@@ -8,7 +8,7 @@ class ControllersScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF1C252E),
+      backgroundColor: Color(0xFF1C252E),
       appBar: AppBar(
         leading: IconButton(
           icon: Image.asset(
@@ -19,7 +19,7 @@ class ControllersScreen extends StatelessWidget {
           ),
           onPressed: () => Navigator.pop(context),
         ),
-        backgroundColor: const Color(0xFF1C252E),
+        backgroundColor: Color(0xFF1C252E),
         elevation: 0,
         centerTitle: true,
         title: const Text(
@@ -38,7 +38,7 @@ class ControllersScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 "CHOOSE YOUR\nCONTROLLER",
                 style: TextStyle(
                   fontFamily: 'Valorant',
@@ -46,14 +46,14 @@ class ControllersScreen extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
-              const Divider(thickness: 2),
-              const SizedBox(height: 30),
+              Divider(thickness: 2),
+              SizedBox(height: 30),
               GridView.builder(
                 shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
+                physics: NeverScrollableScrollPhysics(),
                 clipBehavior: Clip.none,
                 itemCount: controllersData.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   crossAxisSpacing: 16,
                   mainAxisSpacing: 50,
@@ -66,9 +66,32 @@ class ControllersScreen extends StatelessWidget {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              AgentsDetailScreen(agentData: agent),
+                        PageRouteBuilder(
+                          pageBuilder:
+                              (context, animation, secondaryAnimation) =>
+                                  AgentsDetailScreen(agentData: agent),
+                          transitionsBuilder:
+                              (context, animation, secondaryAnimation, child) {
+                                // 1. Slide upward from slightly below (10% lower)
+                                const beginOffset = Offset(0.1, 0.0);
+                                const endOffset = Offset.zero;
+                                const curve = Curves.easeOutCubic;
+
+                                final slideTween = Tween(
+                                  begin: beginOffset,
+                                  end: endOffset,
+                                ).chain(CurveTween(curve: curve));
+
+                                // 2. Combine Fade and Slide
+                                return SlideTransition(
+                                  position: animation.drive(slideTween),
+                                  child: FadeTransition(
+                                    opacity: animation,
+                                    child: child,
+                                  ),
+                                );
+                              },
+                          transitionDuration: const Duration(milliseconds: 350),
                         ),
                       );
                     },
@@ -89,7 +112,7 @@ class ControllersScreen extends StatelessWidget {
                                 width: 4,
                               ),
                               image: DecorationImage(
-                                image: const AssetImage(
+                                image: AssetImage(
                                   'assets/duelists/duelists_bg.png',
                                 ),
                                 fit: BoxFit.cover,
@@ -119,7 +142,7 @@ class ControllersScreen extends StatelessWidget {
                                       quarterTurns: 3,
                                       child: Text(
                                         agent["name"].toString().toUpperCase(),
-                                        style: const TextStyle(
+                                        style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 16,
                                           fontFamily: "Valorant",

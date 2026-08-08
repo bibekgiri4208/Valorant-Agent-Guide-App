@@ -46,34 +46,29 @@ class HomeScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     PageRouteBuilder(
-                      transitionDuration: const Duration(milliseconds: 500),
+                      transitionDuration: const Duration(milliseconds: 350),
                       reverseTransitionDuration: const Duration(
-                        milliseconds: 500,
+                        milliseconds: 400,
                       ),
                       pageBuilder: (context, animation, secondaryAnimation) {
                         return const DuelistsScreen();
                       },
                       transitionsBuilder:
                           (context, animation, secondaryAnimation, child) {
-                            final curvedAnimation = CurvedAnimation(
-                              parent: animation,
-                              curve: Curves.easeInOutCubic,
-                            );
+                            const beginOffset = Offset(0.0, 0.1);
+                            const endOffset = Offset.zero;
+                            const curve = Curves.easeOutCubic;
 
-                            return FadeTransition(
-                              opacity: curvedAnimation,
-                              child: SlideTransition(
-                                position: Tween<Offset>(
-                                  begin: const Offset(0, 0.5),
-                                  end: Offset.zero,
-                                ).animate(curvedAnimation),
-                                child: ScaleTransition(
-                                  scale: Tween<double>(
-                                    begin: 0.4,
-                                    end: 1.0,
-                                  ).animate(curvedAnimation),
-                                  child: child,
-                                ),
+                            final slideTween = Tween(
+                              begin: beginOffset,
+                              end: endOffset,
+                            ).chain(CurveTween(curve: curve));
+
+                            return SlideTransition(
+                              position: animation.drive(slideTween),
+                              child: FadeTransition(
+                                opacity: animation,
+                                child: child,
                               ),
                             );
                           },
@@ -129,34 +124,29 @@ class HomeScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     PageRouteBuilder(
-                      transitionDuration: const Duration(milliseconds: 500),
+                      transitionDuration: const Duration(milliseconds: 350),
                       reverseTransitionDuration: const Duration(
-                        milliseconds: 500,
+                        milliseconds: 400,
                       ),
                       pageBuilder: (context, animation, secondaryAnimation) {
                         return const ControllersScreen();
                       },
                       transitionsBuilder:
                           (context, animation, secondaryAnimation, child) {
-                            final curvedAnimation = CurvedAnimation(
-                              parent: animation,
-                              curve: Curves.easeInOutCubic,
-                            );
+                            const beginOffset = Offset(0.0, 0.1);
+                            const endOffset = Offset.zero;
+                            const curve = Curves.easeOutCubic;
 
-                            return FadeTransition(
-                              opacity: curvedAnimation,
-                              child: SlideTransition(
-                                position: Tween<Offset>(
-                                  begin: const Offset(0, 0.5),
-                                  end: Offset.zero,
-                                ).animate(curvedAnimation),
-                                child: ScaleTransition(
-                                  scale: Tween<double>(
-                                    begin: 0.4,
-                                    end: 1.0,
-                                  ).animate(curvedAnimation),
-                                  child: child,
-                                ),
+                            final slideTween = Tween(
+                              begin: beginOffset,
+                              end: endOffset,
+                            ).chain(CurveTween(curve: curve));
+
+                            return SlideTransition(
+                              position: animation.drive(slideTween),
+                              child: FadeTransition(
+                                opacity: animation,
+                                child: child,
                               ),
                             );
                           },
@@ -213,34 +203,29 @@ class HomeScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     PageRouteBuilder(
-                      transitionDuration: const Duration(milliseconds: 500),
+                      transitionDuration: const Duration(milliseconds: 350),
                       reverseTransitionDuration: const Duration(
-                        milliseconds: 500,
+                        milliseconds: 400,
                       ),
                       pageBuilder: (context, animation, secondaryAnimation) {
                         return const InitiatorsScreen();
                       },
                       transitionsBuilder:
                           (context, animation, secondaryAnimation, child) {
-                            final curvedAnimation = CurvedAnimation(
-                              parent: animation,
-                              curve: Curves.easeInOutCubic,
-                            );
+                            const beginOffset = Offset(0.0, 0.1);
+                            const endOffset = Offset.zero;
+                            const curve = Curves.easeOutCubic;
 
-                            return FadeTransition(
-                              opacity: curvedAnimation,
-                              child: SlideTransition(
-                                position: Tween<Offset>(
-                                  begin: const Offset(0, 0.5),
-                                  end: Offset.zero,
-                                ).animate(curvedAnimation),
-                                child: ScaleTransition(
-                                  scale: Tween<double>(
-                                    begin: 0.4,
-                                    end: 1.0,
-                                  ).animate(curvedAnimation),
-                                  child: child,
-                                ),
+                            final slideTween = Tween(
+                              begin: beginOffset,
+                              end: endOffset,
+                            ).chain(CurveTween(curve: curve));
+
+                            return SlideTransition(
+                              position: animation.drive(slideTween),
+                              child: FadeTransition(
+                                opacity: animation,
+                                child: child,
                               ),
                             );
                           },
@@ -297,34 +282,29 @@ class HomeScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     PageRouteBuilder(
-                      transitionDuration: const Duration(milliseconds: 500),
+                      transitionDuration: const Duration(milliseconds: 350),
                       reverseTransitionDuration: const Duration(
-                        milliseconds: 500,
+                        milliseconds: 400,
                       ),
                       pageBuilder: (context, animation, secondaryAnimation) {
                         return const SentinelsScreen();
                       },
                       transitionsBuilder:
                           (context, animation, secondaryAnimation, child) {
-                            final curvedAnimation = CurvedAnimation(
-                              parent: animation,
-                              curve: Curves.easeInOutCubic,
-                            );
+                            const beginOffset = Offset(0.0, 0.1);
+                            const endOffset = Offset.zero;
+                            const curve = Curves.easeOutCubic;
 
-                            return FadeTransition(
-                              opacity: curvedAnimation,
-                              child: SlideTransition(
-                                position: Tween<Offset>(
-                                  begin: const Offset(0, 0.5),
-                                  end: Offset.zero,
-                                ).animate(curvedAnimation),
-                                child: ScaleTransition(
-                                  scale: Tween<double>(
-                                    begin: 0.4,
-                                    end: 1.0,
-                                  ).animate(curvedAnimation),
-                                  child: child,
-                                ),
+                            final slideTween = Tween(
+                              begin: beginOffset,
+                              end: endOffset,
+                            ).chain(CurveTween(curve: curve));
+
+                            return SlideTransition(
+                              position: animation.drive(slideTween),
+                              child: FadeTransition(
+                                opacity: animation,
+                                child: child,
                               ),
                             );
                           },
