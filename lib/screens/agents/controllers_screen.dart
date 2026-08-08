@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:valorant_guide_app/data/agent_data.dart';
+import 'package:valorant_guide_app/data/controllers_data.dart';
 
 class ControllersScreen extends StatelessWidget {
   const ControllersScreen({super.key});
@@ -54,7 +55,7 @@ class ControllersScreen extends StatelessWidget {
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   crossAxisSpacing: 16,
-                  mainAxisSpacing: 50, // Space for character heads popping up
+                  mainAxisSpacing: 50,
                   childAspectRatio: 0.9,
                 ),
                 itemBuilder: (context, index) {
@@ -72,7 +73,7 @@ class ControllersScreen extends StatelessWidget {
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(16),
-                            border: Border.all(color: Colors.white30, width: 1),
+                            border: Border.all(color: Colors.white30, width: 4),
                             image: DecorationImage(
                               image: const AssetImage(
                                 'assets/duelists/duelists_bg.png',

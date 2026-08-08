@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:valorant_guide_app/data/agent_data.dart';
+import 'package:valorant_guide_app/data/initiators_data.dart';
 
 class InitiatorsScreen extends StatelessWidget {
   const InitiatorsScreen({super.key});
@@ -72,7 +73,7 @@ class InitiatorsScreen extends StatelessWidget {
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(16),
-                            border: Border.all(color: Colors.white30, width: 1),
+                            border: Border.all(color: Colors.white30, width: 4),
                             image: DecorationImage(
                               image: const AssetImage(
                                 'assets/duelists/duelists_bg.png',
