@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:valorant_guide_app/screens/home/dashboard_screen.dart';
-import 'package:valorant_guide_app/screens/home/home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
