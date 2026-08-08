@@ -49,13 +49,12 @@ class DuelistsScreen extends StatelessWidget {
               GridView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                clipBehavior:
-                    Clip.none, // Crucial: prevents grid clipping top pop-out
+                clipBehavior: Clip.none,
                 itemCount: duelistsData.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   crossAxisSpacing: 16,
-                  mainAxisSpacing: 50, // Space for character heads popping up
+                  mainAxisSpacing: 50,
                   childAspectRatio: 0.9,
                 ),
                 itemBuilder: (context, index) {
@@ -64,7 +63,7 @@ class DuelistsScreen extends StatelessWidget {
                   return Stack(
                     clipBehavior: Clip.none,
                     children: [
-                      // 1. CARD BACKGROUND (Pushed down 40px to create top pop-out room)
+                      // 1. CARD BACKGROUND
                       Positioned(
                         top: 40,
                         left: 0,
@@ -95,7 +94,7 @@ class DuelistsScreen extends StatelessWidget {
                                 ),
                               ),
 
-                              // Vertical Name on Left Side inside card frame
+                              // Vertical Name
                               Positioned(
                                 left: 10,
                                 top: 0,
@@ -107,7 +106,7 @@ class DuelistsScreen extends StatelessWidget {
                                       agent["name"].toString().toUpperCase(),
                                       style: const TextStyle(
                                         color: Colors.white,
-                                        fontSize: 20,
+                                        fontSize: 16,
                                         fontFamily: "Valorant",
                                         fontWeight: FontWeight.bold,
                                         letterSpacing: 2,
@@ -121,17 +120,15 @@ class DuelistsScreen extends StatelessWidget {
                         ),
                       ),
 
-                      // 2. AGENT IMAGE (Scale 1.5 + Bottom Alignment forces head past top)
+                      // 2. AGENT IMAGE
                       Positioned(
-                        top: -15, // Extends bounding box way past card top edge
+                        top: -15,
                         bottom: 0,
                         right: -10,
-                        left: 30, // Offset to make room for vertical name
+                        left: 30,
                         child: Transform.scale(
-                          scale:
-                              1.5, // Magnifies image to cut through transparent margin
-                          alignment: Alignment
-                              .bottomCenter, // Keeps feet grounded at bottom
+                          scale: 1.5,
+                          alignment: Alignment.bottomCenter,
                           child: Image.asset(
                             agent["image"],
                             fit: BoxFit.contain,
