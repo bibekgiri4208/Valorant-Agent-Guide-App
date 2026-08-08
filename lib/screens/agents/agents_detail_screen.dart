@@ -1,30 +1,63 @@
 import 'package:flutter/material.dart';
 import 'package:valorant_guide_app/data/agent_data.dart';
 
-class AgentsDetailScreen extends StatelessWidget {
+class AgentsDetailScreen extends StatefulWidget {
   const AgentsDetailScreen({super.key});
+
+  @override
+  State<AgentsDetailScreen> createState() => _AgentsDetailScreenState();
+}
+
+class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
+  late final PageController _pageController;
+  int _selectedIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  void _onAbilitySelected(int index) {
+    // Update state immediately for the tapped icon
+    setState(() {
+      _selectedIndex = index;
+    });
+
+    _pageController.animateToPage(
+      index,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.sizeOf(context).height;
 
     return Scaffold(
-      backgroundColor: Color(0xFF1C252E),
+      backgroundColor: const Color(0xFF1C252E),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
               ClipRRect(
-                borderRadius: BorderRadius.vertical(
+                borderRadius: const BorderRadius.vertical(
                   bottom: Radius.circular(30),
                 ),
                 child: Container(
                   width: double.infinity,
                   height: screenHeight * 0.55,
-                  color: Color(0xFFFF4654),
+                  color: const Color(0xFFFF4654),
                   child: Column(
                     children: [
-                      Spacer(),
+                      const Spacer(),
                       SizedBox(
                         height: 280,
                         child: Image.asset(
@@ -32,11 +65,11 @@ class AgentsDetailScreen extends StatelessWidget {
                           fit: BoxFit.contain,
                         ),
                       ),
-                      SizedBox(height: 15),
+                      const SizedBox(height: 15),
                       InkWell(
                         onTap: () {
                           showModalBottomSheet(
-                            backgroundColor: Color(0xFF1C252E),
+                            backgroundColor: const Color(0xFF1C252E),
                             context: context,
                             builder: (context) {
                               return SizedBox(
@@ -50,7 +83,7 @@ class AgentsDetailScreen extends StatelessWidget {
                                     child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
-                                      children: [
+                                      children: const [
                                         SizedBox(height: 20),
                                         Text(
                                           "Agent Description",
@@ -94,7 +127,7 @@ class AgentsDetailScreen extends StatelessWidget {
                                         ),
                                         Divider(),
                                         Text(
-                                          "Prior to joining the VALORANT Protocol, Omen was a highly skilled and ruthless assassin for the organization known as Scions of Hourglass.In order to stop the discovery of Radianite from becoming public knowledge, he was sent to assassinate the chief scientist in charge of the research on radianite, Dr. Sabine Callas (Viper) at her lab. In the altercation that happens between the two, Omen is severely burned by the contents of a vial Dr.Callas had been examining, and stumbles inside a test chamber. To prevent him from attacking again, Viper activates a mechanism in the test chamber that causes Omen to be hit by multiple beams of pure radianite energy; This incident causes Omen to be ripped apart across space time and lose majority of his memories. The details of how he is brought back to life and kept in a stable state is still unclear but it is highly implied through voicelines that Sage has had a role to play in achieving that.",
+                                          "Prior to joining the VALORANT Protocol, Omen was a highly skilled and ruthless assassin...",
                                           style: TextStyle(
                                             fontSize: 15,
                                             color: Colors.white,
@@ -109,7 +142,7 @@ class AgentsDetailScreen extends StatelessWidget {
                             },
                           );
                         },
-                        child: Text(
+                        child: const Text(
                           "Omen",
                           style: TextStyle(
                             color: Colors.white,
@@ -119,8 +152,8 @@ class AgentsDetailScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(height: 5),
-                      Text(
+                      const SizedBox(height: 5),
+                      const Text(
                         "Controller",
                         style: TextStyle(
                           color: Colors.white70,
@@ -129,18 +162,21 @@ class AgentsDetailScreen extends StatelessWidget {
                           letterSpacing: 2,
                         ),
                       ),
-                      Spacer(),
+                      const Spacer(),
                     ],
                   ),
                 ),
               ),
 
               Padding(
-                padding: const EdgeInsets.all(20),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 15,
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       "SPECIAL ABILITIES",
                       style: TextStyle(
                         color: Colors.white,
@@ -150,86 +186,141 @@ class AgentsDetailScreen extends StatelessWidget {
                       ),
                     ),
 
-                    SizedBox(height: 20),
+                    const SizedBox(height: 15),
 
+                    // Ability Selectors
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: List.generate(
                         abilityIcons.length,
-                        (index) => Container(
-                          width: 65,
-                          height: 65,
-                          decoration: BoxDecoration(
-                            color: index == 0
-                                ? const Color(0xFFFF4654)
-                                : Colors.transparent,
-                            border: Border.all(color: Colors.white38),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: Image.asset(
-                              abilityIcons[index],
-                              fit: BoxFit.contain,
+                        (index) => GestureDetector(
+                          onTap: () => _onAbilitySelected(index),
+                          child: Container(
+                            width: 65,
+                            height: 65,
+                            decoration: BoxDecoration(
+                              color: _selectedIndex == index
+                                  ? const Color(0xFFFF4654)
+                                  : Colors.transparent,
+                              border: Border.all(color: Colors.white38),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: Image.asset(
+                                abilityIcons[index],
+                                fit: BoxFit.contain,
+                              ),
                             ),
                           ),
                         ),
                       ),
                     ),
+                  ],
+                ),
+              ),
 
-                    SizedBox(height: 30),
-
-                    Text(
-                      "Paranoia",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: "Valorant",
-                      ),
+              // Horizontal Scrollable Ability Details Section
+              SizedBox(
+                height: 520,
+                child: PageView(
+                  controller: _pageController,
+                  onPageChanged: (index) {
+                    // Only update index if user manually drags/swipes the PageView
+                    if (_selectedIndex != index) {
+                      setState(() {
+                        _selectedIndex = index;
+                      });
+                    }
+                  },
+                  children: [
+                    // Ability 0: Shrouded Step
+                    _buildAbilityPage(
+                      title: "Shrouded Step",
+                      description:
+                          "EQUIP a shadow walk ability and see its range indicator. FIRE to begin a brief channel, then teleport to the marked location.",
                     ),
 
-                    SizedBox(height: 15),
-
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(15),
-                      child: Image.asset(
+                    // Ability 1: Paranoia
+                    _buildAbilityPage(
+                      title: "Paranoia",
+                      images: [
                         "assets/abilities/omen/paranoia_cast.webp",
-                        width: double.infinity,
-                        height: 180,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-
-                    SizedBox(height: 20),
-
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(15),
-                      child: Image.asset(
                         "assets/abilities/omen/paranoia_nearsight.webp",
-                        width: double.infinity,
-                        height: 180,
-                        fit: BoxFit.cover,
-                      ),
+                      ],
+                      description:
+                          "Equip a shadow projectile and fire to briefly reduce the vision range of all players it touches. This ability can pass through walls, making it excellent for initiating fights.",
                     ),
 
-                    SizedBox(height: 20),
-
-                    Text(
-                      "Equip a shadow projectile and fire to briefly reduce the vision range of all players it touches. This ability can pass through walls, making it excellent for initiating fights.",
-                      style: TextStyle(
-                        color: Colors.white70,
-                        fontSize: 16,
-                        height: 1.5,
-                      ),
+                    // Ability 2: Dark Cover
+                    _buildAbilityPage(
+                      title: "Dark Cover",
+                      description:
+                          "EQUIP a shadow orb and enter a phased world to place and target the orbs. PRESS the ability key to throw the shadow orb to the marked location.",
                     ),
 
-                    SizedBox(height: 30),
+                    // Ability 3: From the Shadows
+                    _buildAbilityPage(
+                      title: "From the Shadows",
+                      description:
+                          "EQUIP a tactical map. FIRE to begin teleporting to the selected location. While teleporting, Omen will appear as a Shade that can be destroyed by an enemy to cancel.",
+                    ),
                   ],
                 ),
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildAbilityPage({
+    required String title,
+    required String description,
+    List<String>? images,
+  }) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+                fontFamily: "Valorant",
+              ),
+            ),
+            const SizedBox(height: 15),
+            if (images != null)
+              ...images.map(
+                (imgPath) => Padding(
+                  padding: const EdgeInsets.only(bottom: 15),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(15),
+                    child: Image.asset(
+                      imgPath,
+                      width: double.infinity,
+                      height: 160,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ),
+            Text(
+              description,
+              style: const TextStyle(
+                color: Colors.white70,
+                fontSize: 16,
+                height: 1.5,
+              ),
+            ),
+            const SizedBox(height: 20),
+          ],
         ),
       ),
     );
