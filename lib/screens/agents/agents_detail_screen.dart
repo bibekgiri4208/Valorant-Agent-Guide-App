@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:valorant_guide_app/data/agent_data.dart';
+import 'package:valorant_guide_app/data/agents_data.dart';
 
 class AgentsDetailScreen extends StatefulWidget {
-  const AgentsDetailScreen({super.key});
+  final Map<String, dynamic> agentData;
+
+  const AgentsDetailScreen({super.key, required this.agentData});
 
   @override
   State<AgentsDetailScreen> createState() => _AgentsDetailScreenState();
@@ -16,6 +18,18 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
   void initState() {
     super.initState();
     _pageController = PageController();
+
+    // Smoothly synchronizes icon highlights with page scrolling
+    _pageController.addListener(() {
+      if (_pageController.hasClients && _pageController.page != null) {
+        final currentRoundIndex = _pageController.page!.round();
+        if (currentRoundIndex != _selectedIndex) {
+          setState(() {
+            _selectedIndex = currentRoundIndex;
+          });
+        }
+      }
+    });
   }
 
   @override
@@ -25,14 +39,9 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
   }
 
   void _onAbilitySelected(int index) {
-    // Update state immediately for the tapped icon
-    setState(() {
-      _selectedIndex = index;
-    });
-
     _pageController.animateToPage(
       index,
-      duration: const Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 400),
       curve: Curves.easeInOut,
     );
   }
@@ -40,6 +49,8 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.sizeOf(context).height;
+    final agent = widget.agentData;
+    final List abilities = agent['abilities'] ?? [];
 
     return Scaffold(
       backgroundColor: const Color(0xFF1C252E),
@@ -61,7 +72,7 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                       SizedBox(
                         height: 280,
                         child: Image.asset(
-                          "assets/controllers/Omen.webp",
+                          agent['image'] ?? '',
                           fit: BoxFit.contain,
                         ),
                       ),
@@ -83,9 +94,9 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                                     child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
-                                      children: const [
-                                        SizedBox(height: 20),
-                                        Text(
+                                      children: [
+                                        const SizedBox(height: 20),
+                                        const Text(
                                           "Agent Description",
                                           style: TextStyle(
                                             fontSize: 25,
@@ -93,47 +104,47 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                                             color: Colors.white,
                                           ),
                                         ),
-                                        Divider(thickness: 2),
+                                        const Divider(thickness: 2),
                                         Text(
-                                          "Role: Controller",
-                                          style: TextStyle(
+                                          "Role: ${agent['role'] ?? ''}",
+                                          style: const TextStyle(
                                             color: Colors.white,
                                             fontFamily: "Valorant",
                                           ),
                                         ),
-                                        Divider(thickness: 2),
+                                        const Divider(thickness: 2),
                                         Text(
-                                          "Country: Unknown",
-                                          style: TextStyle(
+                                          "Country: ${agent['country'] ?? 'Unknown'}",
+                                          style: const TextStyle(
                                             color: Colors.white,
                                             fontFamily: "Valorant",
                                           ),
                                         ),
-                                        Divider(thickness: 2),
+                                        const Divider(thickness: 2),
                                         Text(
-                                          "Agent No. 3",
-                                          style: TextStyle(
+                                          "Agent No. ${agent['agentNumber'] ?? ''}",
+                                          style: const TextStyle(
                                             color: Colors.white,
                                             fontFamily: "Valorant",
                                           ),
                                         ),
-                                        Divider(thickness: 2),
+                                        const Divider(thickness: 2),
                                         Text(
-                                          "A phantom of a memory, Omen hunts in the shadows. He renders enemies blind, teleports across the field, then lets paranoia take hold as his foe scrambles to learn where he might strike next.",
-                                          style: TextStyle(
+                                          agent['summary'] ?? '',
+                                          style: const TextStyle(
                                             fontSize: 15,
                                             color: Colors.white,
                                           ),
                                         ),
-                                        Divider(),
+                                        const Divider(),
                                         Text(
-                                          "Prior to joining the VALORANT Protocol, Omen was a highly skilled and ruthless assassin...",
-                                          style: TextStyle(
+                                          agent['lore'] ?? '',
+                                          style: const TextStyle(
                                             fontSize: 15,
                                             color: Colors.white,
                                           ),
                                         ),
-                                        SizedBox(height: 50),
+                                        const SizedBox(height: 50),
                                       ],
                                     ),
                                   ),
@@ -142,9 +153,9 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                             },
                           );
                         },
-                        child: const Text(
-                          "Omen",
-                          style: TextStyle(
+                        child: Text(
+                          agent['name'] ?? '',
+                          style: const TextStyle(
                             color: Colors.white,
                             fontSize: 40,
                             fontWeight: FontWeight.bold,
@@ -153,9 +164,9 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                         ),
                       ),
                       const SizedBox(height: 5),
-                      const Text(
-                        "Controller",
-                        style: TextStyle(
+                      Text(
+                        agent['role'] ?? '',
+                        style: const TextStyle(
                           color: Colors.white70,
                           fontSize: 16,
                           fontFamily: "Valorant",
@@ -192,10 +203,11 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: List.generate(
-                        abilityIcons.length,
+                        abilities.length,
                         (index) => GestureDetector(
                           onTap: () => _onAbilitySelected(index),
-                          child: Container(
+                          child: AnimatedContainer(
+                            duration: const Duration(milliseconds: 200),
                             width: 65,
                             height: 65,
                             decoration: BoxDecoration(
@@ -208,7 +220,7 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                             child: Padding(
                               padding: const EdgeInsets.all(10),
                               child: Image.asset(
-                                abilityIcons[index],
+                                abilities[index]['icon'],
                                 fit: BoxFit.contain,
                               ),
                             ),
@@ -220,52 +232,20 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                 ),
               ),
 
-              // Horizontal Scrollable Ability Details Section
+              // Horizontal Scrollable Ability Pages
               SizedBox(
                 height: 520,
-                child: PageView(
+                child: PageView.builder(
                   controller: _pageController,
-                  onPageChanged: (index) {
-                    // Only update index if user manually drags/swipes the PageView
-                    if (_selectedIndex != index) {
-                      setState(() {
-                        _selectedIndex = index;
-                      });
-                    }
+                  itemCount: abilities.length,
+                  itemBuilder: (context, index) {
+                    final ability = abilities[index];
+                    return _buildAbilityPage(
+                      title: ability['name'] ?? '',
+                      description: ability['description'] ?? '',
+                      images: (ability['images'] as List?)?.cast<String>(),
+                    );
                   },
-                  children: [
-                    // Ability 0: Shrouded Step
-                    _buildAbilityPage(
-                      title: "Shrouded Step",
-                      description:
-                          "EQUIP a shadow walk ability and see its range indicator. FIRE to begin a brief channel, then teleport to the marked location.",
-                    ),
-
-                    // Ability 1: Paranoia
-                    _buildAbilityPage(
-                      title: "Paranoia",
-                      images: [
-                        "assets/abilities/omen/paranoia_cast.webp",
-                        "assets/abilities/omen/paranoia_nearsight.webp",
-                      ],
-                      description:
-                          "Equip a shadow projectile and fire to briefly reduce the vision range of all players it touches. This ability can pass through walls, making it excellent for initiating fights.",
-                    ),
-
-                    // Ability 2: Dark Cover
-                    _buildAbilityPage(
-                      title: "Dark Cover",
-                      description:
-                          "EQUIP a shadow orb and enter a phased world to place and target the orbs. PRESS the ability key to throw the shadow orb to the marked location.",
-                    ),
-
-                    // Ability 3: From the Shadows
-                    _buildAbilityPage(
-                      title: "From the Shadows",
-                      description:
-                          "EQUIP a tactical map. FIRE to begin teleporting to the selected location. While teleporting, Omen will appear as a Shade that can be destroyed by an enemy to cancel.",
-                    ),
-                  ],
                 ),
               ),
             ],
@@ -296,7 +276,7 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
               ),
             ),
             const SizedBox(height: 15),
-            if (images != null)
+            if (images != null && images.isNotEmpty)
               ...images.map(
                 (imgPath) => Padding(
                   padding: const EdgeInsets.only(bottom: 15),
