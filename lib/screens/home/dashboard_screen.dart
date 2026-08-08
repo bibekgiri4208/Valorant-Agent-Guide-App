@@ -14,7 +14,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   int _currentIndex = 0;
   final List<Widget> _pages = [
     HomeScreen(),
-    AgentsDetailScreen(),
+    Center(child: Text("Initiator")),
     OnboardingScreen(),
     Center(child: Text("Initiator")),
     Center(child: Text("Sentinel")),

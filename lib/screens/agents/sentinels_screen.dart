@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:valorant_guide_app/data/agent_data.dart';
 import 'package:valorant_guide_app/data/sentinels_data.dart';
 
 class SentinelsScreen extends StatelessWidget {
@@ -42,10 +41,11 @@ class SentinelsScreen extends StatelessWidget {
                 "CHOOSE YOUR\nSENTINEL",
                 style: TextStyle(
                   fontFamily: 'Valorant',
-                  fontSize: 24,
+                  fontSize: 28,
                   color: Colors.white,
                 ),
               ),
+              Divider(thickness: 2),
               const SizedBox(height: 30),
               GridView.builder(
                 shrinkWrap: true,

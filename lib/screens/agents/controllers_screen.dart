@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:valorant_guide_app/data/agent_data.dart';
 import 'package:valorant_guide_app/data/controllers_data.dart';
+import 'package:valorant_guide_app/screens/agents/agents_detail_screen.dart';
 
 class ControllersScreen extends StatelessWidget {
   const ControllersScreen({super.key});
@@ -42,10 +42,11 @@ class ControllersScreen extends StatelessWidget {
                 "CHOOSE YOUR\nCONTROLLER",
                 style: TextStyle(
                   fontFamily: 'Valorant',
-                  fontSize: 24,
+                  fontSize: 28,
                   color: Colors.white,
                 ),
               ),
+              const Divider(thickness: 2),
               const SizedBox(height: 30),
               GridView.builder(
                 shrinkWrap: true,
@@ -61,83 +62,97 @@ class ControllersScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final agent = controllersData[index];
 
-                  return Stack(
-                    clipBehavior: Clip.none,
-                    children: [
-                      // 1. CARD BACKGROUND
-                      Positioned(
-                        top: 40,
-                        left: 0,
-                        right: 0,
-                        bottom: 0,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16),
-                            border: Border.all(color: Colors.white30, width: 4),
-                            image: DecorationImage(
-                              image: const AssetImage(
-                                'assets/duelists/duelists_bg.png',
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              AgentsDetailScreen(agentData: agent),
+                        ),
+                      );
+                    },
+                    child: Stack(
+                      clipBehavior: Clip.none,
+                      children: [
+                        // 1. CARD BACKGROUND
+                        Positioned(
+                          top: 40,
+                          left: 0,
+                          right: 0,
+                          bottom: 0,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(16),
+                              border: Border.all(
+                                color: Colors.white30,
+                                width: 4,
                               ),
-                              fit: BoxFit.cover,
-                              colorFilter: ColorFilter.mode(
-                                Colors.black.withValues(alpha: 0.5),
-                                BlendMode.darken,
-                              ),
-                            ),
-                          ),
-                          child: Stack(
-                            children: [
-                              // Dark Overlay
-                              Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(16),
-                                  color: Colors.black.withValues(alpha: 0.25),
+                              image: DecorationImage(
+                                image: const AssetImage(
+                                  'assets/duelists/duelists_bg.png',
+                                ),
+                                fit: BoxFit.cover,
+                                colorFilter: ColorFilter.mode(
+                                  Colors.black.withValues(alpha: 0.5),
+                                  BlendMode.darken,
                                 ),
                               ),
+                            ),
+                            child: Stack(
+                              children: [
+                                // Dark Overlay
+                                Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(16),
+                                    color: Colors.black.withValues(alpha: 0.25),
+                                  ),
+                                ),
 
-                              // Vertical Name
-                              Positioned(
-                                left: 10,
-                                top: 0,
-                                bottom: 0,
-                                child: Center(
-                                  child: RotatedBox(
-                                    quarterTurns: 3,
-                                    child: Text(
-                                      agent["name"].toString().toUpperCase(),
-                                      style: const TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 16,
-                                        fontFamily: "Valorant",
-                                        fontWeight: FontWeight.bold,
-                                        letterSpacing: 2,
+                                // Vertical Name
+                                Positioned(
+                                  left: 10,
+                                  top: 0,
+                                  bottom: 0,
+                                  child: Center(
+                                    child: RotatedBox(
+                                      quarterTurns: 3,
+                                      child: Text(
+                                        agent["name"].toString().toUpperCase(),
+                                        style: const TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 16,
+                                          fontFamily: "Valorant",
+                                          fontWeight: FontWeight.bold,
+                                          letterSpacing: 2,
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
-                      ),
 
-                      // 2. AGENT IMAGE
-                      Positioned(
-                        top: -15,
-                        bottom: 0,
-                        right: -10,
-                        left: 30,
-                        child: Transform.scale(
-                          scale: 1.5,
-                          alignment: Alignment.bottomCenter,
-                          child: Image.asset(
-                            agent["image"],
-                            fit: BoxFit.contain,
+                        // 2. AGENT IMAGE
+                        Positioned(
+                          top: -15,
+                          bottom: 0,
+                          right: -10,
+                          left: 30,
+                          child: Transform.scale(
+                            scale: 1.5,
                             alignment: Alignment.bottomCenter,
+                            child: Image.asset(
+                              agent["image"],
+                              fit: BoxFit.contain,
+                              alignment: Alignment.bottomCenter,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   );
                 },
               ),

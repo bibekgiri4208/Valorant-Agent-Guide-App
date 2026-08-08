@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:valorant_guide_app/data/agent_data.dart';
 import 'package:valorant_guide_app/data/duelists_data.dart';
 
 class DuelistsScreen extends StatelessWidget {
@@ -8,7 +7,7 @@ class DuelistsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF1C252E),
+      backgroundColor: Color(0xFF1C252E),
       appBar: AppBar(
         leading: IconButton(
           icon: Image.asset(
@@ -19,10 +18,10 @@ class DuelistsScreen extends StatelessWidget {
           ),
           onPressed: () => Navigator.pop(context),
         ),
-        backgroundColor: const Color(0xFF1C252E),
+        backgroundColor: Color(0xFF1C252E),
         elevation: 0,
         centerTitle: true,
-        title: const Text(
+        title: Text(
           "DUELISTS",
           style: TextStyle(
             color: Color(0xFFFF4654),
@@ -38,21 +37,22 @@ class DuelistsScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 "CHOOSE YOUR\nDUELIST",
                 style: TextStyle(
                   fontFamily: 'Valorant',
-                  fontSize: 24,
+                  fontSize: 28,
                   color: Colors.white,
                 ),
               ),
-              const SizedBox(height: 30),
+              Divider(thickness: 2),
+              SizedBox(height: 30),
               GridView.builder(
                 shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
+                physics: NeverScrollableScrollPhysics(),
                 clipBehavior: Clip.none,
                 itemCount: duelistsData.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   crossAxisSpacing: 16,
                   mainAxisSpacing: 50,
@@ -75,7 +75,7 @@ class DuelistsScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(16),
                             border: Border.all(color: Colors.white30, width: 4),
                             image: DecorationImage(
-                              image: const AssetImage(
+                              image: AssetImage(
                                 'assets/duelists/duelists_bg.png',
                               ),
                               fit: BoxFit.cover,
@@ -105,7 +105,7 @@ class DuelistsScreen extends StatelessWidget {
                                     quarterTurns: 3,
                                     child: Text(
                                       agent["name"].toString().toUpperCase(),
-                                      style: const TextStyle(
+                                      style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 16,
                                         fontFamily: "Valorant",

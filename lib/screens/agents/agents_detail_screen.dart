@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:valorant_guide_app/data/agents_data.dart';
 
 class AgentsDetailScreen extends StatefulWidget {
   final Map<String, dynamic> agentData;
