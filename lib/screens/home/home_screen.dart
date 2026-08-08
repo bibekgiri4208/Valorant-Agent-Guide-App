@@ -129,9 +129,9 @@ class HomeScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     PageRouteBuilder(
-                      transitionDuration: const Duration(milliseconds: 450),
+                      transitionDuration: const Duration(milliseconds: 500),
                       reverseTransitionDuration: const Duration(
-                        milliseconds: 450,
+                        milliseconds: 500,
                       ),
                       pageBuilder: (context, animation, secondaryAnimation) {
                         return const ControllersScreen();
@@ -145,7 +145,19 @@ class HomeScreen extends StatelessWidget {
 
                             return FadeTransition(
                               opacity: curvedAnimation,
-                              child: child,
+                              child: SlideTransition(
+                                position: Tween<Offset>(
+                                  begin: const Offset(0, 0.5),
+                                  end: Offset.zero,
+                                ).animate(curvedAnimation),
+                                child: ScaleTransition(
+                                  scale: Tween<double>(
+                                    begin: 0.4,
+                                    end: 1.0,
+                                  ).animate(curvedAnimation),
+                                  child: child,
+                                ),
+                              ),
                             );
                           },
                     ),
@@ -181,7 +193,7 @@ class HomeScreen extends StatelessWidget {
                         Transform.translate(
                           offset: const Offset(0, 3),
                           child: Text(
-                            'Controller',
+                            'Controllers',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 30,
@@ -201,8 +213,10 @@ class HomeScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     PageRouteBuilder(
-                      transitionDuration: Duration(milliseconds: 450),
-                      reverseTransitionDuration: Duration(milliseconds: 450),
+                      transitionDuration: const Duration(milliseconds: 500),
+                      reverseTransitionDuration: const Duration(
+                        milliseconds: 500,
+                      ),
                       pageBuilder: (context, animation, secondaryAnimation) {
                         return const InitiatorsScreen();
                       },
@@ -213,12 +227,21 @@ class HomeScreen extends StatelessWidget {
                               curve: Curves.easeInOutCubic,
                             );
 
-                            return SlideTransition(
-                              position: Tween<Offset>(
-                                begin: const Offset(1.0, 0.0),
-                                end: Offset.zero,
-                              ).animate(curvedAnimation),
-                              child: child,
+                            return FadeTransition(
+                              opacity: curvedAnimation,
+                              child: SlideTransition(
+                                position: Tween<Offset>(
+                                  begin: const Offset(0, 0.5),
+                                  end: Offset.zero,
+                                ).animate(curvedAnimation),
+                                child: ScaleTransition(
+                                  scale: Tween<double>(
+                                    begin: 0.4,
+                                    end: 1.0,
+                                  ).animate(curvedAnimation),
+                                  child: child,
+                                ),
+                              ),
                             );
                           },
                     ),
@@ -254,7 +277,7 @@ class HomeScreen extends StatelessWidget {
                         Transform.translate(
                           offset: const Offset(0, 3),
                           child: Text(
-                            'Initiator',
+                            'Initiators',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 30,
@@ -274,8 +297,10 @@ class HomeScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     PageRouteBuilder(
-                      transitionDuration: Duration(milliseconds: 500),
-                      reverseTransitionDuration: Duration(milliseconds: 500),
+                      transitionDuration: const Duration(milliseconds: 500),
+                      reverseTransitionDuration: const Duration(
+                        milliseconds: 500,
+                      ),
                       pageBuilder: (context, animation, secondaryAnimation) {
                         return const SentinelsScreen();
                       },
@@ -286,12 +311,21 @@ class HomeScreen extends StatelessWidget {
                               curve: Curves.easeInOutCubic,
                             );
 
-                            return SlideTransition(
-                              position: Tween<Offset>(
-                                begin: const Offset(0.0, 1.0),
-                                end: Offset.zero,
-                              ).animate(curvedAnimation),
-                              child: child,
+                            return FadeTransition(
+                              opacity: curvedAnimation,
+                              child: SlideTransition(
+                                position: Tween<Offset>(
+                                  begin: const Offset(0, 0.5),
+                                  end: Offset.zero,
+                                ).animate(curvedAnimation),
+                                child: ScaleTransition(
+                                  scale: Tween<double>(
+                                    begin: 0.4,
+                                    end: 1.0,
+                                  ).animate(curvedAnimation),
+                                  child: child,
+                                ),
+                              ),
                             );
                           },
                     ),
@@ -327,7 +361,7 @@ class HomeScreen extends StatelessWidget {
                         Transform.translate(
                           offset: const Offset(0, 3),
                           child: Text(
-                            'Sentinel',
+                            'Sentinels',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 30,
