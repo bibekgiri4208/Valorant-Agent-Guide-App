@@ -57,7 +57,7 @@ class HomeScreen extends StatelessWidget {
                           (context, animation, secondaryAnimation, child) {
                             const beginOffset = Offset(0.0, 0.1);
                             const endOffset = Offset.zero;
-                            const curve = Curves.easeOutCubic;
+                            const curve = Curves.easeInOutCubic;
 
                             final slideTween = Tween(
                               begin: beginOffset,
