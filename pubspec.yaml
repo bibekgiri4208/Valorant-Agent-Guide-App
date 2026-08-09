@@ -78,6 +78,7 @@ flutter:
   - assets/abilities/omen/
   - assets/abilities/clove/
   - assets/abilities/viper/
+  - assets/abilities/brimstone/
   - assets/icon/icon.jpg
 
   fonts:

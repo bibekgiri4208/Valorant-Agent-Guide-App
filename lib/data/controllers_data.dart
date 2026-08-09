@@ -1,4 +1,5 @@
 final List<Map<String, dynamic>> controllersData = [
+  //Omen
   {
     "name": "Omen",
     "role": "Controller",
@@ -54,6 +55,7 @@ final List<Map<String, dynamic>> controllersData = [
     ],
   },
 
+  //Viper
   {
     "name": "Viper",
     "role": "Controller",
@@ -108,4 +110,62 @@ final List<Map<String, dynamic>> controllersData = [
       },
     ],
   },
+
+  //Clove
+  {
+    "name": "Clove",
+    "role": "Controller",
+    "image": "assets/controllers/Clove.webp",
+    "roleIcon": "assets/logo/controller_logo.png",
+    "country": "Scotland",
+    "agentNumber": "25",
+    "summary":
+        "The American chemist, Viper deploys an array of poisonous chemical devices to control the battlefield and choke the enemy's vision. If the toxins don't kill her prey, her mind games surely will.",
+    "lore":
+        "Viper (Dr. Sabine Callas) is a brilliant American chemist and a co-founder of the secret VALORANT Protocol as Agent 02. She originally worked as a leading researcher for the powerful Kingdom Corporation, but a mysterious past catastrophe altered her life and drove her to weaponize deadly toxins. On the outside, she is a cold, ruthless strategist fiercely dedicated to protecting her home world, Alpha Earth, from its mirror reality, Omega Earth. Beneath her hardened exterior, however, Viper carries a massive burden of guilt over past failures and failed experiments. She shares deep secrets with other agents, holding the key to Omen's forgotten human identity and maintaining a tense, morally gray alliance with Reyna to keep Reyna's sick sister alive using her scientific expertise.",
+    "abilities": [
+      {
+        "name": "Pick Me Up",
+        "icon": "assets/abilities/clove/pick_me_up.webp",
+        "description":
+            "ACTIVATE to absorb the life force of a fallen enemy that Clove damaged or killed, gaining haste and temporary health.",
+        "images": [
+          "assets/abilities/clove/pick_me_up_cast.webp",
+          "assets/abilities/clove/pick_me_up_active.webp",
+        ],
+      },
+      {
+        "name": "Meddle",
+        "icon": "assets/abilities/clove/meddle.webp",
+        "description":
+            "EQUIP a fragment of immortality essence. FIRE to throw the fragment, which upon landing on the floor, erupts after a short delay and temporarily Decays all targets caught inside.",
+        "images": [
+          "assets/abilities/clove/meddle_cast.webp",
+          "assets/abilities/clove/meddle_active.webp",
+        ],
+      },
+      {
+        "name": "Ruse",
+        "icon": "assets/abilities/clove/ruse.webp",
+        "description":
+            "EQUIP a view of the battlefield. FIRE to set the locations where Clove's clouds will settle. ALT FIRE to confirm, launching clouds that block vision in the chosen areas. Clove can use this ability after death.",
+        "images": [
+          "assets/abilities/clove/ruse_cast.webp",
+          "assets/abilities/clove/ruse_active.webp",
+        ],
+      },
+      {
+        "name": "Not Dead Yet",
+        "icon": "assets/abilities/clove/not_dead_yet.webp",
+        "description":
+            "After dying, ACTIVATE to resurrect. Once resurrected, Clove must earn a kill or a damaging assist within a set time or they will die. REACTIVATE to cancel early.",
+        "images": [
+          "assets/abilities/clove/not_dead_yet_cast.webp",
+          "assets/abilities/clove/not_dead_yet_active.webp",
+        ],
+      },
+    ],
+  },
+
+  //Brimstone
 ];

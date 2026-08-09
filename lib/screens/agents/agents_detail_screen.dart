@@ -231,7 +231,6 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                 ),
               ),
 
-              // Horizontal Scrollable Ability Pages
               SizedBox(
                 height: 520,
                 child: PageView.builder(
