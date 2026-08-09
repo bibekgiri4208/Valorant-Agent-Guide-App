@@ -59,7 +59,7 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
             children: [
               ClipRRect(
                 borderRadius: const BorderRadius.vertical(
-                  bottom: Radius.circular(30),
+                  bottom: Radius.circular(100),
                 ),
                 child: Container(
                   width: double.infinity,
@@ -69,7 +69,7 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                     children: [
                       const Spacer(),
                       SizedBox(
-                        height: 280,
+                        height: 350,
                         child: Image.asset(
                           agent['image'] ?? '',
                           fit: BoxFit.contain,

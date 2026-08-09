@@ -117,7 +117,7 @@ final List<Map<String, dynamic>> controllersData = [
     "role": "Controller",
     "image": "assets/controllers/Clove.webp",
     "roleIcon": "assets/logo/controller_logo.png",
-    "country": "Scotland",
+    "country": "United Kingdom",
     "agentNumber": "25",
     "summary":
         "The American chemist, Viper deploys an array of poisonous chemical devices to control the battlefield and choke the enemy's vision. If the toxins don't kill her prey, her mind games surely will.",
@@ -168,4 +168,58 @@ final List<Map<String, dynamic>> controllersData = [
   },
 
   //Brimstone
+  {
+    "name": "Brimstone",
+    "role": "Controller",
+    "image": "assets/controllers/Brimstone.webp",
+    "roleIcon": "assets/logo/controller_logo.png",
+    "country": "United States",
+    "agentNumber": "1",
+    "summary":
+        "The American chemist, Viper deploys an array of poisonous chemical devices to control the battlefield and choke the enemy's vision. If the toxins don't kill her prey, her mind games surely will.",
+    "lore":
+        "Viper (Dr. Sabine Callas) is a brilliant American chemist and a co-founder of the secret VALORANT Protocol as Agent 02. She originally worked as a leading researcher for the powerful Kingdom Corporation, but a mysterious past catastrophe altered her life and drove her to weaponize deadly toxins. On the outside, she is a cold, ruthless strategist fiercely dedicated to protecting her home world, Alpha Earth, from its mirror reality, Omega Earth. Beneath her hardened exterior, however, Viper carries a massive burden of guilt over past failures and failed experiments. She shares deep secrets with other agents, holding the key to Omen's forgotten human identity and maintaining a tense, morally gray alliance with Reyna to keep Reyna's sick sister alive using her scientific expertise.",
+    "abilities": [
+      {
+        "name": "Incendiary",
+        "icon": "assets/abilities/brimstone/incendiary.webp",
+        "description":
+            "EQUIP an incendiary device. FIRE to throw the device, which upon landing, sets all enemies it touches on fire.",
+        "images": [
+          "assets/abilities/brimstone/incendiary_cast.webp",
+          "assets/abilities/brimstone/incendiary_active.webp",
+        ],
+      },
+      {
+        "name": "Stim Beacon",
+        "icon": "assets/abilities/brimstone/stim_beacon.webp",
+        "description":
+            "INSTANTLY toss down a stim beacon. Upon landing, it creates a field that grants players a Combat Stim and a Speed Boost.",
+        "images": [
+          "assets/abilities/brimstone/stim_beacon_cast.webp",
+          "assets/abilities/brimstone/stim_beacon_active.webp",
+        ],
+      },
+      {
+        "name": "Sky Smoke",
+        "icon": "assets/abilities/brimstone/sky_smoke.webp",
+        "description":
+            "EQUIP a view of the battlefield. FIRE to set the locations where Brimstone's clouds will settle. ALT FIRE to confirm, launching clouds that block vision in the chosen areas.",
+        "images": [
+          "assets/abilities/brimstone/sky_smoke_cast.webp",
+          "assets/abilities/brimstone/sky_smoke_active.webp",
+        ],
+      },
+      {
+        "name": "Orbital Strike",
+        "icon": "assets/abilities/brimstone/orbital_strike.webp",
+        "description":
+            "EQUIP an orbital strike device. FIRE to launch a devastating strike that damages all enemies in the targeted area.",
+        "images": [
+          "assets/abilities/brimstone/orbital_strike_cast.webp",
+          "assets/abilities/brimstone/orbital_strike_active.webp",
+        ],
+      },
+    ],
+  },
 ];
