@@ -73,28 +73,4 @@ final List<Map<String, dynamic>> duelistsData = [
     "image": "assets/duelists/Neon.webp",
     "roleIcon": "assets/logo/duelist_logo.png",
   },
-  {
-    "name": "Raze",
-    "role": "Duelist",
-    "image": "assets/duelists/Raze.webp",
-    "roleIcon": "assets/logo/duelist_logo.png",
-  },
-  {
-    "name": "Reyna",
-    "role": "Duelist",
-    "image": "assets/duelists/Reyna.webp",
-    "roleIcon": "assets/logo/duelist_logo.png",
-  },
-  {
-    "name": "Yoru",
-    "role": "Duelist",
-    "image": "assets/duelists/Yoru.webp",
-    "roleIcon": "assets/logo/duelist_logo.png",
-  },
-  {
-    "name": "Waylay",
-    "role": "Duelist",
-    "image": "assets/duelists/Waylay.webp",
-    "roleIcon": "assets/logo/duelist_logo.png",
-  },
 ];
