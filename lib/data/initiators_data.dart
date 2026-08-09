@@ -1,4 +1,4 @@
-List initiatorsData = [
+final List<Map<String, dynamic>> initiatorsData = [
   {
     "name": "Breach",
     "role": "Initiator",
