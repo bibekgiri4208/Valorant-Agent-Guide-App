@@ -12,6 +12,16 @@ final List<Map<String, dynamic>> controllersData = [
         "Prior to joining the VALORANT Protocol, Omen was a highly skilled and ruthless assassin for the organization known as Scions of Hourglass. In order to stop the discovery of Radianite from becoming public knowledge, he was sent to assassinate the chief scientist in charge of the research on radianite, Dr. Sabine Callas (Viper) at her lab. In the altercation that happens between the two, Omen is severely burned by the contents of a vial Dr.Callas had been examining, and stumbles inside a test chamber. To prevent him from attacking again, Viper activates a mechanism in the test chamber that causes Omen to be ripped apart across space time and lose majority of his memories. The details of how he is brought back to life and kept in a stable state is still unclear but it is highly implied through voicelines that Sage has had a role to play in achieving that.",
     "abilities": [
       {
+        "name": "Shrouded Step",
+        "icon": "assets/abilities/omen/shrouded_step.webp",
+        "description":
+            "EQUIP a shadow walk ability and see its range indicator. FIRE to begin a brief channel, then teleport to the marked location.",
+        "images": [
+          "assets/abilities/omen/shroudedstep_cast.webp",
+          "assets/abilities/omen/shroudedstep_active.webp",
+        ],
+      },
+      {
         "name": "Paranoia",
         "icon": "assets/abilities/omen/paranoia.webp",
         "description":
@@ -32,16 +42,6 @@ final List<Map<String, dynamic>> controllersData = [
         ],
       },
       {
-        "name": "Shrouded Step",
-        "icon": "assets/abilities/omen/shrouded_step.webp",
-        "description":
-            "EQUIP a shadow walk ability and see its range indicator. FIRE to begin a brief channel, then teleport to the marked location.",
-        "images": [
-          "assets/abilities/omen/shroudedstep_cast.webp",
-          "assets/abilities/omen/shroudedstep_active.webp",
-        ],
-      },
-      {
         "name": "From the Shadows",
         "icon": "assets/abilities/omen/from_the_shadows.webp",
         "description":
@@ -49,6 +49,61 @@ final List<Map<String, dynamic>> controllersData = [
         "images": [
           "assets/abilities/omen/from_the_shadows_cast.webp",
           "assets/abilities/omen/from_the_shadows_active.webp",
+        ],
+      },
+    ],
+  },
+
+  {
+    "name": "Viper",
+    "role": "Controller",
+    "image": "assets/controllers/Viper.webp",
+    "roleIcon": "assets/logo/controller_logo.png",
+    "country": "United States",
+    "agentNumber": "2",
+    "summary":
+        "The American chemist, Viper deploys an array of poisonous chemical devices to control the battlefield and choke the enemy's vision. If the toxins don't kill her prey, her mind games surely will.",
+    "lore":
+        "Viper (Dr. Sabine Callas) is a brilliant American chemist and a co-founder of the secret VALORANT Protocol as Agent 02. She originally worked as a leading researcher for the powerful Kingdom Corporation, but a mysterious past catastrophe altered her life and drove her to weaponize deadly toxins. On the outside, she is a cold, ruthless strategist fiercely dedicated to protecting her home world, Alpha Earth, from its mirror reality, Omega Earth. Beneath her hardened exterior, however, Viper carries a massive burden of guilt over past failures and failed experiments. She shares deep secrets with other agents, holding the key to Omen's forgotten human identity and maintaining a tense, morally gray alliance with Reyna to keep Reyna's sick sister alive using her scientific expertise.",
+    "abilities": [
+      {
+        "name": "Snake Bite",
+        "icon": "assets/abilities/viper/snake_bite.webp",
+        "description":
+            "EQUIP a chemical launcher. FIRE to launch a canister that shatters upon hitting the floor, creating a lingering chemical zone that damages and applies Vulnerable.",
+        "images": [
+          "assets/abilities/viper/snake_bite_cast.webp",
+          "assets/abilities/viper/snake_bite_active.webp",
+        ],
+      },
+      {
+        "name": "Poison Cloud",
+        "icon": "assets/abilities/viper/poison_cloud.webp",
+        "description":
+            "EQUIP a gas emitter. FIRE to throw the emitter that perpetually remains throughout the round. ALT FIRE to lob. RE-USE the ability to create a toxic gas cloud that Decays opponents inside it at the cost of fuel.",
+        "images": [
+          "assets/abilities/viper/poison_cloud_cast.webp",
+          "assets/abilities/viper/poison_cloud_active.webp",
+        ],
+      },
+      {
+        "name": "Toxic Screen",
+        "icon": "assets/abilities/viper/toxic_screen.webp",
+        "description":
+            "EQUIP a gas emitter launcher that penetrates terrain. FIRE to deploy a long line of gas emitters. RE-USE the ability to create a tall wall of toxic gas that Decays opponents that cross it at the cost of fuel.",
+        "images": [
+          "assets/abilities/viper/toxic_screen_cast.webp",
+          "assets/abilities/viper/toxic_screen_active.webp",
+        ],
+      },
+      {
+        "name": "Viper's Pit",
+        "icon": "assets/abilities/viper/vipers_pit.webp",
+        "description":
+            "EQUIP a chemical sprayer. FIRE to spray a chemical cloud in all directions around Viper, creating a large cloud that Nearsights players and Decays the health of enemies inside of it. HOLD the ability key to disperse the cloud early.",
+        "images": [
+          "assets/abilities/viper/vipers_pit_cast.webp",
+          "assets/abilities/viper/vipers_pit_active.webp",
         ],
       },
     ],
