@@ -82,6 +82,12 @@ flutter:
   - assets/abilities/miks/
   - assets/abilities/astra/
   - assets/abilities/breach/
+  - assets/abilities/fade/
+  - assets/abilities/gekko/
+  - assets/abilities/kayo/
+  - assets/abilities/skye/
+  - assets/abilities/sova/
+  - assets/abilities/tejo/
   - assets/icon/icon.jpg
 
   fonts:
