@@ -58,6 +58,7 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
+              // ENHANCED HEADER SECTION
               ClipRRect(
                 borderRadius: const BorderRadius.vertical(
                   bottom: Radius.circular(100),
@@ -65,115 +66,147 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                 child: Container(
                   width: double.infinity,
                   height: screenHeight * 0.55,
-                  color: const Color(0xFFFF4654),
-                  child: Column(
+                  decoration: const BoxDecoration(
+                    // Radial Gradient for dynamic spotlight effect
+                    gradient: RadialGradient(
+                      center: Alignment(0.0, -0.2),
+                      radius: 0.85,
+                      colors: [
+                        Color(0xFFFF4654), // Valorant Red Center
+                        Color(0xFFB52331), // Darker Red Transition
+                        Color(0xFF1C252E), // Blends into main app background
+                      ],
+                    ),
+                  ),
+                  child: Stack(
+                    alignment: Alignment.center,
                     children: [
-                      const Spacer(),
-                      SizedBox(
-                        height: 350,
-                        child: Image.asset(
-                          agent['image'] ?? '',
-                          fit: BoxFit.contain,
-                        ),
-                      ),
-                      const SizedBox(height: 15),
-                      InkWell(
-                        onTap: () {
-                          showModalBottomSheet(
-                            backgroundColor: const Color(0xFF1C252E),
-                            context: context,
-                            builder: (context) {
-                              return SizedBox(
-                                height: 400,
-                                width: double.maxFinite,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 20,
-                                  ),
-                                  child: SingleChildScrollView(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        const SizedBox(height: 20),
-                                        const Text(
-                                          "Agent Description",
-                                          style: TextStyle(
-                                            fontSize: 25,
-                                            fontFamily: "Valorant",
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                        const Divider(thickness: 2),
-                                        Text(
-                                          "Role: ${agent['role'] ?? ''}",
-                                          style: const TextStyle(
-                                            color: Colors.white,
-                                            fontFamily: "Valorant",
-                                          ),
-                                        ),
-                                        const Divider(thickness: 2),
-                                        Text(
-                                          "Country: ${agent['country'] ?? 'Unknown'}",
-                                          style: const TextStyle(
-                                            color: Colors.white,
-                                            fontFamily: "Valorant",
-                                          ),
-                                        ),
-                                        const Divider(thickness: 2),
-                                        Text(
-                                          "Agent No. ${agent['agentNumber'] ?? ''}",
-                                          style: const TextStyle(
-                                            color: Colors.white,
-                                            fontFamily: "Valorant",
-                                          ),
-                                        ),
-                                        const Divider(thickness: 2),
-                                        Text(
-                                          agent['summary'] ?? '',
-                                          style: const TextStyle(
-                                            fontSize: 15,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                        const Divider(),
-                                        Text(
-                                          agent['lore'] ?? '',
-                                          style: const TextStyle(
-                                            fontSize: 15,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                        const SizedBox(height: 50),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              );
-                            },
-                          );
-                        },
-                        child: Text(
-                          agent['name'] ?? '',
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 40,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: "Valorant",
+                      // Role Logo Watermark
+                      if (agent['roleIcon'] != null)
+                        Positioned(
+                          top: 40,
+                          child: Opacity(
+                            opacity: 0.12,
+                            child: Image.asset(
+                              agent['roleIcon'],
+                              height: 280,
+                              fit: BoxFit.contain,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
+
+                      // Foreground Content Column
+                      Column(
+                        children: [
+                          const Spacer(),
+                          SizedBox(
+                            height: 350,
+                            child: Image.asset(
+                              agent['image'] ?? '',
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+                          const SizedBox(height: 15),
+                          InkWell(
+                            onTap: () {
+                              showModalBottomSheet(
+                                backgroundColor: const Color(0xFF1C252E),
+                                context: context,
+                                builder: (context) {
+                                  return SizedBox(
+                                    height: 400,
+                                    width: double.maxFinite,
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 20,
+                                      ),
+                                      child: SingleChildScrollView(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            const SizedBox(height: 20),
+                                            const Text(
+                                              "Agent Description",
+                                              style: TextStyle(
+                                                fontSize: 25,
+                                                fontFamily: "Valorant",
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            const Divider(thickness: 2),
+                                            Text(
+                                              "Role: ${agent['role'] ?? ''}",
+                                              style: const TextStyle(
+                                                color: Colors.white,
+                                                fontFamily: "Valorant",
+                                              ),
+                                            ),
+                                            const Divider(thickness: 2),
+                                            Text(
+                                              "Country: ${agent['country'] ?? 'Unknown'}",
+                                              style: const TextStyle(
+                                                color: Colors.white,
+                                                fontFamily: "Valorant",
+                                              ),
+                                            ),
+                                            const Divider(thickness: 2),
+                                            Text(
+                                              "Agent No. ${agent['agentNumber'] ?? ''}",
+                                              style: const TextStyle(
+                                                color: Colors.white,
+                                                fontFamily: "Valorant",
+                                              ),
+                                            ),
+                                            const Divider(thickness: 2),
+                                            Text(
+                                              agent['summary'] ?? '',
+                                              style: const TextStyle(
+                                                fontSize: 15,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            const Divider(),
+                                            Text(
+                                              agent['lore'] ?? '',
+                                              style: const TextStyle(
+                                                fontSize: 15,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            const SizedBox(height: 50),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
+                            },
+                            child: Text(
+                              agent['name'] ?? '',
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 40,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: "Valorant",
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 5),
+                          Text(
+                            agent['role'] ?? '',
+                            style: const TextStyle(
+                              color: Colors.white70,
+                              fontSize: 16,
+                              fontFamily: "Valorant",
+                              letterSpacing: 2,
+                            ),
+                          ),
+                          const Spacer(),
+                        ],
                       ),
-                      const SizedBox(height: 5),
-                      Text(
-                        agent['role'] ?? '',
-                        style: const TextStyle(
-                          color: Colors.white70,
-                          fontSize: 16,
-                          fontFamily: "Valorant",
-                          letterSpacing: 2,
-                        ),
-                      ),
-                      const Spacer(),
                     ],
                   ),
                 ),
