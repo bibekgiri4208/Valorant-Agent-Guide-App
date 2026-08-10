@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:video_player/video_player.dart';
 
 class AgentsDetailScreen extends StatefulWidget {
   final Map<String, dynamic> agentData;
@@ -241,7 +242,7 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                     return _buildAbilityPage(
                       title: ability['name'] ?? '',
                       description: ability['description'] ?? '',
-                      images: (ability['images'] as List?)?.cast<String>(),
+                      videoPath: ability['video'] ?? ability['videoUrl'],
                     );
                   },
                 ),
@@ -256,7 +257,7 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
   Widget _buildAbilityPage({
     required String title,
     required String description,
-    List<String>? images,
+    String? videoPath,
   }) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -274,21 +275,10 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
               ),
             ),
             const SizedBox(height: 15),
-            if (images != null && images.isNotEmpty)
-              ...images.map(
-                (imgPath) => Padding(
-                  padding: const EdgeInsets.only(bottom: 15),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(15),
-                    child: Image.asset(
-                      imgPath,
-                      width: double.infinity,
-                      height: 160,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-              ),
+            if (videoPath != null && videoPath.isNotEmpty) ...[
+              AbilityVideoPlayer(videoPath: videoPath),
+              const SizedBox(height: 15),
+            ],
             Text(
               description,
               style: const TextStyle(
@@ -298,6 +288,98 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
               ),
             ),
             const SizedBox(height: 20),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class AbilityVideoPlayer extends StatefulWidget {
+  final String videoPath;
+
+  const AbilityVideoPlayer({super.key, required this.videoPath});
+
+  @override
+  State<AbilityVideoPlayer> createState() => _AbilityVideoPlayerState();
+}
+
+class _AbilityVideoPlayerState extends State<AbilityVideoPlayer> {
+  late VideoPlayerController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    final isNetwork =
+        widget.videoPath.startsWith('http://') ||
+        widget.videoPath.startsWith('https://');
+
+    _controller = isNetwork
+        ? VideoPlayerController.networkUrl(Uri.parse(widget.videoPath))
+        : VideoPlayerController.asset(widget.videoPath);
+
+    _controller.setLooping(true);
+    _controller.initialize().then((_) {
+      if (mounted) {
+        setState(() {});
+        _controller.play();
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void _togglePlayPause() {
+    setState(() {
+      if (_controller.value.isPlaying) {
+        _controller.pause();
+      } else {
+        _controller.play();
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (!_controller.value.isInitialized) {
+      return Container(
+        height: 180,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: Colors.black26,
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: const Center(
+          child: CircularProgressIndicator(color: Color(0xFFFF4654)),
+        ),
+      );
+    }
+
+    return GestureDetector(
+      onTap: _togglePlayPause,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(15),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            AspectRatio(
+              aspectRatio: _controller.value.aspectRatio,
+              child: VideoPlayer(_controller),
+            ),
+            if (!_controller.value.isPlaying)
+              Container(
+                color: Colors.black38,
+                padding: const EdgeInsets.all(12),
+                child: const Icon(
+                  Icons.play_arrow,
+                  size: 48,
+                  color: Colors.white,
+                ),
+              ),
           ],
         ),
       ),

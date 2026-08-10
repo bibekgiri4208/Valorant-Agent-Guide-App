@@ -9,48 +9,35 @@ final List<Map<String, dynamic>> controllersData = [
     "agentNumber": "3",
     "summary":
         "A phantom of a memory, Omen hunts in the shadows. He renders enemies blind, teleports across the field, then lets paranoia take hold as his foe scrambles to learn where he might strike next.",
-    "lore":
-        "Prior to joining the VALORANT Protocol, Omen was a highly skilled and ruthless assassin for the organization known as Scions of Hourglass. In order to stop the discovery of Radianite from becoming public knowledge, he was sent to assassinate the chief scientist in charge of the research on radianite, Dr. Sabine Callas (Viper) at her lab. In the altercation that happens between the two, Omen is severely burned by the contents of a vial Dr.Callas had been examining, and stumbles inside a test chamber. To prevent him from attacking again, Viper activates a mechanism in the test chamber that causes Omen to be ripped apart across space time and lose majority of his memories. The details of how he is brought back to life and kept in a stable state is still unclear but it is highly implied through voicelines that Sage has had a role to play in achieving that.",
+    "lore": "not available",
     "abilities": [
       {
         "name": "Shrouded Step",
         "icon": "assets/abilities/omen/shrouded_step.webp",
         "description":
             "EQUIP a shadow walk ability and see its range indicator. FIRE to begin a brief channel, then teleport to the marked location.",
-        "images": [
-          "assets/abilities/omen/shroudedstep_cast.webp",
-          "assets/abilities/omen/shroudedstep_active.webp",
-        ],
+        "video": "assets/abilities/omen/shrouded_step.mp4",
       },
       {
         "name": "Paranoia",
         "icon": "assets/abilities/omen/paranoia.webp",
         "description":
             "Equip a shadow projectile and fire to briefly reduce the vision range of all players it touches. This ability can pass through walls, making it excellent for initiating fights.",
-        "images": [
-          "assets/abilities/omen/paranoia_cast.webp",
-          "assets/abilities/omen/paranoia_nearsight.webp",
-        ],
+        "video": "assets/abilities/omen/paranoia.mp4",
       },
       {
         "name": "Dark Cover",
         "icon": "assets/abilities/omen/dark_cover.webp",
         "description":
             "EQUIP a shadow orb and enter a phased world to place and target the orbs. PRESS the ability key to throw the shadow orb to the marked location.",
-        "images": [
-          "assets/abilities/omen/darkcover_equip.webp",
-          "assets/abilities/omen/darkcover_active.webp",
-        ],
+        "video": "assets/abilities/omen/dark_cover.mp4",
       },
       {
         "name": "From the Shadows",
         "icon": "assets/abilities/omen/from_the_shadows.webp",
         "description":
             "EQUIP a tactical map. FIRE to begin teleporting to the selected location. While teleporting, Omen will appear as a Shade that can be destroyed by an enemy to cancel.",
-        "images": [
-          "assets/abilities/omen/from_the_shadows_cast.webp",
-          "assets/abilities/omen/from_the_shadows_active.webp",
-        ],
+        "video": "assets/abilities/omen/from_the_shadows.mp4",
       },
     ],
   },
@@ -65,48 +52,35 @@ final List<Map<String, dynamic>> controllersData = [
     "agentNumber": "2",
     "summary":
         "The American chemist, Viper deploys an array of poisonous chemical devices to control the battlefield and choke the enemy's vision. If the toxins don't kill her prey, her mind games surely will.",
-    "lore":
-        "Viper (Dr. Sabine Callas) is a brilliant American chemist and a co-founder of the secret VALORANT Protocol as Agent 02. She originally worked as a leading researcher for the powerful Kingdom Corporation, but a mysterious past catastrophe altered her life and drove her to weaponize deadly toxins. On the outside, she is a cold, ruthless strategist fiercely dedicated to protecting her home world, Alpha Earth, from its mirror reality, Omega Earth. Beneath her hardened exterior, however, Viper carries a massive burden of guilt over past failures and failed experiments. She shares deep secrets with other agents, holding the key to Omen's forgotten human identity and maintaining a tense, morally gray alliance with Reyna to keep Reyna's sick sister alive using her scientific expertise.",
+    "lore": "not available",
     "abilities": [
       {
         "name": "Snake Bite",
         "icon": "assets/abilities/viper/snake_bite.webp",
         "description":
             "EQUIP a chemical launcher. FIRE to launch a canister that shatters upon hitting the floor, creating a lingering chemical zone that damages and applies Vulnerable.",
-        "images": [
-          "assets/abilities/viper/snake_bite_cast.webp",
-          "assets/abilities/viper/snake_bite_active.webp",
-        ],
+        "video": "assets/abilities/viper/snake_bite.mp4",
       },
       {
         "name": "Poison Cloud",
         "icon": "assets/abilities/viper/poison_cloud.webp",
         "description":
             "EQUIP a gas emitter. FIRE to throw the emitter that perpetually remains throughout the round. ALT FIRE to lob. RE-USE the ability to create a toxic gas cloud that Decays opponents inside it at the cost of fuel.",
-        "images": [
-          "assets/abilities/viper/poison_cloud_cast.webp",
-          "assets/abilities/viper/poison_cloud_active.webp",
-        ],
+        "video": "assets/abilities/viper/poison_cloud.mp4",
       },
       {
         "name": "Toxic Screen",
         "icon": "assets/abilities/viper/toxic_screen.webp",
         "description":
             "EQUIP a gas emitter launcher that penetrates terrain. FIRE to deploy a long line of gas emitters. RE-USE the ability to create a tall wall of toxic gas that Decays opponents that cross it at the cost of fuel.",
-        "images": [
-          "assets/abilities/viper/toxic_screen_cast.webp",
-          "assets/abilities/viper/toxic_screen_active.webp",
-        ],
+        "video": "assets/abilities/viper/toxic_screen.mp4",
       },
       {
         "name": "Viper's Pit",
         "icon": "assets/abilities/viper/vipers_pit.webp",
         "description":
             "EQUIP a chemical sprayer. FIRE to spray a chemical cloud in all directions around Viper, creating a large cloud that Nearsights players and Decays the health of enemies inside of it. HOLD the ability key to disperse the cloud early.",
-        "images": [
-          "assets/abilities/viper/vipers_pit_cast.webp",
-          "assets/abilities/viper/vipers_pit_active.webp",
-        ],
+        "video": "assets/abilities/viper/vipers_pit.mp4",
       },
     ],
   },
@@ -121,48 +95,36 @@ final List<Map<String, dynamic>> controllersData = [
     "agentNumber": "25",
     "summary":
         "The American chemist, Viper deploys an array of poisonous chemical devices to control the battlefield and choke the enemy's vision. If the toxins don't kill her prey, her mind games surely will.",
-    "lore":
-        "Viper (Dr. Sabine Callas) is a brilliant American chemist and a co-founder of the secret VALORANT Protocol as Agent 02. She originally worked as a leading researcher for the powerful Kingdom Corporation, but a mysterious past catastrophe altered her life and drove her to weaponize deadly toxins. On the outside, she is a cold, ruthless strategist fiercely dedicated to protecting her home world, Alpha Earth, from its mirror reality, Omega Earth. Beneath her hardened exterior, however, Viper carries a massive burden of guilt over past failures and failed experiments. She shares deep secrets with other agents, holding the key to Omen's forgotten human identity and maintaining a tense, morally gray alliance with Reyna to keep Reyna's sick sister alive using her scientific expertise.",
+    "lore": "not available",
+
     "abilities": [
       {
         "name": "Pick Me Up",
         "icon": "assets/abilities/clove/pick_me_up.webp",
         "description":
             "ACTIVATE to absorb the life force of a fallen enemy that Clove damaged or killed, gaining haste and temporary health.",
-        "images": [
-          "assets/abilities/clove/pick_me_up_cast.webp",
-          "assets/abilities/clove/pick_me_up_active.webp",
-        ],
+        "video": "assets/abilities/clove/pick_me_up.mp4",
       },
       {
         "name": "Meddle",
         "icon": "assets/abilities/clove/meddle.webp",
         "description":
             "EQUIP a fragment of immortality essence. FIRE to throw the fragment, which upon landing on the floor, erupts after a short delay and temporarily Decays all targets caught inside.",
-        "images": [
-          "assets/abilities/clove/meddle_cast.webp",
-          "assets/abilities/clove/meddle_active.webp",
-        ],
+        "video": "assets/abilities/clove/meddle.mp4",
       },
       {
         "name": "Ruse",
         "icon": "assets/abilities/clove/ruse.webp",
         "description":
             "EQUIP a view of the battlefield. FIRE to set the locations where Clove's clouds will settle. ALT FIRE to confirm, launching clouds that block vision in the chosen areas. Clove can use this ability after death.",
-        "images": [
-          "assets/abilities/clove/ruse_cast.webp",
-          "assets/abilities/clove/ruse_active.webp",
-        ],
+        "video": "assets/abilities/clove/ruse.mp4",
       },
       {
         "name": "Not Dead Yet",
         "icon": "assets/abilities/clove/not_dead_yet.webp",
         "description":
             "After dying, ACTIVATE to resurrect. Once resurrected, Clove must earn a kill or a damaging assist within a set time or they will die. REACTIVATE to cancel early.",
-        "images": [
-          "assets/abilities/clove/not_dead_yet_cast.webp",
-          "assets/abilities/clove/not_dead_yet_active.webp",
-        ],
+        "video": "assets/abilities/clove/not_dead_yet.mp4",
       },
     ],
   },
@@ -177,48 +139,121 @@ final List<Map<String, dynamic>> controllersData = [
     "agentNumber": "1",
     "summary":
         "The American chemist, Viper deploys an array of poisonous chemical devices to control the battlefield and choke the enemy's vision. If the toxins don't kill her prey, her mind games surely will.",
-    "lore":
-        "Viper (Dr. Sabine Callas) is a brilliant American chemist and a co-founder of the secret VALORANT Protocol as Agent 02. She originally worked as a leading researcher for the powerful Kingdom Corporation, but a mysterious past catastrophe altered her life and drove her to weaponize deadly toxins. On the outside, she is a cold, ruthless strategist fiercely dedicated to protecting her home world, Alpha Earth, from its mirror reality, Omega Earth. Beneath her hardened exterior, however, Viper carries a massive burden of guilt over past failures and failed experiments. She shares deep secrets with other agents, holding the key to Omen's forgotten human identity and maintaining a tense, morally gray alliance with Reyna to keep Reyna's sick sister alive using her scientific expertise.",
+    "lore": "not available",
     "abilities": [
       {
         "name": "Incendiary",
         "icon": "assets/abilities/brimstone/incendiary.webp",
         "description":
             "EQUIP an incendiary device. FIRE to throw the device, which upon landing, sets all enemies it touches on fire.",
-        "images": [
-          "assets/abilities/brimstone/incendiary_cast.webp",
-          "assets/abilities/brimstone/incendiary_active.webp",
-        ],
+        "video": "assets/abilities/brimstone/incendiary.mp4",
       },
       {
         "name": "Stim Beacon",
         "icon": "assets/abilities/brimstone/stim_beacon.webp",
         "description":
             "INSTANTLY toss down a stim beacon. Upon landing, it creates a field that grants players a Combat Stim and a Speed Boost.",
-        "images": [
-          "assets/abilities/brimstone/stim_beacon_cast.webp",
-          "assets/abilities/brimstone/stim_beacon_active.webp",
-        ],
+        "video": "assets/abilities/brimstone/stim_beacon.mp4",
       },
       {
         "name": "Sky Smoke",
         "icon": "assets/abilities/brimstone/sky_smoke.webp",
         "description":
             "EQUIP a view of the battlefield. FIRE to set the locations where Brimstone's clouds will settle. ALT FIRE to confirm, launching clouds that block vision in the chosen areas.",
-        "images": [
-          "assets/abilities/brimstone/sky_smoke_cast.webp",
-          "assets/abilities/brimstone/sky_smoke_active.webp",
-        ],
+        "video": "assets/abilities/brimstone/sky_smoke.mp4",
       },
       {
         "name": "Orbital Strike",
         "icon": "assets/abilities/brimstone/orbital_strike.webp",
         "description":
             "EQUIP an orbital strike device. FIRE to launch a devastating strike that damages all enemies in the targeted area.",
-        "images": [
-          "assets/abilities/brimstone/orbital_strike_cast.webp",
-          "assets/abilities/brimstone/orbital_strike_active.webp",
-        ],
+        "video": "assets/abilities/brimstone/orbital_strike.mp4",
+      },
+    ],
+  },
+
+  //Harbor
+  {
+    "name": "Harbor",
+    "role": "Controller",
+    "image": "assets/controllers/Harbor.webp",
+    "roleIcon": "assets/logo/controller_logo.png",
+    "country": "India",
+    "agentNumber": "20",
+    "summary":
+        "Hailing from India's coast, Harbor storms the field wielding ancient technology with dominion over water. He unleashes frothing rapids and crushing waves to shield his allies, or pummel those that oppose him.",
+    "lore": "not available",
+    "abilities": [
+      {
+        "name": "Storm Surge",
+        "icon": "assets/abilities/harbor/storm_surge.webp",
+        "description":
+            "EQUIP Storm Surge. FIRE to throw, creating an explosive whirlpool that Nearsights and Slows enemies within it after a short duration.",
+        "video": "assets/abilities/harbor/storm_surge.mp4",
+      },
+      {
+        "name": "High Tide",
+        "icon": "assets/abilities/harbor/high_tide.webp",
+        "description":
+            "EQUIP High Tide. FIRE to send water forward along the ground. HOLD FIRE to guide the water towards your crosshair spawning a vision blocking Screen along the path. ALT FIRE to stop the water early. All players crossing High Tide are Slowed.",
+        "video": "assets/abilities/harbor/high_tide.mp4",
+      },
+      {
+        "name": "Cove",
+        "icon": "assets/abilities/harbor/cove.webp",
+        "description":
+            "EQUIP Cove. ACTIVATE to form a water Smoke in the select location. HOLD FIRE while targeting to move the marker further away and HOLD ALT FIRE to move it closer. RELOAD to toggle targeting view. REACTIVATE to Shield the water Smoke, blocking any bullets that hit it. The Shielded water Smoke can be destroyed.",
+        "video": "assets/abilities/harbor/cove.mp4",
+      },
+      {
+        "name": "Reckoning",
+        "icon": "assets/abilities/harbor/reckoning.webp",
+        "description":
+            "EQUIP Reckoning. FIRE to unleash the full power of your artifact, releasing a surge of water that barrels forward to Nearsight and Slow enemies that are hit.",
+        "video": "assets/abilities/harbor/reckoning.mp4",
+      },
+    ],
+  },
+
+  //Miks
+  {
+    "name": "Miks",
+    "role": "Controller",
+    "image": "assets/controllers/Miks.webp",
+    "roleIcon": "assets/logo/controller_logo.png",
+    "country": "Croatia",
+    "agentNumber": "26",
+    "summary":
+        "Straight from Croatia, Miks takes the stage channeling pure sound energy. With his infectious passion and sonic powers, he rallies his squad to move as one as they set the tempo on the battlefield together.",
+    "lore": "not available",
+    "abilities": [
+      {
+        "name": "M-Pulse",
+        "icon": "assets/abilities/miks/m_pulse.webp",
+        "description":
+            "EQUIP M-pulse. ALT-FIRE to toggle between Concuss and Healing outputs. FIRE to throw the device. Upon landing, M-pulse sends out sound waves, either Concussing or Healing players.",
+        "video": "assets/abilities/miks/m_pulse.mp4",
+      },
+      {
+        "name": "Harmonize",
+        "icon": "assets/abilities/miks/harmonize.webp",
+        "description":
+            "EQUIP Harmonize. Target an ally and FIRE to activate a Combat Stim on yourself and the ally that refreshes with each kill. ALT-FIRE to grant Combat Stim to yourself.",
+        "video": "assets/abilities/miks/harmonize.mp4",
+      },
+      {
+        "name": "Waveform",
+        "icon": "assets/abilities/miks/waveform.webp",
+        "description":
+            "EQUIP a Map Targeter. FIRE to set locations. ALT-FIRE to spawn Smokes at selected locations.",
+        "video": "assets/abilities/miks/waveform.mp4",
+      },
+      {
+        "name": "BassQuake",
+        "icon": "assets/abilities/miks/bassquake.webp",
+        "description":
+            "EQUIP Bassquake. FIRE to build up and unleash Sonic Radiance forward, knocking back, Deafening, and Slowing players.",
+        "video": "assets/abilities/miks/bassquake.mp4",
       },
     ],
   },
