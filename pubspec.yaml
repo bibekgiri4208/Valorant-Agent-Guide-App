@@ -80,6 +80,8 @@ flutter:
   - assets/abilities/brimstone/
   - assets/abilities/harbor/
   - assets/abilities/miks/
+  - assets/abilities/astra/
+  - assets/abilities/breach/
   - assets/icon/icon.jpg
 
   fonts:

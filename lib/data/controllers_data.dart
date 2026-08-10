@@ -257,4 +257,47 @@ final List<Map<String, dynamic>> controllersData = [
       },
     ],
   },
+
+  //Astra
+  {
+    "name": "Astra",
+    "role": "Controller",
+    "image": "assets/controllers/Astra.webp",
+    "roleIcon": "assets/logo/controller_logo.png",
+    "country": "Ghana",
+    "agentNumber": "24",
+    "summary":
+        "A cosmic warrior from Ghana, Astra bends the fabric of space to her will. She places stars across the battlefield, transforming them into powerful abilities that control the flow of combat.",
+    "lore": "not available",
+    "abilities": [
+      {
+        "name": "Gravity Well",
+        "icon": "assets/abilities/astra/gravity_well.webp",
+        "description":
+            "EQUIP a star. FIRE to place it on the ground. REACTIVATE to transform it into a Gravity Well that pulls players towards its center before exploding.",
+        "video": "assets/abilities/astra/gravity_well.mp4",
+      },
+      {
+        "name": "Nova Pulse",
+        "icon": "assets/abilities/astra/nova_pulse.webp",
+        "description":
+            "Place Stars in Astral Form. ACTIVATE a Star to detonate a Nova Pulse. The Nova Pulse charges briefly then strikes, concussing all players in its area.",
+        "video": "assets/abilities/astra/nova_pulse.mp4",
+      },
+      {
+        "name": "Nebula",
+        "icon": "assets/abilities/astra/nebula.webp",
+        "description":
+            "EQUIP a star. FIRE to place it on the ground. REACTIVATE to transform it into a Nebula (smoke) or Dissipate (clear) depending on your choice.",
+        "video": "assets/abilities/astra/nebula.mp4",
+      },
+      {
+        "name": "Cosmic Divide",
+        "icon": "assets/abilities/astra/cosmic_divide.webp",
+        "description":
+            "ACTIVATE to enter Astral Form where you can place Stars with FIRE. Stars can be reactivated later, transforming them into a Nova Pulse, Nebula, or Gravity Well. When Cosmic Divide is charged, use ALT FIRE in Astral Form to begin aiming it, then FIRE to select two locations. An infinite Cosmic Divide connects the two points you select. Cosmic Divide blocks bullets and heavily dampens audio.",
+        "video": "assets/abilities/astra/cosmic_divide.mp4",
+      },
+    ],
+  },
 ];
