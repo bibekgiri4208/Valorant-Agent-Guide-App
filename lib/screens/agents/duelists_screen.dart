@@ -23,7 +23,7 @@ class DuelistsScreen extends StatelessWidget {
         elevation: 0,
         centerTitle: true,
         title: const Text(
-          "DUELISTS",
+          "DueLISTS",
           style: TextStyle(
             color: Color(0xFFFF4654),
             fontSize: 28,
