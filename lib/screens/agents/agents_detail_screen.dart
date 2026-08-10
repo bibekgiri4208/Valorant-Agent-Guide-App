@@ -352,6 +352,7 @@ class _AbilityVideoPlayerState extends State<AbilityVideoPlayer> {
         : VideoPlayerController.asset(widget.videoPath);
 
     _controller.setLooping(true);
+    _controller.setVolume(0.0); // Mutes audio playback
     _controller.initialize().then((_) {
       if (mounted) {
         setState(() {});
