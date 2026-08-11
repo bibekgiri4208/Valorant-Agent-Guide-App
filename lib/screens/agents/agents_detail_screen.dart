@@ -105,6 +105,8 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                             child: Image.asset(
                               agent['image'] ?? '',
                               fit: BoxFit.contain,
+                              cacheHeight: 800,
+                              gaplessPlayback: true,
                             ),
                           ),
                           const SizedBox(height: 15),
