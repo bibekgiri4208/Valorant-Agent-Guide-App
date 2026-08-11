@@ -132,7 +132,7 @@ class ControllersScreen extends StatelessWidget {
                                       ),
                                       image: DecorationImage(
                                         image: const AssetImage(
-                                          'assets/duelists/duelists_bg.png',
+                                          'assets/duelists/duelists_bg.webp',
                                         ),
                                         fit: BoxFit.cover,
                                         colorFilter: ColorFilter.mode(
@@ -196,6 +196,8 @@ class ControllersScreen extends StatelessWidget {
                                       agent["image"],
                                       fit: BoxFit.contain,
                                       alignment: Alignment.bottomCenter,
+                                      cacheHeight: 800,
+                                      gaplessPlayback: true,
                                     ),
                                   ),
                                 ),
