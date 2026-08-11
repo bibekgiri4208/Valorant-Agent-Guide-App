@@ -6,7 +6,7 @@ final List<Map<String, dynamic>> controllersData = [
     "image": "assets/controllers/Omen.webp",
     "roleIcon": "assets/logo/controller_logo.png",
     "country": "Unknown",
-    "agentNumber": "3",
+    "agentNumber": "03",
     "summary":
         "A phantom of a memory, Omen hunts in the shadows. He renders enemies blind, teleports across the field, then lets paranoia take hold as his foe scrambles to learn where he might strike next.",
     "lore": "Not available",
@@ -49,7 +49,7 @@ final List<Map<String, dynamic>> controllersData = [
     "image": "assets/controllers/Viper.webp",
     "roleIcon": "assets/logo/controller_logo.png",
     "country": "United States",
-    "agentNumber": "2",
+    "agentNumber": "02",
     "summary":
         "The American chemist, Viper deploys an array of poisonous chemical devices to control the battlefield and choke the enemy's vision. If the toxins don't kill her prey, her mind games surely will.",
     "lore": "Not available",
@@ -136,7 +136,7 @@ final List<Map<String, dynamic>> controllersData = [
     "image": "assets/controllers/Brimstone.webp",
     "roleIcon": "assets/logo/controller_logo.png",
     "country": "United States",
-    "agentNumber": "1",
+    "agentNumber": "01",
     "summary":
         "Joining from the U.S.A., Brimstone's orbital arsenal ensures his squad always has the advantage. His ability to deliver utility precisely and from a distance make him an unmatched boots-on-the-ground commander.",
     "lore": "Not available",
@@ -179,7 +179,7 @@ final List<Map<String, dynamic>> controllersData = [
     "image": "assets/controllers/Harbor.webp",
     "roleIcon": "assets/logo/controller_logo.png",
     "country": "India",
-    "agentNumber": "20",
+    "agentNumber": "21",
     "summary":
         "Hailing from India's coast, Harbor storms the field wielding ancient technology with dominion over water. He unleashes frothing rapids and crushing waves to shield his allies, or pummel those that oppose him.",
     "lore": "Not available",
@@ -222,7 +222,7 @@ final List<Map<String, dynamic>> controllersData = [
     "image": "assets/controllers/Miks.webp",
     "roleIcon": "assets/logo/controller_logo.png",
     "country": "Croatia",
-    "agentNumber": "26",
+    "agentNumber": "29",
     "summary":
         "Straight from Croatia, Miks takes the stage channeling pure sound energy. With his infectious passion and sonic powers, he rallies his squad to move as one as they set the tempo on the battlefield together.",
     "lore": "Not available",
@@ -265,7 +265,7 @@ final List<Map<String, dynamic>> controllersData = [
     "image": "assets/controllers/Astra.webp",
     "roleIcon": "assets/logo/controller_logo.png",
     "country": "Ghana",
-    "agentNumber": "24",
+    "agentNumber": "16",
     "summary":
         "A cosmic warrior from Ghana, Astra bends the fabric of space to her will. She places stars across the battlefield, transforming them into powerful abilities that control the flow of combat.",
     "lore": "Not available",

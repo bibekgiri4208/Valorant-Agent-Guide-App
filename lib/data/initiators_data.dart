@@ -6,7 +6,7 @@ final List<Map<String, dynamic>> initiatorsData = [
     "image": "assets/initiators/Breach.webp",
     "roleIcon": "assets/logo/initiator_logo.png",
     "country": "Sweden",
-    "agentNumber": "9",
+    "agentNumber": "13",
     "summary":
         "Breach, the bionic Swede, fires powerful, targeted kinetic blasts to aggressively clear a path through enemy ground. The damage and disruption he inflicts ensures no fight is ever fair.",
     "lore": "not available",
@@ -49,7 +49,7 @@ final List<Map<String, dynamic>> initiatorsData = [
     "image": "assets/initiators/Fade.webp",
     "roleIcon": "assets/logo/initiator_logo.png",
     "country": "Turkey",
-    "agentNumber": "22",
+    "agentNumber": "20",
     "summary":
         "Fade, the Turkish tracker, uses her abilities to hunt down enemies and gather information for her team. Her skills allow her to reveal enemy positions and create opportunities for her allies.",
     "lore": "Not available",
@@ -135,7 +135,7 @@ final List<Map<String, dynamic>> initiatorsData = [
     "image": "assets/initiators/Kayo.webp",
     "roleIcon": "assets/logo/initiator_logo.png",
     "country": "Unknown",
-    "agentNumber": "16",
+    "agentNumber": "17",
     "summary":
         "KAY/O is a machine of war built for a single purpose: neutralizing radiants. His power to Suppress enemy abilities dismantles his opponents' capacity to fight back, securing him and his allies the ultimate edge.",
     "lore": "Not available",
@@ -178,7 +178,7 @@ final List<Map<String, dynamic>> initiatorsData = [
     "image": "assets/initiators/Skye.webp",
     "roleIcon": "assets/logo/initiator_logo.png",
     "country": "Australia",
-    "agentNumber": "15",
+    "agentNumber": "14",
     "summary":
         "Hailing from Australia, Skye and her band of beasts trail-blaze the way through hostile territory. With her creations hampering the enemy, and her power to heal others, the team is strongest and safest by Skye’s side.",
     "lore": "Not available",
@@ -221,7 +221,7 @@ final List<Map<String, dynamic>> initiatorsData = [
     "image": "assets/initiators/Sova.webp",
     "roleIcon": "assets/logo/initiator_logo.png",
     "country": "Russia",
-    "agentNumber": "6",
+    "agentNumber": "06",
     "summary":
         "Born from the eternal winter of Russia's tundra, Sova tracks, finds, and eliminates enemies with ruthless efficiency and precision. His custom bow and incredible scouting abilities ensure that even if you run, you cannot hide.",
     "lore": "Not available",
