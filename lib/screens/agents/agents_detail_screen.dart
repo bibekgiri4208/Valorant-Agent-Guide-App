@@ -19,7 +19,6 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
     super.initState();
     _pageController = PageController();
 
-    // Smoothly synchronizes icon highlights with page scrolling
     _pageController.addListener(() {
       if (_pageController.hasClients && _pageController.page != null) {
         final currentRoundIndex = _pageController.page!.round();
@@ -67,21 +66,19 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                   width: double.infinity,
                   height: screenHeight * 0.55,
                   decoration: const BoxDecoration(
-                    // Radial Gradient for dynamic spotlight effect
                     gradient: RadialGradient(
                       center: Alignment(0.0, -0.2),
                       radius: 0.85,
                       colors: [
-                        Color(0xFFFF4654), // Valorant Red Center
-                        Color(0xFFB52331), // Darker Red Transition
-                        Color(0xFF1C252E), // Blends into main app background
+                        Color(0xFFFF4654),
+                        Color(0xFFB52331),
+                        Color(0xFF1C252E),
                       ],
                     ),
                   ),
                   child: Stack(
                     alignment: Alignment.center,
                     children: [
-                      // Role Logo Watermark
                       if (agent['roleIcon'] != null)
                         Positioned(
                           top: 40,
@@ -96,17 +93,20 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                           ),
                         ),
 
-                      // Foreground Content Column
                       Column(
                         children: [
                           const Spacer(),
+                          // MATCHING HERO TAG FOR IMAGE
                           SizedBox(
                             height: 350,
-                            child: Image.asset(
-                              agent['image'] ?? '',
-                              fit: BoxFit.contain,
-                              cacheHeight: 800,
-                              gaplessPlayback: true,
+                            child: Hero(
+                              tag: 'agent_image_${agent['name']}',
+                              child: Image.asset(
+                                agent['image'] ?? '',
+                                fit: BoxFit.contain,
+                                cacheHeight: 800,
+                                gaplessPlayback: true,
+                              ),
                             ),
                           ),
                           const SizedBox(height: 15),
@@ -234,7 +234,6 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
 
                     const SizedBox(height: 15),
 
-                    // Ability Selectors
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: List.generate(
@@ -354,7 +353,7 @@ class _AbilityVideoPlayerState extends State<AbilityVideoPlayer> {
         : VideoPlayerController.asset(widget.videoPath);
 
     _controller.setLooping(true);
-    _controller.setVolume(0.0); // Mutes audio playback
+    _controller.setVolume(0.0);
     _controller.initialize().then((_) {
       if (mounted) {
         setState(() {});

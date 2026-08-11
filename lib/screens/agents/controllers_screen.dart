@@ -67,142 +67,195 @@ class ControllersScreen extends StatelessWidget {
 
                     return AnimationConfiguration.staggeredGrid(
                       position: index,
-                      duration: const Duration(milliseconds: 800),
+                      duration: const Duration(milliseconds: 500),
                       columnCount: 2,
-
                       child: ScaleAnimation(
                         scale: 0.1,
                         child: FadeInAnimation(
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                PageRouteBuilder(
-                                  pageBuilder:
-                                      (
-                                        context,
-                                        animation,
-                                        secondaryAnimation,
-                                      ) => AgentsDetailScreen(agentData: agent),
-                                  transitionsBuilder:
-                                      (
-                                        context,
-                                        animation,
-                                        secondaryAnimation,
-                                        child,
-                                      ) {
-                                        const beginOffset = Offset(0.1, 0.0);
-                                        const endOffset = Offset.zero;
-                                        const curve = Curves.easeOutCubic;
+                          child: Builder(
+                            builder: (cardContext) {
+                              return GestureDetector(
+                                onTap: () {
+                                  // Capture tapping position relative to viewport
+                                  final RenderBox? renderBox =
+                                      cardContext.findRenderObject()
+                                          as RenderBox?;
+                                  final cardPosition =
+                                      renderBox?.localToGlobal(Offset.zero) ??
+                                      Offset.zero;
+                                  final cardSize = renderBox?.size ?? Size.zero;
+                                  final screenSize = MediaQuery.sizeOf(
+                                    cardContext,
+                                  );
 
-                                        final slideTween = Tween(
-                                          begin: beginOffset,
-                                          end: endOffset,
-                                        ).chain(CurveTween(curve: curve));
+                                  // Calculate tap origin ratio (0.0 to 1.0)
+                                  final Alignment scaleAlignment = Alignment(
+                                    ((cardPosition.dx + (cardSize.width / 2)) /
+                                                screenSize.width) *
+                                            2 -
+                                        1,
+                                    ((cardPosition.dy + (cardSize.height / 2)) /
+                                                screenSize.height) *
+                                            2 -
+                                        1,
+                                  );
 
-                                        return SlideTransition(
-                                          position: animation.drive(slideTween),
-                                          child: FadeTransition(
-                                            opacity: animation,
-                                            child: child,
+                                  Navigator.push(
+                                    cardContext,
+                                    PageRouteBuilder(
+                                      transitionDuration: const Duration(
+                                        milliseconds: 500,
+                                      ),
+                                      reverseTransitionDuration: const Duration(
+                                        milliseconds: 400,
+                                      ),
+                                      pageBuilder:
+                                          (
+                                            context,
+                                            animation,
+                                            secondaryAnimation,
+                                          ) => AgentsDetailScreen(
+                                            agentData: agent,
                                           ),
-                                        );
-                                      },
-                                  transitionDuration: const Duration(
-                                    milliseconds: 350,
-                                  ),
-                                ),
-                              );
-                            },
-                            child: Stack(
-                              clipBehavior: Clip.none,
-                              children: [
-                                // 1. CARD BACKGROUND
-                                Positioned(
-                                  top: 40,
-                                  left: 0,
-                                  right: 0,
-                                  bottom: 0,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(16),
-                                      border: Border.all(
-                                        color: Colors.white30,
-                                        width: 4,
-                                      ),
-                                      image: DecorationImage(
-                                        image: const AssetImage(
-                                          'assets/duelists/duelists_bg.webp',
-                                        ),
-                                        fit: BoxFit.cover,
-                                        colorFilter: ColorFilter.mode(
-                                          Colors.black.withValues(alpha: 0.5),
-                                          BlendMode.darken,
-                                        ),
-                                      ),
+                                      transitionsBuilder:
+                                          (
+                                            context,
+                                            animation,
+                                            secondaryAnimation,
+                                            child,
+                                          ) {
+                                            final curvedAnimation =
+                                                CurvedAnimation(
+                                                  parent: animation,
+                                                  curve: Curves.fastOutSlowIn,
+                                                  reverseCurve:
+                                                      Curves.easeInCubic,
+                                                );
+
+                                            // EXPANDING WHOLE SCREEN FROM CLICKED CARD POSITION
+                                            return ScaleTransition(
+                                              alignment: scaleAlignment,
+                                              scale: Tween<double>(
+                                                begin: 0.10,
+                                                end: 1.0,
+                                              ).animate(curvedAnimation),
+                                              child: FadeTransition(
+                                                opacity:
+                                                    Tween<double>(
+                                                      begin: 0.0,
+                                                      end: 1.0,
+                                                    ).animate(
+                                                      CurvedAnimation(
+                                                        parent: animation,
+                                                        curve: const Interval(
+                                                          0.0,
+                                                          0.65,
+                                                          curve: Curves.easeIn,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                child: child,
+                                              ),
+                                            );
+                                          },
                                     ),
-                                    child: Stack(
-                                      children: [
-                                        // Dark Overlay
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(
-                                              16,
+                                  );
+                                },
+                                child: Stack(
+                                  clipBehavior: Clip.none,
+                                  children: [
+                                    // 1. CARD BACKGROUND
+                                    Positioned(
+                                      top: 40,
+                                      left: 0,
+                                      right: 0,
+                                      bottom: 0,
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(
+                                            16,
+                                          ),
+                                          border: Border.all(
+                                            color: Colors.white30,
+                                            width: 4,
+                                          ),
+                                          image: DecorationImage(
+                                            image: const AssetImage(
+                                              'assets/duelists/duelists_bg.webp',
                                             ),
-                                            color: Colors.black.withValues(
-                                              alpha: 0.25,
+                                            fit: BoxFit.cover,
+                                            colorFilter: ColorFilter.mode(
+                                              Colors.black.withValues(
+                                                alpha: 0.5,
+                                              ),
+                                              BlendMode.darken,
                                             ),
                                           ),
                                         ),
-
-                                        // Vertical Name
-                                        Positioned(
-                                          left: 10,
-                                          top: 0,
-                                          bottom: 0,
-                                          child: Center(
-                                            child: RotatedBox(
-                                              quarterTurns: 3,
-                                              child: Text(
-                                                agent["name"]
-                                                    .toString()
-                                                    .toUpperCase(),
-                                                style: const TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 16,
-                                                  fontFamily: "Valorant",
-                                                  fontWeight: FontWeight.bold,
-                                                  letterSpacing: 2,
+                                        child: Stack(
+                                          children: [
+                                            Container(
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(16),
+                                                color: Colors.black.withValues(
+                                                  alpha: 0.25,
                                                 ),
                                               ),
                                             ),
+                                            Positioned(
+                                              left: 10,
+                                              top: 0,
+                                              bottom: 0,
+                                              child: Center(
+                                                child: RotatedBox(
+                                                  quarterTurns: 3,
+                                                  child: Text(
+                                                    agent["name"]
+                                                        .toString()
+                                                        .toUpperCase(),
+                                                    style: const TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 16,
+                                                      fontFamily: "Valorant",
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      letterSpacing: 2,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+
+                                    // 2. HERO AGENT IMAGE
+                                    Positioned(
+                                      top: -15,
+                                      bottom: 0,
+                                      right: -10,
+                                      left: 30,
+                                      child: Hero(
+                                        tag: 'agent_image_${agent['name']}',
+                                        child: Transform.scale(
+                                          scale: 1.5,
+                                          alignment: Alignment.bottomCenter,
+                                          child: Image.asset(
+                                            agent["image"],
+                                            fit: BoxFit.contain,
+                                            alignment: Alignment.bottomCenter,
+                                            cacheHeight: 800,
+                                            gaplessPlayback: true,
                                           ),
                                         ),
-                                      ],
+                                      ),
                                     ),
-                                  ),
+                                  ],
                                 ),
-
-                                // 2. AGENT IMAGE
-                                Positioned(
-                                  top: -15,
-                                  bottom: 0,
-                                  right: -10,
-                                  left: 30,
-                                  child: Transform.scale(
-                                    scale: 1.5,
-                                    alignment: Alignment.bottomCenter,
-                                    child: Image.asset(
-                                      agent["image"],
-                                      fit: BoxFit.contain,
-                                      alignment: Alignment.bottomCenter,
-                                      cacheHeight: 800,
-                                      gaplessPlayback: true,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
+                              );
+                            },
                           ),
                         ),
                       ),
