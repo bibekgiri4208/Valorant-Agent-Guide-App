@@ -318,7 +318,7 @@ class HomeScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(16.0),
                     border: Border.all(color: Colors.white, width: 3),
                     image: DecorationImage(
-                      image: AssetImage('assets/roles/killjoy_dark.jpg'),
+                      image: AssetImage('assets/roles/cypher_dark.webp'),
                       fit: BoxFit.cover,
                       alignment: Alignment.topCenter,
                       colorFilter: ColorFilter.mode(
