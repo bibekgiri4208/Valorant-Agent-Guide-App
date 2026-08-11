@@ -80,7 +80,7 @@ class HomeScreen extends StatelessWidget {
                   width: double.maxFinite,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16.0),
-                    border: Border.all(color: Colors.white, width: 0.5),
+                    border: Border.all(color: Colors.white, width: 3),
                     image: DecorationImage(
                       image: AssetImage('assets/roles/jett_dark.jpg'),
                       fit: BoxFit.cover,
@@ -158,7 +158,7 @@ class HomeScreen extends StatelessWidget {
                   width: double.maxFinite,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16.0),
-                    border: Border.all(color: Colors.white, width: 0.5),
+                    border: Border.all(color: Colors.white, width: 3),
                     image: DecorationImage(
                       image: AssetImage('assets/roles/omen_dark.jpg'),
                       fit: BoxFit.cover,
@@ -237,7 +237,7 @@ class HomeScreen extends StatelessWidget {
                   width: double.maxFinite,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16.0),
-                    border: Border.all(color: Colors.white, width: 0.5),
+                    border: Border.all(color: Colors.white, width: 3),
                     image: DecorationImage(
                       image: AssetImage('assets/roles/gekko_dark.png'),
                       fit: BoxFit.cover,
@@ -316,7 +316,7 @@ class HomeScreen extends StatelessWidget {
                   width: double.maxFinite,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16.0),
-                    border: Border.all(color: Colors.white, width: 0.5),
+                    border: Border.all(color: Colors.white, width: 3),
                     image: DecorationImage(
                       image: AssetImage('assets/roles/killjoy_dark.jpg'),
                       fit: BoxFit.cover,
