@@ -65,18 +65,20 @@ class ControllersScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final agent = controllersData[index];
 
-                    return AnimationConfiguration.staggeredGrid(
+                    // Using staggeredList forces strict item-by-item sequential order (0 -> 1 -> 2 -> 3)
+                    return AnimationConfiguration.staggeredList(
                       position: index,
-                      duration: const Duration(milliseconds: 500),
-                      columnCount: 2,
+                      delay: const Duration(
+                        milliseconds: 250,
+                      ), // Waits for page slide to finish
+                      duration: const Duration(milliseconds: 400),
                       child: ScaleAnimation(
-                        scale: 0.1,
+                        scale: 0.2,
                         child: FadeInAnimation(
                           child: Builder(
                             builder: (cardContext) {
                               return GestureDetector(
                                 onTap: () {
-                                  // Capture tapping position relative to viewport
                                   final RenderBox? renderBox =
                                       cardContext.findRenderObject()
                                           as RenderBox?;
@@ -88,7 +90,6 @@ class ControllersScreen extends StatelessWidget {
                                     cardContext,
                                   );
 
-                                  // Calculate tap origin ratio (0.0 to 1.0)
                                   final Alignment scaleAlignment = Alignment(
                                     ((cardPosition.dx + (cardSize.width / 2)) /
                                                 screenSize.width) *
@@ -107,7 +108,7 @@ class ControllersScreen extends StatelessWidget {
                                         milliseconds: 500,
                                       ),
                                       reverseTransitionDuration: const Duration(
-                                        milliseconds: 400,
+                                        milliseconds: 450,
                                       ),
                                       pageBuilder:
                                           (
@@ -132,7 +133,6 @@ class ControllersScreen extends StatelessWidget {
                                                       Curves.easeInCubic,
                                                 );
 
-                                            // EXPANDING WHOLE SCREEN FROM CLICKED CARD POSITION
                                             return ScaleTransition(
                                               alignment: scaleAlignment,
                                               scale: Tween<double>(
@@ -164,7 +164,7 @@ class ControllersScreen extends StatelessWidget {
                                 child: Stack(
                                   clipBehavior: Clip.none,
                                   children: [
-                                    // 1. CARD BACKGROUND
+                                    // CARD BACKGROUND
                                     Positioned(
                                       top: 40,
                                       left: 0,
@@ -231,7 +231,7 @@ class ControllersScreen extends StatelessWidget {
                                       ),
                                     ),
 
-                                    // 2. HERO AGENT IMAGE
+                                    // AGENT HERO IMAGE
                                     Positioned(
                                       top: -15,
                                       bottom: 0,
