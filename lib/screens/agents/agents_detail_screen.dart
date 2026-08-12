@@ -83,7 +83,7 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                         Positioned(
                           top: 40,
                           child: Opacity(
-                            opacity: 0.12,
+                            opacity: 0.3,
                             child: Image.asset(
                               agent['roleIcon'],
                               height: 280,

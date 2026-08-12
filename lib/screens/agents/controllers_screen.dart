@@ -47,7 +47,7 @@ class ControllersScreen extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
-              const Divider(thickness: 2),
+              const Divider(thickness: 5, color: Color(0xFFFF4654)),
               const SizedBox(height: 30),
 
               AnimationLimiter(
