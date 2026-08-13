@@ -57,7 +57,7 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              // ENHANCED HEADER SECTION
+              // HEADER SECTION
               ClipRRect(
                 borderRadius: const BorderRadius.vertical(
                   bottom: Radius.circular(100),
@@ -96,7 +96,6 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                       Column(
                         children: [
                           const Spacer(),
-                          // MATCHING HERO TAG FOR IMAGE
                           SizedBox(
                             height: 350,
                             child: Hero(

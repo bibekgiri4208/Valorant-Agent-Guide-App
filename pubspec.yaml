@@ -90,6 +90,10 @@ flutter:
   - assets/abilities/skye/
   - assets/abilities/sova/
   - assets/abilities/tejo/
+  - assets/abilities/jett/
+  - assets/abilities/reyna/
+  - assets/abilities/phoenix/
+  - assets/abilities/yoru/
   - assets/icon/icon.jpg
 
   fonts:
