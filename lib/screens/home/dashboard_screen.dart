@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:valorant_guide_app/screens/home/home_screen.dart';
-import 'package:valorant_guide_app/screens/home/onboarding_screen.dart';
 
 class DashBoardScreen extends StatefulWidget {
   const DashBoardScreen({super.key});
@@ -13,9 +12,8 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   int _currentIndex = 0;
   final List<Widget> _pages = [
     HomeScreen(),
-    Center(child: Text("Initiator")),
-    OnboardingScreen(),
-    Center(child: Text("Initiator")),
+    Center(child: Text("Controller")),
+    Center(child: Text("Duelist")),
     Center(child: Text("Sentinel")),
   ];
 
@@ -70,17 +68,9 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
             ),
             label: "Duelist",
           ),
-
           BottomNavigationBarItem(
             icon: ImageIcon(
-              AssetImage("assets/logo/initiator_logo.png"),
-              size: 25,
-            ),
-            label: "Initiator",
-          ),
-          BottomNavigationBarItem(
-            icon: ImageIcon(
-              AssetImage("assets/logo/sentinel_logo.png"),
+              AssetImage("assets/logo/duelist_logo.png"),
               size: 25,
             ),
             label: "Sentinel",
