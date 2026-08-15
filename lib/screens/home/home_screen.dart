@@ -78,7 +78,7 @@ class HomeScreen extends StatelessWidget {
                 child: _buildRoleCardContent(
                   title: 'Duelists',
                   logoPath: 'assets/logo/duelist_logo.png',
-                  bgImagePath: 'assets/roles/jett_dark.webp',
+                  bgImagePath: 'assets/roles/iso_bg.jpg',
                 ),
               ),
 
@@ -91,7 +91,7 @@ class HomeScreen extends StatelessWidget {
                 child: _buildRoleCardContent(
                   title: 'Controllers',
                   logoPath: 'assets/logo/controller_logo.png',
-                  bgImagePath: 'assets/roles/omen_dark.webp',
+                  bgImagePath: 'assets/roles/clove_bg.webp',
                 ),
               ),
 
@@ -104,7 +104,7 @@ class HomeScreen extends StatelessWidget {
                 child: _buildRoleCardContent(
                   title: 'Initiators',
                   logoPath: 'assets/logo/initiator_logo.png',
-                  bgImagePath: 'assets/roles/sova_dark.webp',
+                  bgImagePath: 'assets/roles/kayo_bg.jpg',
                 ),
               ),
 
@@ -117,7 +117,7 @@ class HomeScreen extends StatelessWidget {
                 child: _buildRoleCardContent(
                   title: 'Sentinels',
                   logoPath: 'assets/logo/sentinel_logo.png',
-                  bgImagePath: 'assets/roles/cypher_dark.webp',
+                  bgImagePath: 'assets/roles/cypher_bg.webp',
                 ),
               ),
 
