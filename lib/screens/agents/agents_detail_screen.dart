@@ -168,14 +168,7 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                                                 color: Colors.white,
                                               ),
                                             ),
-                                            const Divider(),
-                                            Text(
-                                              agent['lore'] ?? '',
-                                              style: const TextStyle(
-                                                fontSize: 15,
-                                                color: Colors.white,
-                                              ),
-                                            ),
+                                            const Divider(thickness: 2),
                                             const SizedBox(height: 50),
                                           ],
                                         ),

@@ -9,7 +9,6 @@ final List<Map<String, dynamic>> controllersData = [
     "agentNumber": "03",
     "summary":
         "A phantom of a memory, Omen hunts in the shadows. He renders enemies blind, teleports across the field, then lets paranoia take hold as his foe scrambles to learn where he might strike next.",
-    "lore": "Not available",
     "abilities": [
       {
         "name": "Shrouded Step",
@@ -52,7 +51,6 @@ final List<Map<String, dynamic>> controllersData = [
     "agentNumber": "02",
     "summary":
         "The American chemist, Viper deploys an array of poisonous chemical devices to control the battlefield and choke the enemy's vision. If the toxins don't kill her prey, her mind games surely will.",
-    "lore": "Not available",
     "abilities": [
       {
         "name": "Snake Bite",
@@ -95,8 +93,6 @@ final List<Map<String, dynamic>> controllersData = [
     "agentNumber": "25",
     "summary":
         "Scottish troublemaker Clove makes mischief for enemies in both the heat of combat and the cold of death. The young immortal keeps foes guessing, even from beyond the grave, their return to the living only ever a moment away.",
-    "lore": "Not available",
-
     "abilities": [
       {
         "name": "Pick Me Up",
@@ -139,7 +135,6 @@ final List<Map<String, dynamic>> controllersData = [
     "agentNumber": "01",
     "summary":
         "Joining from the U.S.A., Brimstone's orbital arsenal ensures his squad always has the advantage. His ability to deliver utility precisely and from a distance make him an unmatched boots-on-the-ground commander.",
-    "lore": "Not available",
     "abilities": [
       {
         "name": "Incendiary",
@@ -182,7 +177,6 @@ final List<Map<String, dynamic>> controllersData = [
     "agentNumber": "21",
     "summary":
         "Hailing from India's coast, Harbor storms the field wielding ancient technology with dominion over water. He unleashes frothing rapids and crushing waves to shield his allies, or pummel those that oppose him.",
-    "lore": "Not available",
     "abilities": [
       {
         "name": "Storm Surge",
@@ -225,7 +219,6 @@ final List<Map<String, dynamic>> controllersData = [
     "agentNumber": "29",
     "summary":
         "Straight from Croatia, Miks takes the stage channeling pure sound energy. With his infectious passion and sonic powers, he rallies his squad to move as one as they set the tempo on the battlefield together.",
-    "lore": "Not available",
     "abilities": [
       {
         "name": "M-Pulse",
@@ -268,7 +261,6 @@ final List<Map<String, dynamic>> controllersData = [
     "agentNumber": "16",
     "summary":
         "A cosmic warrior from Ghana, Astra bends the fabric of space to her will. She places stars across the battlefield, transforming them into powerful abilities that control the flow of combat.",
-    "lore": "Not available",
     "abilities": [
       {
         "name": "Gravity Well",
