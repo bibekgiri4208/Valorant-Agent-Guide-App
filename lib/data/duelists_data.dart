@@ -5,72 +5,38 @@ final List<Map<String, dynamic>> duelistsData = [
     "role": "Duelist",
     "image": "assets/duelists/Jett.webp",
     "roleIcon": "assets/logo/duelist_logo.png",
-    "country": "South Korea",
-    "agentNumber": "3",
+    "country": "Unknown",
+    "agentNumber": "10",
     "summary":
-        "A phantom of a memory, Omen hunts in the shadows. He renders enemies blind, teleports across the field, then lets paranoia take hold as his foe scrambles to learn where he might strike next.",
-    "lore":
-        "Prior to joining the VALORANT Protocol, Omen was a highly skilled and ruthless assassin for the organization known as Scions of Hourglass. In order to stop the discovery of Radianite from becoming public knowledge, he was sent to assassinate the chief scientist in charge of the research on radianite, Dr. Sabine Callas (Viper) at her lab. In the altercation that happens between the two, Omen is severely burned by the contents of a vial Dr.Callas had been examining, and stumbles inside a test chamber. To prevent him from attacking again, Viper activates a mechanism in the test chamber that causes Omen to be ripped apart across space time and lose majority of his memories. The details of how he is brought back to life and kept in a stable state is still unclear but it is highly implied through voicelines that Sage has had a role to play in achieving that.",
+        "Representing her home country of South Korea, Jett's agile and evasive fighting style lets her take risks no one else can. She runs circles around every skirmish, cutting enemies before they even know what hit them.",
     "abilities": [
       {
-        "name": "Shrouded Step",
-        "icon": "assets/abilities/omen/shrouded_step.webp",
+        "name": "CloudBurst",
+        "icon": "assets/abilities/jett/cloudburst.webp",
         "description":
-            "EQUIP a shadow walk ability and see its range indicator. FIRE to begin a brief channel, then teleport to the marked location.",
-        "images": [
-          "assets/abilities/omen/shroudedstep_cast.webp",
-          "assets/abilities/omen/shroudedstep_active.webp",
-        ],
+            "INSTANTLY throw a projectile that expands into a brief vision-blocking cloud on impact with a surface. HOLD the ability key to curve the smoke in the direction of your crosshair.",
+        "video": "assets/abilities/jett/cloudburst.mp4",
       },
       {
-        "name": "Paranoia",
-        "icon": "assets/abilities/omen/paranoia.webp",
-        "description":
-            "Equip a shadow projectile and fire to briefly reduce the vision range of all players it touches. This ability can pass through walls, making it excellent for initiating fights.",
-        "images": [
-          "assets/abilities/omen/paranoia_cast.webp",
-          "assets/abilities/omen/paranoia_nearsight.webp",
-        ],
+        "name": "Updraft",
+        "icon": "assets/abilities/jett/updraft.webp",
+        "description": "INSTANTLY propel Jett high into the air.",
+        "video": "assets/abilities/jett/updraft.mp4",
       },
       {
-        "name": "Dark Cover",
-        "icon": "assets/abilities/omen/dark_cover.webp",
+        "name": "Tailwind",
+        "icon": "assets/abilities/jett/tailwind.webp",
         "description":
-            "EQUIP a shadow orb and enter a phased world to place and target the orbs. PRESS the ability key to throw the shadow orb to the marked location.",
-        "images": [
-          "assets/abilities/omen/darkcover_equip.webp",
-          "assets/abilities/omen/darkcover_active.webp",
-        ],
+            "ACTIVATE to prepare a gust of wind for a limited time. RE-USE the wind to propel Jett in the direction she is moving. If Jett is standing still, she propels forward. Tailwind charge resets every two kills.",
+        "video": "assets/abilities/jett/tailwind.mp4",
       },
       {
-        "name": "From the Shadows",
-        "icon": "assets/abilities/omen/from_the_shadows.webp",
+        "name": "Blade Storm",
+        "icon": "assets/abilities/jett/blade_storm.webp",
         "description":
-            "EQUIP a tactical map. FIRE to begin teleporting to the selected location. While teleporting, Omen will appear as a Shade that can be destroyed by an enemy to cancel.",
-        "images": [
-          "assets/abilities/omen/from_the_shadows_cast.webp",
-          "assets/abilities/omen/from_the_shadows_active.webp",
-        ],
+            "EQUIP a set of highly accurate throwing knives. FIRE to throw a single knife and recharge knives on a kill. ALT FIRE to throw all remaining daggers but does not recharge on a kill.",
+        "video": "assets/abilities/jett/blade_storm.mp4",
       },
     ],
-  },
-
-  {
-    "name": "Phoenix",
-    "role": "Duelist",
-    "image": "assets/duelists/Phoenix.webp",
-    "roleIcon": "assets/logo/duelist_logo.png",
-  },
-  {
-    "name": "Iso",
-    "role": "Duelist",
-    "image": "assets/duelists/Iso.webp",
-    "roleIcon": "assets/logo/duelist_logo.png",
-  },
-  {
-    "name": "Neon",
-    "role": "Duelist",
-    "image": "assets/duelists/Neon.webp",
-    "roleIcon": "assets/logo/duelist_logo.png",
   },
 ];
