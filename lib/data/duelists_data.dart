@@ -249,4 +249,88 @@ final List<Map<String, dynamic>> duelistsData = [
       },
     ],
   },
+
+  //Raze
+  {
+    "name": "Raze",
+    "role": "Duelist",
+    "image": "assets/duelists/Raze.webp",
+    "roleIcon": "assets/logo/duelist_logo.png",
+    "country": "Brazil",
+    "agentNumber": "12",
+    "summary":
+        "Hailing from Brazil, Raze is an explosive agent who thrives on chaos. She uses her arsenal of grenades and explosives to clear out enemies and create opportunities for her team.",
+    "abilities": [
+      {
+        "name": "Boom Bot",
+        "icon": "assets/abilities/raze/boom_bot.webp",
+        "description":
+            'EQUIP a Boom Bot. FIRE to deploy the bot, which travels in a straight line, bouncing off walls. The bot locks onto any enemies in its frontal cone and speeds up as it nears them. It explodes for heavy damage if it reaches them.',
+        "video": "assets/abilities/raze/boom_bot.mp4",
+      },
+      {
+        "name": "Blast Pack",
+        "icon": "assets/abilities/raze/blast_pack.webp",
+        "description":
+            'INSTANTLY throw a Blast Pack that will stick to surfaces. RE-USE the ability after deployment to detonate, damaging and moving anything hit. Raze isn\'t damaged by this ability, but will still take fall damage if launched up far enough.',
+        "video": "assets/abilities/raze/blast_pack.mp4",
+      },
+      {
+        "name": "Paint Shells",
+        "icon": "assets/abilities/raze/paint_shells.webp",
+        "description":
+            'EQUIP a cluster grenade. FIRE to throw it, which explodes into smaller grenades after a brief delay, dealing damage over a wide area.',
+        "video": "assets/abilities/raze/paint_shells.mp4",
+      },
+      {
+        "name": "Showstopper",
+        "icon": "assets/abilities/raze/showstopper.webp",
+        "description":
+            'EQUIP a rocket launcher. FIRE to launch a rocket that deals massive area damage on impact.',
+        "video": "assets/abilities/raze/showstopper.mp4",
+      },
+    ],
+  },
+
+  //Waylay
+  {
+    "name": "Waylay",
+    "role": "Duelist",
+    "image": "assets/duelists/Waylay.webp",
+    "roleIcon": "assets/logo/duelist_logo.png",
+    "country": "Unknown",
+    "agentNumber": "28",
+    "summary":
+        "Thailand's prismatic radiant Waylay transforms into light itself as she darts across the battlefield, striking down her targets through shards of light before flitting back to safety, all in the blink of an eye.",
+    "abilities": [
+      {
+        "name": "Refract",
+        "icon": "assets/abilities/waylay/refract.webp",
+        "description":
+            'INSTANTLY create a beacon of light on the floor. REACTIVATE to speed back to your beacon as a mote of pure light. You are invulnerable as you travel.',
+        "video": "assets/abilities/waylay/refract.mp4",
+      },
+      {
+        "name": "Saturate",
+        "icon": "assets/abilities/waylay/saturate.webp",
+        "description":
+            'INSTANTLY throw a cluster of light that explodes upon contact with the ground, Hindering nearby players with a powerful movement and weapon slow.',
+        "video": "assets/abilities/waylay/saturate.mp4",
+      },
+      {
+        "name": "Lightspeed",
+        "icon": "assets/abilities/waylay/lightspeed.webp",
+        "description":
+            'EQUIP to prepare for a burst of speed. FIRE to dash forward twice. ALT FIRE to dash once. Only your first dash can send you upward.',
+        "video": "assets/abilities/waylay/lightspeed.mp4",
+      },
+      {
+        "name": "Convergent Paths",
+        "icon": "assets/abilities/waylay/convergent_paths.webp",
+        "description":
+            'EQUIP to focus your prismatic power. FIRE to create an afterimage of yourself that projects a beam of light. After a brief delay, you gain a powerful speed boost and the beam expands, Hindering other players in the area.',
+        "video": "assets/abilities/waylay/convergent_paths.mp4",
+      },
+    ],
+  },
 ];
