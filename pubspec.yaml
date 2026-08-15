@@ -76,6 +76,9 @@ flutter:
   - assets/abilities/
   - assets/roles/
   - assets/icon/
+  - assets/icon/icon.jpg
+
+# Controllers
   - assets/abilities/omen/
   - assets/abilities/clove/
   - assets/abilities/viper/
@@ -83,6 +86,8 @@ flutter:
   - assets/abilities/harbor/
   - assets/abilities/miks/
   - assets/abilities/astra/
+
+# Initiators
   - assets/abilities/breach/
   - assets/abilities/fade/
   - assets/abilities/gekko/
@@ -90,11 +95,17 @@ flutter:
   - assets/abilities/skye/
   - assets/abilities/sova/
   - assets/abilities/tejo/
+
+# Duelists
   - assets/abilities/jett/
   - assets/abilities/reyna/
   - assets/abilities/phoenix/
   - assets/abilities/yoru/
-  - assets/icon/icon.jpg
+  - assets/abilities/iso/
+  - assets/abilities/neon/
+  - assets/abilities/raze/
+  - assets/abilities/waylay/
+
 
   fonts:
     - family: Valorant
