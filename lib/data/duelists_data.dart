@@ -314,7 +314,7 @@ final List<Map<String, dynamic>> duelistsData = [
         "name": "Saturate",
         "icon": "assets/abilities/waylay/saturate.webp",
         "description":
-            'INSTANTLY throw a cluster of light that explodes upon contact with the ground, Hindering nearby players with a powerful movement and weapon slow.',
+            'EQUIP to throw a cluster of light that explodes upon contact with the ground, Hindering nearby players with a powerful movement and weapon slow.',
         "video": "assets/abilities/waylay/saturate.mp4",
       },
       {
