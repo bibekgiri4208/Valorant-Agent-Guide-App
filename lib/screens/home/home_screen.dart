@@ -210,11 +210,11 @@ class _PressableCardState extends State<PressableCard> {
       behavior: HitTestBehavior.opaque,
       child: AnimatedScale(
         scale: _isPressed ? 0.95 : 1.0,
-        duration: const Duration(milliseconds: 100),
+        duration: const Duration(milliseconds: 80),
         curve: Curves.decelerate,
         child: AnimatedOpacity(
           opacity: _isPressed ? 0.8 : 1.0,
-          duration: const Duration(milliseconds: 100),
+          duration: const Duration(milliseconds: 80),
           child: widget.child,
         ),
       ),
