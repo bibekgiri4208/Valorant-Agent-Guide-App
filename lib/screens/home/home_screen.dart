@@ -46,82 +46,126 @@ class HomeScreen extends StatelessWidget {
         centerTitle: true,
         automaticallyImplyLeading: false,
         title: const Text(
-          "Valorant",
+          "VALORANT",
           style: TextStyle(
             color: Color(0xFFFF4654),
             fontSize: 30,
             fontFamily: 'Valorant',
+            letterSpacing: 2.0,
           ),
         ),
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // SECTION SUBTITLE & HEADER
+              Row(
+                children: [
+                  Container(
+                    width: 4,
+                    height: 18,
+                    color: const Color(0xFFFF4654),
+                  ),
+                  const SizedBox(width: 8),
+                  const Text(
+                    "// SELECT PROTOCOL ROLE",
+                    style: TextStyle(
+                      fontFamily: 'Valorant',
+                      fontSize: 11,
+                      color: Color(0xFFFF4654),
+                      letterSpacing: 1.5,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 8),
               const Text(
-                "Learn Your\nFaVorite agents",
+                "LEARN YOUR\nFAVORITE AGENTS",
                 style: TextStyle(
                   fontFamily: 'Valorant',
-                  fontSize: 35,
+                  fontSize: 28,
                   color: Colors.white,
+                  height: 1.15,
+                  letterSpacing: 1.0,
                 ),
               ),
 
-              const SizedBox(height: 30),
+              const SizedBox(height: 24),
 
-              // 1. DUELISTS
+              // 1. DUELISTS (Example: Custom red accent border with 1.5 width)
               PressableCard(
+                borderColor: const Color(0xFFFF4654),
+                borderWidth: 1.5,
+                borderRadius: 12,
                 onTap: () =>
                     _navigateToRoleScreen(context, const DuelistsScreen()),
                 child: _buildRoleCardContent(
-                  title: 'Duelists',
+                  roleNumber: '01',
+                  title: 'DUELISTS',
+                  tagline: 'ENTRY & FRAGGING',
                   logoPath: 'assets/logo/duelist_logo.png',
                   bgImagePath: 'assets/roles/iso_bg.jpg',
                 ),
               ),
 
-              const SizedBox(height: 30),
+              const SizedBox(height: 16),
 
               // 2. CONTROLLERS
               PressableCard(
+                borderColor: const Color(0xFFFF4654),
+                borderWidth: 1.2,
+                borderRadius: 12,
                 onTap: () =>
                     _navigateToRoleScreen(context, const ControllersScreen()),
                 child: _buildRoleCardContent(
-                  title: 'Controllers',
+                  roleNumber: '02',
+                  title: 'CONTROLLERS',
+                  tagline: 'SMOKES & VISION',
                   logoPath: 'assets/logo/controller_logo.png',
                   bgImagePath: 'assets/roles/clove_bg.webp',
                 ),
               ),
 
-              const SizedBox(height: 30),
+              const SizedBox(height: 16),
 
               // 3. INITIATORS
               PressableCard(
+                borderColor: const Color(0xFFFF4654),
+                borderWidth: 1.2,
+                borderRadius: 12,
                 onTap: () =>
                     _navigateToRoleScreen(context, const InitiatorsScreen()),
                 child: _buildRoleCardContent(
-                  title: 'Initiators',
+                  roleNumber: '03',
+                  title: 'INITIATORS',
+                  tagline: 'RECON & DISRUPTION',
                   logoPath: 'assets/logo/initiator_logo.png',
                   bgImagePath: 'assets/roles/kayo_bg.jpg',
                 ),
               ),
 
-              const SizedBox(height: 30),
+              const SizedBox(height: 16),
 
               // 4. SENTINELS
               PressableCard(
+                borderColor: const Color(0xFFFF4654),
+                borderWidth: 1.2,
+                borderRadius: 12,
                 onTap: () =>
                     _navigateToRoleScreen(context, const SentinelsScreen()),
                 child: _buildRoleCardContent(
-                  title: 'Sentinels',
+                  roleNumber: '04',
+                  title: 'SENTINELS',
+                  tagline: 'DEFENSE & ANCHORING',
                   logoPath: 'assets/logo/sentinel_logo.png',
                   bgImagePath: 'assets/roles/cypher_bg.webp',
                 ),
               ),
 
-              const SizedBox(height: 30),
+              const SizedBox(height: 25),
             ],
           ),
         ),
@@ -130,41 +174,111 @@ class HomeScreen extends StatelessWidget {
   }
 
   Widget _buildRoleCardContent({
+    required String roleNumber,
     required String title,
+    required String tagline,
     required String logoPath,
     required String bgImagePath,
   }) {
-    return Container(
-      height: 150,
-      width: double.maxFinite,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16.0),
-        border: Border.all(color: Colors.white, width: 3),
-        image: DecorationImage(
-          image: AssetImage(bgImagePath),
-          fit: BoxFit.cover,
-          alignment: Alignment.topCenter,
-          colorFilter: ColorFilter.mode(
-            Colors.black.withValues(alpha: 0.5),
-            BlendMode.darken,
-          ),
-        ),
-      ),
-      child: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+    return SizedBox(
+      height: 135,
+      width: double.infinity,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(10.8),
+        child: Stack(
           children: [
-            Image.asset(logoPath, width: 30, height: 30, color: Colors.white),
-            const SizedBox(width: 8),
-            Transform.translate(
-              offset: const Offset(0, 3),
-              child: Text(
-                title,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 30,
-                  fontFamily: "Valorant",
+            // Background Image
+            Positioned.fill(
+              child: Image.asset(
+                bgImagePath,
+                fit: BoxFit.cover,
+                alignment: Alignment.topCenter,
+              ),
+            ),
+
+            // Dark Gradient Overlay
+            Positioned.fill(
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    colors: [
+                      const Color(0xFF12181F).withValues(alpha: 0.8),
+                      const Color(0xFF12181F).withValues(alpha: 0.6),
+                      Colors.black.withValues(alpha: 0.1),
+                    ],
+                  ),
                 ),
+              ),
+            ),
+
+            // Left Red Accent
+            Positioned(
+              left: 0,
+              top: 0,
+              bottom: 0,
+              child: Container(width: 5, color: const Color(0xFFFF4654)),
+            ),
+
+            // Content Layer
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+              child: Row(
+                children: [
+                  // Icon Box
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFFF4654),
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
+                        color: const Color(0xFFFF4654).withValues(alpha: 0.4),
+                      ),
+                    ),
+                    child: Image.asset(
+                      logoPath,
+                      width: 26,
+                      height: 26,
+                      color: Colors.white,
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "$roleNumber // $tagline",
+                          style: const TextStyle(
+                            fontFamily: 'Valorant',
+                            fontSize: 9,
+                            color: Color(0xFFFF4654),
+                            letterSpacing: 1.2,
+                          ),
+                        ),
+                        const SizedBox(height: 2),
+                        Text(
+                          title,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 24,
+                            fontFamily: "Valorant",
+                            letterSpacing: 1.2,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  const Icon(
+                    Icons.arrow_forward_ios_rounded,
+                    color: Colors.white54,
+                    size: 20,
+                  ),
+                ],
               ),
             ),
           ],
@@ -174,12 +288,22 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-/// Reusable Widget that provides a physical tap-down & bounce effect
+/// Tap-down & bounce effect widget supporting custom border color, width, and radius
 class PressableCard extends StatefulWidget {
   final Widget child;
   final VoidCallback onTap;
+  final Color? borderColor;
+  final double borderWidth;
+  final double borderRadius;
 
-  const PressableCard({super.key, required this.child, required this.onTap});
+  const PressableCard({
+    super.key,
+    required this.child,
+    required this.onTap,
+    this.borderColor,
+    this.borderWidth = 1.0,
+    this.borderRadius = 12.0,
+  });
 
   @override
   State<PressableCard> createState() => _PressableCardState();
@@ -209,13 +333,31 @@ class _PressableCardState extends State<PressableCard> {
       onTapCancel: _onTapCancel,
       behavior: HitTestBehavior.opaque,
       child: AnimatedScale(
-        scale: _isPressed ? 0.95 : 1.0,
-        duration: const Duration(milliseconds: 80),
+        scale: _isPressed ? 0.96 : 1.0,
+        duration: const Duration(milliseconds: 90),
         curve: Curves.decelerate,
         child: AnimatedOpacity(
-          opacity: _isPressed ? 0.8 : 1.0,
-          duration: const Duration(milliseconds: 80),
-          child: widget.child,
+          opacity: _isPressed ? 0.85 : 1.0,
+          duration: const Duration(milliseconds: 90),
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(widget.borderRadius),
+              border: widget.borderColor != null
+                  ? Border.all(
+                      color: widget.borderColor!,
+                      width: widget.borderWidth,
+                    )
+                  : null,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: 0.4),
+                  blurRadius: 12,
+                  offset: const Offset(0, 4),
+                ),
+              ],
+            ),
+            child: widget.child,
+          ),
         ),
       ),
     );
