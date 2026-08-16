@@ -216,7 +216,7 @@ final List<Map<String, dynamic>> controllersData = [
     "image": "assets/controllers/Miks.webp",
     "roleIcon": "assets/logo/controller_logo.png",
     "country": "Croatia",
-    "agentNumber": "29",
+    "agentNumber": "30",
     "summary":
         "Straight from Croatia, Miks takes the stage channeling pure sound energy. With his infectious passion and sonic powers, he rallies his squad to move as one as they set the tempo on the battlefield together.",
     "abilities": [

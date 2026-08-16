@@ -9,7 +9,6 @@ final List<Map<String, dynamic>> initiatorsData = [
     "agentNumber": "13",
     "summary":
         "Breach, the bionic Swede, fires powerful, targeted kinetic blasts to aggressively clear a path through enemy ground. The damage and disruption he inflicts ensures no fight is ever fair.",
-    "lore": "not available",
     "abilities": [
       {
         "name": "After Shock",
@@ -52,7 +51,6 @@ final List<Map<String, dynamic>> initiatorsData = [
     "agentNumber": "20",
     "summary":
         "Fade, the Turkish tracker, uses her abilities to hunt down enemies and gather information for her team. Her skills allow her to reveal enemy positions and create opportunities for her allies.",
-    "lore": "Not available",
     "abilities": [
       {
         "name": "Prowler",
@@ -95,7 +93,6 @@ final List<Map<String, dynamic>> initiatorsData = [
     "agentNumber": "22",
     "summary":
         "Gekko the Angeleno leads a tight-knit crew of calamitous creatures. His buddies bound forward, scattering enemies out of the way, with Gekko chasing them down to regroup and go again.",
-    "lore": "Not available",
     "abilities": [
       {
         "name": "Mosh Pit",
@@ -138,7 +135,6 @@ final List<Map<String, dynamic>> initiatorsData = [
     "agentNumber": "17",
     "summary":
         "KAY/O is a machine of war built for a single purpose: neutralizing radiants. His power to Suppress enemy abilities dismantles his opponents' capacity to fight back, securing him and his allies the ultimate edge.",
-    "lore": "Not available",
     "abilities": [
       {
         "name": "FRAG/ment",
@@ -181,7 +177,6 @@ final List<Map<String, dynamic>> initiatorsData = [
     "agentNumber": "14",
     "summary":
         "Hailing from Australia, Skye and her band of beasts trail-blaze the way through hostile territory. With her creations hampering the enemy, and her power to heal others, the team is strongest and safest by Skye’s side.",
-    "lore": "Not available",
     "abilities": [
       {
         "name": "Regrowth",
@@ -224,7 +219,6 @@ final List<Map<String, dynamic>> initiatorsData = [
     "agentNumber": "06",
     "summary":
         "Born from the eternal winter of Russia's tundra, Sova tracks, finds, and eliminates enemies with ruthless efficiency and precision. His custom bow and incredible scouting abilities ensure that even if you run, you cannot hide.",
-    "lore": "Not available",
     "abilities": [
       {
         "name": "Owl Drone",
@@ -267,7 +261,6 @@ final List<Map<String, dynamic>> initiatorsData = [
     "agentNumber": "27",
     "summary":
         "A veteran intelligence consultant from Colombia, Tejo's ballistic guidance system pressures the enemy to relinquish their ground - or their lives. His targeted strikes keep opponents off balance and under his heel.",
-    "lore": "Not available",
     "abilities": [
       {
         "name": "Stealth Drone",
