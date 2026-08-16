@@ -38,11 +38,7 @@ class RolesDescriptionScreen extends StatelessWidget {
               ),
               child: const Text(
                 "Every Valorant agent belongs to one of four distinct tactical roles. Understanding role synergies is key to dominating site execution and map control.",
-                style: TextStyle(
-                  color: Colors.white70,
-                  fontSize: 13,
-                  height: 1.5,
-                ),
+                style: TextStyle(color: Colors.grey, fontSize: 13, height: 1.5),
               ),
             ),
             const SizedBox(height: 20),
@@ -178,14 +174,14 @@ class RolesDescriptionScreen extends StatelessWidget {
           Text(
             description,
             style: const TextStyle(
-              color: Colors.white70,
+              color: Colors.grey,
               fontSize: 13,
               height: 1.5,
             ),
           ),
           const SizedBox(height: 12),
 
-          const Divider(color: Colors.white54, height: 1),
+          const Divider(color: Colors.white, height: 1),
           const SizedBox(height: 12),
 
           // Key Objectives List
@@ -218,7 +214,7 @@ class RolesDescriptionScreen extends StatelessWidget {
                     child: Text(
                       task,
                       style: const TextStyle(
-                        color: Colors.white60,
+                        color: Colors.grey,
                         fontSize: 12,
                         height: 1.3,
                       ),
