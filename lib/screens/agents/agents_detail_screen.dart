@@ -112,67 +112,172 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                           InkWell(
                             onTap: () {
                               showModalBottomSheet(
-                                backgroundColor: const Color(0xFF1C252E),
                                 context: context,
+                                backgroundColor: const Color(0xFF1C252E),
+                                isScrollControlled: true,
+                                shape: const RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.vertical(
+                                    top: Radius.circular(20),
+                                  ),
+                                ),
                                 builder: (context) {
-                                  return SizedBox(
-                                    height: 400,
-                                    width: double.maxFinite,
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 20,
-                                      ),
-                                      child: SingleChildScrollView(
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                                  return Container(
+                                    constraints: BoxConstraints(
+                                      maxHeight:
+                                          MediaQuery.sizeOf(context).height *
+                                          0.65,
+                                    ),
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 20,
+                                      vertical: 12,
+                                    ),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Center(
+                                          child: Container(
+                                            width: 36,
+                                            height: 4,
+                                            decoration: BoxDecoration(
+                                              color: Colors.white24,
+                                              borderRadius:
+                                                  BorderRadius.circular(2),
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(height: 16),
+
+                                        // Title Section
+                                        Row(
                                           children: [
-                                            const SizedBox(height: 20),
+                                            Container(
+                                              width: 3,
+                                              height: 22,
+                                              color: const Color(0xFFFF4654),
+                                            ),
+                                            const SizedBox(width: 8),
                                             const Text(
                                               "Agent Description",
                                               style: TextStyle(
-                                                fontSize: 25,
+                                                fontSize: 22,
                                                 fontFamily: "Valorant",
                                                 color: Colors.white,
                                               ),
                                             ),
-                                            const Divider(thickness: 2),
-                                            Text(
-                                              "Role: ${agent['role'] ?? ''}",
-                                              style: const TextStyle(
-                                                color: Colors.white,
-                                                fontFamily: "Valorant",
-                                              ),
-                                            ),
-                                            const Divider(thickness: 2),
-                                            Text(
-                                              "Country: ${agent['country'] ?? 'Unknown'}",
-                                              style: const TextStyle(
-                                                color: Colors.white,
-                                                fontFamily: "Valorant",
-                                              ),
-                                            ),
-                                            const Divider(thickness: 2),
-                                            Text(
-                                              "Agent No. ${agent['agentNumber'] ?? ''}",
-                                              style: const TextStyle(
-                                                color: Colors.white,
-                                                fontFamily: "Valorant",
-                                              ),
-                                            ),
-                                            const Divider(thickness: 2),
-                                            Text(
-                                              agent['summary'] ?? '',
-                                              style: const TextStyle(
-                                                fontSize: 15,
-                                                color: Colors.white,
-                                              ),
-                                            ),
-                                            const Divider(thickness: 2),
-                                            const SizedBox(height: 50),
                                           ],
                                         ),
-                                      ),
+                                        const SizedBox(height: 16),
+
+                                        // Scrollable Content
+                                        Flexible(
+                                          child: SingleChildScrollView(
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Container(
+                                                  width: double.infinity,
+                                                  padding: const EdgeInsets.all(
+                                                    14,
+                                                  ),
+                                                  decoration: BoxDecoration(
+                                                    color: Colors.white
+                                                        .withValues(
+                                                          alpha: 0.05,
+                                                        ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                          10,
+                                                        ),
+                                                    border: Border.all(
+                                                      color: Colors.white12,
+                                                    ),
+                                                  ),
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Text(
+                                                        "Role: ${agent['role'] ?? ''}",
+                                                        style: const TextStyle(
+                                                          color: Colors.white,
+                                                          fontFamily:
+                                                              "Valorant",
+                                                          fontSize: 14,
+                                                        ),
+                                                      ),
+                                                      const Divider(
+                                                        color: Colors.white24,
+                                                        height: 20,
+                                                        thickness: 1,
+                                                      ),
+                                                      Text(
+                                                        "Country: ${agent['country'] ?? 'Unknown'}",
+                                                        style: const TextStyle(
+                                                          color: Colors.white,
+                                                          fontFamily:
+                                                              "Valorant",
+                                                          fontSize: 14,
+                                                        ),
+                                                      ),
+                                                      const Divider(
+                                                        color: Colors.white24,
+                                                        height: 20,
+                                                        thickness: 1,
+                                                      ),
+                                                      Text(
+                                                        "Agent No. ${agent['agentNumber'] ?? ''}",
+                                                        style: const TextStyle(
+                                                          color: Colors.white,
+                                                          fontFamily:
+                                                              "Valorant",
+                                                          fontSize: 14,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+
+                                                const SizedBox(height: 16),
+
+                                                // Summary Card Container
+                                                Container(
+                                                  width: double.infinity,
+                                                  padding: const EdgeInsets.all(
+                                                    14,
+                                                  ),
+                                                  decoration: BoxDecoration(
+                                                    color: Colors.white
+                                                        .withValues(
+                                                          alpha: 0.05,
+                                                        ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                          10,
+                                                        ),
+                                                    border: Border.all(
+                                                      color: Colors.white12,
+                                                    ),
+                                                  ),
+                                                  child: Text(
+                                                    agent['summary'] ?? '',
+                                                    style: const TextStyle(
+                                                      fontSize: 14,
+                                                      color: Colors.white,
+                                                      height: 1.5,
+                                                    ),
+                                                  ),
+                                                ),
+
+                                                const SizedBox(height: 20),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   );
                                 },
@@ -200,6 +305,20 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                           ),
                           const Spacer(),
                         ],
+                      ),
+
+                      Positioned(
+                        top: 10,
+                        left: 10,
+                        child: IconButton(
+                          icon: Image.asset(
+                            'assets/icon/back_arrow.png',
+                            width: 24,
+                            height: 24,
+                            color: Colors.white,
+                          ),
+                          onPressed: () => Navigator.pop(context),
+                        ),
                       ),
                     ],
                   ),
