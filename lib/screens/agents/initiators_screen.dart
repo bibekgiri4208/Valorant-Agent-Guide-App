@@ -40,6 +40,15 @@ class InitiatorsScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
+                "// PROTOCOL ROSTER",
+                style: TextStyle(
+                  fontFamily: 'Valorant',
+                  fontSize: 11,
+                  color: Color(0xFFFF4654),
+                  letterSpacing: 1.5,
+                ),
+              ),
+              const Text(
                 "CHOOSE YOUR\nINITIATOR",
                 style: TextStyle(
                   fontFamily: 'Valorant',
@@ -176,8 +185,8 @@ class InitiatorsScreen extends StatelessWidget {
                                             16,
                                           ),
                                           border: Border.all(
-                                            color: Colors.white30,
-                                            width: 4,
+                                            color: Color(0xFF9B6DFF),
+                                            width: 3,
                                           ),
                                           image: DecorationImage(
                                             image: const AssetImage(
