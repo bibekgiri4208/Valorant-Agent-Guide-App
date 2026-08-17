@@ -74,7 +74,7 @@ class HomeScreen extends StatelessWidget {
                     "// SELECT PROTOCOL ROLE",
                     style: TextStyle(
                       fontFamily: 'Valorant',
-                      fontSize: 11,
+                      fontSize: 12,
                       color: Color(0xFFFF4654),
                       letterSpacing: 1.5,
                     ),
@@ -97,8 +97,8 @@ class HomeScreen extends StatelessWidget {
 
               // 1. DUELISTS (Example: Custom red accent border with 1.5 width)
               PressableCard(
-                borderColor: const Color(0xFFFF4654),
-                borderWidth: 1.5,
+                borderColor: Colors.white,
+                borderWidth: 3,
                 borderRadius: 12,
                 onTap: () =>
                     _navigateToRoleScreen(context, const DuelistsScreen()),
@@ -115,8 +115,8 @@ class HomeScreen extends StatelessWidget {
 
               // 2. CONTROLLERS
               PressableCard(
-                borderColor: const Color(0xFFFF4654),
-                borderWidth: 1.2,
+                borderColor: Colors.white,
+                borderWidth: 3,
                 borderRadius: 12,
                 onTap: () =>
                     _navigateToRoleScreen(context, const ControllersScreen()),
@@ -133,8 +133,8 @@ class HomeScreen extends StatelessWidget {
 
               // 3. INITIATORS
               PressableCard(
-                borderColor: const Color(0xFFFF4654),
-                borderWidth: 1.2,
+                borderColor: Colors.white,
+                borderWidth: 3,
                 borderRadius: 12,
                 onTap: () =>
                     _navigateToRoleScreen(context, const InitiatorsScreen()),
@@ -151,8 +151,8 @@ class HomeScreen extends StatelessWidget {
 
               // 4. SENTINELS
               PressableCard(
-                borderColor: const Color(0xFFFF4654),
-                borderWidth: 1.2,
+                borderColor: Colors.white,
+                borderWidth: 3,
                 borderRadius: 12,
                 onTap: () =>
                     _navigateToRoleScreen(context, const SentinelsScreen()),
@@ -181,10 +181,10 @@ class HomeScreen extends StatelessWidget {
     required String bgImagePath,
   }) {
     return SizedBox(
-      height: 135,
+      height: 130,
       width: double.infinity,
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(10.8),
+        borderRadius: BorderRadius.circular(12),
         child: Stack(
           children: [
             // Background Image
@@ -204,21 +204,13 @@ class HomeScreen extends StatelessWidget {
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
                     colors: [
-                      const Color(0xFF12181F).withValues(alpha: 0.8),
+                      const Color(0xFF12181F).withValues(alpha: 0.9),
                       const Color(0xFF12181F).withValues(alpha: 0.6),
                       Colors.black.withValues(alpha: 0.1),
                     ],
                   ),
                 ),
               ),
-            ),
-
-            // Left Red Accent
-            Positioned(
-              left: 0,
-              top: 0,
-              bottom: 0,
-              child: Container(width: 5, color: const Color(0xFFFF4654)),
             ),
 
             // Content Layer
@@ -275,7 +267,7 @@ class HomeScreen extends StatelessWidget {
 
                   const Icon(
                     Icons.arrow_forward_ios_rounded,
-                    color: Colors.white54,
+                    color: Colors.white,
                     size: 20,
                   ),
                 ],
