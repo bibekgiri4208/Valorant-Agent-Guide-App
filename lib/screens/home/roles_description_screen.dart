@@ -120,7 +120,7 @@ class RolesDescriptionScreen extends StatelessWidget {
       decoration: BoxDecoration(
         color: const Color(0xFF12181F),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.white),
+        border: Border.all(color: Colors.grey, width: 1.5),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
