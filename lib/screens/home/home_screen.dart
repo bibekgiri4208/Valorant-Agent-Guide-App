@@ -95,7 +95,7 @@ class HomeScreen extends StatelessWidget {
 
               const SizedBox(height: 24),
 
-              // 1. DUELISTS (Example: Custom red accent border with 1.5 width)
+              // 1. DUELISTS
               PressableCard(
                 borderColor: Colors.white,
                 borderWidth: 3,
