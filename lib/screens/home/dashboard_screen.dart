@@ -27,7 +27,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
 
   final List<Map<String, String>> _navItems = const [
     {"label": "Home", "icon": "assets/logo/valorant_logo.png"},
-    {"label": "Description", "icon": "assets/logo/controller_logo.png"},
+    {"label": "Description", "icon": "assets/icon/description.png"},
     {"label": "Duelist", "icon": "assets/logo/duelist_logo.png"},
     {"label": "Developer", "icon": "assets/icon/about_us.png"},
   ];
