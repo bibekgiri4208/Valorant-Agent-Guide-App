@@ -210,7 +210,7 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                                                         ),
                                                       ),
                                                       const Divider(
-                                                        color: Colors.white24,
+                                                        color: Colors.white,
                                                         height: 20,
                                                         thickness: 1,
                                                       ),
@@ -224,7 +224,7 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                                                         ),
                                                       ),
                                                       const Divider(
-                                                        color: Colors.white24,
+                                                        color: Colors.white,
                                                         height: 20,
                                                         thickness: 1,
                                                       ),
