@@ -5,7 +5,7 @@ final List<Map<String, dynamic>> duelistsData = [
     "role": "Duelist",
     "image": "assets/duelists/Jett.webp",
     "roleIcon": "assets/logo/duelist_logo.png",
-    "country": "Unknown",
+    "country": "South Korea",
     "agentNumber": "10",
     "summary":
         "Representing her home country of South Korea, Jett's agile and evasive fighting style lets her take risks no one else can. She runs circles around every skirmish, cutting enemies before they even know what hit them.",
@@ -172,7 +172,7 @@ final List<Map<String, dynamic>> duelistsData = [
     "role": "Duelist",
     "image": "assets/duelists/Iso.webp",
     "roleIcon": "assets/logo/duelist_logo.png",
-    "country": "Unknown",
+    "country": "China",
     "agentNumber": "24",
     "summary":
         "Chinese fixer for hire, Iso falls into a flow state to dismantle the opposition. Reconfiguring ambient energy into bulletproof protection, he advances with focus towards his next duel to the death.",
@@ -298,7 +298,7 @@ final List<Map<String, dynamic>> duelistsData = [
     "role": "Duelist",
     "image": "assets/duelists/Waylay.webp",
     "roleIcon": "assets/logo/duelist_logo.png",
-    "country": "Unknown",
+    "country": "Thailand",
     "agentNumber": "28",
     "summary":
         "Thailand's prismatic radiant Waylay transforms into light itself as she darts across the battlefield, striking down her targets through shards of light before flitting back to safety, all in the blink of an eye.",
