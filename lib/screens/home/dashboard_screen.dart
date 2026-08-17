@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:valorant_guide_app/screens/home/about_me_screen.dart';
+import 'package:valorant_guide_app/screens/home/game_guide_screen.dart';
 import 'package:valorant_guide_app/screens/home/home_screen.dart';
 import 'package:valorant_guide_app/screens/home/roles_description_screen.dart';
 
@@ -16,19 +17,14 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   final List<Widget> _pages = const [
     HomeScreen(),
     RolesDescriptionScreen(),
-    Center(
-      child: Text(
-        "Duelist",
-        style: TextStyle(color: Colors.white, fontFamily: 'Valorant'),
-      ),
-    ),
+    GameGuideScreen(),
     AboutMeScreen(),
   ];
 
   final List<Map<String, String>> _navItems = const [
     {"label": "Home", "icon": "assets/logo/valorant_logo.png"},
-    {"label": "Description", "icon": "assets/icon/description.png"},
-    {"label": "Duelist", "icon": "assets/logo/duelist_logo.png"},
+    {"label": "Roles", "icon": "assets/icon/description.png"},
+    {"label": "Guide", "icon": "assets/icon/guide.png"},
     {"label": "Developer", "icon": "assets/icon/about_us.png"},
   ];
 
