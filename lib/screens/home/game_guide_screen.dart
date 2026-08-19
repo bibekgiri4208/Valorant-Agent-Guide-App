@@ -214,6 +214,84 @@ class GameGuideScreen extends StatelessWidget {
                 icon: Icons.volume_up_rounded,
               ),
 
+              const SizedBox(height: 16),
+
+              // 13. DEAD ZONING & JIGGLE PEEKING
+              _buildGuideSectionCard(
+                sectionNumber: "13",
+                title: "ADVANCED MOVEMENT",
+                content:
+                    "• Jiggle Peek: Tap movement keys quickly to spot angles without exposing your body.\n"
+                    "• Dead Zoning: Fire precisely at the instant your movement direction switches velocity.\n"
+                    "• Jump Peeking: Jump out sideways and fall back instantly to bait out enemy sniper shots.",
+                icon: Icons.directions_run_rounded,
+              ),
+
+              const SizedBox(height: 16),
+
+              // 14. RECOIL & SPRAY CONTROL
+              _buildGuideSectionCard(
+                sectionNumber: "14",
+                title: "SPRAY & RECOIL CONTROL",
+                content:
+                    "• Tapping & Bursting: Stick to 2–3 bullet bursts at medium to long ranges.\n"
+                    "• Spray Patterns: Pull down slowly as continuous fire causes bullets to climb.\n"
+                    "• Recoil Reset: Briefly pause firing for a fraction of a second to let crosshairs reset.",
+                icon: Icons.grain_rounded,
+              ),
+
+              const SizedBox(height: 16),
+
+              // 15. POST-PLANT ISOLATION
+              _buildGuideSectionCard(
+                sectionNumber: "15",
+                title: "POST-PLANT PLAYBOOK",
+                content:
+                    "• Play Time: Focus on delaying defuses with utility rather than chasing gunfights.\n"
+                    "• Isolate Fights: In 1v2 clutches, play aggressively to catch enemies off-guard in 1v1s.\n"
+                    "• Crossfire Traps: Position with teammates to force defenders to expose themselves to both of you.",
+                icon: Icons.security_rounded,
+              ),
+
+              const SizedBox(height: 16),
+
+              // 16. RETAKES & SITE RECOVERIES
+              _buildGuideSectionCard(
+                sectionNumber: "16",
+                title: "RETAKE COORDINATION",
+                content:
+                    "• Group Up: Coordinate site retakes as a team rather than pushing alone.\n"
+                    "• Save Smokes: Controllers should save a smoke to cover the Spike during defusal.\n"
+                    "• Stick the Half: Always attempt to tap the half-defuse line (3.5s) to force reactions.",
+                icon: Icons.published_with_changes_rounded,
+              ),
+
+              const SizedBox(height: 16),
+
+              // 17. SHIELD & ARMOR PRIORITY
+              _buildGuideSectionCard(
+                sectionNumber: "17",
+                title: "ARMOR & SHIELD MATH",
+                content:
+                    "• Heavy Shield: Provides 50 extra HP and absorbs 66% of incoming damage.\n"
+                    "• Light Shield: Provides 25 extra HP for 400 credits; ideal for eco or half-buys.\n"
+                    "• Rifle Thresholds: Phantom headshots deal 140 damage at range, making Heavy Shield essential.",
+                icon: Icons.shield_rounded,
+              ),
+
+              const SizedBox(height: 16),
+
+              // 18. AUDIO CUES & HRTF
+              _buildGuideSectionCard(
+                sectionNumber: "18",
+                title: "AUDIO CUES & HRTF",
+                content:
+                    "• Enable HRTF: Turn on 3D spatial audio in settings to pinpoint footsteps and reloads.\n"
+                    "• Surface Sounds: Distinct metal, snow, or wood step sounds pinpoint precise map locations.\n"
+                    "• Ability Audio: Listen for unique weapon pulls, agent voice lines, and utility casts.",
+                icon: Icons.headphones_rounded,
+              ),
+
               const SizedBox(height: 25),
             ],
           ),

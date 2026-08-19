@@ -23,25 +23,39 @@ class RolesDescriptionScreen extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // INTRO BANNER
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: const Color(0xFF12181F),
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: const Color(0xFFFF4654), width: 2),
-              ),
-              child: const Text(
-                "Every Valorant agent belongs to one of four distinct tactical roles. Understanding role synergies is key to dominating site execution and map control.",
-                style: TextStyle(color: Colors.grey, fontSize: 13, height: 1.5),
+            Row(
+              children: [
+                Container(width: 4, height: 18, color: const Color(0xFFFF4654)),
+                const SizedBox(width: 8),
+                const Text(
+                  "// AGENT CLASSIFICATIONS",
+                  style: TextStyle(
+                    fontFamily: 'Valorant',
+                    fontSize: 12,
+                    color: Color(0xFFFF4654),
+                    letterSpacing: 1.5,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 8),
+            const Text(
+              "Combat\nRoles",
+              style: TextStyle(
+                fontFamily: 'Valorant',
+                fontSize: 32,
+                color: Colors.white,
+                height: 1.1,
+                letterSpacing: 1.0,
               ),
             ),
-            const SizedBox(height: 20),
+
+            const SizedBox(height: 24),
 
             // DUELIST
             _buildRoleCard(

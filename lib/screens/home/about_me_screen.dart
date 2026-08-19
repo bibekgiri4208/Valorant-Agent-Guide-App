@@ -159,6 +159,34 @@ class AboutMeScreen extends StatelessWidget {
               description:
                   "Tactile animations, dark mode aesthetics, and low-latency navigation tailored for quick mobile reference.",
             ),
+            const SizedBox(height: 10),
+            _buildBenefitTile(
+              icon: Icons.badge_rounded,
+              title: "Complete Agent Dossiers",
+              description:
+                  "Access full skill breakdowns, character biographies, and role-specific stats for every operative in the Valorant roster.",
+            ),
+            const SizedBox(height: 10),
+            _buildBenefitTile(
+              icon: Icons.speed_rounded,
+              title: "Instant Session Reference",
+              description:
+                  "Engineered for rapid second-screen lookups during live matches without needing to tab out or drop in-game performance.",
+            ),
+            const SizedBox(height: 10),
+            _buildBenefitTile(
+              icon: Icons.menu_book_rounded,
+              title: "Tactical Guide Modules",
+              description:
+                  "A complete library of actionable field tips covering crosshair placement, peeking mechanics, spike timers, and advanced movement.",
+            ),
+            const SizedBox(height: 10),
+            _buildBenefitTile(
+              icon: Icons.monetization_on_rounded,
+              title: "Economy & Buy Strategies",
+              description:
+                  "Master round-by-round credit management, including Full Buys, Eco/Save rounds, Light Buys, and armor math for optimal team spending.",
+            ),
 
             const SizedBox(height: 25),
 
@@ -238,10 +266,10 @@ class AboutMeScreen extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-              color: const Color(0xFFFF4654).withValues(alpha: 0.15),
+              color: const Color(0xFFFF4654),
               borderRadius: BorderRadius.circular(8),
             ),
-            child: Icon(icon, color: const Color(0xFFFF4654), size: 20),
+            child: Icon(icon, color: Colors.white, size: 20),
           ),
           const SizedBox(width: 14),
           Expanded(

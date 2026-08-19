@@ -86,7 +86,7 @@ class HomeScreen extends StatelessWidget {
                 "LEARN YOUR\nFAVORITE AGENTS",
                 style: TextStyle(
                   fontFamily: 'Valorant',
-                  fontSize: 28,
+                  fontSize: 32,
                   color: Colors.white,
                   height: 1.15,
                   letterSpacing: 1.0,
