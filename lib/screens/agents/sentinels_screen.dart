@@ -117,7 +117,7 @@ class SentinelsScreen extends StatelessWidget {
                                         milliseconds: 500,
                                       ),
                                       reverseTransitionDuration: const Duration(
-                                        milliseconds: 450,
+                                        milliseconds: 400,
                                       ),
                                       pageBuilder:
                                           (
