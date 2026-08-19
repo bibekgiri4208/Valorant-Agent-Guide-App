@@ -21,7 +21,7 @@ class AboutMeScreen extends StatelessWidget {
         centerTitle: true,
         automaticallyImplyLeading: false,
         title: const Text(
-          "Developer Profile",
+          "About vAlo Guide",
           style: TextStyle(
             color: Color(0xFFFF4654),
             fontSize: 30,
@@ -31,69 +31,118 @@ class AboutMeScreen extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // PROFILE CARD HEADER
             Container(
               width: double.infinity,
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.all(18),
               decoration: BoxDecoration(
                 color: const Color(0xFF12181F),
-                borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: const Color(0xFFFF4654), width: 2),
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: const Color(0xFFFF4654), width: 1.5),
               ),
-              child: Row(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Avatar Box
-                  Container(
-                    width: 75,
-                    height: 75,
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFFF4654),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: const Center(
-                      child: Icon(
-                        Icons.person_rounded,
-                        size: 48,
-                        color: Colors.white,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        "DEVELOPER",
+                        style: TextStyle(
+                          fontFamily: 'Valorant',
+                          fontSize: 10,
+                          color: Color(0xFFFF4654),
+                          letterSpacing: 1.5,
+                        ),
                       ),
-                    ),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 3,
+                        ),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF1C252E),
+                          borderRadius: BorderRadius.circular(4),
+                          border: Border.all(color: Colors.grey, width: 1),
+                        ),
+                        child: const Text(
+                          "AGENT #0",
+                          style: TextStyle(
+                            fontFamily: 'Valorant',
+                            fontSize: 9,
+                            color: Colors.grey,
+                            letterSpacing: 1.0,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                  const SizedBox(width: 16),
 
-                  // Name & Tagline
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          "Bibek Giri",
-                          style: TextStyle(
-                            fontFamily: 'Valorant',
-                            fontSize: 22,
-                            color: Colors.white,
+                  const SizedBox(height: 14),
+
+                  Row(
+                    children: [
+                      // Avatar Frame with Asset Image
+                      Container(
+                        width: 68,
+                        height: 68,
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF1C252E),
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(color: Colors.grey, width: 1),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(9),
+                          child: Image.asset(
+                            'assets/logo/jester_logo.webp',
+                            fit: BoxFit.cover,
                           ),
                         ),
-                        const SizedBox(height: 4),
-                        const Text(
-                          "Developer of Valo Guide",
-                          style: TextStyle(
-                            fontFamily: 'Valorant',
-                            fontSize: 11,
-                            color: Color(0xFFFF4654),
-                            letterSpacing: 1.2,
-                          ),
+                      ),
+                      const SizedBox(width: 16),
+
+                      // Name & Details
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              "Bibek Giri",
+                              style: TextStyle(
+                                fontFamily: 'Valorant',
+                                fontSize: 22,
+                                color: Colors.white,
+                                letterSpacing: 1.0,
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              "vALO GUIDE ARCHITECT",
+                              style: TextStyle(
+                                fontFamily: 'Valorant',
+                                fontSize: 10,
+                                color: Colors.grey.shade400,
+                                letterSpacing: 1.1,
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              "AKA: THE JESTER",
+                              style: TextStyle(
+                                fontFamily: 'Valorant',
+                                fontSize: 10,
+                                color: Colors.grey.shade400,
+                                letterSpacing: 1.1,
+                              ),
+                            ),
+                          ],
                         ),
-                        const SizedBox(height: 6),
-                        const Text(
-                          "Agent No. #0",
-                          style: TextStyle(color: Colors.white54, fontSize: 12),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ],
               ),
