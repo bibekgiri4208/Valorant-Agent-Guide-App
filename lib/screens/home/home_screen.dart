@@ -97,7 +97,7 @@ class HomeScreen extends StatelessWidget {
 
               // 1. DUELISTS
               PressableCard(
-                borderColor: Colors.white,
+                borderColor: Colors.grey,
                 borderWidth: 3,
                 borderRadius: 12,
                 onTap: () =>
@@ -107,7 +107,7 @@ class HomeScreen extends StatelessWidget {
                   title: 'DUELISTS',
                   tagline: 'ENTRY & FRAGGING',
                   logoPath: 'assets/logo/duelist_logo.png',
-                  bgImagePath: 'assets/roles/iso_bg.jpg',
+                  bgImagePath: 'assets/roles/jett_bg.webp',
                 ),
               ),
 
@@ -115,7 +115,7 @@ class HomeScreen extends StatelessWidget {
 
               // 2. CONTROLLERS
               PressableCard(
-                borderColor: Colors.white,
+                borderColor: Colors.grey,
                 borderWidth: 3,
                 borderRadius: 12,
                 onTap: () =>
@@ -125,7 +125,7 @@ class HomeScreen extends StatelessWidget {
                   title: 'CONTROLLERS',
                   tagline: 'SMOKES & VISION',
                   logoPath: 'assets/logo/controller_logo.png',
-                  bgImagePath: 'assets/roles/clove_bg.webp',
+                  bgImagePath: 'assets/roles/viper_cinematic.webp',
                 ),
               ),
 
@@ -133,7 +133,7 @@ class HomeScreen extends StatelessWidget {
 
               // 3. INITIATORS
               PressableCard(
-                borderColor: Colors.white,
+                borderColor: Colors.grey,
                 borderWidth: 3,
                 borderRadius: 12,
                 onTap: () =>
@@ -143,7 +143,7 @@ class HomeScreen extends StatelessWidget {
                   title: 'INITIATORS',
                   tagline: 'RECON & DISRUPTION',
                   logoPath: 'assets/logo/initiator_logo.png',
-                  bgImagePath: 'assets/roles/kayo_bg.jpg',
+                  bgImagePath: 'assets/roles/sova_cinematic.webp',
                 ),
               ),
 
@@ -151,7 +151,7 @@ class HomeScreen extends StatelessWidget {
 
               // 4. SENTINELS
               PressableCard(
-                borderColor: Colors.white,
+                borderColor: Colors.grey,
                 borderWidth: 3,
                 borderRadius: 12,
                 onTap: () =>
@@ -161,7 +161,7 @@ class HomeScreen extends StatelessWidget {
                   title: 'SENTINELS',
                   tagline: 'DEFENSE & ANCHORING',
                   logoPath: 'assets/logo/sentinel_logo.png',
-                  bgImagePath: 'assets/roles/cypher_bg.webp',
+                  bgImagePath: 'assets/roles/cypher_cinematic.webp',
                 ),
               ),
 
@@ -181,7 +181,7 @@ class HomeScreen extends StatelessWidget {
     required String bgImagePath,
   }) {
     return SizedBox(
-      height: 130,
+      height: 160,
       width: double.infinity,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(12),
@@ -204,9 +204,9 @@ class HomeScreen extends StatelessWidget {
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
                     colors: [
-                      const Color(0xFF12181F).withValues(alpha: 0.9),
-                      const Color(0xFF12181F).withValues(alpha: 0.6),
-                      Colors.black.withValues(alpha: 0.1),
+                      const Color(0xFF12181F).withValues(alpha: 0.7),
+                      const Color(0xFF12181F).withValues(alpha: 0.1),
+                      Colors.black.withValues(alpha: 0.05),
                     ],
                   ),
                 ),
@@ -230,8 +230,8 @@ class HomeScreen extends StatelessWidget {
                     ),
                     child: Image.asset(
                       logoPath,
-                      width: 26,
-                      height: 26,
+                      width: 30,
+                      height: 30,
                       color: Colors.white,
                     ),
                   ),
@@ -246,7 +246,7 @@ class HomeScreen extends StatelessWidget {
                           "$roleNumber // $tagline",
                           style: const TextStyle(
                             fontFamily: 'Valorant',
-                            fontSize: 9,
+                            fontSize: 10,
                             color: Color(0xFFFF4654),
                             letterSpacing: 1.2,
                           ),
@@ -256,7 +256,7 @@ class HomeScreen extends StatelessWidget {
                           title,
                           style: const TextStyle(
                             color: Colors.white,
-                            fontSize: 24,
+                            fontSize: 25,
                             fontFamily: "Valorant",
                             letterSpacing: 1.2,
                           ),
