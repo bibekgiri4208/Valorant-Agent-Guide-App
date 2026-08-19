@@ -12,7 +12,7 @@ class GameGuideScreen extends StatelessWidget {
         elevation: 0,
         centerTitle: true,
         title: const Text(
-          "VALORANT GUIDE",
+          "Game Guide",
           style: TextStyle(
             color: Color(0xFFFF4654),
             fontSize: 30,

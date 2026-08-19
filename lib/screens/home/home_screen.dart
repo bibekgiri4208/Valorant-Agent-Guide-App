@@ -13,17 +13,17 @@ class HomeScreen extends StatelessWidget {
       context,
       PageRouteBuilder(
         transitionDuration: const Duration(milliseconds: 300),
-        reverseTransitionDuration: const Duration(milliseconds: 250),
+        reverseTransitionDuration: const Duration(milliseconds: 300),
         pageBuilder: (context, animation, secondaryAnimation) => targetScreen,
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           final curve = CurvedAnimation(
             parent: animation,
-            curve: Curves.easeOutCubic,
-            reverseCurve: Curves.easeInCubic,
+            curve: Curves.easeInOutCubic,
+            reverseCurve: Curves.easeInOutCubic,
           );
 
           final slideTween = Tween<Offset>(
-            begin: const Offset(0.0, 0.04),
+            begin: const Offset(0.0, 0.9),
             end: Offset.zero,
           ).animate(curve);
 
@@ -46,7 +46,7 @@ class HomeScreen extends StatelessWidget {
         centerTitle: true,
         automaticallyImplyLeading: false,
         title: const Text(
-          "VALORANT",
+          "Valo Guide",
           style: TextStyle(
             color: Color(0xFFFF4654),
             fontSize: 30,
