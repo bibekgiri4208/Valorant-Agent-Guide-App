@@ -149,6 +149,71 @@ class GameGuideScreen extends StatelessWidget {
                 icon: Icons.flash_on_rounded,
               ),
 
+              const SizedBox(height: 16),
+
+              // 08. ADVANCED ECONOMY (BUY TYPES)
+              _buildGuideSectionCard(
+                sectionNumber: "08",
+                title: "BUY STRATEGIES",
+                content:
+                    "• Full Buy: Rifle (Vandal/Phantom) + Heavy Shield + Full Utility (~4,500 Creds).\n"
+                    "• Eco / Save: Spend minimal cash to ensure a Full Buy next round (~3,900 Creds min next round).\n"
+                    "• Half / Light Buy: Buy Ghost/Sheriff/Spectre + Light Shield while saving for next round.",
+                icon: Icons.monetization_on_rounded,
+              ),
+
+              const SizedBox(height: 16),
+
+              // 09. TRADING & RE-PEEKING
+              _buildGuideSectionCard(
+                sectionNumber: "09",
+                title: "TRADING & TEAMWORK",
+                content:
+                    "• Never push angles alone; follow entry fraggers closely to trade their deaths.\n"
+                    "• Avoid re-peeking the exact same angle after taking damage or losing stealth.\n"
+                    "• Coordinate flashes and recon tools with teammates before swinging corners.",
+                icon: Icons.sync_alt_rounded,
+              ),
+
+              const SizedBox(height: 16),
+
+              // 10. SPIKE & TIME MANAGEMENT
+              _buildGuideSectionCard(
+                sectionNumber: "10",
+                title: "SPIKE & CLOCK",
+                content:
+                    "• Spike takes 4 seconds to plant and 7 seconds to defuse (3.5s per half defuse checkpoint).\n"
+                    "• Defenders: Ticking sound accelerates at 20s, 10s, and 5s before detonation (45s total).\n"
+                    "• Attackers: Use the planted Spike as bait; don't take unnecessary fights.",
+                icon: Icons.timer_rounded,
+              ),
+
+              const SizedBox(height: 16),
+
+              // 11. ANGLE ADVANTAGE & OFF-ANGLES
+              _buildGuideSectionCard(
+                sectionNumber: "11",
+                title: "POSITIONING & ANGLES",
+                content:
+                    "• Perspective Advantage: Standing farther from a wall lets you see the enemy first.\n"
+                    "• Hold unexpected 'off-angles' where enemies don't pre-aim their crosshairs.\n"
+                    "• Reposition immediately after securing a kill to avoid counter-trading.",
+                icon: Icons.visibility_rounded,
+              ),
+
+              const SizedBox(height: 16),
+
+              // 12. MINIMAP & NOISE DISCIPLINE
+              _buildGuideSectionCard(
+                sectionNumber: "12",
+                title: "NOISE & SENSORS",
+                content:
+                    "• Running, reloading, jumping, and dropping weapons make noise visible on enemy minimaps.\n"
+                    "• Keep eyes on the minimap—spotted enemies and dropped Spikes pin instantly.\n"
+                    "• Equip your knife when rotating safely across the map to increase movement speed.",
+                icon: Icons.volume_up_rounded,
+              ),
+
               const SizedBox(height: 25),
             ],
           ),
