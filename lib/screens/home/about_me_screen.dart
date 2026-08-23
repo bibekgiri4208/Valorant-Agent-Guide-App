@@ -51,7 +51,7 @@ class AboutMeScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text(
-                        "DEVELOPER",
+                        "Developer",
                         style: TextStyle(
                           fontFamily: 'Valorant',
                           fontSize: 10,

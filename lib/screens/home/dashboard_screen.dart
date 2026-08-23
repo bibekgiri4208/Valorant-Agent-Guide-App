@@ -13,6 +13,7 @@ class DashBoardScreen extends StatefulWidget {
 
 class _DashBoardScreenState extends State<DashBoardScreen> {
   int _currentIndex = 0;
+  late final PageController _pageController;
 
   final List<Widget> _pages = const [
     HomeScreen(),
@@ -29,10 +30,37 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+    _pageController = PageController(initialPage: _currentIndex);
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  void _onTabTapped(int index) {
+    if (_currentIndex != index) {
+      setState(() => _currentIndex = index);
+      _pageController.animateToPage(
+        index,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF1C252E),
-      body: IndexedStack(index: _currentIndex, children: _pages),
+      body: PageView(
+        controller: _pageController,
+        physics: const NeverScrollableScrollPhysics(),
+        children: _pages,
+      ),
       bottomNavigationBar: Container(
         height: 70,
         decoration: BoxDecoration(
@@ -55,11 +83,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                 isSelected: isSelected,
                 label: item["label"]!,
                 iconPath: item["icon"]!,
-                onTap: () {
-                  if (_currentIndex != index) {
-                    setState(() => _currentIndex = index);
-                  }
-                },
+                onTap: () => _onTabTapped(index),
               ),
             );
           }),
