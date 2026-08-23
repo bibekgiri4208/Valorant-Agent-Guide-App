@@ -7,7 +7,6 @@ import 'package:valorant_guide_app/screens/agents/sentinels_screen.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
-  /// Smooth, fast fade-slide navigation
   void _navigateToRoleScreen(BuildContext context, Widget targetScreen) {
     Navigator.push(
       context,
@@ -61,7 +60,7 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // SECTION SUBTITLE & HEADER
+              // HEADER
               Row(
                 children: [
                   Container(
@@ -95,7 +94,7 @@ class HomeScreen extends StatelessWidget {
 
               const SizedBox(height: 24),
 
-              // 1. DUELISTS
+              // DUELISTS
               PressableCard(
                 borderColor: Colors.grey,
                 borderWidth: 3,
@@ -113,7 +112,7 @@ class HomeScreen extends StatelessWidget {
 
               const SizedBox(height: 16),
 
-              // 2. CONTROLLERS
+              // CONTROLLERS
               PressableCard(
                 borderColor: Colors.grey,
                 borderWidth: 3,
@@ -131,7 +130,7 @@ class HomeScreen extends StatelessWidget {
 
               const SizedBox(height: 16),
 
-              // 3. INITIATORS
+              // INITIATORS
               PressableCard(
                 borderColor: Colors.grey,
                 borderWidth: 3,
@@ -149,7 +148,7 @@ class HomeScreen extends StatelessWidget {
 
               const SizedBox(height: 16),
 
-              // 4. SENTINELS
+              // SENTINELS
               PressableCard(
                 borderColor: Colors.grey,
                 borderWidth: 3,

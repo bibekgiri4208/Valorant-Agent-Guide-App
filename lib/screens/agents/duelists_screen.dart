@@ -74,12 +74,10 @@ class DuelistsScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final agent = duelistsData[index];
 
-                    // Using staggeredList forces strict item-by-item sequential order (0 -> 1 -> 2 -> 3)
+                    // (0 -> 1 -> 2 -> 3)
                     return AnimationConfiguration.staggeredList(
                       position: index,
-                      delay: const Duration(
-                        milliseconds: 250,
-                      ), // Waits for page slide to finish
+                      delay: const Duration(milliseconds: 150),
                       duration: const Duration(milliseconds: 400),
                       child: ScaleAnimation(
                         scale: 0.2,

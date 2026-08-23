@@ -39,7 +39,7 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
             SizedBox(height: 15),
             Text(
-              "VALORANT",
+              "Valo Guide",
               style: TextStyle(
                 fontFamily: 'Valorant',
                 fontSize: 40,
