@@ -141,7 +141,7 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                                             width: 36,
                                             height: 4,
                                             decoration: BoxDecoration(
-                                              color: Colors.white24,
+                                              color: Colors.white,
                                               borderRadius:
                                                   BorderRadius.circular(2),
                                             ),
@@ -192,7 +192,7 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                                                           10,
                                                         ),
                                                     border: Border.all(
-                                                      color: Colors.white12,
+                                                      color: Colors.grey,
                                                     ),
                                                   ),
                                                   child: Column(
@@ -259,7 +259,7 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                                                           10,
                                                         ),
                                                     border: Border.all(
-                                                      color: Colors.white12,
+                                                      color: Colors.grey,
                                                     ),
                                                   ),
                                                   child: Text(
@@ -359,7 +359,7 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                               color: _selectedIndex == index
                                   ? const Color(0xFFFF4654)
                                   : Colors.transparent,
-                              border: Border.all(color: Colors.white38),
+                              border: Border.all(color: Colors.grey),
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: Padding(

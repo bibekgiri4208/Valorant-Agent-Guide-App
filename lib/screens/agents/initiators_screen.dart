@@ -112,10 +112,10 @@ class InitiatorsScreen extends StatelessWidget {
                                     cardContext,
                                     PageRouteBuilder(
                                       transitionDuration: const Duration(
-                                        milliseconds: 500,
+                                        milliseconds: 400,
                                       ),
                                       reverseTransitionDuration: const Duration(
-                                        milliseconds: 400,
+                                        milliseconds: 350,
                                       ),
                                       pageBuilder:
                                           (
