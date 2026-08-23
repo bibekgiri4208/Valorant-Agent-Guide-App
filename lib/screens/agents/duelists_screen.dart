@@ -27,7 +27,7 @@ class DuelistsScreen extends StatelessWidget {
           "DUELISTS",
           style: TextStyle(
             color: Color(0xFFFF4654),
-            fontSize: 28,
+            fontSize: 30,
             fontFamily: 'Valorant',
           ),
         ),
@@ -48,6 +48,7 @@ class DuelistsScreen extends StatelessWidget {
                   letterSpacing: 1.5,
                 ),
               ),
+
               const Text(
                 "CHOOSE YOUR\nDUELIST",
                 style: TextStyle(

@@ -27,7 +27,7 @@ class InitiatorsScreen extends StatelessWidget {
           "INITIATORS",
           style: TextStyle(
             color: Color(0xFFFF4654),
-            fontSize: 28,
+            fontSize: 30,
             fontFamily: 'Valorant',
           ),
         ),

@@ -27,7 +27,7 @@ class ControllersScreen extends StatelessWidget {
           "CONTROLLERS",
           style: TextStyle(
             color: Color(0xFFFF4654),
-            fontSize: 28,
+            fontSize: 30,
             fontFamily: 'Valorant',
           ),
         ),
