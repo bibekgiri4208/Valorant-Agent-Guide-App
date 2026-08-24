@@ -22,6 +22,7 @@ class ControllersScreen extends StatelessWidget {
         ),
         backgroundColor: const Color(0xFF1C252E),
         elevation: 0,
+        scrolledUnderElevation: 0,
         centerTitle: true,
         title: const Text(
           "CONTROLLERS",
