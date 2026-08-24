@@ -4,8 +4,20 @@ import 'package:valorant_guide_app/screens/agents/duelists_screen.dart';
 import 'package:valorant_guide_app/screens/agents/initiators_screen.dart';
 import 'package:valorant_guide_app/screens/agents/sentinels_screen.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _staggerController;
+  late final Animation<double> _headerFade;
+  late final Animation<Offset> _headerSlide;
+  late final List<Animation<double>> _cardFades;
+  late final List<Animation<Offset>> _cardSlides;
 
   void _navigateToRoleScreen(BuildContext context, Widget targetScreen) {
     Navigator.push(
@@ -36,6 +48,56 @@ class HomeScreen extends StatelessWidget {
   }
 
   @override
+  void initState() {
+    super.initState();
+    _staggerController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 900),
+    );
+
+    _headerFade = CurvedAnimation(
+      parent: _staggerController,
+      curve: const Interval(0.0, 0.3, curve: Curves.easeOut),
+    );
+    _headerSlide = Tween<Offset>(
+      begin: const Offset(0, 0.15),
+      end: Offset.zero,
+    ).animate(CurvedAnimation(
+      parent: _staggerController,
+      curve: const Interval(0.0, 0.35, curve: Curves.easeOutCubic),
+    ));
+
+    _cardFades = List.generate(4, (i) {
+      final start = 0.2 + i * 0.15;
+      return CurvedAnimation(
+        parent: _staggerController,
+        curve: Interval(start, start + 0.35, curve: Curves.easeOut),
+      );
+    });
+
+    _cardSlides = List.generate(4, (i) {
+      final start = 0.2 + i * 0.15;
+      return Tween<Offset>(
+        begin: const Offset(0, 0.25),
+        end: Offset.zero,
+      ).animate(CurvedAnimation(
+        parent: _staggerController,
+        curve: Interval(start, start + 0.35, curve: Curves.easeOutCubic),
+      ));
+    });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _staggerController.forward();
+    });
+  }
+
+  @override
+  void dispose() {
+    _staggerController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF1C252E),
@@ -55,48 +117,61 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // HEADER
-              Row(
+      body: ListView(
+        physics: const BouncingScrollPhysics(
+          parent: AlwaysScrollableScrollPhysics(),
+        ),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+        children: [
+          FadeTransition(
+            opacity: _headerFade,
+            child: SlideTransition(
+              position: _headerSlide,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    width: 4,
-                    height: 18,
-                    color: const Color(0xFFFF4654),
+                  Row(
+                    children: [
+                      Container(
+                        width: 4,
+                        height: 18,
+                        color: const Color(0xFFFF4654),
+                      ),
+                      const SizedBox(width: 8),
+                      const Text(
+                        "// SELECT PROTOCOL ROLE",
+                        style: TextStyle(
+                          fontFamily: 'Valorant',
+                          fontSize: 12,
+                          color: Color(0xFFFF4654),
+                          letterSpacing: 1.5,
+                        ),
+                      ),
+                    ],
                   ),
-                  const SizedBox(width: 8),
+                  const SizedBox(height: 8),
                   const Text(
-                    "// SELECT PROTOCOL ROLE",
+                    "LEARN YOUR\nFAVORITE AGENTS",
                     style: TextStyle(
                       fontFamily: 'Valorant',
-                      fontSize: 12,
-                      color: Color(0xFFFF4654),
-                      letterSpacing: 1.5,
+                      fontSize: 32,
+                      color: Colors.white,
+                      height: 1.15,
+                      letterSpacing: 1.0,
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: 8),
-              const Text(
-                "LEARN YOUR\nFAVORITE AGENTS",
-                style: TextStyle(
-                  fontFamily: 'Valorant',
-                  fontSize: 32,
-                  color: Colors.white,
-                  height: 1.15,
-                  letterSpacing: 1.0,
-                ),
-              ),
+            ),
+          ),
 
-              const SizedBox(height: 24),
+          const SizedBox(height: 24),
 
-              // DUELISTS
-              PressableCard(
+          FadeTransition(
+            opacity: _cardFades[0],
+            child: SlideTransition(
+              position: _cardSlides[0],
+              child: PressableCard(
                 borderColor: Colors.grey,
                 borderWidth: 3,
                 borderRadius: 12,
@@ -110,11 +185,16 @@ class HomeScreen extends StatelessWidget {
                   bgImagePath: 'assets/roles/jett_bg.webp',
                 ),
               ),
+            ),
+          ),
 
-              const SizedBox(height: 16),
+          const SizedBox(height: 16),
 
-              // CONTROLLERS
-              PressableCard(
+          FadeTransition(
+            opacity: _cardFades[1],
+            child: SlideTransition(
+              position: _cardSlides[1],
+              child: PressableCard(
                 borderColor: Colors.grey,
                 borderWidth: 3,
                 borderRadius: 12,
@@ -128,11 +208,16 @@ class HomeScreen extends StatelessWidget {
                   bgImagePath: 'assets/roles/viper_cinematic.webp',
                 ),
               ),
+            ),
+          ),
 
-              const SizedBox(height: 16),
+          const SizedBox(height: 16),
 
-              // INITIATORS
-              PressableCard(
+          FadeTransition(
+            opacity: _cardFades[2],
+            child: SlideTransition(
+              position: _cardSlides[2],
+              child: PressableCard(
                 borderColor: Colors.grey,
                 borderWidth: 3,
                 borderRadius: 12,
@@ -146,11 +231,16 @@ class HomeScreen extends StatelessWidget {
                   bgImagePath: 'assets/roles/sova_cinematic.webp',
                 ),
               ),
+            ),
+          ),
 
-              const SizedBox(height: 16),
+          const SizedBox(height: 16),
 
-              // SENTINELS
-              PressableCard(
+          FadeTransition(
+            opacity: _cardFades[3],
+            child: SlideTransition(
+              position: _cardSlides[3],
+              child: PressableCard(
                 borderColor: Colors.grey,
                 borderWidth: 3,
                 borderRadius: 12,
@@ -164,11 +254,11 @@ class HomeScreen extends StatelessWidget {
                   bgImagePath: 'assets/roles/cypher_cinematic.webp',
                 ),
               ),
-
-              const SizedBox(height: 25),
-            ],
+            ),
           ),
-        ),
+
+          const SizedBox(height: 25),
+        ],
       ),
     );
   }
@@ -187,7 +277,6 @@ class HomeScreen extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         child: Stack(
           children: [
-            // Background Image
             Positioned.fill(
               child: Image.asset(
                 bgImagePath,
@@ -195,8 +284,6 @@ class HomeScreen extends StatelessWidget {
                 alignment: Alignment.topCenter,
               ),
             ),
-
-            // Dark Gradient Overlay
             Positioned.fill(
               child: Container(
                 decoration: BoxDecoration(
@@ -212,13 +299,10 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-
-            // Content Layer
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
               child: Row(
                 children: [
-                  // Icon Box
                   Container(
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
@@ -236,7 +320,6 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 16),
-
                   Expanded(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -264,7 +347,6 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-
                   const Icon(
                     Icons.arrow_forward_ios_rounded,
                     color: Colors.white,
@@ -280,7 +362,7 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-/// Tap-down & bounce effect widget supporting custom border color, width, and radius
+/// Tap-down & bounce effect widget
 class PressableCard extends StatefulWidget {
   final Widget child;
   final VoidCallback onTap;

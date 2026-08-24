@@ -20,13 +20,7 @@ class _DashBoardScreenState extends State<DashBoardScreen>
   late final Animation<double> _entryFade;
   late final Animation<Offset> _homeSlide;
   late final Animation<Offset> _navSlide;
-
-  final List<Widget> _pages = const [
-    HomeScreen(),
-    RolesDescriptionScreen(),
-    GameGuideScreen(),
-    AboutMeScreen(),
-  ];
+  Key _homeKey = UniqueKey();
 
   final List<Map<String, String>> _navItems = const [
     {"label": "Home", "icon": "assets/logo/valorant_logo.png"},
@@ -84,6 +78,9 @@ class _DashBoardScreenState extends State<DashBoardScreen>
 
   void _onTabTapped(int index) {
     if (_currentIndex != index) {
+      if (index == 0) {
+        _homeKey = UniqueKey();
+      }
       setState(() => _currentIndex = index);
       _pageController.animateToPage(
         index,
@@ -104,7 +101,12 @@ class _DashBoardScreenState extends State<DashBoardScreen>
           child: PageView(
             controller: _pageController,
             physics: const NeverScrollableScrollPhysics(),
-            children: _pages,
+            children: [
+              HomeScreen(key: _homeKey),
+              const RolesDescriptionScreen(),
+              const GameGuideScreen(),
+              const AboutMeScreen(),
+            ],
           ),
         ),
       ),
