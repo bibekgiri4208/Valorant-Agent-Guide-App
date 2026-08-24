@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (_) => DashBoardScreen()),
+        MaterialPageRoute(builder: (_) => const DashBoardScreen(playEntryAnimation: true)),
       );
     });
   }

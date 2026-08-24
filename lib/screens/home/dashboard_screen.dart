@@ -5,15 +5,21 @@ import 'package:valorant_guide_app/screens/home/home_screen.dart';
 import 'package:valorant_guide_app/screens/home/roles_description_screen.dart';
 
 class DashBoardScreen extends StatefulWidget {
-  const DashBoardScreen({super.key});
+  final bool playEntryAnimation;
+  const DashBoardScreen({super.key, this.playEntryAnimation = false});
 
   @override
   State<DashBoardScreen> createState() => _DashBoardScreenState();
 }
 
-class _DashBoardScreenState extends State<DashBoardScreen> {
+class _DashBoardScreenState extends State<DashBoardScreen>
+    with TickerProviderStateMixin {
   int _currentIndex = 0;
   late final PageController _pageController;
+  late final AnimationController _entryController;
+  late final Animation<double> _entryFade;
+  late final Animation<Offset> _homeSlide;
+  late final Animation<Offset> _navSlide;
 
   final List<Widget> _pages = const [
     HomeScreen(),
@@ -33,11 +39,46 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   void initState() {
     super.initState();
     _pageController = PageController(initialPage: _currentIndex);
+
+    _entryController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1200),
+    );
+
+    _entryFade = CurvedAnimation(
+      parent: _entryController,
+      curve: const Interval(0.0, 0.5, curve: Curves.easeOut),
+    );
+
+    _homeSlide = Tween<Offset>(
+      begin: const Offset(0, 0.15),
+      end: Offset.zero,
+    ).animate(CurvedAnimation(
+      parent: _entryController,
+      curve: const Interval(0.0, 0.6, curve: Curves.easeOutCubic),
+    ));
+
+    _navSlide = Tween<Offset>(
+      begin: const Offset(0, 1),
+      end: Offset.zero,
+    ).animate(CurvedAnimation(
+      parent: _entryController,
+      curve: const Interval(0.3, 0.8, curve: Curves.easeOutCubic),
+    ));
+
+    if (widget.playEntryAnimation) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _entryController.forward();
+      });
+    } else {
+      _entryController.value = 1.0;
+    }
   }
 
   @override
   void dispose() {
     _pageController.dispose();
+    _entryController.dispose();
     super.dispose();
   }
 
@@ -56,12 +97,20 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF1C252E),
-      body: PageView(
-        controller: _pageController,
-        physics: const NeverScrollableScrollPhysics(),
-        children: _pages,
+      body: SlideTransition(
+        position: _homeSlide,
+        child: FadeTransition(
+          opacity: _entryFade,
+          child: PageView(
+            controller: _pageController,
+            physics: const NeverScrollableScrollPhysics(),
+            children: _pages,
+          ),
+        ),
       ),
-      bottomNavigationBar: Container(
+      bottomNavigationBar: SlideTransition(
+        position: _navSlide,
+        child: Container(
         height: 70,
         decoration: BoxDecoration(
           color: const Color(0xFF12181F),
@@ -88,6 +137,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
             );
           }),
         ),
+      ),
       ),
     );
   }
