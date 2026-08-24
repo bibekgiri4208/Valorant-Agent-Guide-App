@@ -33,13 +33,12 @@ class InitiatorsScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        clipBehavior: Clip.none,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+      body: ListView(
+        physics: const BouncingScrollPhysics(
+          parent: AlwaysScrollableScrollPhysics(),
+        ),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+        children: [
               const Text(
                 "// PROTOCOL ROSTER",
                 style: TextStyle(
@@ -271,10 +270,8 @@ class InitiatorsScreen extends StatelessWidget {
                   },
                 ),
               ),
-            ],
-          ),
+          ],
         ),
-      ),
     );
   }
 }
