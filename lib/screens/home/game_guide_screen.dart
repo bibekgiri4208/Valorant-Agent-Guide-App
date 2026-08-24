@@ -129,6 +129,10 @@ class _GameGuideScreenState extends State<GameGuideScreen> {
                     ),
                   )
                 : ListView.builder(
+                    cacheExtent: 500,
+                    physics: const BouncingScrollPhysics(
+                      parent: AlwaysScrollableScrollPhysics(),
+                    ),
                     padding: const EdgeInsets.symmetric(
                       horizontal: 20,
                       vertical: 10,
