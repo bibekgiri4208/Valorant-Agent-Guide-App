@@ -45,7 +45,7 @@ class _GameGuideScreenState extends State<GameGuideScreen> {
               "Game Guide",
               style: TextStyle(
                 color: Color(0xFFFF4654),
-                fontSize: 28,
+                fontSize: 30,
                 fontFamily: 'Valorant',
                 letterSpacing: 2.0,
               ),
@@ -93,8 +93,7 @@ class _GameGuideScreenState extends State<GameGuideScreen> {
 
                   // Search Bar
                   TextField(
-                    onChanged: (value) =>
-                        setState(() => _searchQuery = value),
+                    onChanged: (value) => setState(() => _searchQuery = value),
                     style: const TextStyle(color: Colors.white, fontSize: 14),
                     decoration: InputDecoration(
                       hintText: "Search tactics, economy, mechanics...",
@@ -115,9 +114,7 @@ class _GameGuideScreenState extends State<GameGuideScreen> {
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(
-                          color: Color(0xFFFF4654),
-                        ),
+                        borderSide: const BorderSide(color: Color(0xFFFF4654)),
                       ),
                     ),
                   ),
@@ -139,8 +136,7 @@ class _GameGuideScreenState extends State<GameGuideScreen> {
                             style: TextStyle(
                               fontFamily: 'Valorant',
                               fontSize: 10,
-                              color:
-                                  isSelected ? Colors.black : Colors.white,
+                              color: isSelected ? Colors.black : Colors.white,
                             ),
                           ),
                           selected: isSelected,
@@ -148,8 +144,7 @@ class _GameGuideScreenState extends State<GameGuideScreen> {
                           backgroundColor: const Color(0xFF12181F),
                           onSelected: (selected) {
                             if (selected) {
-                              setState(() =>
-                                  _selectedCategory = category);
+                              setState(() => _selectedCategory = category);
                             }
                           },
                         );
@@ -168,10 +163,7 @@ class _GameGuideScreenState extends State<GameGuideScreen> {
               child: Center(
                 child: Text(
                   "NO PROTOCOL DATA FOUND",
-                  style: TextStyle(
-                    color: Colors.grey,
-                    fontFamily: 'Valorant',
-                  ),
+                  style: TextStyle(color: Colors.grey, fontFamily: 'Valorant'),
                 ),
               ),
             )
@@ -319,31 +311,30 @@ class _GuideCardState extends State<_GuideCard> {
             ),
 
             // EXPANDED CONTENT
-            AnimatedCrossFade(
-              firstChild: const SizedBox.shrink(),
-              secondChild: Padding(
-                padding: const EdgeInsets.fromLTRB(14, 0, 14, 14),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Divider(color: Colors.grey.shade800, thickness: 1),
-                    const SizedBox(height: 10),
-                    Text(
-                      item['content'] as String,
-                      style: const TextStyle(
-                        color: Colors.grey,
-                        fontSize: 13,
-                        height: 1.5,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              crossFadeState: _expanded
-                  ? CrossFadeState.showSecond
-                  : CrossFadeState.showFirst,
+            AnimatedSize(
               duration: const Duration(milliseconds: 250),
-              sizeCurve: Curves.easeInOut,
+              curve: Curves.easeInOut,
+              alignment: Alignment.topCenter,
+              child: _expanded
+                  ? Padding(
+                      padding: const EdgeInsets.fromLTRB(14, 0, 14, 14),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Divider(color: Colors.grey.shade800, thickness: 1),
+                          const SizedBox(height: 10),
+                          Text(
+                            item['content'] as String,
+                            style: const TextStyle(
+                              color: Colors.grey,
+                              fontSize: 13,
+                              height: 1.5,
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  : const SizedBox.shrink(),
             ),
           ],
         ),
