@@ -14,6 +14,9 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
   late final PageController _pageController;
   int _selectedIndex = 0;
 
+  // Keybind mappings for Valorant abilities
+  final List<String> _keybinds = const ["KEY C", "KEY Q", "KEY E", "ULT X"];
+
   @override
   void initState() {
     super.initState();
@@ -60,11 +63,11 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
               // HEADER SECTION
               ClipRRect(
                 borderRadius: const BorderRadius.vertical(
-                  bottom: Radius.circular(100),
+                  bottom: Radius.circular(60),
                 ),
                 child: Container(
                   width: double.infinity,
-                  height: screenHeight * 0.55,
+                  height: screenHeight * 0.52,
                   decoration: const BoxDecoration(
                     gradient: RadialGradient(
                       center: Alignment(0.0, -0.2),
@@ -81,12 +84,12 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                     children: [
                       if (agent['roleIcon'] != null)
                         Positioned(
-                          top: 40,
+                          top: 30,
                           child: Opacity(
-                            opacity: 0.3,
+                            opacity: 0.25,
                             child: Image.asset(
                               agent['roleIcon'],
-                              height: 280,
+                              height: 260,
                               fit: BoxFit.contain,
                               color: Colors.white,
                             ),
@@ -97,7 +100,7 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                         children: [
                           const Spacer(),
                           SizedBox(
-                            height: 350,
+                            height: 310,
                             child: Hero(
                               tag: 'agent_image_${agent['name']}',
                               child: Image.asset(
@@ -108,197 +111,23 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                               ),
                             ),
                           ),
-                          const SizedBox(height: 15),
-                          InkWell(
-                            onTap: () {
-                              showModalBottomSheet(
-                                context: context,
-                                backgroundColor: const Color(0xFF1C252E),
-                                isScrollControlled: true,
-                                shape: const RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.vertical(
-                                    top: Radius.circular(20),
-                                  ),
-                                ),
-                                builder: (context) {
-                                  return Container(
-                                    constraints: BoxConstraints(
-                                      maxHeight:
-                                          MediaQuery.sizeOf(context).height *
-                                          0.65,
-                                    ),
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 20,
-                                      vertical: 12,
-                                    ),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Center(
-                                          child: Container(
-                                            width: 36,
-                                            height: 4,
-                                            decoration: BoxDecoration(
-                                              color: Colors.white,
-                                              borderRadius:
-                                                  BorderRadius.circular(2),
-                                            ),
-                                          ),
-                                        ),
-                                        const SizedBox(height: 16),
-
-                                        // Title Section
-                                        Row(
-                                          children: [
-                                            Container(
-                                              width: 3,
-                                              height: 22,
-                                              color: const Color(0xFFFF4654),
-                                            ),
-                                            const SizedBox(width: 8),
-                                            const Text(
-                                              "Agent Description",
-                                              style: TextStyle(
-                                                fontSize: 22,
-                                                fontFamily: "Valorant",
-                                                color: Colors.white,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        const SizedBox(height: 16),
-
-                                        // Scrollable Content
-                                        Flexible(
-                                          child: SingleChildScrollView(
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Container(
-                                                  width: double.infinity,
-                                                  padding: const EdgeInsets.all(
-                                                    14,
-                                                  ),
-                                                  decoration: BoxDecoration(
-                                                    color: Colors.white
-                                                        .withValues(
-                                                          alpha: 0.05,
-                                                        ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                          10,
-                                                        ),
-                                                    border: Border.all(
-                                                      color: Colors.grey,
-                                                    ),
-                                                  ),
-                                                  child: Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Text(
-                                                        "Role: ${agent['role'] ?? ''}",
-                                                        style: const TextStyle(
-                                                          color: Colors.white,
-                                                          fontFamily:
-                                                              "Valorant",
-                                                          fontSize: 14,
-                                                        ),
-                                                      ),
-                                                      const Divider(
-                                                        color: Colors.white,
-                                                        height: 20,
-                                                        thickness: 1,
-                                                      ),
-                                                      Text(
-                                                        "Country: ${agent['country'] ?? 'Unknown'}",
-                                                        style: const TextStyle(
-                                                          color: Colors.white,
-                                                          fontFamily:
-                                                              "Valorant",
-                                                          fontSize: 14,
-                                                        ),
-                                                      ),
-                                                      const Divider(
-                                                        color: Colors.white,
-                                                        height: 20,
-                                                        thickness: 1,
-                                                      ),
-                                                      Text(
-                                                        "Agent No. ${agent['agentNumber'] ?? ''}",
-                                                        style: const TextStyle(
-                                                          color: Colors.white,
-                                                          fontFamily:
-                                                              "Valorant",
-                                                          fontSize: 14,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-
-                                                const SizedBox(height: 16),
-
-                                                // Summary Card Container
-                                                Container(
-                                                  width: double.infinity,
-                                                  padding: const EdgeInsets.all(
-                                                    14,
-                                                  ),
-                                                  decoration: BoxDecoration(
-                                                    color: Colors.white
-                                                        .withValues(
-                                                          alpha: 0.05,
-                                                        ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                          10,
-                                                        ),
-                                                    border: Border.all(
-                                                      color: Colors.grey,
-                                                    ),
-                                                  ),
-                                                  child: Text(
-                                                    agent['summary'] ?? '',
-                                                    style: const TextStyle(
-                                                      fontSize: 14,
-                                                      color: Colors.white,
-                                                      height: 1.5,
-                                                    ),
-                                                  ),
-                                                ),
-
-                                                const SizedBox(height: 20),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                },
-                              );
-                            },
-                            child: Text(
-                              agent['name'] ?? '',
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 40,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: "Valorant",
-                              ),
+                          const SizedBox(height: 10),
+                          Text(
+                            agent['name'] ?? '',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 36,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: "Valorant",
+                              letterSpacing: 1.5,
                             ),
                           ),
-                          const SizedBox(height: 5),
+                          const SizedBox(height: 4),
                           Text(
                             agent['role'] ?? '',
                             style: const TextStyle(
                               color: Colors.white70,
-                              fontSize: 16,
+                              fontSize: 14,
                               fontFamily: "Valorant",
                               letterSpacing: 2,
                             ),
@@ -307,6 +136,7 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                         ],
                       ),
 
+                      // TOP BACK BUTTON
                       Positioned(
                         top: 10,
                         left: 10,
@@ -320,16 +150,28 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                           onPressed: () => Navigator.pop(context),
                         ),
                       ),
+
+                      // TOP RIGHT INFO BUTTON
+                      Positioned(
+                        top: 10,
+                        right: 10,
+                        child: IconButton(
+                          icon: const Icon(
+                            Icons.info_outline_rounded,
+                            size: 26,
+                            color: Colors.white,
+                          ),
+                          onPressed: () => _showAgentInfoModal(context, agent),
+                        ),
+                      ),
                     ],
                   ),
                 ),
               ),
 
+              // ABILITY SELECTION BAR
               Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 15,
-                ),
+                padding: const EdgeInsets.fromLTRB(20, 20, 20, 10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -339,54 +181,92 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                         color: Colors.white,
                         fontFamily: "Valorant",
                         fontWeight: FontWeight.bold,
-                        letterSpacing: 1,
+                        letterSpacing: 1.5,
+                        fontSize: 14,
                       ),
                     ),
-
-                    const SizedBox(height: 15),
-
+                    const SizedBox(height: 14),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: List.generate(
-                        abilities.length,
-                        (index) => GestureDetector(
+                      children: List.generate(abilities.length, (index) {
+                        final isSelected = _selectedIndex == index;
+                        return GestureDetector(
                           onTap: () => _onAbilitySelected(index),
-                          child: AnimatedContainer(
-                            duration: const Duration(milliseconds: 200),
-                            width: 65,
-                            height: 65,
-                            decoration: BoxDecoration(
-                              color: _selectedIndex == index
-                                  ? const Color(0xFFFF4654)
-                                  : Colors.transparent,
-                              border: Border.all(color: Colors.grey),
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(10),
-                              child: Image.asset(
-                                abilities[index]['icon'],
-                                fit: BoxFit.contain,
+                          child: Column(
+                            children: [
+                              AnimatedContainer(
+                                duration: const Duration(milliseconds: 200),
+                                width: 65,
+                                height: 65,
+                                decoration: BoxDecoration(
+                                  color: isSelected
+                                      ? const Color(0xFFFF4654)
+                                      : const Color(0xFF12181F),
+                                  border: Border.all(
+                                    color: isSelected
+                                        ? const Color(0xFFFF4654)
+                                        : Colors.grey.shade800,
+                                    width: 1.5,
+                                  ),
+                                  borderRadius: BorderRadius.circular(12),
+                                  boxShadow: isSelected
+                                      ? [
+                                          BoxShadow(
+                                            color: const Color(
+                                              0xFFFF4654,
+                                            ).withValues(alpha: 0.4),
+                                            blurRadius: 10,
+                                            spreadRadius: 1,
+                                          ),
+                                        ]
+                                      : [],
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(12),
+                                  child: Image.asset(
+                                    abilities[index]['icon'],
+                                    fit: BoxFit.contain,
+                                    color: isSelected
+                                        ? Colors.white
+                                        : Colors.grey,
+                                  ),
+                                ),
                               ),
-                            ),
+                              const SizedBox(height: 6),
+                              AnimatedContainer(
+                                duration: const Duration(milliseconds: 200),
+                                height: 4,
+                                width: isSelected ? 20 : 0,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xFFFF4654),
+                                  borderRadius: BorderRadius.circular(2),
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
-                      ),
+                        );
+                      }),
                     ),
                   ],
                 ),
               ),
 
+              // PAGE VIEW FOR ABILITY CARDS
               SizedBox(
-                height: 520,
+                height: 460,
                 child: PageView.builder(
                   controller: _pageController,
                   itemCount: abilities.length,
                   itemBuilder: (context, index) {
                     final ability = abilities[index];
+                    final defaultSlot = index < _keybinds.length
+                        ? _keybinds[index]
+                        : 'ABILITY ${index + 1}';
+
                     return _buildAbilityPage(
                       title: ability['name'] ?? '',
                       description: ability['description'] ?? '',
+                      slot: ability['slot'] ?? defaultSlot,
                       videoPath: ability['video'] ?? ability['videoUrl'],
                     );
                   },
@@ -399,41 +279,222 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
     );
   }
 
+  void _showAgentInfoModal(BuildContext context, Map<String, dynamic> agent) {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: const Color(0xFF12181F),
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      builder: (context) {
+        return Container(
+          constraints: BoxConstraints(
+            maxHeight: MediaQuery.sizeOf(context).height * 0.65,
+          ),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(
+                child: Container(
+                  width: 40,
+                  height: 4,
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade700,
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              Row(
+                children: [
+                  Container(
+                    width: 4,
+                    height: 24,
+                    color: const Color(0xFFFF4654),
+                  ),
+                  const SizedBox(width: 10),
+                  const Text(
+                    "AGENT DOSSIER",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontFamily: "Valorant",
+                      color: Colors.white,
+                      letterSpacing: 1.2,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 16),
+              Flexible(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF1C252E),
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(color: Colors.grey.shade800),
+                        ),
+                        child: Column(
+                          children: [
+                            _buildInfoRow("ROLE", agent['role'] ?? ''),
+                            const Divider(color: Colors.white12, height: 20),
+                            _buildInfoRow(
+                              "ORIGIN",
+                              agent['country'] ?? 'Unknown',
+                            ),
+                            const Divider(color: Colors.white12, height: 20),
+                            _buildInfoRow(
+                              "NUMBER",
+                              "#${agent['agentNumber'] ?? ''}",
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 14),
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF1C252E),
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(color: Colors.grey.shade800),
+                        ),
+                        child: Text(
+                          agent['summary'] ?? '',
+                          style: const TextStyle(
+                            fontSize: 14,
+                            color: Colors.grey,
+                            height: 1.6,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _buildInfoRow(String label, String value) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          label,
+          style: const TextStyle(
+            color: Colors.grey,
+            fontFamily: "Valorant",
+            fontSize: 12,
+          ),
+        ),
+        Text(
+          value,
+          style: const TextStyle(
+            color: Colors.white,
+            fontFamily: "Valorant",
+            fontSize: 13,
+          ),
+        ),
+      ],
+    );
+  }
+
   Widget _buildAbilityPage({
     required String title,
     required String description,
+    required String slot,
     String? videoPath,
   }) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
       child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              title,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-                fontFamily: "Valorant",
+        child: Container(
+          width: double.infinity,
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: const Color(0xFF12181F),
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: Colors.grey.shade800),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Text(
+                      title.toUpperCase(),
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: "Valorant",
+                        letterSpacing: 1.1,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8,
+                      vertical: 4,
+                    ),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFFF4654).withValues(alpha: 0.15),
+                      borderRadius: BorderRadius.circular(6),
+                      border: Border.all(
+                        color: const Color(0xFFFF4654).withValues(alpha: 0.5),
+                      ),
+                    ),
+                    child: Text(
+                      slot.toUpperCase(),
+                      style: const TextStyle(
+                        color: Color(0xFFFF4654),
+                        fontSize: 10,
+                        fontFamily: "Valorant",
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ),
-            const SizedBox(height: 15),
-            if (videoPath != null && videoPath.isNotEmpty) ...[
-              AbilityVideoPlayer(videoPath: videoPath),
-              const SizedBox(height: 15),
+              const SizedBox(height: 12),
+              if (videoPath != null && videoPath.isNotEmpty) ...[
+                AbilityVideoPlayer(videoPath: videoPath),
+                const SizedBox(height: 14),
+              ],
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: const Color(0xFF1C252E),
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(
+                    color: Colors.white.withValues(alpha: 0.05),
+                  ),
+                ),
+                child: Text(
+                  description,
+                  style: const TextStyle(
+                    color: Colors.grey,
+                    fontSize: 13,
+                    height: 1.5,
+                  ),
+                ),
+              ),
             ],
-            Text(
-              description,
-              style: const TextStyle(
-                color: Colors.white70,
-                fontSize: 16,
-                height: 1.5,
-              ),
-            ),
-            const SizedBox(height: 20),
-          ],
+          ),
         ),
       ),
     );
@@ -493,11 +554,12 @@ class _AbilityVideoPlayerState extends State<AbilityVideoPlayer> {
   Widget build(BuildContext context) {
     if (!_controller.value.isInitialized) {
       return Container(
-        height: 180,
+        height: 160,
         width: double.infinity,
         decoration: BoxDecoration(
-          color: Colors.black26,
-          borderRadius: BorderRadius.circular(15),
+          color: const Color(0xFF1C252E),
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: Colors.grey.shade800),
         ),
         child: const Center(
           child: CircularProgressIndicator(color: Color(0xFFFF4654)),
@@ -507,26 +569,32 @@ class _AbilityVideoPlayerState extends State<AbilityVideoPlayer> {
 
     return GestureDetector(
       onTap: _togglePlayPause,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(15),
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            AspectRatio(
-              aspectRatio: _controller.value.aspectRatio,
-              child: VideoPlayer(_controller),
-            ),
-            if (!_controller.value.isPlaying)
-              Container(
-                color: Colors.black38,
-                padding: const EdgeInsets.all(12),
-                child: const Icon(
-                  Icons.play_arrow,
-                  size: 48,
-                  color: Colors.white,
-                ),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: Colors.grey.shade800),
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(11),
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              AspectRatio(
+                aspectRatio: _controller.value.aspectRatio,
+                child: VideoPlayer(_controller),
               ),
-          ],
+              if (!_controller.value.isPlaying)
+                Container(
+                  color: Colors.black45,
+                  padding: const EdgeInsets.all(10),
+                  child: const Icon(
+                    Icons.play_arrow_rounded,
+                    size: 40,
+                    color: Color(0xFFFF4654),
+                  ),
+                ),
+            ],
+          ),
         ),
       ),
     );
