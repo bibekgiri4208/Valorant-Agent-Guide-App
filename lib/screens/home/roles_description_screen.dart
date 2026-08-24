@@ -1,7 +1,107 @@
 import 'package:flutter/material.dart';
 
-class RolesDescriptionScreen extends StatelessWidget {
+class RolesDescriptionScreen extends StatefulWidget {
   const RolesDescriptionScreen({super.key});
+
+  @override
+  State<RolesDescriptionScreen> createState() =>
+      _RolesDescriptionScreenState();
+}
+
+class _RolesDescriptionScreenState extends State<RolesDescriptionScreen>
+    with TickerProviderStateMixin {
+  late final AnimationController _staggerController;
+  late final List<Animation<double>> _cardFades;
+  late final List<Animation<Offset>> _cardSlides;
+
+  final _roles = [
+    {
+      "title": "DUELIST",
+      "badge": "ENTRY & FRAGGING",
+      "iconPath": "assets/logo/duelist_logo.png",
+      "description":
+          "Self-sufficient fraggers who their team expects, through abilities and skill, to get top kills and procure first bloods.",
+      "responsibilities": [
+        "Create first contact and secure opening kills",
+        "Execute aggressively onto bomb sites",
+        "Capitalize on space created by Initiators",
+      ],
+    },
+    {
+      "title": "INITIATOR",
+      "badge": "RECON & DISRUPTION",
+      "iconPath": "assets/logo/initiator_logo.png",
+      "description":
+          "Initiators challenge angles by setting up their team to enter contested ground and push defenders away.",
+      "responsibilities": [
+        "Gather intelligence on enemy positions",
+        "Flush out defenders using concusses and flashes",
+        "Enable Duelists to take site safely",
+      ],
+    },
+    {
+      "title": "CONTROLLER",
+      "badge": "MAP & SIGHT BLOCKING",
+      "iconPath": "assets/logo/controller_logo.png",
+      "description":
+          "Controllers are experts in slicing up dangerous territory to set their team up for success and choke off lines of sight.",
+      "responsibilities": [
+        "Deploy smokes to block sniper/defender sightlines",
+        "Delay enemy pushes during retakes or retries",
+        "Dictate map tempo and vision control",
+      ],
+    },
+    {
+      "title": "SENTINEL",
+      "badge": "DEFENSE & ANCHORING",
+      "iconPath": "assets/logo/sentinel_logo.png",
+      "description":
+          "Defensive experts who can lock down areas and watch flanks, both on attacker and defender rounds.",
+      "responsibilities": [
+        "Anchor sites solo against enemy pushes",
+        "Watch flanks using traps and tripwires",
+        "Slow down opponent rotations and site takes",
+      ],
+    },
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    _staggerController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1000),
+    );
+
+    _cardFades = List.generate(
+      _roles.length,
+      (i) => CurvedAnimation(
+        parent: _staggerController,
+        curve: Interval(i * 0.15, (i * 0.15) + 0.4, curve: Curves.easeOut),
+      ),
+    );
+
+    _cardSlides = List.generate(
+      _roles.length,
+      (i) => Tween<Offset>(
+        begin: const Offset(0, 0.2),
+        end: Offset.zero,
+      ).animate(CurvedAnimation(
+        parent: _staggerController,
+        curve: Interval(i * 0.15, (i * 0.15) + 0.4, curve: Curves.easeOutCubic),
+      )),
+    );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _staggerController.forward();
+    });
+  }
+
+  @override
+  void dispose() {
+    _staggerController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,102 +123,76 @@ class RolesDescriptionScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: SingleChildScrollView(
+      body: ListView.builder(
+        physics: const BouncingScrollPhysics(
+          parent: AlwaysScrollableScrollPhysics(),
+        ),
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // INTRO BANNER
-            Row(
-              children: [
-                Container(width: 4, height: 18, color: const Color(0xFFFF4654)),
-                const SizedBox(width: 8),
-                const Text(
-                  "// AGENT CLASSIFICATIONS",
-                  style: TextStyle(
-                    fontFamily: 'Valorant',
-                    fontSize: 12,
-                    color: Color(0xFFFF4654),
-                    letterSpacing: 1.5,
+        itemCount: _roles.length + 2,
+        itemBuilder: (context, index) {
+          if (index == 0) {
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 24),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Container(
+                        width: 4,
+                        height: 18,
+                        color: const Color(0xFFFF4654),
+                      ),
+                      const SizedBox(width: 8),
+                      const Text(
+                        "// AGENT CLASSIFICATIONS",
+                        style: TextStyle(
+                          fontFamily: 'Valorant',
+                          fontSize: 12,
+                          color: Color(0xFFFF4654),
+                          letterSpacing: 1.5,
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 8),
-            const Text(
-              "Combat\nRoles",
-              style: TextStyle(
-                fontFamily: 'Valorant',
-                fontSize: 32,
-                color: Colors.white,
-                height: 1.1,
-                letterSpacing: 1.0,
+                  const SizedBox(height: 8),
+                  const Text(
+                    "Combat\nRoles",
+                    style: TextStyle(
+                      fontFamily: 'Valorant',
+                      fontSize: 32,
+                      color: Colors.white,
+                      height: 1.1,
+                      letterSpacing: 1.0,
+                    ),
+                  ),
+                ],
+              ),
+            );
+          }
+
+          if (index == _roles.length + 1) {
+            return const SizedBox(height: 30);
+          }
+
+          final role = _roles[index - 1];
+          final animIndex = index - 1;
+
+          return FadeTransition(
+            opacity: _cardFades[animIndex],
+            child: SlideTransition(
+              position: _cardSlides[animIndex],
+              child: _buildRoleCard(
+                title: role["title"] as String,
+                badge: role["badge"] as String,
+                iconPath: role["iconPath"] as String,
+                description: role["description"] as String,
+                responsibilities:
+                    (role["responsibilities"] as List).cast<String>(),
               ),
             ),
-
-            const SizedBox(height: 24),
-
-            // DUELIST
-            _buildRoleCard(
-              title: "DUELIST",
-              badge: "ENTRY & FRAGGING",
-              iconPath: "assets/logo/duelist_logo.png",
-              description:
-                  "Self-sufficient fraggers who their team expects, through abilities and skill, to get top kills and procure first bloods.",
-              responsibilities: [
-                "Create first contact and secure opening kills",
-                "Execute aggressively onto bomb sites",
-                "Capitalize on space created by Initiators",
-              ],
-            ),
-            const SizedBox(height: 16),
-
-            // INITIATOR
-            _buildRoleCard(
-              title: "INITIATOR",
-              badge: "RECON & DISRUPTION",
-              iconPath: "assets/logo/initiator_logo.png",
-              description:
-                  "Initiators challenge angles by setting up their team to enter contested ground and push defenders away.",
-              responsibilities: [
-                "Gather intelligence on enemy positions",
-                "Flush out defenders using concusses and flashes",
-                "Enable Duelists to take site safely",
-              ],
-            ),
-            const SizedBox(height: 16),
-
-            // CONTROLLER
-            _buildRoleCard(
-              title: "CONTROLLER",
-              badge: "MAP & SIGHT BLOCKING",
-              iconPath: "assets/logo/controller_logo.png",
-              description:
-                  "Controllers are experts in slicing up dangerous territory to set their team up for success and choke off lines of sight.",
-              responsibilities: [
-                "Deploy smokes to block sniper/defender sightlines",
-                "Delay enemy pushes during retakes or retries",
-                "Dictate map tempo and vision control",
-              ],
-            ),
-            const SizedBox(height: 16),
-
-            // SENTINEL
-            _buildRoleCard(
-              title: "SENTINEL",
-              badge: "DEFENSE & ANCHORING",
-              iconPath: "assets/logo/sentinel_logo.png",
-              description:
-                  "Defensive experts who can lock down areas and watch flanks, both on attacker and defender rounds.",
-              responsibilities: [
-                "Anchor sites solo against enemy pushes",
-                "Watch flanks using traps and tripwires",
-                "Slow down opponent rotations and site takes",
-              ],
-            ),
-            const SizedBox(height: 30),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
@@ -131,16 +205,16 @@ class RolesDescriptionScreen extends StatelessWidget {
     required List<String> responsibilities,
   }) {
     return Container(
+      margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
         color: const Color(0xFF12181F),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.grey, width: 1.5),
+        border: Border.all(color: Colors.grey.shade800, width: 1),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Header Row
           Row(
             children: [
               Container(
@@ -184,8 +258,6 @@ class RolesDescriptionScreen extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 12),
-
-          // Role Overview
           Text(
             description,
             style: const TextStyle(
@@ -195,11 +267,8 @@ class RolesDescriptionScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 12),
-
-          const Divider(color: Colors.white, height: 1),
+          Divider(color: Colors.grey.shade800, height: 1),
           const SizedBox(height: 12),
-
-          // Key Objectives List
           const Text(
             "PRIMARY OBJECTIVES",
             style: TextStyle(
@@ -210,7 +279,6 @@ class RolesDescriptionScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 8),
-
           ...responsibilities.map(
             (task) => Padding(
               padding: const EdgeInsets.only(bottom: 6),
