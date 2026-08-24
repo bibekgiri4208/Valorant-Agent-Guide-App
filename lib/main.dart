@@ -14,7 +14,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Valo Guide',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        brightness: Brightness.dark,
+        scaffoldBackgroundColor: const Color(0xFF1C252E),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.deepPurple,
+          brightness: Brightness.dark,
+        ),
       ),
       home: const SplashScreen(),
       debugShowCheckedModeBanner: false,
