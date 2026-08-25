@@ -2,32 +2,34 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:valorant_guide_app/data/duelists_data.dart';
 import 'package:valorant_guide_app/screens/agents/agents_detail_screen.dart';
+import 'package:valorant_guide_app/theme/app_colors.dart';
 
 class DuelistsScreen extends StatelessWidget {
   const DuelistsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
     return Scaffold(
-      backgroundColor: const Color(0xFF1C252E),
+      backgroundColor: AppColors.scaffold(brightness),
       appBar: AppBar(
         leading: IconButton(
           icon: Image.asset(
             'assets/icon/back_arrow.png',
-            color: Colors.white,
+            color: AppColors.backArrow(brightness),
             width: 24,
             height: 24,
           ),
           onPressed: () => Navigator.pop(context),
         ),
-        backgroundColor: const Color(0xFF1C252E),
+        backgroundColor: AppColors.scaffold(brightness),
         elevation: 0,
         scrolledUnderElevation: 0,
         centerTitle: true,
         title: const Text(
           "DUELISTS",
           style: TextStyle(
-            color: Color(0xFFFF4654),
+            color: AppColors.accent,
             fontSize: 30,
             fontFamily: 'Valorant',
           ),
@@ -44,20 +46,20 @@ class DuelistsScreen extends StatelessWidget {
                 style: TextStyle(
                   fontFamily: 'Valorant',
                   fontSize: 11,
-                  color: Color(0xFFFF4654),
+                  color: AppColors.accent,
                   letterSpacing: 1.5,
                 ),
               ),
 
-              const Text(
+              Text(
                 "CHOOSE YOUR\nDUELIST",
                 style: TextStyle(
                   fontFamily: 'Valorant',
                   fontSize: 28,
-                  color: Colors.white,
+                  color: AppColors.textPrimary(brightness),
                 ),
               ),
-              const Divider(thickness: 5, color: Color(0xFFFF4654)),
+              const Divider(thickness: 5, color: AppColors.accent),
               const SizedBox(height: 30),
 
               AnimationLimiter(
@@ -184,7 +186,7 @@ class DuelistsScreen extends StatelessWidget {
                                             16,
                                           ),
                                           border: Border.all(
-                                            color: Color(0xFF9B6DFF),
+                                            color: AppColors.rolePurple,
                                             width: 3,
                                           ),
                                           image: DecorationImage(
@@ -193,9 +195,7 @@ class DuelistsScreen extends StatelessWidget {
                                             ),
                                             fit: BoxFit.cover,
                                             colorFilter: ColorFilter.mode(
-                                              Colors.black.withValues(
-                                                alpha: 0.5,
-                                              ),
+                                              AppColors.imageOverlay(brightness),
                                               BlendMode.darken,
                                             ),
                                           ),
@@ -206,9 +206,7 @@ class DuelistsScreen extends StatelessWidget {
                                               decoration: BoxDecoration(
                                                 borderRadius:
                                                     BorderRadius.circular(16),
-                                                color: Colors.black.withValues(
-                                                  alpha: 0.25,
-                                                ),
+                                                color: AppColors.cardOverlay(brightness),
                                               ),
                                             ),
                                             Positioned(
@@ -222,8 +220,8 @@ class DuelistsScreen extends StatelessWidget {
                                                     agent["name"]
                                                         .toString()
                                                         .toUpperCase(),
-                                                    style: const TextStyle(
-                                                      color: Colors.white,
+                                                    style: TextStyle(
+                                                      color: AppColors.textPrimary(brightness),
                                                       fontSize: 16,
                                                       fontFamily: "Valorant",
                                                       fontWeight:

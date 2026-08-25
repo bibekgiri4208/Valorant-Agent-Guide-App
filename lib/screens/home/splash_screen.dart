@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:valorant_guide_app/screens/home/dashboard_screen.dart';
+import 'package:valorant_guide_app/theme/app_colors.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -24,18 +25,16 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF0F141A),
+      backgroundColor: AppColors.splashBg,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              child: Image.asset(
-                "assets/logo/valorant_logo.png",
-                fit: BoxFit.cover,
-                height: 150,
-                width: 150,
-              ),
+            Image.asset(
+              "assets/logo/valorant_logo.png",
+              fit: BoxFit.cover,
+              height: 150,
+              width: 150,
             ),
             SizedBox(height: 15),
             Text(
@@ -43,7 +42,7 @@ class _SplashScreenState extends State<SplashScreen> {
               style: TextStyle(
                 fontFamily: 'Valorant',
                 fontSize: 40,
-                color: Color(0xFFFF4654),
+                color: AppColors.accent,
               ),
             ),
           ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:valorant_guide_app/theme/app_colors.dart';
 
 class RolesDescriptionScreen extends StatefulWidget {
   final double bottomOverlayHeight;
@@ -106,6 +107,7 @@ class _RolesDescriptionScreenState extends State<RolesDescriptionScreen>
 
   @override
   Widget build(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
     return Scaffold(
         backgroundColor: Colors.transparent,
       appBar: AppBar(
@@ -114,10 +116,10 @@ class _RolesDescriptionScreenState extends State<RolesDescriptionScreen>
         scrolledUnderElevation: 0,
         centerTitle: true,
         automaticallyImplyLeading: false,
-        title: const Text(
+        title: Text(
           "TACTICAL ROLES",
           style: TextStyle(
-            color: Color(0xFFFF4654),
+            color: AppColors.accent,
             fontSize: 30,
             fontFamily: 'Valorant',
             letterSpacing: 1.5,
@@ -142,27 +144,27 @@ class _RolesDescriptionScreenState extends State<RolesDescriptionScreen>
                       Container(
                         width: 4,
                         height: 18,
-                        color: const Color(0xFFFF4654),
+                        color: AppColors.accent,
                       ),
                       const SizedBox(width: 8),
-                      const Text(
+                      Text(
                         "// AGENT CLASSIFICATIONS",
                         style: TextStyle(
                           fontFamily: 'Valorant',
                           fontSize: 12,
-                          color: Color(0xFFFF4654),
+                          color: AppColors.accent,
                           letterSpacing: 1.5,
                         ),
                       ),
                     ],
                   ),
                   const SizedBox(height: 8),
-                  const Text(
+                  Text(
                     "Combat\nRoles",
                     style: TextStyle(
                       fontFamily: 'Valorant',
                       fontSize: 32,
-                      color: Colors.white,
+                      color: AppColors.textPrimary(brightness),
                       height: 1.1,
                       letterSpacing: 1.0,
                     ),
@@ -184,6 +186,7 @@ class _RolesDescriptionScreenState extends State<RolesDescriptionScreen>
             child: SlideTransition(
               position: _cardSlides[animIndex],
               child: _buildRoleCard(
+                brightness: brightness,
                 title: role["title"] as String,
                 badge: role["badge"] as String,
                 iconPath: role["iconPath"] as String,
@@ -199,6 +202,7 @@ class _RolesDescriptionScreenState extends State<RolesDescriptionScreen>
   }
 
   Widget _buildRoleCard({
+    required Brightness brightness,
     required String title,
     required String badge,
     required String iconPath,
@@ -209,9 +213,9 @@ class _RolesDescriptionScreenState extends State<RolesDescriptionScreen>
       margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
-        color: const Color(0xFF12181F),
+        color: AppColors.card(brightness),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.grey.shade800, width: 1),
+        border: Border.all(color: AppColors.divider(brightness), width: 1),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -221,12 +225,12 @@ class _RolesDescriptionScreenState extends State<RolesDescriptionScreen>
               Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: const Color(0xFFFF4654),
+                  color: AppColors.accent,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: ImageIcon(
                   AssetImage(iconPath),
-                  color: Colors.white,
+                  color: AppColors.textPrimary(brightness),
                   size: 24,
                 ),
               ),
@@ -237,19 +241,19 @@ class _RolesDescriptionScreenState extends State<RolesDescriptionScreen>
                   children: [
                     Text(
                       title,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontFamily: 'Valorant',
                         fontSize: 18,
-                        color: Colors.white,
+                        color: AppColors.textPrimary(brightness),
                         letterSpacing: 1.2,
                       ),
                     ),
                     Text(
                       badge,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontFamily: 'Valorant',
                         fontSize: 9,
-                        color: Color(0xFFFF4654),
+                        color: AppColors.accent,
                         letterSpacing: 1.0,
                       ),
                     ),
@@ -261,21 +265,21 @@ class _RolesDescriptionScreenState extends State<RolesDescriptionScreen>
           const SizedBox(height: 12),
           Text(
             description,
-            style: const TextStyle(
-              color: Colors.grey,
+            style: TextStyle(
+              color: AppColors.textSecondary(brightness),
               fontSize: 13,
               height: 1.5,
             ),
           ),
           const SizedBox(height: 12),
-          Divider(color: Colors.grey.shade800, height: 1),
+          Divider(color: AppColors.divider(brightness), height: 1),
           const SizedBox(height: 12),
-          const Text(
+          Text(
             "PRIMARY OBJECTIVES",
             style: TextStyle(
               fontFamily: 'Valorant',
               fontSize: 10,
-              color: Color(0xFFFF4654),
+              color: AppColors.accent,
               letterSpacing: 1.0,
             ),
           ),
@@ -286,10 +290,10 @@ class _RolesDescriptionScreenState extends State<RolesDescriptionScreen>
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                  Text(
                     "▸ ",
                     style: TextStyle(
-                      color: Color(0xFFFF4654),
+                      color: AppColors.accent,
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
                     ),
@@ -297,8 +301,8 @@ class _RolesDescriptionScreenState extends State<RolesDescriptionScreen>
                   Expanded(
                     child: Text(
                       task,
-                      style: const TextStyle(
-                        color: Colors.grey,
+                      style: TextStyle(
+                        color: AppColors.textSecondary(brightness),
                         fontSize: 12,
                         height: 1.3,
                       ),

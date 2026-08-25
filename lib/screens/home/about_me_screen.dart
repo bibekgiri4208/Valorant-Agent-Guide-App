@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:valorant_guide_app/theme/app_colors.dart';
+import 'package:valorant_guide_app/theme/theme_provider.dart';
 
 class AboutMeScreen extends StatelessWidget {
   final double bottomOverlayHeight;
@@ -14,18 +17,20 @@ class AboutMeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
+
     return Scaffold(
-        backgroundColor: Colors.transparent,
-      appBar: AppBar(
       backgroundColor: Colors.transparent,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
         elevation: 0,
         scrolledUnderElevation: 0,
         centerTitle: true,
         automaticallyImplyLeading: false,
-        title: const Text(
+        title: Text(
           "About vAlo Guide",
           style: TextStyle(
-            color: Color(0xFFFF4654),
+            color: AppColors.accent,
             fontSize: 30,
             fontFamily: 'Valorant',
             letterSpacing: 1.5,
@@ -42,9 +47,9 @@ class AboutMeScreen extends StatelessWidget {
               width: double.infinity,
               padding: const EdgeInsets.all(18),
               decoration: BoxDecoration(
-                color: const Color(0xFF12181F),
+                color: AppColors.card(brightness),
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: const Color(0xFFFF4654), width: 1.5),
+                border: Border.all(color: AppColors.accent, width: 1.5),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,12 +57,12 @@ class AboutMeScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text(
+                      Text(
                         "Developer",
                         style: TextStyle(
                           fontFamily: 'Valorant',
                           fontSize: 10,
-                          color: Color(0xFFFF4654),
+                          color: AppColors.accent,
                           letterSpacing: 1.5,
                         ),
                       ),
@@ -67,16 +72,19 @@ class AboutMeScreen extends StatelessWidget {
                           vertical: 3,
                         ),
                         decoration: BoxDecoration(
-                          color: const Color(0xFF1C252E),
+                          color: AppColors.scaffold(brightness),
                           borderRadius: BorderRadius.circular(4),
-                          border: Border.all(color: Colors.grey, width: 1),
+                          border: Border.all(
+                            color: AppColors.divider(brightness),
+                            width: 1,
+                          ),
                         ),
-                        child: const Text(
+                        child: Text(
                           "AGENT #0",
                           style: TextStyle(
                             fontFamily: 'Valorant',
                             fontSize: 9,
-                            color: Colors.grey,
+                            color: AppColors.textSecondary(brightness),
                             letterSpacing: 1.0,
                           ),
                         ),
@@ -88,14 +96,16 @@ class AboutMeScreen extends StatelessWidget {
 
                   Row(
                     children: [
-                      // Avatar Frame with Asset Image
                       Container(
                         width: 68,
                         height: 68,
                         decoration: BoxDecoration(
-                          color: const Color(0xFF1C252E),
+                          color: AppColors.scaffold(brightness),
                           borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: Colors.grey, width: 1),
+                          border: Border.all(
+                            color: AppColors.divider(brightness),
+                            width: 1,
+                          ),
                         ),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(9),
@@ -106,18 +116,16 @@ class AboutMeScreen extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(width: 16),
-
-                      // Name & Details
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text(
+                            Text(
                               "Bibek Giri",
                               style: TextStyle(
                                 fontFamily: 'Valorant',
                                 fontSize: 22,
-                                color: Colors.white,
+                                color: AppColors.textPrimary(brightness),
                                 letterSpacing: 1.0,
                               ),
                             ),
@@ -127,7 +135,7 @@ class AboutMeScreen extends StatelessWidget {
                               style: TextStyle(
                                 fontFamily: 'Valorant',
                                 fontSize: 10,
-                                color: Colors.grey.shade400,
+                                color: AppColors.textSecondary(brightness),
                                 letterSpacing: 1.1,
                               ),
                             ),
@@ -137,7 +145,7 @@ class AboutMeScreen extends StatelessWidget {
                               style: TextStyle(
                                 fontFamily: 'Valorant',
                                 fontSize: 10,
-                                color: Colors.grey.shade400,
+                                color: AppColors.textSecondary(brightness),
                                 letterSpacing: 1.1,
                               ),
                             ),
@@ -152,13 +160,28 @@ class AboutMeScreen extends StatelessWidget {
 
             const SizedBox(height: 25),
 
+            // APPEARANCE TOGGLE
+            Text(
+              "APPEARANCE",
+              style: TextStyle(
+                fontFamily: 'Valorant',
+                fontSize: 14,
+                color: AppColors.textPrimary(brightness),
+                letterSpacing: 1.2,
+              ),
+            ),
+            const SizedBox(height: 12),
+            _buildAppearanceToggle(context, brightness),
+
+            const SizedBox(height: 25),
+
             // MISSION OBJECTIVE
-            const Text(
+            Text(
               "MISSION OBJECTIVE",
               style: TextStyle(
                 fontFamily: 'Valorant',
                 fontSize: 14,
-                color: Colors.white,
+                color: AppColors.textPrimary(brightness),
                 letterSpacing: 1.2,
               ),
             ),
@@ -167,25 +190,32 @@ class AboutMeScreen extends StatelessWidget {
               width: double.infinity,
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: const Color(0xFF12181F),
+                color: AppColors.card(brightness),
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Colors.grey, width: 1.5),
+                border: Border.all(
+                  color: AppColors.divider(brightness),
+                  width: 1.5,
+                ),
               ),
-              child: const Text(
+              child: Text(
                 "Created to provide Valorant players with a fast, mobile-friendly companion app. Built to offer instant visual intel on agent rosters, ability mechanics, video demonstrations, and agent biographies without needing desktop browser searches during active sessions.",
-                style: TextStyle(color: Colors.grey, fontSize: 14, height: 1.6),
+                style: TextStyle(
+                  color: AppColors.textSecondary(brightness),
+                  fontSize: 14,
+                  height: 1.6,
+                ),
               ),
             ),
 
             const SizedBox(height: 25),
 
             // KEY BENEFITS SECTION
-            const Text(
+            Text(
               "TACTICAL ADVANTAGES",
               style: TextStyle(
                 fontFamily: 'Valorant',
                 fontSize: 14,
-                color: Colors.white,
+                color: AppColors.textPrimary(brightness),
                 letterSpacing: 1.2,
               ),
             ),
@@ -195,6 +225,7 @@ class AboutMeScreen extends StatelessWidget {
               title: "Visual Ability Intel",
               description:
                   "Embedded video previews allow players to inspect ability execution, trajectory, and timing in real-time.",
+              brightness: brightness,
             ),
             const SizedBox(height: 10),
             _buildBenefitTile(
@@ -202,6 +233,7 @@ class AboutMeScreen extends StatelessWidget {
               title: "Role-Based Navigation",
               description:
                   "Effortlessly filter agents across Duelist, Controller, Initiator, and Sentinel roles.",
+              brightness: brightness,
             ),
             const SizedBox(height: 10),
             _buildBenefitTile(
@@ -209,6 +241,7 @@ class AboutMeScreen extends StatelessWidget {
               title: "Mobile Optimized UI",
               description:
                   "Tactile animations, dark mode aesthetics, and low-latency navigation tailored for quick mobile reference.",
+              brightness: brightness,
             ),
             const SizedBox(height: 10),
             _buildBenefitTile(
@@ -216,6 +249,7 @@ class AboutMeScreen extends StatelessWidget {
               title: "Complete Agent Dossiers",
               description:
                   "Access full skill breakdowns, character biographies, and role-specific stats for every operative in the Valorant roster.",
+              brightness: brightness,
             ),
             const SizedBox(height: 10),
             _buildBenefitTile(
@@ -223,6 +257,7 @@ class AboutMeScreen extends StatelessWidget {
               title: "Instant Session Reference",
               description:
                   "Engineered for rapid second-screen lookups during live matches without needing to tab out or drop in-game performance.",
+              brightness: brightness,
             ),
             const SizedBox(height: 10),
             _buildBenefitTile(
@@ -230,6 +265,7 @@ class AboutMeScreen extends StatelessWidget {
               title: "Tactical Guide Modules",
               description:
                   "A complete library of actionable field tips covering crosshair placement, peeking mechanics, spike timers, and advanced movement.",
+              brightness: brightness,
             ),
             const SizedBox(height: 10),
             _buildBenefitTile(
@@ -237,17 +273,18 @@ class AboutMeScreen extends StatelessWidget {
               title: "Economy & Buy Strategies",
               description:
                   "Master round-by-round credit management, including Full Buys, Eco/Save rounds, Light Buys, and armor math for optimal team spending.",
+              brightness: brightness,
             ),
 
             const SizedBox(height: 25),
 
             // BIO SECTION
-            const Text(
+            Text(
               "BIOGRAPHY",
               style: TextStyle(
                 fontFamily: 'Valorant',
                 fontSize: 14,
-                color: Colors.white,
+                color: AppColors.textPrimary(brightness),
                 letterSpacing: 1.2,
               ),
             ),
@@ -256,25 +293,32 @@ class AboutMeScreen extends StatelessWidget {
               width: double.infinity,
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: const Color(0xFF12181F),
+                color: AppColors.card(brightness),
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Colors.grey, width: 1.5),
+                border: Border.all(
+                  color: AppColors.divider(brightness),
+                  width: 1.5,
+                ),
               ),
-              child: const Text(
+              child: Text(
                 "I'm a passionate mobile app developer specializing in crafting sleek, responsive, and tactile cross-platform mobile experiences. Dedicated to high-performance graphics, clean architecture, and immersive gaming UI design. If you liked my application, feel free to check out my other projects on GitHub.",
-                style: TextStyle(color: Colors.grey, fontSize: 14, height: 1.6),
+                style: TextStyle(
+                  color: AppColors.textSecondary(brightness),
+                  fontSize: 14,
+                  height: 1.6,
+                ),
               ),
             ),
 
             const SizedBox(height: 25),
 
             // CONTACT LINKS
-            const Text(
+            Text(
               "TRANSMISSIONS",
               style: TextStyle(
                 fontFamily: 'Valorant',
                 fontSize: 14,
-                color: Colors.white,
+                color: AppColors.textPrimary(brightness),
                 letterSpacing: 1.2,
               ),
             ),
@@ -284,6 +328,7 @@ class AboutMeScreen extends StatelessWidget {
               label: "GitHub",
               value: "github.com/bibekgiri4208",
               onTap: () => _launchURL("https://github.com/bibekgiri4208"),
+              brightness: brightness,
             ),
             const SizedBox(height: 10),
             _buildContactTile(
@@ -291,8 +336,96 @@ class AboutMeScreen extends StatelessWidget {
               label: "Email",
               value: "giribibek01@gmail.com",
               onTap: () => _launchURL("mailto:giribibek01@gmail.com"),
+              brightness: brightness,
             ),
             const SizedBox(height: 30),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildAppearanceToggle(BuildContext context, Brightness brightness) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final isDark = themeProvider.themeMode == ThemeMode.dark;
+
+    return Container(
+      padding: const EdgeInsets.all(4),
+      decoration: BoxDecoration(
+        color: AppColors.card(brightness),
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(
+          color: AppColors.divider(brightness),
+          width: 1.5,
+        ),
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: _buildThemeOption(
+              context: context,
+              brightness: brightness,
+              icon: Icons.dark_mode_rounded,
+              label: "Dark",
+              isSelected: isDark,
+              onTap: () => themeProvider.setThemeMode(ThemeMode.dark),
+            ),
+          ),
+          Expanded(
+            child: _buildThemeOption(
+              context: context,
+              brightness: brightness,
+              icon: Icons.light_mode_rounded,
+              label: "Light",
+              isSelected: !isDark,
+              onTap: () => themeProvider.setThemeMode(ThemeMode.light),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildThemeOption({
+    required BuildContext context,
+    required Brightness brightness,
+    required IconData icon,
+    required String label,
+    required bool isSelected,
+    required VoidCallback onTap,
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 250),
+        curve: Curves.easeInOut,
+        padding: const EdgeInsets.symmetric(vertical: 14),
+        decoration: BoxDecoration(
+          color: isSelected ? AppColors.accent : Colors.transparent,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              icon,
+              size: 20,
+              color: isSelected
+                  ? Colors.white
+                  : AppColors.textSecondary(brightness),
+            ),
+            const SizedBox(width: 8),
+            Text(
+              label,
+              style: TextStyle(
+                fontFamily: 'Valorant',
+                fontSize: 12,
+                color: isSelected
+                    ? Colors.white
+                    : AppColors.textSecondary(brightness),
+                letterSpacing: 1.0,
+              ),
+            ),
           ],
         ),
       ),
@@ -303,13 +436,17 @@ class AboutMeScreen extends StatelessWidget {
     required IconData icon,
     required String title,
     required String description,
+    required Brightness brightness,
   }) {
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: const Color(0xFF12181F),
+        color: AppColors.card(brightness),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.grey, width: 1.5),
+        border: Border.all(
+          color: AppColors.divider(brightness),
+          width: 1.5,
+        ),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -317,7 +454,7 @@ class AboutMeScreen extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-              color: const Color(0xFFFF4654),
+              color: AppColors.accent,
               borderRadius: BorderRadius.circular(8),
             ),
             child: Icon(icon, color: Colors.white, size: 20),
@@ -329,18 +466,18 @@ class AboutMeScreen extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontFamily: 'Valorant',
                     fontSize: 12,
-                    color: Colors.white,
+                    color: AppColors.textPrimary(brightness),
                   ),
                 ),
                 const SizedBox(height: 4),
                 Text(
                   description,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 12,
-                    color: Colors.grey,
+                    color: AppColors.textSecondary(brightness),
                     height: 1.4,
                   ),
                 ),
@@ -357,6 +494,7 @@ class AboutMeScreen extends StatelessWidget {
     required String label,
     required String value,
     required VoidCallback onTap,
+    required Brightness brightness,
   }) {
     return InkWell(
       onTap: onTap,
@@ -364,35 +502,41 @@ class AboutMeScreen extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
         decoration: BoxDecoration(
-          color: const Color(0xFF12181F),
+          color: AppColors.card(brightness),
           borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: Colors.grey, width: 1.5),
+          border: Border.all(
+            color: AppColors.divider(brightness),
+            width: 1.5,
+          ),
         ),
         child: Row(
           children: [
-            Icon(icon, color: const Color(0xFFFF4654), size: 22),
+            Icon(icon, color: AppColors.accent, size: 22),
             const SizedBox(width: 14),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   label,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontFamily: 'Valorant',
                     fontSize: 11,
-                    color: Colors.white,
+                    color: AppColors.textPrimary(brightness),
                   ),
                 ),
                 Text(
                   value,
-                  style: const TextStyle(fontSize: 12, color: Colors.grey),
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: AppColors.textSecondary(brightness),
+                  ),
                 ),
               ],
             ),
             const Spacer(),
-            const Icon(
+            Icon(
               Icons.arrow_forward_ios_rounded,
-              color: Colors.white,
+              color: AppColors.textPrimary(brightness),
               size: 14,
             ),
           ],

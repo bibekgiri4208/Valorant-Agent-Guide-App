@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:valorant_guide_app/data/game_guide_data.dart';
+import 'package:valorant_guide_app/theme/app_colors.dart';
 
 class GameGuideScreen extends StatefulWidget {
   final double bottomOverlayHeight;
@@ -15,6 +16,7 @@ class _GameGuideScreenState extends State<GameGuideScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
     final filteredGuides = gameGuidesData.where((guide) {
       final matchesCategory =
           _selectedCategory == "ALL" || guide['category'] == _selectedCategory;
@@ -42,10 +44,10 @@ class _GameGuideScreenState extends State<GameGuideScreen> {
             scrolledUnderElevation: 0,
             centerTitle: true,
             pinned: true,
-            title: const Text(
+            title: Text(
               "Game Guide",
               style: TextStyle(
-                color: Color(0xFFFF4654),
+                color: AppColors.accent,
                 fontSize: 30,
                 fontFamily: 'Valorant',
                 letterSpacing: 2.0,
@@ -65,27 +67,27 @@ class _GameGuideScreenState extends State<GameGuideScreen> {
                       Container(
                         width: 4,
                         height: 18,
-                        color: const Color(0xFFFF4654),
+                        color: AppColors.accent,
                       ),
                       const SizedBox(width: 8),
-                      const Text(
+                      Text(
                         "// PROTOCOL DATABASE",
                         style: TextStyle(
                           fontFamily: 'Valorant',
                           fontSize: 12,
-                          color: Color(0xFFFF4654),
+                          color: AppColors.accent,
                           letterSpacing: 1.5,
                         ),
                       ),
                     ],
                   ),
                   const SizedBox(height: 8),
-                  const Text(
+                  Text(
                     "MASTER THE\nGAME MECHANICS",
                     style: TextStyle(
                       fontFamily: 'Valorant',
                       fontSize: 28,
-                      color: Colors.white,
+                      color: AppColors.textPrimary(brightness),
                       height: 1.15,
                       letterSpacing: 1.0,
                     ),
@@ -95,27 +97,27 @@ class _GameGuideScreenState extends State<GameGuideScreen> {
                   // Search Bar
                   TextField(
                     onChanged: (value) => setState(() => _searchQuery = value),
-                    style: const TextStyle(color: Colors.white, fontSize: 14),
+                    style: TextStyle(color: AppColors.textPrimary(brightness), fontSize: 14),
                     decoration: InputDecoration(
                       hintText: "Search tactics, economy, mechanics...",
-                      hintStyle: const TextStyle(
-                        color: Colors.grey,
+                      hintStyle: TextStyle(
+                        color: AppColors.textSecondary(brightness),
                         fontSize: 13,
                       ),
-                      prefixIcon: const Icon(
+                      prefixIcon: Icon(
                         Icons.search,
-                        color: Color(0xFFFF4654),
+                        color: AppColors.accent,
                       ),
                       filled: true,
-                      fillColor: const Color(0xFF12181F),
+                      fillColor: AppColors.card(brightness),
                       contentPadding: const EdgeInsets.symmetric(vertical: 0),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(color: Colors.grey),
+                        borderSide: BorderSide(color: AppColors.divider(brightness)),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(color: Color(0xFFFF4654)),
+                        borderSide: BorderSide(color: AppColors.accent),
                       ),
                     ),
                   ),
@@ -137,12 +139,12 @@ class _GameGuideScreenState extends State<GameGuideScreen> {
                             style: TextStyle(
                               fontFamily: 'Valorant',
                               fontSize: 10,
-                              color: isSelected ? Colors.black : Colors.white,
+                              color: isSelected ? AppColors.chipSelectedText(brightness) : AppColors.textPrimary(brightness),
                             ),
                           ),
                           selected: isSelected,
-                          selectedColor: const Color(0xFFFF4654),
-                          backgroundColor: const Color(0xFF12181F),
+                          selectedColor: AppColors.accent,
+                          backgroundColor: AppColors.card(brightness),
                           onSelected: (selected) {
                             if (selected) {
                               setState(() => _selectedCategory = category);
@@ -160,11 +162,11 @@ class _GameGuideScreenState extends State<GameGuideScreen> {
 
           // GUIDE CARDS
           if (filteredGuides.isEmpty)
-            const SliverFillRemaining(
+            SliverFillRemaining(
               child: Center(
                 child: Text(
                   "NO PROTOCOL DATA FOUND",
-                  style: TextStyle(color: Colors.grey, fontFamily: 'Valorant'),
+                  style: TextStyle(color: AppColors.textSecondary(brightness), fontFamily: 'Valorant'),
                 ),
               ),
             )
@@ -204,20 +206,21 @@ class _GuideCardState extends State<_GuideCard> {
   Color _categoryColor(String category) {
     switch (category) {
       case "MECHANICS":
-        return const Color(0xFFFF4654);
+        return AppColors.accent;
       case "ECONOMY":
-        return const Color(0xFF00D4AA);
+        return AppColors.teal;
       case "TEAMWORK":
-        return const Color(0xFF5B8DEF);
+        return AppColors.blue;
       case "TACTICS":
-        return const Color(0xFFFFB800);
+        return AppColors.gold;
       default:
-        return const Color(0xFFFF4654);
+        return AppColors.accent;
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
     final item = widget.item;
     final categoryColor = _categoryColor(item['category'] as String);
 
@@ -227,12 +230,12 @@ class _GuideCardState extends State<_GuideCard> {
         duration: const Duration(milliseconds: 250),
         curve: Curves.easeInOut,
         decoration: BoxDecoration(
-          color: const Color(0xFF12181F),
+          color: AppColors.card(brightness),
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
             color: _expanded
                 ? categoryColor.withValues(alpha: 0.4)
-                : Colors.grey.shade800,
+                : AppColors.divider(brightness),
           ),
         ),
         child: Column(
@@ -256,7 +259,7 @@ class _GuideCardState extends State<_GuideCard> {
                     ),
                     child: Icon(
                       item['icon'] as IconData,
-                      color: Colors.white,
+                      color: AppColors.textPrimary(brightness),
                       size: 20,
                     ),
                   ),
@@ -269,10 +272,10 @@ class _GuideCardState extends State<_GuideCard> {
                       children: [
                         Text(
                           "${item['num']} // ${item['title']}",
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontFamily: 'Valorant',
                             fontSize: 13,
-                            color: Colors.white,
+                            color: AppColors.textPrimary(brightness),
                             letterSpacing: 0.8,
                           ),
                         ),
@@ -306,7 +309,7 @@ class _GuideCardState extends State<_GuideCard> {
                     duration: const Duration(milliseconds: 250),
                     child: Icon(
                       Icons.keyboard_arrow_down,
-                      color: Colors.grey.shade600,
+                      color: AppColors.textSecondary(brightness),
                       size: 22,
                     ),
                   ),
@@ -325,12 +328,12 @@ class _GuideCardState extends State<_GuideCard> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Divider(color: Colors.grey.shade800, thickness: 1),
+                          Divider(color: AppColors.divider(brightness), thickness: 1),
                           const SizedBox(height: 10),
                           Text(
                             item['content'] as String,
-                            style: const TextStyle(
-                              color: Colors.grey,
+                            style: TextStyle(
+                              color: AppColors.textSecondary(brightness),
                               fontSize: 13,
                               height: 1.5,
                             ),

@@ -3,6 +3,7 @@ import 'package:valorant_guide_app/screens/agents/controllers_screen.dart';
 import 'package:valorant_guide_app/screens/agents/duelists_screen.dart';
 import 'package:valorant_guide_app/screens/agents/initiators_screen.dart';
 import 'package:valorant_guide_app/screens/agents/sentinels_screen.dart';
+import 'package:valorant_guide_app/theme/app_colors.dart';
 
 class HomeScreen extends StatefulWidget {
   final double bottomOverlayHeight;
@@ -100,6 +101,8 @@ class _HomeScreenState extends State<HomeScreen>
 
   @override
   Widget build(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
+
     return Scaffold(
         backgroundColor: Colors.transparent,
       appBar: AppBar(
@@ -108,10 +111,10 @@ class _HomeScreenState extends State<HomeScreen>
         scrolledUnderElevation: 0,
         centerTitle: true,
         automaticallyImplyLeading: false,
-        title: const Text(
+        title: Text(
           "Valo Guide",
           style: TextStyle(
-            color: Color(0xFFFF4654),
+            color: AppColors.accent,
             fontSize: 30,
             fontFamily: 'Valorant',
             letterSpacing: 2.0,
@@ -136,27 +139,27 @@ class _HomeScreenState extends State<HomeScreen>
                       Container(
                         width: 4,
                         height: 18,
-                        color: const Color(0xFFFF4654),
+                        color: AppColors.accent,
                       ),
                       const SizedBox(width: 8),
-                      const Text(
+                      Text(
                         "// SELECT PROTOCOL ROLE",
                         style: TextStyle(
                           fontFamily: 'Valorant',
                           fontSize: 12,
-                          color: Color(0xFFFF4654),
+                          color: AppColors.accent,
                           letterSpacing: 1.5,
                         ),
                       ),
                     ],
                   ),
                   const SizedBox(height: 8),
-                  const Text(
+                  Text(
                     "LEARN YOUR\nFAVORITE AGENTS",
                     style: TextStyle(
                       fontFamily: 'Valorant',
                       fontSize: 32,
-                      color: Colors.white,
+                      color: AppColors.textPrimary(brightness),
                       height: 1.15,
                       letterSpacing: 1.0,
                     ),
@@ -173,7 +176,7 @@ class _HomeScreenState extends State<HomeScreen>
             child: SlideTransition(
               position: _cardSlides[0],
               child: PressableCard(
-                borderColor: Colors.grey,
+                borderColor: AppColors.divider(brightness),
                 borderWidth: 3,
                 borderRadius: 12,
                 onTap: () =>
@@ -196,7 +199,7 @@ class _HomeScreenState extends State<HomeScreen>
             child: SlideTransition(
               position: _cardSlides[1],
               child: PressableCard(
-                borderColor: Colors.grey,
+                borderColor: AppColors.divider(brightness),
                 borderWidth: 3,
                 borderRadius: 12,
                 onTap: () =>
@@ -219,7 +222,7 @@ class _HomeScreenState extends State<HomeScreen>
             child: SlideTransition(
               position: _cardSlides[2],
               child: PressableCard(
-                borderColor: Colors.grey,
+                borderColor: AppColors.divider(brightness),
                 borderWidth: 3,
                 borderRadius: 12,
                 onTap: () =>
@@ -242,7 +245,7 @@ class _HomeScreenState extends State<HomeScreen>
             child: SlideTransition(
               position: _cardSlides[3],
               child: PressableCard(
-                borderColor: Colors.grey,
+                borderColor: AppColors.divider(brightness),
                 borderWidth: 3,
                 borderRadius: 12,
                 onTap: () =>
@@ -307,10 +310,10 @@ class _HomeScreenState extends State<HomeScreen>
                   Container(
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
-                      color: const Color(0xFFFF4654),
+                      color: AppColors.accent,
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(
-                        color: const Color(0xFFFF4654).withValues(alpha: 0.4),
+                        color: AppColors.accent.withValues(alpha: 0.4),
                       ),
                     ),
                     child: Image.asset(
@@ -328,10 +331,10 @@ class _HomeScreenState extends State<HomeScreen>
                       children: [
                         Text(
                           "$roleNumber // $tagline",
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontFamily: 'Valorant',
                             fontSize: 10,
-                            color: Color(0xFFFF4654),
+                            color: AppColors.accent,
                             letterSpacing: 1.2,
                           ),
                         ),

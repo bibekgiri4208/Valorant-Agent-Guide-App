@@ -4,6 +4,7 @@ import 'package:valorant_guide_app/screens/home/about_me_screen.dart';
 import 'package:valorant_guide_app/screens/home/game_guide_screen.dart';
 import 'package:valorant_guide_app/screens/home/home_screen.dart';
 import 'package:valorant_guide_app/screens/home/roles_description_screen.dart';
+import 'package:valorant_guide_app/theme/app_colors.dart';
 
 class DashBoardScreen extends StatefulWidget {
   final bool playEntryAnimation;
@@ -106,9 +107,10 @@ class _DashBoardScreenState extends State<DashBoardScreen>
     final bottomPadding = MediaQuery.of(context).padding.bottom;
     final floatingBarTotalHeight =
         _navBarHeight + _navBarBottomMargin + bottomPadding;
+    final brightness = Theme.of(context).brightness;
 
     return Scaffold(
-      backgroundColor: const Color(0xFF1C252E),
+      backgroundColor: AppColors.scaffold(brightness),
       body: Stack(
         children: [
           SlideTransition(
@@ -144,9 +146,9 @@ class _DashBoardScreenState extends State<DashBoardScreen>
                       height: _navBarHeight,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(28),
-                        color: const Color(0xFF0D1117).withValues(alpha: 0.6),
+                        color: AppColors.deepSurface(brightness).withValues(alpha: 0.6),
                         border: Border.all(
-                          color: Colors.white.withValues(alpha: 0.12),
+                          color: AppColors.navBarBorder(brightness),
                           width: 1,
                         ),
                         boxShadow: [
@@ -215,8 +217,9 @@ class _FloatingNavBarItemState extends State<_FloatingNavBarItem> {
 
   @override
   Widget build(BuildContext context) {
-    const activeColor = Color(0xFFFF4654);
-    const inactiveColor = Colors.white54;
+    final brightness = Theme.of(context).brightness;
+    const activeColor = AppColors.accent;
+    final inactiveColor = AppColors.navInactive(brightness);
 
     return GestureDetector(
       onTapDown: (_) => setState(() => _isPressed = true),

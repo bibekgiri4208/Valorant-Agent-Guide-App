@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
+import 'package:valorant_guide_app/theme/app_colors.dart';
 
 class AgentsDetailScreen extends StatefulWidget {
   final Map<String, dynamic> agentData;
@@ -51,11 +52,12 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.sizeOf(context).height;
+    final brightness = Theme.of(context).brightness;
     final agent = widget.agentData;
     final List abilities = agent['abilities'] ?? [];
 
     return Scaffold(
-      backgroundColor: const Color(0xFF1C252E),
+      backgroundColor: AppColors.scaffold(brightness),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -114,8 +116,8 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                           const SizedBox(height: 10),
                           Text(
                             agent['name'] ?? '',
-                            style: const TextStyle(
-                              color: Colors.white,
+                            style: TextStyle(
+                              color: AppColors.textPrimary(brightness),
                               fontSize: 36,
                               fontWeight: FontWeight.bold,
                               fontFamily: "Valorant",
@@ -125,8 +127,8 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                           const SizedBox(height: 4),
                           Text(
                             agent['role'] ?? '',
-                            style: const TextStyle(
-                              color: Colors.white70,
+                            style: TextStyle(
+                              color: AppColors.textSecondary(brightness),
                               fontSize: 14,
                               fontFamily: "Valorant",
                               letterSpacing: 2,
@@ -156,10 +158,10 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                         top: 10,
                         right: 10,
                         child: IconButton(
-                          icon: const Icon(
+                          icon:                           Icon(
                             Icons.info_outline_rounded,
                             size: 26,
-                            color: Colors.white,
+                            color: AppColors.textPrimary(brightness),
                           ),
                           onPressed: () => _showAgentInfoModal(context, agent),
                         ),
@@ -175,10 +177,10 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
+                    Text(
                       "SPECIAL ABILITIES",
                       style: TextStyle(
-                        color: Colors.white,
+                        color: AppColors.textPrimary(brightness),
                         fontFamily: "Valorant",
                         fontWeight: FontWeight.bold,
                         letterSpacing: 1.5,
@@ -200,21 +202,20 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                                 height: 65,
                                 decoration: BoxDecoration(
                                   color: isSelected
-                                      ? const Color(0xFFFF4654)
-                                      : const Color(0xFF12181F),
+                                      ? AppColors.accent
+                                      : AppColors.card(brightness),
                                   border: Border.all(
                                     color: isSelected
-                                        ? const Color(0xFFFF4654)
-                                        : Colors.grey.shade800,
+                                        ? AppColors.accent
+                                        : AppColors.divider(brightness),
                                     width: 1.5,
                                   ),
                                   borderRadius: BorderRadius.circular(12),
                                   boxShadow: isSelected
                                       ? [
                                           BoxShadow(
-                                            color: const Color(
-                                              0xFFFF4654,
-                                            ).withValues(alpha: 0.4),
+                                            color: AppColors.accent
+                                                .withValues(alpha: 0.4),
                                             blurRadius: 10,
                                             spreadRadius: 1,
                                           ),
@@ -228,7 +229,7 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                                     fit: BoxFit.contain,
                                     color: isSelected
                                         ? Colors.white
-                                        : Colors.grey,
+                                        : AppColors.textSecondary(brightness),
                                   ),
                                 ),
                               ),
@@ -238,7 +239,7 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                                 height: 4,
                                 width: isSelected ? 20 : 0,
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFFFF4654),
+                                  color: AppColors.accent,
                                   borderRadius: BorderRadius.circular(2),
                                 ),
                               ),
@@ -268,6 +269,7 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                       description: ability['description'] ?? '',
                       slot: ability['slot'] ?? defaultSlot,
                       videoPath: ability['video'] ?? ability['videoUrl'],
+                      brightness: brightness,
                     );
                   },
                 ),
@@ -282,12 +284,13 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
   void _showAgentInfoModal(BuildContext context, Map<String, dynamic> agent) {
     showModalBottomSheet(
       context: context,
-      backgroundColor: const Color(0xFF12181F),
+      backgroundColor: AppColors.card(Theme.of(context).brightness),
       isScrollControlled: true,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
       builder: (context) {
+        final brightness = Theme.of(context).brightness;
         return Container(
           constraints: BoxConstraints(
             maxHeight: MediaQuery.sizeOf(context).height * 0.65,
@@ -302,7 +305,7 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                   width: 40,
                   height: 4,
                   decoration: BoxDecoration(
-                    color: Colors.grey.shade700,
+                    color: AppColors.textSecondary(brightness),
                     borderRadius: BorderRadius.circular(2),
                   ),
                 ),
@@ -313,15 +316,15 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                   Container(
                     width: 4,
                     height: 24,
-                    color: const Color(0xFFFF4654),
+                    color: AppColors.accent,
                   ),
                   const SizedBox(width: 10),
-                  const Text(
+                  Text(
                     "AGENT DOSSIER",
                     style: TextStyle(
                       fontSize: 20,
                       fontFamily: "Valorant",
-                      color: Colors.white,
+                      color: AppColors.textPrimary(brightness),
                       letterSpacing: 1.2,
                     ),
                   ),
@@ -336,22 +339,24 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                         width: double.infinity,
                         padding: const EdgeInsets.all(16),
                         decoration: BoxDecoration(
-                          color: const Color(0xFF1C252E),
+                          color: AppColors.scaffold(brightness),
                           borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: Colors.grey.shade800),
+                          border: Border.all(color: AppColors.divider(brightness)),
                         ),
                         child: Column(
                           children: [
-                            _buildInfoRow("ROLE", agent['role'] ?? ''),
-                            const Divider(color: Colors.white12, height: 20),
+                            _buildInfoRow("ROLE", agent['role'] ?? '', brightness),
+                            Divider(color: AppColors.divider(brightness).withValues(alpha: 0.12), height: 20),
                             _buildInfoRow(
                               "ORIGIN",
                               agent['country'] ?? 'Unknown',
+                              brightness,
                             ),
-                            const Divider(color: Colors.white12, height: 20),
+                            Divider(color: AppColors.divider(brightness).withValues(alpha: 0.12), height: 20),
                             _buildInfoRow(
                               "NUMBER",
                               "#${agent['agentNumber'] ?? ''}",
+                              brightness,
                             ),
                           ],
                         ),
@@ -361,15 +366,15 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                         width: double.infinity,
                         padding: const EdgeInsets.all(16),
                         decoration: BoxDecoration(
-                          color: const Color(0xFF1C252E),
+                          color: AppColors.scaffold(brightness),
                           borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: Colors.grey.shade800),
+                          border: Border.all(color: AppColors.divider(brightness)),
                         ),
                         child: Text(
                           agent['summary'] ?? '',
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 14,
-                            color: Colors.grey,
+                            color: AppColors.textSecondary(brightness),
                             height: 1.6,
                           ),
                         ),
@@ -386,22 +391,22 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
     );
   }
 
-  Widget _buildInfoRow(String label, String value) {
+  Widget _buildInfoRow(String label, String value, Brightness brightness) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
           label,
-          style: const TextStyle(
-            color: Colors.grey,
+          style: TextStyle(
+            color: AppColors.textSecondary(brightness),
             fontFamily: "Valorant",
             fontSize: 12,
           ),
         ),
         Text(
           value,
-          style: const TextStyle(
-            color: Colors.white,
+          style: TextStyle(
+            color: AppColors.textPrimary(brightness),
             fontFamily: "Valorant",
             fontSize: 13,
           ),
@@ -414,6 +419,7 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
     required String title,
     required String description,
     required String slot,
+    required Brightness brightness,
     String? videoPath,
   }) {
     return Padding(
@@ -423,9 +429,9 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
           width: double.infinity,
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: const Color(0xFF12181F),
+            color: AppColors.card(brightness),
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: Colors.grey.shade800),
+            border: Border.all(color: AppColors.divider(brightness)),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -436,8 +442,8 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                   Expanded(
                     child: Text(
                       title.toUpperCase(),
-                      style: const TextStyle(
-                        color: Colors.white,
+                      style: TextStyle(
+                        color: AppColors.textPrimary(brightness),
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                         fontFamily: "Valorant",
@@ -451,16 +457,16 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                       vertical: 4,
                     ),
                     decoration: BoxDecoration(
-                      color: const Color(0xFFFF4654).withValues(alpha: 0.15),
+                      color: AppColors.accent.withValues(alpha: 0.15),
                       borderRadius: BorderRadius.circular(6),
                       border: Border.all(
-                        color: const Color(0xFFFF4654).withValues(alpha: 0.5),
+                        color: AppColors.accent.withValues(alpha: 0.5),
                       ),
                     ),
                     child: Text(
                       slot.toUpperCase(),
                       style: const TextStyle(
-                        color: Color(0xFFFF4654),
+                        color: AppColors.accent,
                         fontSize: 10,
                         fontFamily: "Valorant",
                         fontWeight: FontWeight.bold,
@@ -478,16 +484,16 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                 width: double.infinity,
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF1C252E),
+                  color: AppColors.abilityDescBox(brightness),
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
-                    color: Colors.white.withValues(alpha: 0.05),
+                    color: AppColors.divider(brightness).withValues(alpha: 0.05),
                   ),
                 ),
                 child: Text(
                   description,
-                  style: const TextStyle(
-                    color: Colors.grey,
+                  style: TextStyle(
+                    color: AppColors.textSecondary(brightness),
                     fontSize: 13,
                     height: 1.5,
                   ),
@@ -552,17 +558,18 @@ class _AbilityVideoPlayerState extends State<AbilityVideoPlayer> {
 
   @override
   Widget build(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
     if (!_controller.value.isInitialized) {
       return Container(
         height: 160,
         width: double.infinity,
         decoration: BoxDecoration(
-          color: const Color(0xFF1C252E),
+          color: AppColors.scaffold(brightness),
           borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: Colors.grey.shade800),
+          border: Border.all(color: AppColors.divider(brightness)),
         ),
-        child: const Center(
-          child: CircularProgressIndicator(color: Color(0xFFFF4654)),
+        child: Center(
+          child: CircularProgressIndicator(color: AppColors.accent),
         ),
       );
     }
@@ -572,7 +579,7 @@ class _AbilityVideoPlayerState extends State<AbilityVideoPlayer> {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: Colors.grey.shade800),
+          border: Border.all(color: AppColors.divider(brightness)),
         ),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(11),
@@ -585,12 +592,12 @@ class _AbilityVideoPlayerState extends State<AbilityVideoPlayer> {
               ),
               if (!_controller.value.isPlaying)
                 Container(
-                  color: Colors.black45,
+                  color: AppColors.videoPauseOverlay(brightness),
                   padding: const EdgeInsets.all(10),
-                  child: const Icon(
+                  child: Icon(
                     Icons.play_arrow_rounded,
                     size: 40,
-                    color: Color(0xFFFF4654),
+                    color: AppColors.accent,
                   ),
                 ),
             ],
