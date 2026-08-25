@@ -244,7 +244,7 @@ class _GuideCardState extends State<_GuideCard> {
                     width: 42,
                     height: 42,
                     decoration: BoxDecoration(
-                      color: categoryColor.withValues(alpha: 0.15),
+                      color: categoryColor,
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(
                         color: categoryColor.withValues(alpha: 0.3),
@@ -252,7 +252,7 @@ class _GuideCardState extends State<_GuideCard> {
                     ),
                     child: Icon(
                       item['icon'] as IconData,
-                      color: categoryColor,
+                      color: Colors.white,
                       size: 20,
                     ),
                   ),
