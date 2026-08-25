@@ -61,7 +61,7 @@ class AppColors {
 
   // --- Nav bar inactive icon ---
   static Color navInactive(Brightness b) =>
-      b == Brightness.dark ? Colors.white54 : const Color(0xFF9CA3AF);
+      b == Brightness.dark ? Colors.white54 : const Color(0xFF4B5563);
 
   // --- Chip selected text ---
   static Color chipSelectedText(Brightness b) =>

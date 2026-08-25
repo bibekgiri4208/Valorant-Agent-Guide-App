@@ -39,7 +39,7 @@ class _GameGuideScreenState extends State<GameGuideScreen> {
         slivers: [
           // APP BAR
           SliverAppBar(
-      backgroundColor: Colors.transparent,
+      backgroundColor: AppColors.scaffold(Theme.of(context).brightness),
             elevation: 0,
             scrolledUnderElevation: 0,
             centerTitle: true,
