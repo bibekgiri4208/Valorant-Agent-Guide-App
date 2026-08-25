@@ -230,7 +230,7 @@ class _RolesDescriptionScreenState extends State<RolesDescriptionScreen>
                 ),
                 child: ImageIcon(
                   AssetImage(iconPath),
-                  color: AppColors.textPrimary(brightness),
+                  color: Colors.white,
                   size: 24,
                 ),
               ),

@@ -191,15 +191,15 @@ class DuelistsScreen extends StatelessWidget {
                                           ),
                                           boxShadow: const [
                                             BoxShadow(
-                                              color: Colors.black54,
-                                              blurRadius: 20,
-                                              offset: Offset(0, 8),
-                                              spreadRadius: -2,
+                                              color: Colors.black87,
+                                              blurRadius: 24,
+                                              offset: Offset(0, 10),
+                                              spreadRadius: -3,
                                             ),
                                             BoxShadow(
-                                              color: Colors.black26,
-                                              blurRadius: 40,
-                                              offset: Offset(0, 16),
+                                              color: Colors.black45,
+                                              blurRadius: 50,
+                                              offset: Offset(0, 20),
                                             ),
                                           ],
                                           image: DecorationImage(

@@ -259,7 +259,7 @@ class _GuideCardState extends State<_GuideCard> {
                     ),
                     child: Icon(
                       item['icon'] as IconData,
-                      color: AppColors.textPrimary(brightness),
+                      color: Colors.white,
                       size: 20,
                     ),
                   ),

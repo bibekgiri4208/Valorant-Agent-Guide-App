@@ -116,8 +116,8 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                           const SizedBox(height: 10),
                           Text(
                             agent['name'] ?? '',
-                            style: TextStyle(
-                              color: AppColors.textPrimary(brightness),
+                            style: const TextStyle(
+                              color: Colors.white,
                               fontSize: 36,
                               fontWeight: FontWeight.bold,
                               fontFamily: "Valorant",
@@ -127,8 +127,8 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                           const SizedBox(height: 4),
                           Text(
                             agent['role'] ?? '',
-                            style: TextStyle(
-                              color: AppColors.textSecondary(brightness),
+                            style: const TextStyle(
+                              color: Colors.white70,
                               fontSize: 14,
                               fontFamily: "Valorant",
                               letterSpacing: 2,
@@ -161,7 +161,7 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                           icon:                           Icon(
                             Icons.info_outline_rounded,
                             size: 26,
-                            color: AppColors.textPrimary(brightness),
+                            color: Colors.white,
                           ),
                           onPressed: () => _showAgentInfoModal(context, agent),
                         ),
@@ -432,6 +432,13 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
             color: AppColors.card(brightness),
             borderRadius: BorderRadius.circular(16),
             border: Border.all(color: AppColors.divider(brightness)),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withValues(alpha: 0.5),
+                blurRadius: 14,
+                offset: const Offset(0, 6),
+              ),
+            ],
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
