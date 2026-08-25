@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:valorant_guide_app/data/game_guide_data.dart';
 
 class GameGuideScreen extends StatefulWidget {
-  const GameGuideScreen({super.key});
+  final double bottomOverlayHeight;
+  const GameGuideScreen({super.key, this.bottomOverlayHeight = 0});
 
   @override
   State<GameGuideScreen> createState() => _GameGuideScreenState();
@@ -28,7 +29,7 @@ class _GameGuideScreenState extends State<GameGuideScreen> {
     }).toList();
 
     return Scaffold(
-      backgroundColor: const Color(0xFF1C252E),
+            backgroundColor: Colors.transparent,
       body: CustomScrollView(
         physics: const BouncingScrollPhysics(
           parent: AlwaysScrollableScrollPhysics(),
@@ -36,7 +37,7 @@ class _GameGuideScreenState extends State<GameGuideScreen> {
         slivers: [
           // APP BAR
           SliverAppBar(
-            backgroundColor: const Color(0xFF1C252E),
+      backgroundColor: Colors.transparent,
             elevation: 0,
             scrolledUnderElevation: 0,
             centerTitle: true,
@@ -180,6 +181,9 @@ class _GameGuideScreenState extends State<GameGuideScreen> {
             ),
 
           const SliverToBoxAdapter(child: SizedBox(height: 20)),
+          SliverToBoxAdapter(
+            child: SizedBox(height: widget.bottomOverlayHeight),
+          ),
         ],
       ),
     );

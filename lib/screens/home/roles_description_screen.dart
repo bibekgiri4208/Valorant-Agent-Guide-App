@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class RolesDescriptionScreen extends StatefulWidget {
-  const RolesDescriptionScreen({super.key});
+  final double bottomOverlayHeight;
+  const RolesDescriptionScreen({super.key, this.bottomOverlayHeight = 0});
 
   @override
   State<RolesDescriptionScreen> createState() =>
@@ -106,9 +107,9 @@ class _RolesDescriptionScreenState extends State<RolesDescriptionScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF1C252E),
+        backgroundColor: Colors.transparent,
       appBar: AppBar(
-        backgroundColor: const Color(0xFF1C252E),
+      backgroundColor: Colors.transparent,
         elevation: 0,
         scrolledUnderElevation: 0,
         centerTitle: true,
@@ -127,7 +128,7 @@ class _RolesDescriptionScreenState extends State<RolesDescriptionScreen>
         physics: const BouncingScrollPhysics(
           parent: AlwaysScrollableScrollPhysics(),
         ),
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+        padding: EdgeInsets.fromLTRB(20, 15, 20, widget.bottomOverlayHeight + 15),
         itemCount: _roles.length + 2,
         itemBuilder: (context, index) {
           if (index == 0) {

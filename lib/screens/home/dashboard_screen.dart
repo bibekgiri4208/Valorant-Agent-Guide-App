@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:valorant_guide_app/screens/home/about_me_screen.dart';
 import 'package:valorant_guide_app/screens/home/game_guide_screen.dart';
@@ -19,8 +20,13 @@ class _DashBoardScreenState extends State<DashBoardScreen>
   late final AnimationController _entryController;
   late final Animation<double> _entryFade;
   late final Animation<Offset> _homeSlide;
+  late final Animation<double> _navFade;
   late final Animation<Offset> _navSlide;
   Key _homeKey = UniqueKey();
+
+  static const double _navBarHeight = 68;
+  static const double _navBarBottomMargin = 14;
+  static const double _navBarSideMargin = 20;
 
   final List<Map<String, String>> _navItems = const [
     {"label": "Home", "icon": "assets/logo/valorant_logo.png"},
@@ -52,12 +58,17 @@ class _DashBoardScreenState extends State<DashBoardScreen>
       curve: const Interval(0.0, 0.6, curve: Curves.easeOutCubic),
     ));
 
+    _navFade = CurvedAnimation(
+      parent: _entryController,
+      curve: const Interval(0.4, 0.9, curve: Curves.easeOut),
+    );
+
     _navSlide = Tween<Offset>(
-      begin: const Offset(0, 1),
+      begin: const Offset(0, 0.5),
       end: Offset.zero,
     ).animate(CurvedAnimation(
       parent: _entryController,
-      curve: const Interval(0.3, 0.8, curve: Curves.easeOutCubic),
+      curve: const Interval(0.4, 0.9, curve: Curves.easeOutCubic),
     ));
 
     if (widget.playEntryAnimation) {
@@ -92,66 +103,103 @@ class _DashBoardScreenState extends State<DashBoardScreen>
 
   @override
   Widget build(BuildContext context) {
+    final bottomPadding = MediaQuery.of(context).padding.bottom;
+    final floatingBarTotalHeight =
+        _navBarHeight + _navBarBottomMargin + bottomPadding;
+
     return Scaffold(
       backgroundColor: const Color(0xFF1C252E),
-      body: SlideTransition(
-        position: _homeSlide,
-        child: FadeTransition(
-          opacity: _entryFade,
-          child: PageView(
-            controller: _pageController,
-            physics: const NeverScrollableScrollPhysics(),
-            children: [
-              HomeScreen(key: _homeKey),
-              const RolesDescriptionScreen(),
-              const GameGuideScreen(),
-              const AboutMeScreen(),
-            ],
-          ),
-        ),
-      ),
-      bottomNavigationBar: SlideTransition(
-        position: _navSlide,
-        child: Container(
-        height: 70,
-        decoration: BoxDecoration(
-          color: const Color(0xFF12181F),
-          border: Border(
-            top: BorderSide(
-              color: Colors.white.withValues(alpha: 0.08),
-              width: 1,
+      body: Stack(
+        children: [
+          SlideTransition(
+            position: _homeSlide,
+            child: FadeTransition(
+              opacity: _entryFade,
+              child: PageView(
+                controller: _pageController,
+                physics: const NeverScrollableScrollPhysics(),
+                children: [
+                  HomeScreen(key: _homeKey, bottomOverlayHeight: floatingBarTotalHeight),
+                  RolesDescriptionScreen(bottomOverlayHeight: floatingBarTotalHeight),
+                  GameGuideScreen(bottomOverlayHeight: floatingBarTotalHeight),
+                  AboutMeScreen(bottomOverlayHeight: floatingBarTotalHeight),
+                ],
+              ),
             ),
           ),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: List.generate(_navItems.length, (index) {
-            final isSelected = _currentIndex == index;
-            final item = _navItems[index];
 
-            return Expanded(
-              child: _NavBarItem(
-                isSelected: isSelected,
-                label: item["label"]!,
-                iconPath: item["icon"]!,
-                onTap: () => _onTabTapped(index),
+          Positioned(
+            left: _navBarSideMargin,
+            right: _navBarSideMargin,
+            bottom: _navBarBottomMargin + bottomPadding,
+            child: FadeTransition(
+              opacity: _navFade,
+              child: SlideTransition(
+                position: _navSlide,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(28),
+                  child: BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 30, sigmaY: 30),
+                    child: Container(
+                      height: _navBarHeight,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(28),
+                        color: const Color(0xFF0D1117).withValues(alpha: 0.6),
+                        border: Border.all(
+                          color: Colors.white.withValues(alpha: 0.12),
+                          width: 1,
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withValues(alpha: 0.5),
+                            blurRadius: 24,
+                            offset: const Offset(0, 8),
+                            spreadRadius: 2,
+                          ),
+                          BoxShadow(
+                            color: const Color(0xFFFF4654).withValues(alpha: 0.06),
+                            blurRadius: 40,
+                            offset: const Offset(0, 4),
+                            spreadRadius: -2,
+                          ),
+                        ],
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: List.generate(_navItems.length, (index) {
+                          final isSelected = _currentIndex == index;
+                          final item = _navItems[index];
+
+                          return Expanded(
+                            child: _FloatingNavBarItem(
+                              isSelected: isSelected,
+                              label: item["label"]!,
+                              iconPath: item["icon"]!,
+                              onTap: () => _onTabTapped(index),
+                            ),
+                          );
+                        }),
+                      ),
+                    ),
+                  ),
+                ),
               ),
-            );
-          }),
-        ),
-      ),
+            ),
+          ),
+        ],
       ),
     );
   }
+
 }
 
-class _NavBarItem extends StatefulWidget {
+class _FloatingNavBarItem extends StatefulWidget {
   final bool isSelected;
   final String label;
   final String iconPath;
   final VoidCallback onTap;
 
-  const _NavBarItem({
+  const _FloatingNavBarItem({
     required this.isSelected,
     required this.label,
     required this.iconPath,
@@ -159,10 +207,10 @@ class _NavBarItem extends StatefulWidget {
   });
 
   @override
-  State<_NavBarItem> createState() => _NavBarItemState();
+  State<_FloatingNavBarItem> createState() => _FloatingNavBarItemState();
 }
 
-class _NavBarItemState extends State<_NavBarItem> {
+class _FloatingNavBarItemState extends State<_FloatingNavBarItem> {
   bool _isPressed = false;
 
   @override
@@ -190,16 +238,12 @@ class _NavBarItemState extends State<_NavBarItem> {
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
-                // Icon
                 ImageIcon(
                   AssetImage(widget.iconPath),
                   size: 24,
                   color: widget.isSelected ? activeColor : inactiveColor,
                 ),
-
                 const SizedBox(height: 5),
-
-                // Label
                 AnimatedDefaultTextStyle(
                   duration: const Duration(milliseconds: 200),
                   style: TextStyle(

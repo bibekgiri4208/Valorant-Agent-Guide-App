@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AboutMeScreen extends StatelessWidget {
-  const AboutMeScreen({super.key});
+  final double bottomOverlayHeight;
+  const AboutMeScreen({super.key, this.bottomOverlayHeight = 0});
 
   Future<void> _launchURL(String urlString) async {
     final Uri url = Uri.parse(urlString);
@@ -14,9 +15,9 @@ class AboutMeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF1C252E),
+        backgroundColor: Colors.transparent,
       appBar: AppBar(
-        backgroundColor: const Color(0xFF1C252E),
+      backgroundColor: Colors.transparent,
         elevation: 0,
         scrolledUnderElevation: 0,
         centerTitle: true,
@@ -32,7 +33,7 @@ class AboutMeScreen extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+        padding: EdgeInsets.fromLTRB(20, 15, 20, bottomOverlayHeight + 15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

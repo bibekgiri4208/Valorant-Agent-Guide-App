@@ -5,7 +5,8 @@ import 'package:valorant_guide_app/screens/agents/initiators_screen.dart';
 import 'package:valorant_guide_app/screens/agents/sentinels_screen.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  final double bottomOverlayHeight;
+  const HomeScreen({super.key, this.bottomOverlayHeight = 0});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -100,9 +101,9 @@ class _HomeScreenState extends State<HomeScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF1C252E),
+        backgroundColor: Colors.transparent,
       appBar: AppBar(
-        backgroundColor: const Color(0xFF1C252E),
+      backgroundColor: Colors.transparent,
         elevation: 0,
         scrolledUnderElevation: 0,
         centerTitle: true,
@@ -121,7 +122,7 @@ class _HomeScreenState extends State<HomeScreen>
         physics: const BouncingScrollPhysics(
           parent: AlwaysScrollableScrollPhysics(),
         ),
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+        padding: EdgeInsets.fromLTRB(20, 15, 20, widget.bottomOverlayHeight + 15),
         children: [
           FadeTransition(
             opacity: _headerFade,
