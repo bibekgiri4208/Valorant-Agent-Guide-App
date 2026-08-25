@@ -189,6 +189,19 @@ class DuelistsScreen extends StatelessWidget {
                                             color: AppColors.rolePurple,
                                             width: 3,
                                           ),
+                                          boxShadow: const [
+                                            BoxShadow(
+                                              color: Colors.black54,
+                                              blurRadius: 20,
+                                              offset: Offset(0, 8),
+                                              spreadRadius: -2,
+                                            ),
+                                            BoxShadow(
+                                              color: Colors.black26,
+                                              blurRadius: 40,
+                                              offset: Offset(0, 16),
+                                            ),
+                                          ],
                                           image: DecorationImage(
                                             image: const AssetImage(
                                               'assets/duelists/duelists_bg.webp',
@@ -221,7 +234,7 @@ class DuelistsScreen extends StatelessWidget {
                                                         .toString()
                                                         .toUpperCase(),
                                                     style: TextStyle(
-                                                      color: AppColors.textPrimary(brightness),
+                                                       color: Colors.white,
                                                       fontSize: 16,
                                                       fontFamily: "Valorant",
                                                       fontWeight:
