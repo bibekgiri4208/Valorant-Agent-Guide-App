@@ -207,6 +207,7 @@ class AboutMeScreen extends StatelessWidget {
               child: Text(
                 "Created to provide Valorant players with a fast, mobile-friendly companion app. Built to offer instant visual intel on agent rosters, ability mechanics, video demonstrations, and agent biographies without needing desktop browser searches during active sessions.",
                 style: TextStyle(
+                  fontFamily: 'Gabarito',
                   color: AppColors.textSecondary(brightness),
                   fontSize: 14,
                   height: 1.6,
@@ -310,6 +311,7 @@ class AboutMeScreen extends StatelessWidget {
               child: Text(
                 "I'm a passionate mobile app developer specializing in crafting sleek, responsive, and tactile cross-platform mobile experiences. Dedicated to high-performance graphics, clean architecture, and immersive gaming UI design. If you liked my application, feel free to check out my other projects on GitHub.",
                 style: TextStyle(
+                  fontFamily: 'Gabarito',
                   color: AppColors.textSecondary(brightness),
                   fontSize: 14,
                   height: 1.6,
@@ -483,6 +485,7 @@ class AboutMeScreen extends StatelessWidget {
                 Text(
                   description,
                   style: TextStyle(
+                    fontFamily: 'Gabarito',
                     fontSize: 12,
                     color: AppColors.textSecondary(brightness),
                     height: 1.4,
@@ -534,6 +537,7 @@ class AboutMeScreen extends StatelessWidget {
                 Text(
                   value,
                   style: TextStyle(
+                    fontFamily: 'Gabarito',
                     fontSize: 12,
                     color: AppColors.textSecondary(brightness),
                   ),

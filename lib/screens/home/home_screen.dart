@@ -61,13 +61,13 @@ class _HomeScreenState extends State<HomeScreen>
       parent: _staggerController,
       curve: const Interval(0.0, 0.3, curve: Curves.easeOut),
     );
-    _headerSlide = Tween<Offset>(
-      begin: const Offset(0, 0.15),
-      end: Offset.zero,
-    ).animate(CurvedAnimation(
-      parent: _staggerController,
-      curve: const Interval(0.0, 0.35, curve: Curves.easeOutCubic),
-    ));
+    _headerSlide = Tween<Offset>(begin: const Offset(0, 0.15), end: Offset.zero)
+        .animate(
+          CurvedAnimation(
+            parent: _staggerController,
+            curve: const Interval(0.0, 0.35, curve: Curves.easeOutCubic),
+          ),
+        );
 
     _cardFades = List.generate(4, (i) {
       final start = 0.2 + i * 0.15;
@@ -82,10 +82,12 @@ class _HomeScreenState extends State<HomeScreen>
       return Tween<Offset>(
         begin: const Offset(0, 0.25),
         end: Offset.zero,
-      ).animate(CurvedAnimation(
-        parent: _staggerController,
-        curve: Interval(start, start + 0.35, curve: Curves.easeOutCubic),
-      ));
+      ).animate(
+        CurvedAnimation(
+          parent: _staggerController,
+          curve: Interval(start, start + 0.35, curve: Curves.easeOutCubic),
+        ),
+      );
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -104,9 +106,9 @@ class _HomeScreenState extends State<HomeScreen>
     final brightness = Theme.of(context).brightness;
 
     return Scaffold(
-        backgroundColor: Colors.transparent,
-      appBar: AppBar(
       backgroundColor: Colors.transparent,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
         elevation: 0,
         scrolledUnderElevation: 0,
         centerTitle: true,
@@ -132,7 +134,12 @@ class _HomeScreenState extends State<HomeScreen>
         physics: const BouncingScrollPhysics(
           parent: AlwaysScrollableScrollPhysics(),
         ),
-        padding: EdgeInsets.fromLTRB(20, 15, 20, widget.bottomOverlayHeight + 15),
+        padding: EdgeInsets.fromLTRB(
+          20,
+          15,
+          20,
+          widget.bottomOverlayHeight + 15,
+        ),
         children: [
           FadeTransition(
             opacity: _headerFade,
@@ -143,11 +150,7 @@ class _HomeScreenState extends State<HomeScreen>
                 children: [
                   Row(
                     children: [
-                      Container(
-                        width: 4,
-                        height: 18,
-                        color: AppColors.accent,
-                      ),
+                      Container(width: 4, height: 18, color: AppColors.accent),
                       const SizedBox(width: 8),
                       Text(
                         "// SELECT PROTOCOL ROLE",
@@ -162,7 +165,7 @@ class _HomeScreenState extends State<HomeScreen>
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    "LEARN YOUR\nFAVORITE AGENTS",
+                    "LEARN YOUR\nFAvORITE AGENTS",
                     style: TextStyle(
                       fontFamily: 'Valorant',
                       fontSize: 32,

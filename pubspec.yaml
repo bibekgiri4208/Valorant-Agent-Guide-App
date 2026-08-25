@@ -122,6 +122,9 @@ flutter:
     - family: Valorant
       fonts:
         - asset: assets/fonts/Valorant.ttf
+    - family: Gabarito
+      fonts:
+        - asset: assets/fonts/Gabarito.ttf
   
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg

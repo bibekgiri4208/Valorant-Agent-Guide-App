@@ -108,19 +108,74 @@ class _GameGuideScreenState extends State<GameGuideScreen> {
                   ),
                   const SizedBox(height: 20),
 
-                  // Search Bar
+                  // Search Bar with Filter
                   TextField(
                     onChanged: (value) => setState(() => _searchQuery = value),
-                    style: TextStyle(color: AppColors.textPrimary(brightness), fontSize: 14),
+                    style: TextStyle(fontFamily: 'Gabarito', color: AppColors.textPrimary(brightness), fontSize: 14),
                     decoration: InputDecoration(
                       hintText: "Search tactics, economy, mechanics...",
                       hintStyle: TextStyle(
+                        fontFamily: 'Gabarito',
                         color: AppColors.textSecondary(brightness),
                         fontSize: 13,
                       ),
                       prefixIcon: Icon(
                         Icons.search,
                         color: AppColors.accent,
+                      ),
+                      suffixIcon: PopupMenuButton<String>(
+                        icon: Container(
+                          padding: const EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            color: _selectedCategory != "ALL"
+                                ? AppColors.accent.withValues(alpha: 0.15)
+                                : Colors.transparent,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Icon(
+                            Icons.filter_list_rounded,
+                            color: _selectedCategory != "ALL"
+                                ? AppColors.accent
+                                : AppColors.textSecondary(brightness),
+                            size: 22,
+                          ),
+                        ),
+                        color: AppColors.card(brightness),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          side: BorderSide(color: AppColors.divider(brightness)),
+                        ),
+                        onSelected: (value) {
+                          setState(() => _selectedCategory = value);
+                        },
+                        itemBuilder: (context) {
+                          return gameGuideCategories.map((category) {
+                            final isSelected = _selectedCategory == category;
+                            return PopupMenuItem<String>(
+                              value: category,
+                              child: Row(
+                                children: [
+                                  if (isSelected)
+                                    Icon(Icons.check, color: AppColors.accent, size: 18)
+                                  else
+                                    const SizedBox(width: 18),
+                                  const SizedBox(width: 10),
+                                  Text(
+                                    category,
+                                    style: TextStyle(
+                                      fontFamily: 'Valorant',
+                                      fontSize: 12,
+                                      color: isSelected
+                                          ? AppColors.accent
+                                          : AppColors.textPrimary(brightness),
+                                      letterSpacing: 0.5,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          }).toList();
+                        },
                       ),
                       filled: true,
                       fillColor: AppColors.card(brightness),
@@ -133,39 +188,6 @@ class _GameGuideScreenState extends State<GameGuideScreen> {
                         borderRadius: BorderRadius.circular(10),
                         borderSide: BorderSide(color: AppColors.accent),
                       ),
-                    ),
-                  ),
-                  const SizedBox(height: 14),
-
-                  // Category Chips
-                  SizedBox(
-                    height: 36,
-                    child: ListView.separated(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: gameGuideCategories.length,
-                      separatorBuilder: (_, __) => const SizedBox(width: 8),
-                      itemBuilder: (context, index) {
-                        final category = gameGuideCategories[index];
-                        final isSelected = _selectedCategory == category;
-                        return ChoiceChip(
-                          label: Text(
-                            category,
-                            style: TextStyle(
-                              fontFamily: 'Valorant',
-                              fontSize: 10,
-                              color: isSelected ? AppColors.chipSelectedText(brightness) : AppColors.textPrimary(brightness),
-                            ),
-                          ),
-                          selected: isSelected,
-                          selectedColor: AppColors.accent,
-                          backgroundColor: AppColors.card(brightness),
-                          onSelected: (selected) {
-                            if (selected) {
-                              setState(() => _selectedCategory = category);
-                            }
-                          },
-                        );
-                      },
                     ),
                   ),
                   const SizedBox(height: 16),
@@ -347,6 +369,7 @@ class _GuideCardState extends State<_GuideCard> {
                           Text(
                             item['content'] as String,
                             style: TextStyle(
+                              fontFamily: 'Gabarito',
                               color: AppColors.textSecondary(brightness),
                               fontSize: 13,
                               height: 1.5,

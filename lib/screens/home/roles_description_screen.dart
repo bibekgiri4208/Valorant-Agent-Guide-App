@@ -277,14 +277,15 @@ class _RolesDescriptionScreenState extends State<RolesDescriptionScreen>
             ],
           ),
           const SizedBox(height: 12),
-          Text(
-            description,
-            style: TextStyle(
-              color: AppColors.textSecondary(brightness),
-              fontSize: 13,
-              height: 1.5,
+            Text(
+              description,
+              style: TextStyle(
+                fontFamily: 'Gabarito',
+                color: AppColors.textSecondary(brightness),
+                fontSize: 13,
+                height: 1.5,
+              ),
             ),
-          ),
           const SizedBox(height: 12),
           Divider(color: AppColors.divider(brightness), height: 1),
           const SizedBox(height: 12),
@@ -307,15 +308,17 @@ class _RolesDescriptionScreenState extends State<RolesDescriptionScreen>
                   Text(
                     "▸ ",
                     style: TextStyle(
+                      fontFamily: 'Gabarito',
                       color: AppColors.accent,
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   Expanded(
-                    child: Text(
+                    child:                     Text(
                       task,
                       style: TextStyle(
+                        fontFamily: 'Gabarito',
                         color: AppColors.textSecondary(brightness),
                         fontSize: 12,
                         height: 1.3,

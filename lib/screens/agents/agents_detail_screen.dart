@@ -387,6 +387,7 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                         child: Text(
                           agent['summary'] ?? '',
                           style: TextStyle(
+                            fontFamily: 'Gabarito',
                             fontSize: 14,
                             color: AppColors.textSecondary(brightness),
                             height: 1.6,
@@ -514,6 +515,7 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                 child: Text(
                   description,
                   style: TextStyle(
+                    fontFamily: 'Gabarito',
                     color: AppColors.textSecondary(brightness),
                     fontSize: 13,
                     height: 1.5,
