@@ -43,6 +43,13 @@ class _SplashScreenState extends State<SplashScreen> {
                 fontFamily: 'Valorant',
                 fontSize: 40,
                 color: AppColors.accent,
+                shadows: const [
+                  Shadow(
+                    color: Colors.black54,
+                    blurRadius: 4,
+                    offset: Offset(0, 2),
+                  ),
+                ],
               ),
             ),
           ],

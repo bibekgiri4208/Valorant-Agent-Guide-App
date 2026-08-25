@@ -118,6 +118,13 @@ class _HomeScreenState extends State<HomeScreen>
             fontSize: 30,
             fontFamily: 'Valorant',
             letterSpacing: 2.0,
+            shadows: const [
+              Shadow(
+                color: Colors.black54,
+                blurRadius: 4,
+                offset: Offset(0, 2),
+              ),
+            ],
           ),
         ),
       ),
@@ -162,6 +169,13 @@ class _HomeScreenState extends State<HomeScreen>
                       color: AppColors.textPrimary(brightness),
                       height: 1.15,
                       letterSpacing: 1.0,
+                      shadows: const [
+                        Shadow(
+                          color: Colors.black54,
+                          blurRadius: 4,
+                          offset: Offset(0, 2),
+                        ),
+                      ],
                     ),
                   ),
                 ],
@@ -346,6 +360,13 @@ class _HomeScreenState extends State<HomeScreen>
                             fontSize: 25,
                             fontFamily: "Valorant",
                             letterSpacing: 1.2,
+                            shadows: [
+                              Shadow(
+                                color: Colors.black54,
+                                blurRadius: 4,
+                                offset: Offset(0, 2),
+                              ),
+                            ],
                           ),
                         ),
                       ],

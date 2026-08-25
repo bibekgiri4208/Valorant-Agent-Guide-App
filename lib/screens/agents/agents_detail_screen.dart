@@ -122,6 +122,13 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                               fontWeight: FontWeight.bold,
                               fontFamily: "Valorant",
                               letterSpacing: 1.5,
+                              shadows: [
+                                Shadow(
+                                  color: Colors.black54,
+                                  blurRadius: 4,
+                                  offset: Offset(0, 2),
+                                ),
+                              ],
                             ),
                           ),
                           const SizedBox(height: 4),
@@ -326,6 +333,13 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                       fontFamily: "Valorant",
                       color: AppColors.textPrimary(brightness),
                       letterSpacing: 1.2,
+                      shadows: const [
+                        Shadow(
+                          color: Colors.black54,
+                          blurRadius: 4,
+                          offset: Offset(0, 2),
+                        ),
+                      ],
                     ),
                   ),
                 ],

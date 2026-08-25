@@ -32,6 +32,13 @@ class SentinelsScreen extends StatelessWidget {
             color: AppColors.accent,
             fontSize: 30,
             fontFamily: 'Valorant',
+            shadows: [
+              Shadow(
+                color: Colors.black54,
+                blurRadius: 4,
+                offset: Offset(0, 2),
+              ),
+            ],
           ),
         ),
       ),
@@ -56,6 +63,13 @@ class SentinelsScreen extends StatelessWidget {
                   fontFamily: 'Valorant',
                   fontSize: 28,
                   color: AppColors.textPrimary(brightness),
+                  shadows: const [
+                    Shadow(
+                      color: Colors.black54,
+                      blurRadius: 4,
+                      offset: Offset(0, 2),
+                    ),
+                  ],
                 ),
               ),
               const Divider(thickness: 5, color: AppColors.accent),

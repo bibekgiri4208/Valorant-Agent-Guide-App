@@ -51,6 +51,13 @@ class _GameGuideScreenState extends State<GameGuideScreen> {
                 fontSize: 30,
                 fontFamily: 'Valorant',
                 letterSpacing: 2.0,
+                shadows: const [
+                  Shadow(
+                    color: Colors.black54,
+                    blurRadius: 4,
+                    offset: Offset(0, 2),
+                  ),
+                ],
               ),
             ),
           ),
@@ -90,6 +97,13 @@ class _GameGuideScreenState extends State<GameGuideScreen> {
                       color: AppColors.textPrimary(brightness),
                       height: 1.15,
                       letterSpacing: 1.0,
+                      shadows: const [
+                        Shadow(
+                          color: Colors.black54,
+                          blurRadius: 4,
+                          offset: Offset(0, 2),
+                        ),
+                      ],
                     ),
                   ),
                   const SizedBox(height: 20),

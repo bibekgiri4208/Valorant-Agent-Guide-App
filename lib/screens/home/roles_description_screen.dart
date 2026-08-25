@@ -123,6 +123,13 @@ class _RolesDescriptionScreenState extends State<RolesDescriptionScreen>
             fontSize: 30,
             fontFamily: 'Valorant',
             letterSpacing: 1.5,
+            shadows: const [
+              Shadow(
+                color: Colors.black54,
+                blurRadius: 4,
+                offset: Offset(0, 2),
+              ),
+            ],
           ),
         ),
       ),
@@ -167,6 +174,13 @@ class _RolesDescriptionScreenState extends State<RolesDescriptionScreen>
                       color: AppColors.textPrimary(brightness),
                       height: 1.1,
                       letterSpacing: 1.0,
+                      shadows: const [
+                        Shadow(
+                          color: Colors.black54,
+                          blurRadius: 4,
+                          offset: Offset(0, 2),
+                        ),
+                      ],
                     ),
                   ),
                 ],
