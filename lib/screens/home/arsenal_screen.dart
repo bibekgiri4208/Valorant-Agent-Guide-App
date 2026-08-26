@@ -62,7 +62,10 @@ class _ArsenalScreenState extends State<ArsenalScreen> {
           ),
         ),
       ),
-      body: Column(
+      body: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        behavior: HitTestBehavior.translucent,
+        child: Column(
         children: [
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
@@ -228,6 +231,7 @@ class _ArsenalScreenState extends State<ArsenalScreen> {
             ),
           ),
         ],
+      ),
       ),
     );
   }
