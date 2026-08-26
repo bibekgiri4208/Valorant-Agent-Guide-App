@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-final List<String> gameGuideCategories = const [
+final List<String> guideCategories = const [
   "ALL",
   "MECHANICS",
   "ECONOMY",
@@ -8,7 +8,7 @@ final List<String> gameGuideCategories = const [
   "TACTICS",
 ];
 
-final List<Map<String, dynamic>> gameGuidesData = const [
+final List<Map<String, dynamic>> guidesData = const [
   {
     "num": "01",
     "title": "CORE GAMEPLAY & OBJECTIVE",

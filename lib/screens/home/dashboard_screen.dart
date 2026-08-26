@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:valorant_guide_app/screens/home/about_me_screen.dart';
-import 'package:valorant_guide_app/screens/home/game_guide_screen.dart';
 import 'package:valorant_guide_app/screens/home/arsenal_screen.dart';
+import 'package:valorant_guide_app/screens/home/guides_screen.dart';
 import 'package:valorant_guide_app/screens/home/home_screen.dart';
-import 'package:valorant_guide_app/screens/home/roles_description_screen.dart';
+import 'package:valorant_guide_app/screens/home/roles_screen.dart';
 import 'package:valorant_guide_app/theme/app_colors.dart';
 
 class DashBoardScreen extends StatefulWidget {
@@ -127,10 +127,10 @@ class _DashBoardScreenState extends State<DashBoardScreen>
                     key: _homeKey,
                     bottomOverlayHeight: floatingBarTotalHeight,
                   ),
-                  RolesDescriptionScreen(
+                  RolesScreen(
                     bottomOverlayHeight: floatingBarTotalHeight,
                   ),
-                  GameGuideScreen(bottomOverlayHeight: floatingBarTotalHeight),
+                  GuidesScreen(bottomOverlayHeight: floatingBarTotalHeight),
                   ArsenalScreen(bottomOverlayHeight: floatingBarTotalHeight),
                   AboutMeScreen(bottomOverlayHeight: floatingBarTotalHeight),
                 ],

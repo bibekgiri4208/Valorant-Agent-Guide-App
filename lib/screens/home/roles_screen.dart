@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:valorant_guide_app/theme/app_colors.dart';
 
-class RolesDescriptionScreen extends StatefulWidget {
+class RolesScreen extends StatefulWidget {
   final double bottomOverlayHeight;
-  const RolesDescriptionScreen({super.key, this.bottomOverlayHeight = 0});
+  const RolesScreen({super.key, this.bottomOverlayHeight = 0});
 
   @override
-  State<RolesDescriptionScreen> createState() =>
-      _RolesDescriptionScreenState();
+  State<RolesScreen> createState() => _RolesScreenState();
 }
 
-class _RolesDescriptionScreenState extends State<RolesDescriptionScreen>
+class _RolesScreenState extends State<RolesScreen>
     with TickerProviderStateMixin {
   late final AnimationController _staggerController;
   late final List<Animation<double>> _cardFades;

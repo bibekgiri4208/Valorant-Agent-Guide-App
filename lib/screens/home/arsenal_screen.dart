@@ -13,6 +13,7 @@ class ArsenalScreen extends StatefulWidget {
 class _ArsenalScreenState extends State<ArsenalScreen> {
   String _selectedCategory = "ALL";
   String _searchQuery = "";
+  bool _initialAnimDone = false;
 
   List<Map<String, dynamic>> get _filteredWeapons {
     return arsenalData.where((weapon) {
@@ -27,6 +28,16 @@ class _ArsenalScreenState extends State<ArsenalScreen> {
           );
       return matchesCategory && matchesSearch;
     }).toList();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Future.delayed(const Duration(milliseconds: 1500), () {
+        if (mounted) setState(() => _initialAnimDone = true);
+      });
+    });
   }
 
   @override
@@ -179,29 +190,42 @@ class _ArsenalScreenState extends State<ArsenalScreen> {
             ),
           ),
           Expanded(
-            child: _filteredWeapons.isEmpty
-                ? Center(
-                    child: Text(
-                      "NO WEAPONS FOUND",
-                      style: TextStyle(
-                        color: AppColors.textSecondary(brightness),
-                        fontFamily: 'Valorant',
+            child: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 300),
+              transitionBuilder: (child, animation) {
+                return FadeTransition(
+                  opacity: animation,
+                  child: child,
+                );
+              },
+              child: _filteredWeapons.isEmpty
+                  ? Center(
+                      key: const ValueKey('empty'),
+                      child: Text(
+                        "NO WEAPONS FOUND",
+                        style: TextStyle(
+                          color: AppColors.textSecondary(brightness),
+                          fontFamily: 'Valorant',
+                        ),
                       ),
-                    ),
-                  )
-                : ListView.builder(
-                    physics: const BouncingScrollPhysics(
-                      parent: AlwaysScrollableScrollPhysics(),
-                    ),
-                    padding: EdgeInsets.fromLTRB(20, 0, 20, widget.bottomOverlayHeight + 20),
-                    itemCount: _filteredWeapons.length,
+                    )
+                  : ListView.builder(
+                      key: ValueKey(_selectedCategory),
+                      physics: const BouncingScrollPhysics(
+                        parent: AlwaysScrollableScrollPhysics(),
+                      ),
+                      padding: EdgeInsets.fromLTRB(20, 0, 20, widget.bottomOverlayHeight + 20),
+                      itemCount: _filteredWeapons.length,
                     itemBuilder: (context, index) {
                       return _WeaponCard(
                         weapon: _filteredWeapons[index],
                         brightness: brightness,
+                        index: index,
+                        skipInitialAnim: _initialAnimDone,
                       );
                     },
-                  ),
+                    ),
+            ),
           ),
         ],
       ),
@@ -212,27 +236,72 @@ class _ArsenalScreenState extends State<ArsenalScreen> {
 class _WeaponCard extends StatefulWidget {
   final Map<String, dynamic> weapon;
   final Brightness brightness;
+  final int index;
+  final bool skipInitialAnim;
 
   const _WeaponCard({
     required this.weapon,
     required this.brightness,
+    required this.index,
+    this.skipInitialAnim = false,
   });
 
   @override
   State<_WeaponCard> createState() => _WeaponCardState();
 }
 
-class _WeaponCardState extends State<_WeaponCard> {
+class _WeaponCardState extends State<_WeaponCard> with SingleTickerProviderStateMixin {
   bool _expanded = false;
+  late final AnimationController _animController;
+  late final Animation<double> _fadeAnim;
+  late final Animation<Offset> _slideAnim;
+
+  @override
+  void initState() {
+    super.initState();
+    _animController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 400),
+    );
+    _fadeAnim = CurvedAnimation(
+      parent: _animController,
+      curve: Curves.easeOut,
+    );
+    _slideAnim = Tween<Offset>(
+      begin: const Offset(0, 0.08),
+      end: Offset.zero,
+    ).animate(CurvedAnimation(
+      parent: _animController,
+      curve: Curves.easeOutCubic,
+    ));
+    
+    if (widget.skipInitialAnim) {
+      _animController.value = 1.0;
+    } else {
+      Future.delayed(Duration(milliseconds: widget.index * 50), () {
+        if (mounted) _animController.forward();
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    _animController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     final brightness = widget.brightness;
     final weapon = widget.weapon;
 
-    return GestureDetector(
-      onTap: () => setState(() => _expanded = !_expanded),
-      child: AnimatedContainer(
+    return FadeTransition(
+      opacity: _fadeAnim,
+      child: SlideTransition(
+        position: _slideAnim,
+        child: GestureDetector(
+          onTap: () => setState(() => _expanded = !_expanded),
+          child: AnimatedContainer(
         duration: const Duration(milliseconds: 250),
         curve: Curves.easeInOut,
         margin: const EdgeInsets.only(bottom: 12),
@@ -407,6 +476,8 @@ class _WeaponCardState extends State<_WeaponCard> {
                   : const SizedBox.shrink(),
             ),
           ],
+        ),
+      ),
         ),
       ),
     );
