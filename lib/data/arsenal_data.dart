@@ -19,12 +19,15 @@ const List<Map<String, dynamic>> arsenalData = [
     "fireRate": "N/A",
     "magazine": "N/A",
     "headDamage": "N/A",
-    "bodyDamage": "N/A",
-    "legDamage": "N/A",
+    "bodyDamage": "50 / 75",
+    "legDamage": "50 / 75",
     "description":
-        "Standard issue combat knife. Silent and deadly in close quarters.",
+        "Standard issue tactical knife. Fast, silent, and always available.",
     "guide":
-        "- Primary Fire: Quick slash attack for close-range engagements.\n- Alt-Fire: Heavy swing that deals more damage but is slower.\n- Always faster than any weapon for movement speed.",
+        "- Primary Fire: 50 damage from the front, 100 damage from behind.\n"
+        "- Alt-Fire: 75 damage from the front, 150 damage from behind.\n"
+        "- Knife attacks are silent and require no ammunition.\n"
+        "- Melee provides the fastest standard movement speed.",
   },
 
   // SIDEARMS
@@ -39,40 +42,52 @@ const List<Map<String, dynamic>> arsenalData = [
     "bodyDamage": "26 / 22",
     "legDamage": "22 / 18",
     "description":
-        "Default sidearm. High jump-burst accuracy makes it effective at close-range eco plays.",
+        "Free semi-automatic sidearm with a three-round burst alternate fire.",
     "guide":
-        "- Primary Fire: Tap slowly for medium-range headshots while moving or holding angles.\n- Alt-Fire (Right-Click): Fires a 3-bullet burst. Excellent for right-click jump peeking around close corners on eco rounds.",
+        "- Primary Fire: Accurate semi-automatic shots.\n"
+        "- Alt-Fire: Fires a three-round burst with increased close-range burst potential.\n"
+        "- Excellent pistol-round weapon when combined with Light Shields and abilities.\n"
+        "- Avoid relying on burst fire at longer ranges.",
   },
+
   {
     "name": "SHORTY",
     "category": "SIDEARMS",
     "icon": "assets/gun_icons/Shorty.webp",
     "cost": 300,
-    "fireRate": "3.33 rds/s",
+    "fireRate": "3.0 rds/s",
     "magazine": "2",
-    "headDamage": "24 / 16 / 7 per pellet",
-    "bodyDamage": "12 / 8 / 3 per pellet",
-    "legDamage": "10 / 6 / 2 per pellet",
+    "headDamage": "22",
+    "bodyDamage": "11 per pellet",
+    "legDamage": "9 per pellet",
     "description":
-        "Double-barrel sawed-off shotgun. Devastating when holding tight chokepoints.",
+        "Compact double-barrel shotgun designed for devastating close-range ambushes.",
     "guide":
-        "- Ideal weapon for holding close corners inside smokes (e.g., A Lamps on Bind or Hookah).\n- Pair with an Operator or Sniper loadout as an aggressive close-quarters backup.",
+        "- Extremely effective inside smokes and around tight corners.\n"
+        "- Use it to punish enemies who clear close angles carelessly.\n"
+        "- Pair with an Operator or another expensive weapon as a cheap close-range backup.\n"
+        "- Avoid relying on jumping or moving shots.",
   },
+
   {
     "name": "FRENZY",
     "category": "SIDEARMS",
     "icon": "assets/gun_icons/Frenzy.webp",
     "cost": 450,
     "fireRate": "10.0 rds/s",
-    "magazine": "13",
+    "magazine": "15",
     "headDamage": "78 / 63",
     "bodyDamage": "26 / 21",
     "legDamage": "22 / 17",
     "description":
-        "Fully automatic pistol capable of rapid burst damage on Pistol Rounds.",
+        "Fully automatic pistol built for aggressive close-range engagements.",
     "guide":
-        "- Control recoil by pulling down slightly during short 3-4 bullet bursts.\n- Ideal for aggressive entry plays on pistol rounds where mobility and raw fire rate trump long-range taps.",
+        "- Excellent for aggressive pistol-round entries and close-range fights.\n"
+        "- Control recoil with short bursts at medium range.\n"
+        "- High fire rate makes it forgiving at close distance.\n"
+        "- Avoid extended sprays at long range.",
   },
+
   {
     "name": "GHOST",
     "category": "SIDEARMS",
@@ -84,10 +99,14 @@ const List<Map<String, dynamic>> arsenalData = [
     "bodyDamage": "30 / 25",
     "legDamage": "25 / 21",
     "description":
-        "Silenced, high-precision sidearm. One-taps unarmored targets on Pistol Rounds.",
+        "Accurate silenced sidearm with strong first-shot precision and low recoil.",
     "guide":
-        "- Silenced tracers hide your position when shooting through smokes.\n- Focus on precise headshots; two taps to the head kill light/heavy armor targets cleanly.",
+        "- Excellent pistol-round choice when prioritizing accuracy.\n"
+        "- One-taps unarmored enemies to the head at all ranges.\n"
+        "- Use controlled taps at longer distances.\n"
+        "- Silenced shots make it harder for enemies to immediately locate you.",
   },
+
   {
     "name": "BANDIT",
     "category": "SIDEARMS",
@@ -99,10 +118,15 @@ const List<Map<String, dynamic>> arsenalData = [
     "bodyDamage": "39 / 39 / 34",
     "legDamage": "33 / 33 / 28",
     "description":
-        "Precision semi-automatic sidearm with powerful close-range headshots and medium wall penetration.",
+        "Precision semi-automatic sidearm positioned between the Ghost and Sheriff.",
     "guide":
-        "- Best used with deliberate taps and disciplined crosshair placement at short-to-medium range.\n- Strong budget choice between the Ghost and Sheriff; its 8-round magazine punishes missed shots.",
+        "- 0-10m: 152 head / 39 body / 33 legs.\n"
+        "- 10-30m: 128 head / 39 body / 33 legs.\n"
+        "- 30-50m: 112 head / 34 body / 28 legs.\n"
+        "- Rewards precise tapping rather than spraying.\n"
+        "- Eight-round magazine makes missed shots costly.",
   },
+
   {
     "name": "SHERIFF",
     "category": "SIDEARMS",
@@ -114,9 +138,12 @@ const List<Map<String, dynamic>> arsenalData = [
     "bodyDamage": "55 / 50",
     "legDamage": "46 / 42",
     "description":
-        "High-impact revolver. Delivers instant 1-tap headshot kills up to 30 meters.",
+        "High-powered revolver capable of one-shot headshots at every range.",
     "guide":
-        "- Essential eco weapon. Stop completely before firing to ensure 100% first-bullet accuracy.\n- At 30m+, headshots leave heavy-armored enemies at 5 HP, follow up immediately with a body tap or team trade.",
+        "- Headshots kill fully armored enemies at any range.\n"
+        "- From 30m onward, headshot damage drops to 145.\n"
+        "- Stop moving before firing for maximum accuracy.\n"
+        "- Strong eco weapon with rifle-killing potential.",
   },
 
   // SMGs
@@ -128,13 +155,17 @@ const List<Map<String, dynamic>> arsenalData = [
     "fireRate": "16.0 rds/s",
     "magazine": "20",
     "headDamage": "67 / 62",
-    "bodyDamage": "27 / 25",
+    "bodyDamage": "27 / 23",
     "legDamage": "22 / 21",
     "description":
-        "Ultra-high fire rate SMG built for rapid close-range meltdowns.",
+        "High-rate-of-fire SMG designed for aggressive close-range fights.",
     "guide":
-        "- Run-and-gun viable at point-blank range (0-10m).\n- Use ADS (Aim Down Sights) at medium ranges to trigger a controlled 4-bullet burst mode.",
+        "- Extremely dangerous at close range.\n"
+        "- Primary Fire is fully automatic.\n"
+        "- Alt-Fire provides a controlled four-round burst.\n"
+        "- Avoid long-range fights against rifles.",
   },
+
   {
     "name": "SPECTRE",
     "category": "SMGs",
@@ -146,9 +177,12 @@ const List<Map<String, dynamic>> arsenalData = [
     "bodyDamage": "26 / 22",
     "legDamage": "22 / 18",
     "description":
-        "Silenced SMG offering balanced fire rate, control, and mobile accuracy.",
+        "Versatile silenced SMG with high fire rate, manageable recoil, and good mobility.",
     "guide":
-        "- The gold standard anti-eco weapon. Great for moving/strafing mid-range fights against unarmored enemies.\n- Pull down steadily on full spray within 15 meters.",
+        "- Strong after winning a pistol round or during a light buy.\n"
+        "- Excellent at close and medium ranges.\n"
+        "- Use short bursts at longer distances.\n"
+        "- Silenced fire makes your position harder to identify.",
   },
 
   // SHOTGUNS
@@ -159,28 +193,39 @@ const List<Map<String, dynamic>> arsenalData = [
     "cost": 850,
     "fireRate": "1.1 rds/s",
     "magazine": "5",
-    "headDamage": "40 / 26 / 18 per pellet",
-    "bodyDamage": "20 / 13 / 9 per pellet",
-    "legDamage": "17 / 11 / 7 per pellet",
+    "headDamage": "34 / 26 / 18",
+    "bodyDamage": "17 / 13 / 9",
+    "legDamage": "14 / 11 / 7",
     "description":
-        "Pump-action shotgun with primary buckshot and alt-fire canister shots.",
+        "Pump-action shotgun with powerful close-range damage and an air-burst alternate fire.",
     "guide":
-        "- Primary Fire (Left-Click): Devastating at 0-8 meters.\n- Alt-Fire (Right-Click): Fires an air-burst canister that explodes at 8 meters into buckshot; perfect for mid-range chip damage.",
+        "- 0-8m: 34 head / 17 body / 14 legs per pellet.\n"
+        "- 8-12m: 26 head / 13 body / 11 legs per pellet.\n"
+        "- 12-50m: 18 head / 9 body / 7 legs per pellet.\n"
+        "- Primary Fire is strongest at close range.\n"
+        "- Alt-Fire launches an air-burst canister for longer-range shots.\n"
+        "- Moving and jumping while firing significantly reduces reliability.",
   },
+
   {
     "name": "JUDGE",
     "category": "SHOTGUNS",
     "icon": "assets/gun_icons/Judge.webp",
     "cost": 1850,
     "fireRate": "3.5 rds/s",
-    "magazine": "7",
-    "headDamage": "34",
-    "bodyDamage": "17 per pellet",
-    "legDamage": "14 per pellet",
+    "magazine": "5",
+    "headDamage": "34 / 20 / 14",
+    "bodyDamage": "17 / 10 / 7",
+    "legDamage": "14 / 8 / 6",
     "description":
-        "Automatic shotgun engineered for point-blank site holds and aggressive pushes.",
+        "Fully automatic shotgun designed for dominating tight close-range spaces.",
     "guide":
-        "- Pair with Controller smokes or mobility agents (Raze/Jett) to close gaps instantly.\n- Stand ground in narrow chokepoints during anti-eco rounds.",
+        "- 0-10m: 34 head / 17 body / 14 legs per pellet.\n"
+        "- 10-15m: 20 head / 10 body / 8 legs per pellet.\n"
+        "- 15-50m: 14 head / 7 body / 6 legs per pellet.\n"
+        "- Best used while holding tight angles.\n"
+        "- Controller smokes can force enemies into its ideal range.\n"
+        "- Avoid jumping or moving while firing.",
   },
 
   // RIFLES
@@ -188,17 +233,22 @@ const List<Map<String, dynamic>> arsenalData = [
     "name": "BULLDOG",
     "category": "RIFLES",
     "icon": "assets/gun_icons/Bulldog.webp",
-    "cost": 2000,
+    "cost": 2050,
     "fireRate": "10.0 rds/s",
     "magazine": "24",
-    "headDamage": "116",
+    "headDamage": "115",
     "bodyDamage": "35",
     "legDamage": "29",
     "description":
-        "Budget rifle featuring full-auto hip fire and 3-round burst ADS.",
+        "Affordable assault rifle with full-auto primary fire and three-round ADS bursts.",
     "guide":
-        "- Strong half-buy rifle option. Headshot + body shot eliminates heavy armor at any range.\n- Use ADS mode at long angles for tight 3-bullet burst accuracy.",
+        "- Excellent rifle for half-buy and anti-eco situations.\n"
+        "- Primary Fire is fully automatic.\n"
+        "- ADS switches to a controlled three-round burst.\n"
+        "- A headshot followed by a body shot can eliminate a fully armored enemy.\n"
+        "- Use ADS for long-range precision.",
   },
+
   {
     "name": "GUARDIAN",
     "category": "RIFLES",
@@ -208,12 +258,16 @@ const List<Map<String, dynamic>> arsenalData = [
     "magazine": "12",
     "headDamage": "195",
     "bodyDamage": "65",
-    "legDamage": "48",
+    "legDamage": "49",
     "description":
-        "Semi-automatic designated marksman rifle. 1-taps through all shields at any distance.",
+        "Semi-automatic precision rifle built for accurate long-range engagements.",
     "guide":
-        "- High Wall Penetration: Superior for wallbang ping tactics through thick obstacles.\n- Requires strict trigger discipline, never panic spray. Focus purely on head-level placement.",
+        "- One-shot headshots kill fully armored enemies at any range.\n"
+        "- High wall penetration makes it effective for wallbangs.\n"
+        "- Use disciplined taps instead of panic spraying.\n"
+        "- Its small magazine makes missed shots costly.",
   },
+
   {
     "name": "PHANTOM",
     "category": "RIFLES",
@@ -223,12 +277,18 @@ const List<Map<String, dynamic>> arsenalData = [
     "magazine": "30",
     "headDamage": "156 / 140 / 124",
     "bodyDamage": "39 / 35 / 31",
-    "legDamage": "33 / 29 / 26",
+    "legDamage": "33 / 30 / 26",
     "description":
-        "Silenced full-auto rifle. Offers superior spray control, fire rate, and zero bullet tracers.",
+        "Silenced full-auto rifle with high fire rate, excellent recoil control, and damage falloff.",
     "guide":
-        "- Ideal for spraying through Controller smokes without giving away your exact position.\n- Instakills heavy armor (156 HP) up to 15 meters. Excellent for close-to-medium defensive site anchors.",
+        "- 0-15m: 156 head / 39 body / 33 legs.\n"
+        "- 15-30m: 140 head / 35 body / 30 legs.\n"
+        "- 30-50m: 124 head / 31 body / 26 legs.\n"
+        "- Excellent for close-to-medium range fights.\n"
+        "- No visible bullet tracers make it strong through smokes.\n"
+        "- Long-range headshots do not always kill Heavy Shield targets.",
   },
+
   {
     "name": "VANDAL",
     "category": "RIFLES",
@@ -240,9 +300,13 @@ const List<Map<String, dynamic>> arsenalData = [
     "bodyDamage": "40",
     "legDamage": "34",
     "description":
-        "Premier main rifle. Guarantees 1-tap headshot kills at any range.",
+        "Premier full-auto rifle with consistent damage and one-shot headshot potential at every range.",
     "guide":
-        "- Master 2-3 bullet tap and burst firing patterns.\n- Punishes enemy peeks instantly at long sightlines (B Long, Breeze A Main). Avoid long full-sprays due to random recoil dispersion.",
+        "- Deals 160 head damage at every range.\n"
+        "- One-shot headshots kill Heavy Shield enemies.\n"
+        "- Best used with controlled taps and short bursts.\n"
+        "- Full sprays are more effective at close range.\n"
+        "- Excellent for long sightlines.",
   },
 
   // SNIPERS
@@ -256,10 +320,16 @@ const List<Map<String, dynamic>> arsenalData = [
     "headDamage": "202",
     "bodyDamage": "101",
     "legDamage": "85",
-    "description": "Lightweight, high-speed lever-action sniper rifle.",
+    "description":
+        "Lightweight sniper rifle offering excellent mobility, accuracy, and value.",
     "guide":
-        "- 1-taps unarmored targets to the body (101 DMG) on eco/anti-eco rounds.\n- Outstanding hip-fire accuracy at close ranges when scoped peeks aren't feasible.",
+        "- One-shot headshots kill enemies at any range.\n"
+        "- Body shots kill enemies without shields.\n"
+        "- Low 950-credit price makes it an excellent eco weapon.\n"
+        "- Excellent mobility compared with heavier sniper rifles.\n"
+        "- Strong for aggressive peeks and quick repositioning.",
   },
+
   {
     "name": "OUTLAW",
     "category": "SNIPERS",
@@ -269,12 +339,17 @@ const List<Map<String, dynamic>> arsenalData = [
     "magazine": "2",
     "headDamage": "238",
     "bodyDamage": "140",
-    "legDamage": "110",
+    "legDamage": "119",
     "description":
-        "Double-barrel medium sniper rifle designed to punish Light Shield meta buys.",
+        "Double-barrel sniper rifle capable of firing two rapid shots before reloading.",
     "guide":
-        "- Deals 140 body damage, instantly eliminating enemies who buy Light Shields (125 HP).\n- Fires 2 shots in rapid succession before initiating a full slug reload.",
+        "- 140 body damage instantly kills enemies with Light Shields.\n"
+        "- Two shots can be fired rapidly before a full reload.\n"
+        "- The second shot requires more control due to increased recovery and spread.\n"
+        "- Strong against Light Shield purchases.\n"
+        "- Excellent mid-tier sniper for economical buys.",
   },
+
   {
     "name": "OPERATOR",
     "category": "SNIPERS",
@@ -286,9 +361,13 @@ const List<Map<String, dynamic>> arsenalData = [
     "bodyDamage": "150",
     "legDamage": "120",
     "description":
-        "Heavy bolt-action sniper rifle. One-shots to the head or body at any range.",
+        "Heavy bolt-action sniper capable of killing with a headshot or body shot at any range.",
     "guide":
-        "- Hold tight long-range angles defensively. Change positions after every kill.\n- Always pair with a Ghost/Sheriff or mobility utility for quick escapes when pushed.",
+        "- Headshots and body shots kill fully armored enemies at any range.\n"
+        "- Leg shots deal 120 damage.\n"
+        "- Hold long sightlines and reposition after getting a kill.\n"
+        "- Use movement abilities or utility to escape aggressive situations.\n"
+        "- One of the strongest weapons for denying long-range peeks.",
   },
 
   // HEAVIES
@@ -303,10 +382,14 @@ const List<Map<String, dynamic>> arsenalData = [
     "bodyDamage": "30 / 28",
     "legDamage": "25 / 23",
     "description":
-        "High-penetration light machine gun that ramps up fire rate as you hold the trigger.",
+        "High-capacity light machine gun with strong wall penetration and increasing fire rate.",
     "guide":
-        "- High Wall Penetration: Excellent for spamming pinged choke points through walls.\n- Crouch and hold ADS to stabilize initial recoil spin-up.",
+        "- Fire rate increases as the weapon continues firing.\n"
+        "- Excellent for suppressing enemies through walls and common spam locations.\n"
+        "- Best used from defensive positions.\n"
+        "- Sustained fire becomes more effective as the weapon spins up.",
   },
+
   {
     "name": "ODIN",
     "category": "HEAVIES",
@@ -318,8 +401,13 @@ const List<Map<String, dynamic>> arsenalData = [
     "bodyDamage": "38 / 31",
     "legDamage": "32 / 26",
     "description":
-        "Massive 100-round LMG delivering relentless suppression and maximum wall penetration.",
+        "Massive 100-round LMG built for sustained suppression and powerful wall penetration.",
     "guide":
-        "- Crouch + ADS instantly engages maximum fire rate without recoil spin-up delay.\n- Shreds defensive site holds (Ascent B Main, Fracture Main) when paired with Initiator reveal intel.",
+        "- 0-30m: 95 head / 38 body / 32 legs.\n"
+        "- 30-50m: 77 head / 31 body / 26 legs.\n"
+        "- Fire rate ramps from 12 to 15.6 rounds per second while firing.\n"
+        "- Excellent for wallbangs when combined with recon utility.\n"
+        "- Huge magazine allows prolonged suppression.\n"
+        "- Use crouch and ADS when committing to long sprays.",
   },
 ];
