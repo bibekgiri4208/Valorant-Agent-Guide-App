@@ -18,7 +18,7 @@ const List<Map<String, dynamic>> arsenalData = [
     "cost": 0,
     "fireRate": "N/A",
     "magazine": "N/A",
-    "headDamage": "N/A",
+    "headDamage": "50 / 75",
     "bodyDamage": "50 / 75",
     "legDamage": "50 / 75",
     "description":

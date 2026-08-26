@@ -32,9 +32,9 @@ class _DashBoardScreenState extends State<DashBoardScreen>
   final List<Map<String, dynamic>> _navItems = const [
     {"label": "Home", "icon": "assets/logo/valorant_logo.png"},
     {"label": "Roles", "icon": "assets/icon/roles.png"},
-    {"label": "Guide", "icon": "assets/icon/guide.png"},
+    {"label": "Guides", "icon": "assets/icon/guide.png"},
     {"label": "Arsenal", "icon": "assets/logo/rifles.png"},
-    {"label": "Developer", "icon": "assets/icon/about_us.png"},
+    {"label": "Settings", "icon": "assets/icon/settings.png"},
   ];
 
   @override
@@ -127,9 +127,7 @@ class _DashBoardScreenState extends State<DashBoardScreen>
                     key: _homeKey,
                     bottomOverlayHeight: floatingBarTotalHeight,
                   ),
-                  RolesScreen(
-                    bottomOverlayHeight: floatingBarTotalHeight,
-                  ),
+                  RolesScreen(bottomOverlayHeight: floatingBarTotalHeight),
                   GuidesScreen(bottomOverlayHeight: floatingBarTotalHeight),
                   ArsenalScreen(bottomOverlayHeight: floatingBarTotalHeight),
                   SettingsScreen(bottomOverlayHeight: floatingBarTotalHeight),

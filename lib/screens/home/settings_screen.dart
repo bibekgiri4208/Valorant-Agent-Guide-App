@@ -50,7 +50,7 @@ class SettingsScreen extends StatelessWidget {
             _buildInfoCard(
               brightness: brightness,
               child: Text(
-                "vAlo Guide is a mobile companion app designed for Valorant players. It provides instant access to agent abilities, tactical guides, weapon stats, and role-based navigation — all optimized for quick reference during active sessions.",
+                "Valo Guide is a mobile companion app designed for Valorant players. It provides instant access to agent abilities, tactical guides, weapon stats, and role-based navigation — all optimized for quick reference during active sessions.",
                 style: TextStyle(
                   fontFamily: 'Gabarito',
                   color: AppColors.textSecondary(brightness),
@@ -75,10 +75,13 @@ class SettingsScreen extends StatelessWidget {
                       color: AppColors.accent.withValues(alpha: 0.15),
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    child: Icon(
-                      Icons.info_outline_rounded,
-                      color: AppColors.accent,
-                      size: 20,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(4),
+                      child: Image.asset(
+                        'assets/icon/valoguide_icon.webp',
+                        width: 20,
+                        height: 20,
+                      ),
                     ),
                   ),
                   const SizedBox(width: 12),
@@ -124,9 +127,7 @@ class SettingsScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: AppColors.scaffold(brightness),
                       borderRadius: BorderRadius.circular(10),
-                      border: Border.all(
-                        color: AppColors.divider(brightness),
-                      ),
+                      border: Border.all(color: AppColors.divider(brightness)),
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(9),
@@ -187,12 +188,6 @@ class SettingsScreen extends StatelessWidget {
                     "Character & ability designs",
                     brightness,
                   ),
-                  const SizedBox(height: 10),
-                  _buildCreditRow(
-                    "Flutter Community",
-                    "Open-source packages & tools",
-                    brightness,
-                  ),
                 ],
               ),
             ),
@@ -215,7 +210,7 @@ class SettingsScreen extends StatelessWidget {
                   const SizedBox(width: 10),
                   Expanded(
                     child: Text(
-                      "This is an unofficial, fan-made guide app. It is not affiliated with, endorsed by, or connected to Riot Games in any way. All game assets, character names, and related content are property of Riot Games.",
+                      "This is an unofficial, fan-made valorant guide app. It is not affiliated with, endorsed by, or connected to Riot Games in any way. All game assets; character names, images, videos and related content are property of Riot Games.",
                       style: TextStyle(
                         fontFamily: 'Gabarito',
                         color: AppColors.textSecondary(brightness),
@@ -238,11 +233,7 @@ class SettingsScreen extends StatelessWidget {
   Widget _buildSectionHeader(String title, Brightness brightness) {
     return Row(
       children: [
-        Container(
-          width: 4,
-          height: 16,
-          color: AppColors.accent,
-        ),
+        Container(width: 4, height: 16, color: AppColors.accent),
         const SizedBox(width: 8),
         Text(
           title,
@@ -267,10 +258,7 @@ class SettingsScreen extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.card(brightness),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(
-          color: AppColors.divider(brightness),
-          width: 1.5,
-        ),
+        border: Border.all(color: AppColors.divider(brightness), width: 1.5),
       ),
       child: child,
     );
@@ -285,10 +273,7 @@ class SettingsScreen extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.card(brightness),
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(
-          color: AppColors.divider(brightness),
-          width: 1.5,
-        ),
+        border: Border.all(color: AppColors.divider(brightness), width: 1.5),
       ),
       child: Row(
         children: [
