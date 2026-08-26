@@ -26,13 +26,6 @@ class AboutMeScreen extends StatelessWidget {
             fontSize: 30,
             fontFamily: 'Valorant',
             letterSpacing: 1.5,
-            shadows: const [
-              Shadow(
-                color: Colors.black54,
-                blurRadius: 4,
-                offset: Offset(0, 2),
-              ),
-            ],
           ),
         ),
       ),

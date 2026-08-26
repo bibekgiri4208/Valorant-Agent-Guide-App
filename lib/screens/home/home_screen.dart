@@ -120,165 +120,153 @@ class _HomeScreenState extends State<HomeScreen>
             fontSize: 30,
             fontFamily: 'Valorant',
             letterSpacing: 2.0,
-            shadows: const [
-              Shadow(
-                color: Colors.black54,
-                blurRadius: 4,
-                offset: Offset(0, 2),
-              ),
-            ],
           ),
         ),
       ),
-      body: ListView(
-        physics: const BouncingScrollPhysics(
-          parent: AlwaysScrollableScrollPhysics(),
-        ),
-        padding: EdgeInsets.fromLTRB(
-          20,
-          15,
-          20,
-          widget.bottomOverlayHeight + 15,
-        ),
+      body: Column(
         children: [
-          FadeTransition(
-            opacity: _headerFade,
-            child: SlideTransition(
-              position: _headerSlide,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Container(width: 4, height: 18, color: AppColors.accent),
-                      const SizedBox(width: 8),
-                      Text(
-                        "// SELECT PROTOCOL ROLE",
-                        style: TextStyle(
-                          fontFamily: 'Valorant',
-                          fontSize: 12,
-                          color: AppColors.accent,
-                          letterSpacing: 1.5,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    "LEARN YOUR\nFAvORITE AGENTS",
-                    style: TextStyle(
-                      fontFamily: 'Valorant',
-                      fontSize: 32,
-                      color: AppColors.textPrimary(brightness),
-                      height: 1.15,
-                      letterSpacing: 1.0,
-                      shadows: const [
-                        Shadow(
-                          color: Colors.black54,
-                          blurRadius: 4,
-                          offset: Offset(0, 2),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+            child: FadeTransition(
+              opacity: _headerFade,
+              child: SlideTransition(
+                position: _headerSlide,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Container(width: 4, height: 18, color: AppColors.accent),
+                        const SizedBox(width: 8),
+                        Text(
+                          "// SELECT PROTOCOL ROLE",
+                          style: TextStyle(
+                            fontFamily: 'Valorant',
+                            fontSize: 12,
+                            color: AppColors.accent,
+                            letterSpacing: 1.5,
+                          ),
                         ),
                       ],
                     ),
-                  ),
-                ],
+                    const SizedBox(height: 8),
+                    Text(
+                      "LEARN YOUR\nFAvORITE AGENTS",
+                      style: TextStyle(
+                        fontFamily: 'Valorant',
+                        fontSize: 32,
+                        color: AppColors.textPrimary(brightness),
+                        height: 1.15,
+                        letterSpacing: 1.0,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
-
           const SizedBox(height: 24),
-
-          FadeTransition(
-            opacity: _cardFades[0],
-            child: SlideTransition(
-              position: _cardSlides[0],
-              child: PressableCard(
-                borderColor: AppColors.divider(brightness),
-                borderWidth: 3,
-                borderRadius: 12,
-                onTap: () =>
-                    _navigateToRoleScreen(context, const DuelistsScreen()),
-                child: _buildRoleCardContent(
-                  roleNumber: '01',
-                  title: 'DUELISTS',
-                  tagline: 'ENTRY & FRAGGING',
-                  logoPath: 'assets/logo/duelist_logo.png',
-                  bgImagePath: 'assets/roles/jett_bg.webp',
-                ),
+          Expanded(
+            child: ListView(
+              physics: const BouncingScrollPhysics(
+                parent: AlwaysScrollableScrollPhysics(),
               ),
+              padding: EdgeInsets.fromLTRB(20, 0, 20, widget.bottomOverlayHeight + 15),
+              children: [
+                FadeTransition(
+                  opacity: _cardFades[0],
+                  child: SlideTransition(
+                    position: _cardSlides[0],
+                    child: PressableCard(
+                      borderColor: AppColors.divider(brightness),
+                      borderWidth: 3,
+                      borderRadius: 12,
+                      onTap: () =>
+                          _navigateToRoleScreen(context, const DuelistsScreen()),
+                      child: _buildRoleCardContent(
+                        roleNumber: '01',
+                        title: 'DUELISTS',
+                        tagline: 'ENTRY & FRAGGING',
+                        logoPath: 'assets/logo/duelist_logo.png',
+                        bgImagePath: 'assets/roles/jett_bg.webp',
+                      ),
+                    ),
+                  ),
+                ),
+
+                const SizedBox(height: 16),
+
+                FadeTransition(
+                  opacity: _cardFades[1],
+                  child: SlideTransition(
+                    position: _cardSlides[1],
+                    child: PressableCard(
+                      borderColor: AppColors.divider(brightness),
+                      borderWidth: 3,
+                      borderRadius: 12,
+                      onTap: () =>
+                          _navigateToRoleScreen(context, const ControllersScreen()),
+                      child: _buildRoleCardContent(
+                        roleNumber: '02',
+                        title: 'CONTROLLERS',
+                        tagline: 'SMOKES & VISION',
+                        logoPath: 'assets/logo/controller_logo.png',
+                        bgImagePath: 'assets/roles/viper_cinematic.webp',
+                      ),
+                    ),
+                  ),
+                ),
+
+                const SizedBox(height: 16),
+
+                FadeTransition(
+                  opacity: _cardFades[2],
+                  child: SlideTransition(
+                    position: _cardSlides[2],
+                    child: PressableCard(
+                      borderColor: AppColors.divider(brightness),
+                      borderWidth: 3,
+                      borderRadius: 12,
+                      onTap: () =>
+                          _navigateToRoleScreen(context, const InitiatorsScreen()),
+                      child: _buildRoleCardContent(
+                        roleNumber: '03',
+                        title: 'INITIATORS',
+                        tagline: 'RECON & DISRUPTION',
+                        logoPath: 'assets/logo/initiator_logo.png',
+                        bgImagePath: 'assets/roles/sova_cinematic.webp',
+                      ),
+                    ),
+                  ),
+                ),
+
+                const SizedBox(height: 16),
+
+                FadeTransition(
+                  opacity: _cardFades[3],
+                  child: SlideTransition(
+                    position: _cardSlides[3],
+                    child: PressableCard(
+                      borderColor: AppColors.divider(brightness),
+                      borderWidth: 3,
+                      borderRadius: 12,
+                      onTap: () =>
+                          _navigateToRoleScreen(context, const SentinelsScreen()),
+                      child: _buildRoleCardContent(
+                        roleNumber: '04',
+                        title: 'SENTINELS',
+                        tagline: 'DEFENSE & ANCHORING',
+                        logoPath: 'assets/logo/sentinel_logo.png',
+                        bgImagePath: 'assets/roles/cypher_cinematic.webp',
+                      ),
+                    ),
+                  ),
+                ),
+
+                const SizedBox(height: 25),
+              ],
             ),
           ),
-
-          const SizedBox(height: 16),
-
-          FadeTransition(
-            opacity: _cardFades[1],
-            child: SlideTransition(
-              position: _cardSlides[1],
-              child: PressableCard(
-                borderColor: AppColors.divider(brightness),
-                borderWidth: 3,
-                borderRadius: 12,
-                onTap: () =>
-                    _navigateToRoleScreen(context, const ControllersScreen()),
-                child: _buildRoleCardContent(
-                  roleNumber: '02',
-                  title: 'CONTROLLERS',
-                  tagline: 'SMOKES & VISION',
-                  logoPath: 'assets/logo/controller_logo.png',
-                  bgImagePath: 'assets/roles/viper_cinematic.webp',
-                ),
-              ),
-            ),
-          ),
-
-          const SizedBox(height: 16),
-
-          FadeTransition(
-            opacity: _cardFades[2],
-            child: SlideTransition(
-              position: _cardSlides[2],
-              child: PressableCard(
-                borderColor: AppColors.divider(brightness),
-                borderWidth: 3,
-                borderRadius: 12,
-                onTap: () =>
-                    _navigateToRoleScreen(context, const InitiatorsScreen()),
-                child: _buildRoleCardContent(
-                  roleNumber: '03',
-                  title: 'INITIATORS',
-                  tagline: 'RECON & DISRUPTION',
-                  logoPath: 'assets/logo/initiator_logo.png',
-                  bgImagePath: 'assets/roles/sova_cinematic.webp',
-                ),
-              ),
-            ),
-          ),
-
-          const SizedBox(height: 16),
-
-          FadeTransition(
-            opacity: _cardFades[3],
-            child: SlideTransition(
-              position: _cardSlides[3],
-              child: PressableCard(
-                borderColor: AppColors.divider(brightness),
-                borderWidth: 3,
-                borderRadius: 12,
-                onTap: () =>
-                    _navigateToRoleScreen(context, const SentinelsScreen()),
-                child: _buildRoleCardContent(
-                  roleNumber: '04',
-                  title: 'SENTINELS',
-                  tagline: 'DEFENSE & ANCHORING',
-                  logoPath: 'assets/logo/sentinel_logo.png',
-                  bgImagePath: 'assets/roles/cypher_cinematic.webp',
-                ),
-              ),
-            ),
-          ),
-
-          const SizedBox(height: 25),
         ],
       ),
     );

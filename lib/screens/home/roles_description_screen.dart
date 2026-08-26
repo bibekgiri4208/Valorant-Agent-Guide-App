@@ -109,9 +109,9 @@ class _RolesDescriptionScreenState extends State<RolesDescriptionScreen>
   Widget build(BuildContext context) {
     final brightness = Theme.of(context).brightness;
     return Scaffold(
-        backgroundColor: Colors.transparent,
-      appBar: AppBar(
       backgroundColor: Colors.transparent,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
         elevation: 0,
         scrolledUnderElevation: 0,
         centerTitle: true,
@@ -123,94 +123,80 @@ class _RolesDescriptionScreenState extends State<RolesDescriptionScreen>
             fontSize: 30,
             fontFamily: 'Valorant',
             letterSpacing: 1.5,
-            shadows: const [
-              Shadow(
-                color: Colors.black54,
-                blurRadius: 4,
-                offset: Offset(0, 2),
-              ),
-            ],
           ),
         ),
       ),
-      body: ListView.builder(
-        physics: const BouncingScrollPhysics(
-          parent: AlwaysScrollableScrollPhysics(),
-        ),
-        padding: EdgeInsets.fromLTRB(20, 15, 20, widget.bottomOverlayHeight + 15),
-        itemCount: _roles.length + 2,
-        itemBuilder: (context, index) {
-          if (index == 0) {
-            return Padding(
-              padding: const EdgeInsets.only(bottom: 24),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                        width: 4,
-                        height: 18,
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Container(
+                      width: 4,
+                      height: 18,
+                      color: AppColors.accent,
+                    ),
+                    const SizedBox(width: 8),
+                    Text(
+                      "// AGENT CLASSIFICATIONS",
+                      style: TextStyle(
+                        fontFamily: 'Valorant',
+                        fontSize: 12,
                         color: AppColors.accent,
+                        letterSpacing: 1.5,
                       ),
-                      const SizedBox(width: 8),
-                      Text(
-                        "// AGENT CLASSIFICATIONS",
-                        style: TextStyle(
-                          fontFamily: 'Valorant',
-                          fontSize: 12,
-                          color: AppColors.accent,
-                          letterSpacing: 1.5,
-                        ),
-                      ),
-                    ],
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  "Combat\nRoles",
+                  style: TextStyle(
+                    fontFamily: 'Valorant',
+                    fontSize: 32,
+                    color: AppColors.textPrimary(brightness),
+                    height: 1.1,
+                    letterSpacing: 1.0,
                   ),
-                  const SizedBox(height: 8),
-                  Text(
-                    "Combat\nRoles",
-                    style: TextStyle(
-                      fontFamily: 'Valorant',
-                      fontSize: 32,
-                      color: AppColors.textPrimary(brightness),
-                      height: 1.1,
-                      letterSpacing: 1.0,
-                      shadows: const [
-                        Shadow(
-                          color: Colors.black54,
-                          blurRadius: 4,
-                          offset: Offset(0, 2),
-                        ),
-                      ],
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 24),
+          Expanded(
+            child: ListView.builder(
+              physics: const BouncingScrollPhysics(
+                parent: AlwaysScrollableScrollPhysics(),
+              ),
+              padding: EdgeInsets.fromLTRB(20, 0, 20, widget.bottomOverlayHeight + 15),
+              itemCount: _roles.length,
+              itemBuilder: (context, index) {
+                final role = _roles[index];
+                final animIndex = index;
+
+                return FadeTransition(
+                  opacity: _cardFades[animIndex],
+                  child: SlideTransition(
+                    position: _cardSlides[animIndex],
+                    child: _buildRoleCard(
+                      brightness: brightness,
+                      title: role["title"] as String,
+                      badge: role["badge"] as String,
+                      iconPath: role["iconPath"] as String,
+                      description: role["description"] as String,
+                      responsibilities:
+                          (role["responsibilities"] as List).cast<String>(),
                     ),
                   ),
-                ],
-              ),
-            );
-          }
-
-          if (index == _roles.length + 1) {
-            return const SizedBox(height: 30);
-          }
-
-          final role = _roles[index - 1];
-          final animIndex = index - 1;
-
-          return FadeTransition(
-            opacity: _cardFades[animIndex],
-            child: SlideTransition(
-              position: _cardSlides[animIndex],
-              child: _buildRoleCard(
-                brightness: brightness,
-                title: role["title"] as String,
-                badge: role["badge"] as String,
-                iconPath: role["iconPath"] as String,
-                description: role["description"] as String,
-                responsibilities:
-                    (role["responsibilities"] as List).cast<String>(),
-              ),
+                );
+              },
             ),
-          );
-        },
+          ),
+        ],
       ),
     );
   }
@@ -277,15 +263,15 @@ class _RolesDescriptionScreenState extends State<RolesDescriptionScreen>
             ],
           ),
           const SizedBox(height: 12),
-            Text(
-              description,
-              style: TextStyle(
-                fontFamily: 'Gabarito',
-                color: AppColors.textSecondary(brightness),
-                fontSize: 13,
-                height: 1.5,
-              ),
+          Text(
+            description,
+            style: TextStyle(
+              fontFamily: 'Gabarito',
+              color: AppColors.textSecondary(brightness),
+              fontSize: 13,
+              height: 1.5,
             ),
+          ),
           const SizedBox(height: 12),
           Divider(color: AppColors.divider(brightness), height: 1),
           const SizedBox(height: 12),
@@ -315,7 +301,7 @@ class _RolesDescriptionScreenState extends State<RolesDescriptionScreen>
                     ),
                   ),
                   Expanded(
-                    child:                     Text(
+                    child: Text(
                       task,
                       style: TextStyle(
                         fontFamily: 'Gabarito',
