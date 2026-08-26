@@ -59,7 +59,7 @@ dev_dependencies:
 flutter_launcher_icons:
   android: true
   ios: true
-  image_path: "assets/icon/icon.jpg"
+  image_path: "assets/icon/valoguide_icon.webp"
 # The following section is specific to Flutter packages.
 flutter:
 
@@ -79,7 +79,7 @@ flutter:
   - assets/abilities/
   - assets/roles/
   - assets/icon/
-  - assets/icon/icon.jpg
+  - assets/icon/valoguide_icon.webp
 
 # Controllers
   - assets/abilities/omen/

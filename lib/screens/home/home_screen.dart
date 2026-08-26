@@ -346,14 +346,44 @@ class _HomeScreenState extends State<HomeScreen>
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          "$roleNumber // $tagline",
-                          style: TextStyle(
-                            fontFamily: 'Valorant',
-                            fontSize: 10,
-                            color: AppColors.accent,
-                            letterSpacing: 1.2,
-                          ),
+                        Stack(
+                          children: [
+                            Text(
+                              "$roleNumber // $tagline",
+                              style: TextStyle(
+                                fontFamily: 'Valorant',
+                                fontSize: 10,
+                                letterSpacing: 1.2,
+                                shadows: const [
+                                  Shadow(
+                                    color: Colors.black54,
+                                    blurRadius: 4,
+                                    offset: Offset(0, 2),
+                                  ),
+                                ],
+                                foreground: Paint()
+                                  ..style = PaintingStyle.stroke
+                                  ..strokeWidth = 1.5
+                                  ..color = Colors.white,
+                              ),
+                            ),
+                            Text(
+                              "$roleNumber // $tagline",
+                              style: TextStyle(
+                                fontFamily: 'Valorant',
+                                fontSize: 10,
+                                color: AppColors.accent,
+                                letterSpacing: 1.2,
+                                shadows: const [
+                                  Shadow(
+                                    color: Colors.black54,
+                                    blurRadius: 4,
+                                    offset: Offset(0, 2),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
                         const SizedBox(height: 2),
                         Text(
