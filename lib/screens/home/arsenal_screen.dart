@@ -1,28 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:valorant_guide_app/data/guns_data.dart';
+import 'package:valorant_guide_app/data/arsenal_data.dart';
 import 'package:valorant_guide_app/theme/app_colors.dart';
 
-class GunsScreen extends StatefulWidget {
+class ArsenalScreen extends StatefulWidget {
   final double bottomOverlayHeight;
-  const GunsScreen({super.key, this.bottomOverlayHeight = 0});
+  const ArsenalScreen({super.key, this.bottomOverlayHeight = 0});
 
   @override
-  State<GunsScreen> createState() => _GunsScreenState();
+  State<ArsenalScreen> createState() => _ArsenalScreenState();
 }
 
-class _GunsScreenState extends State<GunsScreen> {
+class _ArsenalScreenState extends State<ArsenalScreen> {
   String _selectedCategory = "ALL";
   String _searchQuery = "";
 
-  List<Map<String, dynamic>> get _filteredGuns {
-    return gunsData.where((gun) {
+  List<Map<String, dynamic>> get _filteredWeapons {
+    return arsenalData.where((weapon) {
       final matchesCategory =
-          _selectedCategory == "ALL" || gun['category'] == _selectedCategory;
+          _selectedCategory == "ALL" || weapon['category'] == _selectedCategory;
       final matchesSearch =
-          gun['name'].toString().toLowerCase().contains(
+          weapon['name'].toString().toLowerCase().contains(
             _searchQuery.toLowerCase(),
           ) ||
-          gun['description'].toString().toLowerCase().contains(
+          weapon['description'].toString().toLowerCase().contains(
             _searchQuery.toLowerCase(),
           );
       return matchesCategory && matchesSearch;
@@ -133,7 +133,7 @@ class _GunsScreenState extends State<GunsScreen> {
                         setState(() => _selectedCategory = value);
                       },
                       itemBuilder: (context) {
-                        return gunCategories.map((category) {
+                        return arsenalCategories.map((category) {
                           final isSelected = _selectedCategory == category;
                           return PopupMenuItem<String>(
                             value: category,
@@ -179,7 +179,7 @@ class _GunsScreenState extends State<GunsScreen> {
             ),
           ),
           Expanded(
-            child: _filteredGuns.isEmpty
+            child: _filteredWeapons.isEmpty
                 ? Center(
                     child: Text(
                       "NO WEAPONS FOUND",
@@ -194,10 +194,10 @@ class _GunsScreenState extends State<GunsScreen> {
                       parent: AlwaysScrollableScrollPhysics(),
                     ),
                     padding: EdgeInsets.fromLTRB(20, 0, 20, widget.bottomOverlayHeight + 20),
-                    itemCount: _filteredGuns.length,
+                    itemCount: _filteredWeapons.length,
                     itemBuilder: (context, index) {
-                      return _GunCard(
-                        gun: _filteredGuns[index],
+                      return _WeaponCard(
+                        weapon: _filteredWeapons[index],
                         brightness: brightness,
                       );
                     },
@@ -209,26 +209,26 @@ class _GunsScreenState extends State<GunsScreen> {
   }
 }
 
-class _GunCard extends StatefulWidget {
-  final Map<String, dynamic> gun;
+class _WeaponCard extends StatefulWidget {
+  final Map<String, dynamic> weapon;
   final Brightness brightness;
 
-  const _GunCard({
-    required this.gun,
+  const _WeaponCard({
+    required this.weapon,
     required this.brightness,
   });
 
   @override
-  State<_GunCard> createState() => _GunCardState();
+  State<_WeaponCard> createState() => _WeaponCardState();
 }
 
-class _GunCardState extends State<_GunCard> {
+class _WeaponCardState extends State<_WeaponCard> {
   bool _expanded = false;
 
   @override
   Widget build(BuildContext context) {
     final brightness = widget.brightness;
-    final gun = widget.gun;
+    final weapon = widget.weapon;
 
     return GestureDetector(
       onTap: () => setState(() => _expanded = !_expanded),
@@ -264,7 +264,7 @@ class _GunCardState extends State<_GunCard> {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10),
                       child: Image.asset(
-                        gun['icon'],
+                        weapon['icon'],
                         width: 24,
                         height: 24,
                         fit: BoxFit.contain,
@@ -279,7 +279,7 @@ class _GunCardState extends State<_GunCard> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          gun['name'],
+                          weapon['name'],
                           style: TextStyle(
                             fontFamily: 'Valorant',
                             fontSize: 14,
@@ -300,7 +300,7 @@ class _GunCardState extends State<_GunCard> {
                                 borderRadius: BorderRadius.circular(4),
                               ),
                               child: Text(
-                                gun['category'],
+                                weapon['category'],
                                 style: TextStyle(
                                   fontFamily: 'Valorant',
                                   fontSize: 8,
@@ -311,7 +311,7 @@ class _GunCardState extends State<_GunCard> {
                             ),
                             const SizedBox(width: 6),
                             Text(
-                              "${gun['cost']} CREDITS",
+                              "${weapon['cost']} CREDITS",
                               style: TextStyle(
                                 fontFamily: 'Gabarito',
                                 fontSize: 10,
@@ -342,9 +342,9 @@ class _GunCardState extends State<_GunCard> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  _buildStatChip("HEAD", gun['headDamage'], brightness),
-                  _buildStatChip("BODY", gun['bodyDamage'], brightness),
-                  _buildStatChip("LEG", gun['legDamage'], brightness),
+                  _buildStatChip("HEAD", weapon['headDamage'], brightness),
+                  _buildStatChip("BODY", weapon['bodyDamage'], brightness),
+                  _buildStatChip("LEG", weapon['legDamage'], brightness),
                 ],
               ),
             ),
@@ -365,14 +365,14 @@ class _GunCardState extends State<_GunCard> {
                           const SizedBox(height: 10),
                           Row(
                             children: [
-                              _buildMiniStat("MAG", gun['magazine'], brightness),
+                              _buildMiniStat("MAG", weapon['magazine'], brightness),
                               const SizedBox(width: 16),
-                              _buildMiniStat("FIRE RATE", gun['fireRate'], brightness),
+                              _buildMiniStat("FIRE RATE", weapon['fireRate'], brightness),
                             ],
                           ),
                           const SizedBox(height: 10),
                           Text(
-                            gun['description'],
+                            weapon['description'],
                             style: TextStyle(
                               fontFamily: 'Gabarito',
                               color: AppColors.textSecondary(brightness),
@@ -392,7 +392,7 @@ class _GunCardState extends State<_GunCard> {
                               ),
                             ),
                             child: Text(
-                              gun['guide'],
+                              weapon['guide'],
                               style: TextStyle(
                                 fontFamily: 'Gabarito',
                                 color: AppColors.textSecondary(brightness),

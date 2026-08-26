@@ -185,7 +185,7 @@ class _GameGuideScreenState extends State<GameGuideScreen> {
                     ),
                     padding: EdgeInsets.fromLTRB(20, 0, 20, widget.bottomOverlayHeight + 20),
                     itemCount: filteredGuides.length,
-                    separatorBuilder: (_, __) => const SizedBox(height: 12),
+                    separatorBuilder: (context, index) => const SizedBox(height: 12),
                     itemBuilder: (context, index) {
                       return _GuideCard(item: filteredGuides[index]);
                     },

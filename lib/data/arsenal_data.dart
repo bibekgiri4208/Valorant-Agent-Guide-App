@@ -1,4 +1,4 @@
-const List<String> gunCategories = [
+const List<String> arsenalCategories = [
   "ALL",
   "MELEE",
   "SIDEARMS",
@@ -9,7 +9,7 @@ const List<String> gunCategories = [
   "HEAVIES",
 ];
 
-const List<Map<String, dynamic>> gunsData = [
+const List<Map<String, dynamic>> arsenalData = [
   // MELEE
   {
     "name": "MELEE",

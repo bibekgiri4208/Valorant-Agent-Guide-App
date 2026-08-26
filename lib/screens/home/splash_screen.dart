@@ -46,9 +46,9 @@ class _SplashScreenState extends State<SplashScreen>
           context,
           PageRouteBuilder(
             transitionDuration: const Duration(milliseconds: 500),
-            pageBuilder: (_, __, ___) =>
+            pageBuilder: (context, animation, secondaryAnimation) =>
                 const DashBoardScreen(playEntryAnimation: true),
-            transitionsBuilder: (_, animation, __, child) {
+            transitionsBuilder: (context, animation, secondaryAnimation, child) {
               return FadeTransition(opacity: animation, child: child);
             },
           ),

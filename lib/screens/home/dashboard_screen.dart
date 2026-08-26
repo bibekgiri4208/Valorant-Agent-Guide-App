@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:valorant_guide_app/screens/home/about_me_screen.dart';
 import 'package:valorant_guide_app/screens/home/game_guide_screen.dart';
-import 'package:valorant_guide_app/screens/home/guns_screen.dart';
+import 'package:valorant_guide_app/screens/home/arsenal_screen.dart';
 import 'package:valorant_guide_app/screens/home/home_screen.dart';
 import 'package:valorant_guide_app/screens/home/roles_description_screen.dart';
 import 'package:valorant_guide_app/theme/app_colors.dart';
@@ -33,7 +33,7 @@ class _DashBoardScreenState extends State<DashBoardScreen>
     {"label": "Home", "icon": "assets/logo/valorant_logo.png"},
     {"label": "Roles", "icon": "assets/icon/roles.png"},
     {"label": "Guide", "icon": "assets/icon/guide.png"},
-    {"label": "Guns", "materialIcon": Icons.gavel_rounded},
+    {"label": "Arsenal", "icon": "assets/logo/rifles.png"},
     {"label": "Developer", "icon": "assets/icon/about_us.png"},
   ];
 
@@ -131,7 +131,7 @@ class _DashBoardScreenState extends State<DashBoardScreen>
                     bottomOverlayHeight: floatingBarTotalHeight,
                   ),
                   GameGuideScreen(bottomOverlayHeight: floatingBarTotalHeight),
-                  GunsScreen(bottomOverlayHeight: floatingBarTotalHeight),
+                  ArsenalScreen(bottomOverlayHeight: floatingBarTotalHeight),
                   AboutMeScreen(bottomOverlayHeight: floatingBarTotalHeight),
                 ],
               ),
