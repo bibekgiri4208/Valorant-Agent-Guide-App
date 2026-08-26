@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:valorant_guide_app/theme/app_colors.dart';
@@ -188,6 +189,12 @@ class SettingsScreen extends StatelessWidget {
                     "Character & ability designs",
                     brightness,
                   ),
+                  const SizedBox(height: 10),
+                  _buildCreditRow(
+                    "Brylark",
+                    "For Valorant Style Fonts",
+                    brightness,
+                  ),
                 ],
               ),
             ),
@@ -220,6 +227,128 @@ class SettingsScreen extends StatelessWidget {
                     ),
                   ),
                 ],
+              ),
+            ),
+
+            const SizedBox(height: 25),
+
+            // OPEN SOURCE LICENSES
+            _buildSectionHeader("OPEN SOURCE LICENSES", brightness),
+            const SizedBox(height: 12),
+            GestureDetector(
+              onTap: () => showLicensePage(
+                context: context,
+                applicationName: 'vAlo Guide',
+                applicationVersion: '1.0.2',
+              ),
+              child: _buildInfoCard(
+                brightness: brightness,
+                child: Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: AppColors.accent.withValues(alpha: 0.15),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Icon(
+                        Icons.description_rounded,
+                        color: AppColors.accent,
+                        size: 20,
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Open Source Licenses",
+                            style: TextStyle(
+                              fontFamily: 'Valorant',
+                              fontSize: 14,
+                              color: AppColors.textPrimary(brightness),
+                              letterSpacing: 0.5,
+                            ),
+                          ),
+                          const SizedBox(height: 2),
+                          Text(
+                            "View licenses for all Flutter dependencies",
+                            style: TextStyle(
+                              fontFamily: 'Gabarito',
+                              fontSize: 12,
+                              color: AppColors.textSecondary(brightness),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Icon(
+                      Icons.chevron_right_rounded,
+                      color: AppColors.textSecondary(brightness),
+                      size: 20,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 25),
+
+            // PRIVACY POLICY
+            _buildSectionHeader("PRIVACY POLICY", brightness),
+            const SizedBox(height: 12),
+            GestureDetector(
+              onTap: () => _showPrivacyPolicy(context, brightness),
+              child: _buildInfoCard(
+                brightness: brightness,
+                child: Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: AppColors.accent.withValues(alpha: 0.15),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Icon(
+                        Icons.privacy_tip_rounded,
+                        color: AppColors.accent,
+                        size: 20,
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Privacy Policy",
+                            style: TextStyle(
+                              fontFamily: 'Valorant',
+                              fontSize: 14,
+                              color: AppColors.textPrimary(brightness),
+                              letterSpacing: 0.5,
+                            ),
+                          ),
+                          const SizedBox(height: 2),
+                          Text(
+                            "How we handle your data",
+                            style: TextStyle(
+                              fontFamily: 'Gabarito',
+                              fontSize: 12,
+                              color: AppColors.textSecondary(brightness),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Icon(
+                      Icons.chevron_right_rounded,
+                      color: AppColors.textSecondary(brightness),
+                      size: 20,
+                    ),
+                  ],
+                ),
               ),
             ),
 
@@ -382,6 +511,58 @@ class SettingsScreen extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+
+  void _showPrivacyPolicy(BuildContext context, Brightness brightness) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        backgroundColor: AppColors.card(brightness),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+          side: BorderSide(color: AppColors.divider(brightness), width: 1.5),
+        ),
+        title: Text(
+          'Privacy Policy',
+          style: TextStyle(
+            fontFamily: 'Valorant',
+            fontSize: 18,
+            color: AppColors.textPrimary(brightness),
+            letterSpacing: 0.5,
+          ),
+        ),
+        content: SingleChildScrollView(
+          child: Text(
+            "Valo Guide respects your privacy. This app does not collect, store, or share any personal data.\n\n"
+            "• No user data is collected or transmitted\n"
+            "• No analytics or tracking tools are used\n"
+            "• No internet permission is required\n"
+            "• All content is stored locally on your device\n\n"
+            "This app was built purely for educational and fan purposes. If you have any questions about this privacy policy, please contact the developer.",
+            style: TextStyle(
+              fontFamily: 'Gabarito',
+              fontSize: 14,
+              color: AppColors.textSecondary(brightness),
+              height: 1.5,
+            ),
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: Text(
+              'CLOSE',
+              style: TextStyle(
+                fontFamily: 'Valorant',
+                fontSize: 12,
+                color: AppColors.accent,
+                letterSpacing: 1.0,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
