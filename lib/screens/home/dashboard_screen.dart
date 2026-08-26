@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:valorant_guide_app/screens/home/about_me_screen.dart';
 import 'package:valorant_guide_app/screens/home/game_guide_screen.dart';
+import 'package:valorant_guide_app/screens/home/guns_screen.dart';
 import 'package:valorant_guide_app/screens/home/home_screen.dart';
 import 'package:valorant_guide_app/screens/home/roles_description_screen.dart';
 import 'package:valorant_guide_app/theme/app_colors.dart';
@@ -28,10 +29,11 @@ class _DashBoardScreenState extends State<DashBoardScreen>
   static const double _navBarBottomMargin = 14;
   static const double _navBarSideMargin = 20;
 
-  final List<Map<String, String>> _navItems = const [
+  final List<Map<String, dynamic>> _navItems = const [
     {"label": "Home", "icon": "assets/logo/valorant_logo.png"},
     {"label": "Roles", "icon": "assets/icon/roles.png"},
     {"label": "Guide", "icon": "assets/icon/guide.png"},
+    {"label": "Guns", "materialIcon": Icons.gavel_rounded},
     {"label": "Developer", "icon": "assets/icon/about_us.png"},
   ];
 
@@ -129,6 +131,7 @@ class _DashBoardScreenState extends State<DashBoardScreen>
                     bottomOverlayHeight: floatingBarTotalHeight,
                   ),
                   GameGuideScreen(bottomOverlayHeight: floatingBarTotalHeight),
+                  GunsScreen(bottomOverlayHeight: floatingBarTotalHeight),
                   AboutMeScreen(bottomOverlayHeight: floatingBarTotalHeight),
                 ],
               ),
@@ -183,7 +186,8 @@ class _DashBoardScreenState extends State<DashBoardScreen>
                           child: _FloatingNavBarItem(
                             isSelected: isSelected,
                             label: item["label"]!,
-                            iconPath: item["icon"]!,
+                            iconPath: item["icon"],
+                            materialIcon: item["materialIcon"],
                             onTap: () => _onTabTapped(index),
                           ),
                         );
@@ -203,13 +207,15 @@ class _DashBoardScreenState extends State<DashBoardScreen>
 class _FloatingNavBarItem extends StatefulWidget {
   final bool isSelected;
   final String label;
-  final String iconPath;
+  final String? iconPath;
+  final IconData? materialIcon;
   final VoidCallback onTap;
 
   const _FloatingNavBarItem({
     required this.isSelected,
     required this.label,
-    required this.iconPath,
+    this.iconPath,
+    this.materialIcon,
     required this.onTap,
   });
 
@@ -246,11 +252,17 @@ class _FloatingNavBarItemState extends State<_FloatingNavBarItem> {
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
-                ImageIcon(
-                  AssetImage(widget.iconPath),
-                  size: 24,
-                  color: widget.isSelected ? activeColor : inactiveColor,
-                ),
+                widget.iconPath != null
+                    ? ImageIcon(
+                        AssetImage(widget.iconPath!),
+                        size: 24,
+                        color: widget.isSelected ? activeColor : inactiveColor,
+                      )
+                    : Icon(
+                        widget.materialIcon,
+                        size: 24,
+                        color: widget.isSelected ? activeColor : inactiveColor,
+                      ),
                 const SizedBox(height: 5),
                 AnimatedDefaultTextStyle(
                   duration: const Duration(milliseconds: 200),
