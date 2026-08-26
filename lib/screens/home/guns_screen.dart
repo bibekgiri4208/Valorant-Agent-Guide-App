@@ -261,10 +261,16 @@ class _GunCardState extends State<_GunCard> {
                       color: AppColors.accent,
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Icon(
-                      Icons.gps_fixed_rounded,
-                      color: Colors.white,
-                      size: 20,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.asset(
+                        gun['icon'],
+                        width: 24,
+                        height: 24,
+                        fit: BoxFit.contain,
+                        color: Colors.white,
+                        colorBlendMode: BlendMode.srcIn,
+                      ),
                     ),
                   ),
                   const SizedBox(width: 12),

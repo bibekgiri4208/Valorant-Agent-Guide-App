@@ -79,6 +79,7 @@ flutter:
   - assets/abilities/
   - assets/roles/
   - assets/icon/
+  - assets/gun_icons/
   - assets/icon/valoguide_icon.webp
 
 # Controllers

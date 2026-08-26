@@ -1,5 +1,6 @@
 const List<String> gunCategories = [
   "ALL",
+  "MELEE",
   "SIDEARMS",
   "SMGs",
   "SHOTGUNS",
@@ -9,10 +10,26 @@ const List<String> gunCategories = [
 ];
 
 const List<Map<String, dynamic>> gunsData = [
+  // MELEE
+  {
+    "name": "MELEE",
+    "category": "MELEE",
+    "icon": "assets/gun_icons/Melee.webp",
+    "cost": 0,
+    "fireRate": "N/A",
+    "magazine": "N/A",
+    "headDamage": "N/A",
+    "bodyDamage": "N/A",
+    "legDamage": "N/A",
+    "description": "Standard issue combat knife. Silent and deadly in close quarters.",
+    "guide": "- Primary Fire: Quick slash attack for close-range engagements.\n- Alt-Fire: Heavy swing that deals more damage but is slower.\n- Always faster than any weapon for movement speed.",
+  },
+
   // SIDEARMS
   {
     "name": "CLASSIC",
     "category": "SIDEARMS",
+    "icon": "assets/gun_icons/Classic.webp",
     "cost": 0,
     "fireRate": "6.75 rds/s",
     "magazine": "12",
@@ -25,6 +42,7 @@ const List<Map<String, dynamic>> gunsData = [
   {
     "name": "SHORTY",
     "category": "SIDEARMS",
+    "icon": "assets/gun_icons/Shorty.webp",
     "cost": 300,
     "fireRate": "3.33 rds/s",
     "magazine": "2",
@@ -37,6 +55,7 @@ const List<Map<String, dynamic>> gunsData = [
   {
     "name": "FRENZY",
     "category": "SIDEARMS",
+    "icon": "assets/gun_icons/Frenzy.webp",
     "cost": 450,
     "fireRate": "10.0 rds/s",
     "magazine": "13",
@@ -49,6 +68,7 @@ const List<Map<String, dynamic>> gunsData = [
   {
     "name": "GHOST",
     "category": "SIDEARMS",
+    "icon": "assets/gun_icons/Ghost.webp",
     "cost": 500,
     "fireRate": "6.75 rds/s",
     "magazine": "15",
@@ -59,8 +79,22 @@ const List<Map<String, dynamic>> gunsData = [
     "guide": "- Silenced tracers hide your position when shooting through smokes.\n- Focus on precise headshots; two taps to the head kill light/heavy armor targets cleanly.",
   },
   {
+    "name": "BANDIT",
+    "category": "SIDEARMS",
+    "icon": "assets/gun_icons/Bandit.webp",
+    "cost": 0,
+    "fireRate": "N/A",
+    "magazine": "N/A",
+    "headDamage": "N/A",
+    "bodyDamage": "N/A",
+    "legDamage": "N/A",
+    "description": "Special sidearm with unique tactical capabilities.",
+    "guide": "- Use strategically based on situation.\n- Pair with team compositions for maximum effectiveness.",
+  },
+  {
     "name": "SHERIFF",
     "category": "SIDEARMS",
+    "icon": "assets/gun_icons/Sheriff.webp",
     "cost": 800,
     "fireRate": "4.0 rds/s",
     "magazine": "6",
@@ -75,6 +109,7 @@ const List<Map<String, dynamic>> gunsData = [
   {
     "name": "STINGER",
     "category": "SMGs",
+    "icon": "assets/gun_icons/Stinger.webp",
     "cost": 1100,
     "fireRate": "16.0 rds/s",
     "magazine": "20",
@@ -87,6 +122,7 @@ const List<Map<String, dynamic>> gunsData = [
   {
     "name": "SPECTRE",
     "category": "SMGs",
+    "icon": "assets/gun_icons/Spectre.webp",
     "cost": 1600,
     "fireRate": "13.33 rds/s",
     "magazine": "30",
@@ -101,6 +137,7 @@ const List<Map<String, dynamic>> gunsData = [
   {
     "name": "BUCKY",
     "category": "SHOTGUNS",
+    "icon": "assets/gun_icons/Bucky.webp",
     "cost": 850,
     "fireRate": "1.1 rds/s",
     "magazine": "5",
@@ -113,6 +150,7 @@ const List<Map<String, dynamic>> gunsData = [
   {
     "name": "JUDGE",
     "category": "SHOTGUNS",
+    "icon": "assets/gun_icons/Judge.webp",
     "cost": 1850,
     "fireRate": "3.5 rds/s",
     "magazine": "7",
@@ -127,6 +165,7 @@ const List<Map<String, dynamic>> gunsData = [
   {
     "name": "BULLDOG",
     "category": "RIFLES",
+    "icon": "assets/gun_icons/Bulldog.webp",
     "cost": 2000,
     "fireRate": "10.0 rds/s",
     "magazine": "24",
@@ -139,6 +178,7 @@ const List<Map<String, dynamic>> gunsData = [
   {
     "name": "GUARDIAN",
     "category": "RIFLES",
+    "icon": "assets/gun_icons/Guardian.webp",
     "cost": 2250,
     "fireRate": "5.25 rds/s",
     "magazine": "12",
@@ -151,6 +191,7 @@ const List<Map<String, dynamic>> gunsData = [
   {
     "name": "PHANTOM",
     "category": "RIFLES",
+    "icon": "assets/gun_icons/Phantom.webp",
     "cost": 2900,
     "fireRate": "11.0 rds/s",
     "magazine": "30",
@@ -163,6 +204,7 @@ const List<Map<String, dynamic>> gunsData = [
   {
     "name": "VANDAL",
     "category": "RIFLES",
+    "icon": "assets/gun_icons/Vandal.webp",
     "cost": 2900,
     "fireRate": "9.75 rds/s",
     "magazine": "25",
@@ -177,6 +219,7 @@ const List<Map<String, dynamic>> gunsData = [
   {
     "name": "MARSHAL",
     "category": "SNIPERS",
+    "icon": "assets/gun_icons/Marshal.webp",
     "cost": 950,
     "fireRate": "1.5 rds/s",
     "magazine": "5",
@@ -189,6 +232,7 @@ const List<Map<String, dynamic>> gunsData = [
   {
     "name": "OUTLAW",
     "category": "SNIPERS",
+    "icon": "assets/gun_icons/Outlaw.webp",
     "cost": 2400,
     "fireRate": "2.75 rds/s",
     "magazine": "2",
@@ -201,6 +245,7 @@ const List<Map<String, dynamic>> gunsData = [
   {
     "name": "OPERATOR",
     "category": "SNIPERS",
+    "icon": "assets/gun_icons/Operator.webp",
     "cost": 4700,
     "fireRate": "0.6 rds/s",
     "magazine": "5",
@@ -215,6 +260,7 @@ const List<Map<String, dynamic>> gunsData = [
   {
     "name": "ARES",
     "category": "HEAVIES",
+    "icon": "assets/gun_icons/Ares.webp",
     "cost": 1600,
     "fireRate": "10.0 to 13.0 rds/s",
     "magazine": "50",
@@ -227,6 +273,7 @@ const List<Map<String, dynamic>> gunsData = [
   {
     "name": "ODIN",
     "category": "HEAVIES",
+    "icon": "assets/gun_icons/Odin.webp",
     "cost": 3200,
     "fireRate": "12.0 to 15.0 rds/s",
     "magazine": "100",
