@@ -105,7 +105,7 @@ final List<Map<String, dynamic>> initiatorsData = [
         "name": "Wingman",
         "icon": "assets/abilities/gekko/wingman.webp",
         "description":
-            "EQUIP Wingman FIRE to send Wingman forward seeking enemies. Wingman unleashes a concussive blast toward the first enemy he sees ALT FIRE when targeting a Spike site or planted Spike to have Wingman defuse or plant the Spike. To plant, Gekko must have the Spike in his inventory. When Wingman expires he reverts into a dormant globule INTERACT to reclaim the globule and gain another Wingman charge after a short cooldown.",
+            "EQUIP Wingman FIRE to send Wingman forward seeking enemies. Wingman unleashes a concussive blast toward the first enemy he sees ALT FIRE when targeting a Spike site or planted Spike to have Wingman defuse or plant the Spike. To plant, Gekko must have the Spike in his inventory. Reclaim Wingman's globule after expiry for a new charge following a short cooldown.",
         "video": "assets/abilities/gekko/wingman.mp4",
       },
       {

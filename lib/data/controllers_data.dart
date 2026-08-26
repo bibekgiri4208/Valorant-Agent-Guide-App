@@ -287,7 +287,7 @@ final List<Map<String, dynamic>> controllersData = [
         "name": "Cosmic Divide",
         "icon": "assets/abilities/astra/cosmic_divide.webp",
         "description":
-            "ACTIVATE to enter Astral Form where you can place Stars with FIRE. Stars can be reactivated later, transforming them into a Nova Pulse, Nebula, or Gravity Well. When Cosmic Divide is charged, use ALT FIRE in Astral Form to begin aiming it, then FIRE to select two locations. An infinite Cosmic Divide connects the two points you select. Cosmic Divide blocks bullets and heavily dampens audio.",
+            "When Cosmic Divide is charged, use ALT FIRE in Astral Form to begin aiming it, then FIRE to select two locations. An infinite Cosmic Divide connects the two points you select. Cosmic Divide blocks bullets and heavily dampens audio.",
         "video": "assets/abilities/astra/cosmic_divide.mp4",
       },
     ],

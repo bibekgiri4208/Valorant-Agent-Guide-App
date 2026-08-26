@@ -62,6 +62,7 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
       backgroundColor: AppColors.scaffold(brightness),
       body: SafeArea(
         child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
               // HEADER SECTION
@@ -173,9 +174,9 @@ class _AgentsDetailScreenState extends State<AgentsDetailScreen> {
                             color: Colors.white,
                           ),
                           onPressed: () => _showAgentInfoModal(context, agent),
-                        ),
-                      ),
-                    ],
+                ),
+              ),
+            ],
                   ),
                 ),
               ),
@@ -623,12 +624,23 @@ class _AbilityVideoPlayerState extends State<AbilityVideoPlayer> {
               ),
               if (!_controller.value.isPlaying)
                 Container(
-                  color: AppColors.videoPauseOverlay(brightness),
-                  padding: const EdgeInsets.all(10),
-                  child: Icon(
-                    Icons.play_arrow_rounded,
-                    size: 40,
+                  width: 64,
+                  height: 64,
+                  decoration: BoxDecoration(
                     color: AppColors.accent,
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppColors.accent.withValues(alpha: 0.4),
+                        blurRadius: 16,
+                        spreadRadius: 2,
+                      ),
+                    ],
+                  ),
+                  child: const Icon(
+                    Icons.play_arrow_rounded,
+                    size: 36,
+                    color: Colors.white,
                   ),
                 ),
             ],
