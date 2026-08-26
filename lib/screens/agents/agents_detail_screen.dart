@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:video_player/video_player.dart';
 import 'package:valorant_guide_app/theme/app_colors.dart';
+import 'package:valorant_guide_app/theme/settings_provider.dart';
 
 class AgentsDetailScreen extends StatefulWidget {
   final Map<String, dynamic> agentData;
@@ -558,7 +560,13 @@ class _AbilityVideoPlayerState extends State<AbilityVideoPlayer> {
     _controller.initialize().then((_) {
       if (mounted) {
         setState(() {});
-        _controller.play();
+        final settingsProvider = Provider.of<SettingsProvider>(
+          context,
+          listen: false,
+        );
+        if (settingsProvider.autoplayEnabled) {
+          _controller.play();
+        }
       }
     });
   }

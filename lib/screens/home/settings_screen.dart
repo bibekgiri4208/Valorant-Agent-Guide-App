@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:valorant_guide_app/theme/app_colors.dart';
+import 'package:valorant_guide_app/theme/settings_provider.dart';
 import 'package:valorant_guide_app/theme/theme_provider.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -42,6 +43,13 @@ class SettingsScreen extends StatelessWidget {
             _buildSectionHeader("APPEARANCE", brightness),
             const SizedBox(height: 12),
             _buildAppearanceToggle(context, brightness),
+
+            const SizedBox(height: 25),
+
+            // VIDEO AUTOPLAY
+            _buildSectionHeader("VIDEO AUTOPLAY", brightness),
+            const SizedBox(height: 12),
+            _buildAutoplayToggle(context, brightness),
 
             const SizedBox(height: 25),
 
@@ -424,6 +432,44 @@ class SettingsScreen extends StatelessWidget {
               label: "Light",
               isSelected: !isDark,
               onTap: () => themeProvider.setThemeMode(ThemeMode.light),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildAutoplayToggle(BuildContext context, Brightness brightness) {
+    final settingsProvider = Provider.of<SettingsProvider>(context);
+    final isEnabled = settingsProvider.autoplayEnabled;
+
+    return Container(
+      padding: const EdgeInsets.all(4),
+      decoration: BoxDecoration(
+        color: AppColors.card(brightness),
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(color: AppColors.divider(brightness), width: 1.5),
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: _buildThemeOption(
+              context: context,
+              brightness: brightness,
+              icon: Icons.play_circle_outline_rounded,
+              label: "Enable",
+              isSelected: isEnabled,
+              onTap: () => settingsProvider.setAutoplay(true),
+            ),
+          ),
+          Expanded(
+            child: _buildThemeOption(
+              context: context,
+              brightness: brightness,
+              icon: Icons.pause_circle_outline_rounded,
+              label: "Disable",
+              isSelected: !isEnabled,
+              onTap: () => settingsProvider.setAutoplay(false),
             ),
           ),
         ],
