@@ -1,13 +1,43 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:valorant_guide_app/theme/app_colors.dart';
 import 'package:valorant_guide_app/theme/settings_provider.dart';
 import 'package:valorant_guide_app/theme/theme_provider.dart';
 
-class SettingsScreen extends StatelessWidget {
+class SettingsScreen extends StatefulWidget {
   final double bottomOverlayHeight;
   const SettingsScreen({super.key, this.bottomOverlayHeight = 0});
+
+  @override
+  State<SettingsScreen> createState() => _SettingsScreenState();
+}
+
+class _SettingsScreenState extends State<SettingsScreen>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _privacyAnimController;
+  late Animation<double> _privacyScaleAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _privacyAnimController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 300),
+    );
+    _privacyScaleAnimation = CurvedAnimation(
+      parent: _privacyAnimController,
+      curve: Curves.easeInOut,
+    );
+    _privacyAnimController.forward();
+  }
+
+  @override
+  void dispose() {
+    _privacyAnimController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +65,7 @@ class SettingsScreen extends StatelessWidget {
         physics: const BouncingScrollPhysics(
           parent: AlwaysScrollableScrollPhysics(),
         ),
-        padding: EdgeInsets.fromLTRB(20, 15, 20, bottomOverlayHeight + 15),
+        padding: EdgeInsets.fromLTRB(20, 15, 20, widget.bottomOverlayHeight + 15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -306,57 +336,95 @@ class SettingsScreen extends StatelessWidget {
             // PRIVACY POLICY
             _buildSectionHeader("PRIVACY POLICY", brightness),
             const SizedBox(height: 12),
-            GestureDetector(
-              onTap: () => _showPrivacyPolicy(context, brightness),
-              child: _buildInfoCard(
-                brightness: brightness,
-                child: Row(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        color: AppColors.accent.withValues(alpha: 0.15),
-                        borderRadius: BorderRadius.circular(8),
+            ScaleTransition(
+              scale: _privacyScaleAnimation,
+              child: GestureDetector(
+                onTap: () => _showPrivacyPolicy(context, brightness),
+                child: _buildInfoCard(
+                  brightness: brightness,
+                  child: Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: AppColors.accent.withValues(alpha: 0.15),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Icon(
+                          Icons.privacy_tip_rounded,
+                          color: AppColors.accent,
+                          size: 20,
+                        ),
                       ),
-                      child: Icon(
-                        Icons.privacy_tip_rounded,
-                        color: AppColors.accent,
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Privacy Policy",
+                              style: TextStyle(
+                                fontFamily: 'Valorant',
+                                fontSize: 14,
+                                color: AppColors.textPrimary(brightness),
+                                letterSpacing: 0.5,
+                              ),
+                            ),
+                            const SizedBox(height: 2),
+                            Text(
+                              "How we handle your data",
+                              style: TextStyle(
+                                fontFamily: 'Gabarito',
+                                fontSize: 12,
+                                color: AppColors.textSecondary(brightness),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Icon(
+                        Icons.chevron_right_rounded,
+                        color: AppColors.textSecondary(brightness),
                         size: 20,
                       ),
-                    ),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Privacy Policy",
-                            style: TextStyle(
-                              fontFamily: 'Valorant',
-                              fontSize: 14,
-                              color: AppColors.textPrimary(brightness),
-                              letterSpacing: 0.5,
-                            ),
-                          ),
-                          const SizedBox(height: 2),
-                          Text(
-                            "How we handle your data",
-                            style: TextStyle(
-                              fontFamily: 'Gabarito',
-                              fontSize: 12,
-                              color: AppColors.textSecondary(brightness),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Icon(
-                      Icons.chevron_right_rounded,
-                      color: AppColors.textSecondary(brightness),
-                      size: 20,
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
+              ),
+            ),
+
+            const SizedBox(height: 25),
+
+            // SOCIALS
+            _buildSectionHeader("SOCIALS", brightness),
+            const SizedBox(height: 12),
+            _buildInfoCard(
+              brightness: brightness,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  _buildSocialIcon(
+                    context: context,
+                    brightness: brightness,
+                    iconPath: 'assets/icon/facebook.png',
+                    label: "Facebook",
+                    url: "https://www.facebook.com/bibekgiri4208",
+                  ),
+                  _buildSocialIcon(
+                    context: context,
+                    brightness: brightness,
+                    iconPath: 'assets/icon/github.png',
+                    label: "GitHub",
+                    url: "https://github.com/bibekgiri4208",
+                  ),
+                  _buildSocialIcon(
+                    context: context,
+                    brightness: brightness,
+                    iconPath: 'assets/icon/instagram.png',
+                    label: "Instagram",
+                    url: "https://www.instagram.com/bibekgiri4208/",
+                  ),
+                ],
               ),
             ),
 
@@ -405,36 +473,62 @@ class SettingsScreen extends StatelessWidget {
     final themeProvider = Provider.of<ThemeProvider>(context);
     final isDark = themeProvider.themeMode == ThemeMode.dark;
 
-    return Container(
-      padding: const EdgeInsets.all(4),
-      decoration: BoxDecoration(
-        color: AppColors.card(brightness),
-        borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: AppColors.divider(brightness), width: 1.5),
+    return GestureDetector(
+      onTap: () => themeProvider.setThemeMode(
+        isDark ? ThemeMode.light : ThemeMode.dark,
       ),
-      child: Row(
-        children: [
-          Expanded(
-            child: _buildThemeOption(
-              context: context,
-              brightness: brightness,
-              icon: Icons.dark_mode_rounded,
-              label: "Dark",
-              isSelected: isDark,
-              onTap: () => themeProvider.setThemeMode(ThemeMode.dark),
-            ),
-          ),
-          Expanded(
-            child: _buildThemeOption(
-              context: context,
-              brightness: brightness,
-              icon: Icons.light_mode_rounded,
-              label: "Light",
-              isSelected: !isDark,
-              onTap: () => themeProvider.setThemeMode(ThemeMode.light),
-            ),
-          ),
-        ],
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+        padding: const EdgeInsets.all(4),
+        decoration: BoxDecoration(
+          color: AppColors.card(brightness),
+          borderRadius: BorderRadius.circular(14),
+          border: Border.all(color: AppColors.divider(brightness), width: 1.5),
+        ),
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final optionWidth = (constraints.maxWidth - 8) / 2;
+            return Stack(
+              children: [
+                AnimatedPositioned(
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeInOut,
+                  left: isDark ? 0 : optionWidth + 8,
+                  top: 0,
+                  bottom: 0,
+                  width: optionWidth,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: AppColors.accent,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: _buildToggleOption(
+                        brightness: brightness,
+                        icon: Icons.dark_mode_rounded,
+                        label: "Dark",
+                        isSelected: isDark,
+                      ),
+                    ),
+                    Expanded(
+                      child: _buildToggleOption(
+                        brightness: brightness,
+                        icon: Icons.light_mode_rounded,
+                        label: "Light",
+                        isSelected: !isDark,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            );
+          },
+        ),
       ),
     );
   }
@@ -443,82 +537,91 @@ class SettingsScreen extends StatelessWidget {
     final settingsProvider = Provider.of<SettingsProvider>(context);
     final isEnabled = settingsProvider.autoplayEnabled;
 
-    return Container(
-      padding: const EdgeInsets.all(4),
-      decoration: BoxDecoration(
-        color: AppColors.card(brightness),
-        borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: AppColors.divider(brightness), width: 1.5),
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: _buildThemeOption(
-              context: context,
-              brightness: brightness,
-              icon: Icons.play_circle_outline_rounded,
-              label: "Enable",
-              isSelected: isEnabled,
-              onTap: () => settingsProvider.setAutoplay(true),
-            ),
-          ),
-          Expanded(
-            child: _buildThemeOption(
-              context: context,
-              brightness: brightness,
-              icon: Icons.pause_circle_outline_rounded,
-              label: "Disable",
-              isSelected: !isEnabled,
-              onTap: () => settingsProvider.setAutoplay(false),
-            ),
-          ),
-        ],
+    return GestureDetector(
+      onTap: () => settingsProvider.setAutoplay(!isEnabled),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+        padding: const EdgeInsets.all(4),
+        decoration: BoxDecoration(
+          color: AppColors.card(brightness),
+          borderRadius: BorderRadius.circular(14),
+          border: Border.all(color: AppColors.divider(brightness), width: 1.5),
+        ),
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final optionWidth = (constraints.maxWidth - 8) / 2;
+            return Stack(
+              children: [
+                AnimatedPositioned(
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeInOut,
+                  left: isEnabled ? 0 : optionWidth + 8,
+                  top: 0,
+                  bottom: 0,
+                  width: optionWidth,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: AppColors.accent,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: _buildToggleOption(
+                        brightness: brightness,
+                        icon: Icons.play_circle_outline_rounded,
+                        label: "Enable",
+                        isSelected: isEnabled,
+                      ),
+                    ),
+                    Expanded(
+                      child: _buildToggleOption(
+                        brightness: brightness,
+                        icon: Icons.pause_circle_outline_rounded,
+                        label: "Disable",
+                        isSelected: !isEnabled,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            );
+          },
+        ),
       ),
     );
   }
 
-  Widget _buildThemeOption({
-    required BuildContext context,
+  Widget _buildToggleOption({
     required Brightness brightness,
     required IconData icon,
     required String label,
     required bool isSelected,
-    required VoidCallback onTap,
   }) {
-    return GestureDetector(
-      onTap: onTap,
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 250),
-        curve: Curves.easeInOut,
-        padding: const EdgeInsets.symmetric(vertical: 14),
-        decoration: BoxDecoration(
-          color: isSelected ? AppColors.accent : Colors.transparent,
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              icon,
-              size: 20,
-              color: isSelected
-                  ? Colors.white
-                  : AppColors.textSecondary(brightness),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 14),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            icon,
+            size: 20,
+            color: isSelected ? Colors.white : AppColors.textSecondary(brightness),
+          ),
+          const SizedBox(width: 8),
+          Text(
+            label,
+            style: TextStyle(
+              fontFamily: 'Valorant',
+              fontSize: 12,
+              color: isSelected ? Colors.white : AppColors.textSecondary(brightness),
+              letterSpacing: 1.0,
             ),
-            const SizedBox(width: 8),
-            Text(
-              label,
-              style: TextStyle(
-                fontFamily: 'Valorant',
-                fontSize: 12,
-                color: isSelected
-                    ? Colors.white
-                    : AppColors.textSecondary(brightness),
-                letterSpacing: 1.0,
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -561,50 +664,111 @@ class SettingsScreen extends StatelessWidget {
   }
 
   void _showPrivacyPolicy(BuildContext context, Brightness brightness) {
-    showDialog(
+    showGeneralDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        backgroundColor: AppColors.card(brightness),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-          side: BorderSide(color: AppColors.divider(brightness), width: 1.5),
-        ),
-        title: Text(
-          'Privacy Policy',
-          style: TextStyle(
-            fontFamily: 'Valorant',
-            fontSize: 18,
-            color: AppColors.textPrimary(brightness),
-            letterSpacing: 0.5,
+      barrierDismissible: true,
+      barrierLabel: 'Privacy Policy',
+      barrierColor: Colors.black54,
+      transitionDuration: const Duration(milliseconds: 300),
+      pageBuilder: (context, animation, secondaryAnimation) {
+        return AlertDialog(
+          backgroundColor: AppColors.card(brightness),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+            side: BorderSide(color: AppColors.divider(brightness), width: 1.5),
           ),
-        ),
-        content: SingleChildScrollView(
-          child: Text(
-            "Valo Guide respects your privacy. This app does not collect, store, or share any personal data.\n\n"
-            "• No user data is collected or transmitted\n"
-            "• No analytics or tracking tools are used\n"
-            "• No internet permission is required\n"
-            "• All content is stored locally on your device\n\n"
-            "This app was built purely for educational and fan purposes. If you have any questions about this privacy policy, please contact the developer.",
+          title: Text(
+            'Privacy Policy',
             style: TextStyle(
-              fontFamily: 'Gabarito',
-              fontSize: 14,
-              color: AppColors.textSecondary(brightness),
-              height: 1.5,
+              fontFamily: 'Valorant',
+              fontSize: 18,
+              color: AppColors.textPrimary(brightness),
+              letterSpacing: 0.5,
             ),
           ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(context).pop(),
+          content: SingleChildScrollView(
             child: Text(
-              'CLOSE',
+              "Valo Guide respects your privacy. This app does not collect, store, or share any personal data.\n\n"
+              "• No user data is collected or transmitted\n"
+              "• No analytics or tracking tools are used\n"
+              "• No internet permission is required\n"
+              "• All content is stored locally on your device\n\n"
+              "This app was built purely for educational and fan purposes. If you have any questions about this privacy policy, please contact the developer.",
               style: TextStyle(
-                fontFamily: 'Valorant',
-                fontSize: 12,
-                color: AppColors.accent,
-                letterSpacing: 1.0,
+                fontFamily: 'Gabarito',
+                fontSize: 14,
+                color: AppColors.textSecondary(brightness),
+                height: 1.5,
               ),
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: Text(
+                'CLOSE',
+                style: TextStyle(
+                  fontFamily: 'Valorant',
+                  fontSize: 12,
+                  color: AppColors.accent,
+                  letterSpacing: 1.0,
+                ),
+              ),
+            ),
+          ],
+        );
+      },
+      transitionBuilder: (context, animation, secondaryAnimation, child) {
+        return ScaleTransition(
+          scale: CurvedAnimation(
+            parent: animation,
+            curve: Curves.easeInOut,
+          ),
+          child: FadeTransition(
+            opacity: CurvedAnimation(
+              parent: animation,
+              curve: Curves.easeInOut,
+            ),
+            child: child,
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _buildSocialIcon({
+    required BuildContext context,
+    required Brightness brightness,
+    required String iconPath,
+    required String label,
+    required String url,
+  }) {
+    return GestureDetector(
+      onTap: () =>
+          launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication),
+      child: Column(
+        children: [
+          Container(
+            width: 48,
+            height: 48,
+            decoration: BoxDecoration(
+              color: Colors.grey.withValues(alpha: 0.3),
+              shape: BoxShape.circle,
+            ),
+            child: ClipOval(
+              child: Padding(
+                padding: const EdgeInsets.all(10),
+                child: Image.asset(iconPath, fit: BoxFit.contain),
+              ),
+            ),
+          ),
+          const SizedBox(height: 6),
+          Text(
+            label,
+            style: TextStyle(
+              fontFamily: 'Gabarito',
+              fontSize: 11,
+              color: AppColors.textSecondary(brightness),
             ),
           ),
         ],
